@@ -1,20 +1,19 @@
 <html><head><meta charset="utf-8"><title>変則遊戯</title><meta name="viewport" content="width=device-width,user-scalable=0"><meta name="robots" content="noindex,nofollow,noarchive"><style type="text/css">
 /*▼共通*/
-*{font-size:12px;color:#444;}
-body{margin:0;}
+*{font-size:12px;}
+body{margin:0;color:#444;}
 ul,ol{margin:0;padding:0;}
 li{margin:0.5rem 0 0 1.5rem;padding:0;}
 table{border:1px #888 solid;border-collapse:collapse;}
 
-details{background:#eee;border:1px solid #aaa;margin:3rem 1rem;}
+details{background:#eee;border:1px solid #888;margin:3rem 1rem;}
 summary{padding:0.5rem;font-weight:bold;}
-details div.category{font-weight:bold;margin:1rem 0 0.5rem;border-left:4px solid #aaa;padding-left:0.5rem;}
+details div.category{font-weight:bold;margin:1rem 0 0.5rem;border-left:4px solid #888;padding-left:0.5rem;}
 
 div.content{max-width:1000px;margin:0 auto;}
 div.title{margin:5rem 2rem;padding:5rem;text-align:center;border:2px solid #444;font-size:1.5rem;font-weight:bold;}
 div.rule{padding:1rem;color:#fff;background:#444;}
-div.rule div{padding:0.2rem;margin:1rem 0 0.2rem;border-bottom:1px solid #888;color:#fff;font-weight:bold;}
-div.rule li{color:#fff;}
+div.rule div{padding:0.2rem;margin:1rem 0 0.2rem;border-bottom:1px solid #888;font-weight:bold;}
 
 .header{display:inline-block;padding:0.5rem;font-weight:bold;}
                                                        label input{display:none;}
@@ -91,7 +90,7 @@ div.content:not(:target){display:none;}
 /**************************************************************************************************/
 /*▼メニューバー*/
 div.contentslist{background:linear-gradient(#eee,#ddd);display:flex;}
-div.contentslist a{display:block;width:calc(100%/4);padding:1rem min(2%,1rem);text-align:center;display:grid;place-items:center;border-left:1px solid #fff;border-right:1px solid #aaa;text-decoration:none;}
+div.contentslist a{display:block;width:calc(100%/4);padding:1rem min(2%,1rem);text-align:center;display:grid;place-items:center;border-left:1px solid #fff;border-right:1px solid #aaa;text-decoration:none;color:#444;}
 div.contentslist:hover a{filter:blur(2px);transition:all 300ms;}
 div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition:all 300ms;}
 
@@ -1955,332 +1954,345 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		}
 	</script>
 
+<style type="text/css">
+#DraftLocalLegend .color_Mondstadt label.status0 input ~ span{background:#484;color:#fff;}
+#DraftLocalLegend .color_Mondstadt label.status1 input ~ span{background:#cec;color:#444;}
+#DraftLocalLegend .color_Mondstadt label.status2 input ~ span{background:#cec;color:transparent;}
+#DraftLocalLegend .color_Liyue     label.status0 input ~ span{background:#864;color:#fff;}
+#DraftLocalLegend .color_Liyue     label.status1 input ~ span{background:#edc;color:#444;}
+#DraftLocalLegend .color_Liyue     label.status2 input ~ span{background:#edc;color:transparent;}
+#DraftLocalLegend .color_Inazuma   label.status0 input ~ span{background:#648;color:#fff;}
+#DraftLocalLegend .color_Inazuma   label.status1 input ~ span{background:#dce;color:#444;}
+#DraftLocalLegend .color_Inazuma   label.status2 input ~ span{background:#dce;color:transparent;}
+#DraftLocalLegend .color_Sumeru    label.status0 input ~ span{background:#684;color:#fff;}
+#DraftLocalLegend .color_Sumeru    label.status1 input ~ span{background:#dec;color:#444;}
+#DraftLocalLegend .color_Sumeru    label.status2 input ~ span{background:#dec;color:transparent;}
+#DraftLocalLegend .color_Fontaine  label.status0 input ~ span{background:#468;color:#fff;}
+#DraftLocalLegend .color_Fontaine  label.status1 input ~ span{background:#cde;color:#444;}
+#DraftLocalLegend .color_Fontaine  label.status2 input ~ span{background:#cde;color:transparent;}
+#DraftLocalLegend .color_Natlan    label.status0 input ~ span{background:#844;color:#fff;}
+#DraftLocalLegend .color_Natlan    label.status1 input ~ span{background:#ecc;color:#444;}
+#DraftLocalLegend .color_Natlan    label.status2 input ~ span{background:#ecc;color:transparent;}
+#DraftLocalLegend .color_Snezhnaya label.status0 input ~ span{background:#488;color:#fff;}
+#DraftLocalLegend .color_Snezhnaya label.status1 input ~ span{background:#cee;color:#444;}
+#DraftLocalLegend .color_Snezhnaya label.status2 input ~ span{background:#cee;color:transparent;}
+#DraftLocalLegend label.status0 input ~ span span{color:#fff8;}
+#DraftLocalLegend label.status1 input ~ span span{color:#4448;}
+#DraftLocalLegend label.status2 input ~ span span{color:transparent;}
+</style>
+
 	<table border="1">
 		<tr><th colspan="5" style="text-align:center;font-size:1.5rem;padding:0.5rem;background:#444;color:#fff;">未使用キャラクターリスト<tr><th colspan="2">アタッカー<th colspan="2">ヒーラー<th rowspan="2">キャラ一覧<tr><th>一級アタッカー<br>(魔偶剣鬼15s以内※)<th>二級アタッカー<br>(魔偶剣鬼25s以内※)<th>メインヒーラー<th>金珀ヒーラー
 		<tr class="color_Mondstadt">
 			<!--▼一級アタッカー-->
-			<td><label><input type="checkbox" checked class="Xiao             "><span>&#39752;<span>未計測</span>           </span></label><!--C /     s-->
-			    <label><input type="checkbox" checked class="Wanderer         "><span>放浪者<span>C6</span>                 </span></label><!--C6/14.53s-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character30 " value="0"><span>&#39752;<span>未計測</span></span></label><!--C /     s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character62 " value="0"><span>放浪者<span>C6</span>                 </span></label><!--C6/14.53s-->
 			<!--▼二級アタッカー-->
-			<td><label><input type="checkbox" checked class="Ifa              "><span>イファ<span>C6</span>                 </span></label><!--C6/17.01s-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character99 " value="0"><span>イファ<span>C6</span>                 </span></label><!--C6/17.01s-->
 			<!--▼メインヒーラー-->
-			<td><label><input type="checkbox" checked class="Xianyun          "><span>閑雲                                  </span></label>
-			    <label><input type="checkbox" checked class="Sayu             "><span>早柚                                  </span></label>
-			    <label><input type="checkbox" checked class="Jean             "><span>ジン                                  </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character80 " value="0"><span>閑雲                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character37 " value="0"><span>早柚                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character17 " value="0"><span>ジン                                  </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label><input type="checkbox" checked class="Ifa              "><span>イファ                                </span></label>
-			    <label><input type="checkbox" checked class="Xianyun          "><span>閑雲                                  </span></label>
-			    <label><input type="checkbox" checked class="Sucrose          "><span>スクロース                            </span></label>
-			    <label><input type="checkbox" checked class="Wanderer         "><span>放浪者                                </span></label>
-			    <label><input type="checkbox" checked class="YumemizukiMizuki "><span>夢見月瑞希                            </span></label>
-			    <label><input type="checkbox" checked class="LanYan           "><span>藍硯                                  </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character99 " value="0"><span>イファ                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character80 " value="0"><span>閑雲                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character16 " value="0"><span>スクロース                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character62 " value="0"><span>放浪者                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character96 " value="0"><span>夢見月瑞希                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character95 " value="0"><span>藍硯                                  </span></label>
 			<!--▼ほか-->
-			<td><label><input type="checkbox" checked class="Ifa              "><span>イファ                                </span></label>
-			    <label><input type="checkbox" checked class="Venti            "><span>ウェンティ                            </span></label>
-			    <label><input type="checkbox" checked class="KaedeharaKazuha  "><span>楓原万葉                              </span></label>
-			    <label><input type="checkbox" checked class="Xianyun          "><span>閑雲                                  </span></label>
-			    <label><input type="checkbox" checked class="Sayu             "><span>早柚                                  </span></label>
-			    <label><input type="checkbox" checked class="ShikanoinHeizou  "><span>鹿野院平蔵                            </span></label>
-			    <label><input type="checkbox" checked class="Xiao             "><span>&#39752;                              </span></label>
-			    <label><input type="checkbox" checked class="Jean             "><span>ジン                                  </span></label>
-			    <label><input type="checkbox" checked class="Sucrose          "><span>スクロース                            </span></label>
-			    <label><input type="checkbox" checked class="Chasca           "><span>チャスカ                              </span></label>
-			    <label><input type="checkbox" checked class="Faruzan          "><span>ファルザン                            </span></label>
-			    <label><input type="checkbox" checked class="Wanderer         "><span>放浪者                                </span></label>
-			    <label><input type="checkbox" checked class="YumemizukiMizuki "><span>夢見月瑞希                            </span></label>
-			    <label><input type="checkbox" checked class="LanYan           "><span>藍硯                                  </span></label>
-			    <label><input type="checkbox" checked class="Lynette          "><span>リネット                              </span></label>
-			    <label><input type="checkbox" checked class="Aether           "><span>空                                    </span></label>
-			    <label><input type="checkbox" checked class="Lumine           "><span>蛍                                    </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character99 " value="0"><span>イファ                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character22 " value="0"><span>ウェンティ                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character35 " value="0"><span>楓原万葉                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character80 " value="0"><span>閑雲                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character37 " value="0"><span>早柚                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character52 " value="0"><span>鹿野院平蔵                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character30 " value="0"><span>&#39752;                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character17 " value="0"><span>ジン                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character16 " value="0"><span>スクロース                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character92 " value="0"><span>チャスカ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character61 " value="0"><span>ファルザン                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character62 " value="0"><span>放浪者                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character96 " value="0"><span>夢見月瑞希                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character95 " value="0"><span>藍硯                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character70 " value="0"><span>リネット                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character1  " value="0"><span>空                                    </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character2  " value="0"><span>蛍                                    </span></label>
 		<tr class="color_Liyue">
 			<!--▼一級アタッカー-->
-			<td><label><input type="checkbox" checked class="Xilonen          "><span>シロネン<span>C6</span>               </span></label><!--C6/12.00s-->
-			    <label><input type="checkbox" checked class="Chiori           "><span>千織<span>C6</span>                   </span></label><!--C /     s-->
-			    <label><input type="checkbox" checked class="Navia            "><span>ナヴィア<span>C6</span>               </span></label><!--C6/14.56s-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character90 " value="0"><span>シロネン<span>C6</span>               </span></label><!--C6/12.00s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character81 " value="0"><span>千織<span>C6</span>                   </span></label><!--C /     s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character77 " value="0"><span>ナヴィア<span>C6</span>               </span></label><!--C6/14.56s-->
 			<!--▼二級アタッカー-->
-			<td><label><input type="checkbox" checked class="Noelle           "><span>ノエル<span>C6</span>                 </span></label><!--C6/23.68s-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character14 " value="0"><span>ノエル<span>C6</span>                 </span></label><!--C6/23.68s-->
 			<!--▼メインヒーラー-->
-			<td><label><input type="checkbox" checked class="Xilonen          "><span>シロネン<span>C6/要4元素2人以上</span></span></label>
-			    <label><input type="checkbox" checked class="Noelle           "><span>ノエル                                </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character90 " value="0"><span>シロネン<span>C6/要4元素2人以上</span></span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character14 " value="0"><span>ノエル                                </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label><input type="checkbox" checked class="Ningguang        "><span>凝光                                  </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character11 " value="0"><span>凝光                                  </span></label>
 			<!--▼ほか-->
-			<td><label><input type="checkbox" checked class="AratakiItto      "><span>荒瀧一斗                              </span></label>
-			    <label><input type="checkbox" checked class="Albedo           "><span>アルベド                              </span></label><!--C0/35.76s-->
-			    <label><input type="checkbox" checked class="YunJin           "><span>雲菫                                  </span></label>
-			    <label><input type="checkbox" checked class="Kachina          "><span>カチーナ                              </span></label>
-			    <label><input type="checkbox" checked class="Ningguang        "><span>凝光                                  </span></label><!--C6/31.00s-->
-			    <label><input type="checkbox" checked class="Gorou            "><span>ゴロー                                </span></label>
-			    <label><input type="checkbox" checked class="Zhongli          "><span>鍾離                                  </span></label>
-			    <label><input type="checkbox" checked class="Xilonen          "><span>シロネン                              </span></label>
-			    <label><input type="checkbox" checked class="Chiori           "><span>千織                                  </span></label>
-			    <label><input type="checkbox" checked class="Navia            "><span>ナヴィア                              </span></label>
-			    <label><input type="checkbox" checked class="Noelle           "><span>ノエル                                </span></label>
-			    <label><input type="checkbox" checked class="Aether           "><span>空                                    </span></label>
-			    <label><input type="checkbox" checked class="Lumine           "><span>蛍                                    </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character45 " value="0"><span>荒瀧一斗                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character28 " value="0"><span>アルベド                              </span></label><!--C0/35.76s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character46 " value="0"><span>雲菫                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character87 " value="0"><span>カチーナ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character11 " value="0"><span>凝光                                  </span></label><!--C6/31.00s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character44 " value="0"><span>ゴロー                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character27 " value="0"><span>鍾離                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character90 " value="0"><span>シロネン                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character81 " value="0"><span>千織                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character77 " value="0"><span>ナヴィア                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character14 " value="0"><span>ノエル                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character1  " value="0"><span>空                                    </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character2  " value="0"><span>蛍                                    </span></label>
 		<tr class="color_Inazuma">
 			<!--▼一級アタッカー-->
-			<td><label><input type="checkbox" checked class="Varesa           "><span>ヴァレサ<span>C6</span>               </span></label><!--C6/ 9.86s-->
-			    <label><input type="checkbox" checked class="Clorinde         "><span>クロリンデ<span>C6</span>             </span></label><!--C6/15.00s-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character98 " value="0"><span>ヴァレサ<span>C6</span>               </span></label><!--C6/ 9.86s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character84 " value="0"><span>クロリンデ<span>C6</span>             </span></label><!--C6/15.00s-->
 			<!--▼二級アタッカー-->
-			<td><label><input type="checkbox" checked class="Cyno             "><span>セノ<span>C2</span>                   </span></label><!--C2/17.21s-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character57 " value="0"><span>セノ<span>C2</span>                   </span></label><!--C2/17.21s-->
 			<!--▼メインヒーラー-->
-			<td><label><input type="checkbox" checked class="KukiShinobu      "><span>九岐忍                                </span></label>
-			    <label><input type="checkbox" checked class="Dori             "><span>ドリー                                </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character51 " value="0"><span>九岐忍                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character55 " value="0"><span>ドリー                                </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label><input type="checkbox" checked class="Varesa           "><span>ヴァレサ                              </span></label>
-			    <label><input type="checkbox" checked class="YaeMiko          "><span>八重神子                              </span></label>
-			    <label><input type="checkbox" checked class="Lisa             "><span>リサ                                  </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character98 " value="0"><span>ヴァレサ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character48 " value="0"><span>八重神子                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character5  " value="0"><span>リサ                                  </span></label>
 			<!--▼ほか-->
-			<td><label><input type="checkbox" checked class="Iansan           "><span>イアンサ                              </span></label>
-			    <label><input type="checkbox" checked class="Varesa           "><span>ヴァレサ                              </span></label>
-			    <label><input type="checkbox" checked class="Ororon           "><span>オロルン                              </span></label>
-			    <label><input type="checkbox" checked class="KukiShinobu      "><span>九岐忍                                </span></label>
-			    <label><input type="checkbox" checked class="KujouSara        "><span>九条裟羅                              </span></label>
-			    <label><input type="checkbox" checked class="Clorinde         "><span>クロリンデ                            </span></label>
-			    <label><input type="checkbox" checked class="Keqing           "><span>刻晴                                  </span></label>
-			    <label><input type="checkbox" checked class="Sethos           "><span>セトス                                </span></label>
-			    <label><input type="checkbox" checked class="Cyno             "><span>セノ                                  </span></label>
-			    <label><input type="checkbox" checked class="Dori             "><span>ドリー                                </span></label>
-			    <label><input type="checkbox" checked class="Fischl           "><span>フィッシュル                          </span></label><!--C /32.46s-->
-			    <label><input type="checkbox" checked class="Beidou           "><span>北斗                                  </span></label>
-			    <label><input type="checkbox" checked class="YaeMiko          "><span>八重神子                              </span></label>
-			    <label><input type="checkbox" checked class="RaidenShogun     "><span>雷電将軍                              </span></label>
-			    <label><input type="checkbox" checked class="Lisa             "><span>リサ                                  </span></label>
-			    <label><input type="checkbox" checked class="Razor            "><span>レザー                                </span></label>
-			    <label><input type="checkbox" checked class="Aether           "><span>空                                    </span></label>
-			    <label><input type="checkbox" checked class="Lumine           "><span>蛍                                    </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character97 " value="0"><span>イアンサ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character98 " value="0"><span>ヴァレサ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character91 " value="0"><span>オロルン                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character51 " value="0"><span>九岐忍                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character40 " value="0"><span>九条裟羅                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character84 " value="0"><span>クロリンデ                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character21 " value="0"><span>刻晴                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character83 " value="0"><span>セトス                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character57 " value="0"><span>セノ                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character55 " value="0"><span>ドリー                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character12 " value="0"><span>フィッシュル                          </span></label><!--C /32.46s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character9  " value="0"><span>北斗                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character48 " value="0"><span>八重神子                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character41 " value="0"><span>雷電将軍                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character5  " value="0"><span>リサ                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character7  " value="0"><span>レザー                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character1  " value="0"><span>空                                    </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character2  " value="0"><span>蛍                                    </span></label>
 		<tr class="color_Sumeru">
 			<!--▼一級アタッカー-->
-			<td><label><input type="checkbox" checked class="Kinich           "><span>キィニチ                              </span></label><!--C0/15.00s-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character89 " value="0"><span>キィニチ                              </span></label><!--C0/15.00s-->
 			<!--▼二級アタッカー-->
-			<td><label><input type="checkbox" checked class="Alhaitham        "><span>アルハイゼン                          </span></label><!--C0/20.43s-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character64 " value="0"><span>アルハイゼン                          </span></label><!--C0/20.43s-->
 			<!--▼メインヒーラー-->
-			<td><label><input type="checkbox" checked class="Baizhu           "><span>白朮                                  </span></label>
-			    <label><input type="checkbox" checked class="Yaoyao           "><span>ヨォーヨ                              </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character68 " value="0"><span>白朮                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character63 " value="0"><span>ヨォーヨ                              </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label><input type="checkbox" checked class="Nahida           "><span>ナヒーダ                              </span></label>
-			    <label><input type="checkbox" checked class="Baizhu           "><span>白朮                                  </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character59 " value="0"><span>ナヒーダ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character68 " value="0"><span>白朮                                  </span></label>
 			<!--▼ほか-->
-			<td><label><input type="checkbox" checked class="Alhaitham        "><span>アルハイゼン                          </span></label>
-			    <label><input type="checkbox" checked class="Emilie           "><span>エミリエ                              </span></label>
-			    <label><input type="checkbox" checked class="Kaveh            "><span>カーヴェ                              </span></label>
-			    <label><input type="checkbox" checked class="Kinich           "><span>キィニチ                              </span></label>
-			    <label><input type="checkbox" checked class="Kirara           "><span>綺良々                                </span></label>
-			    <label><input type="checkbox" checked class="Collei           "><span>コレイ                                </span></label>
-			    <label><input type="checkbox" checked class="Tighnari         "><span>ティナリ                              </span></label>
-			    <label><input type="checkbox" checked class="Nahida           "><span>ナヒーダ                              </span></label>
-			    <label><input type="checkbox" checked class="Baizhu           "><span>白朮                                  </span></label><!--C6/42.66s-->
-			    <label><input type="checkbox" checked class="Yaoyao           "><span>ヨォーヨ                              </span></label><!--C6/45.00s-->
-			    <label><input type="checkbox" checked class="Aether           "><span>空                                    </span></label>
-			    <label><input type="checkbox" checked class="Lumine           "><span>蛍                                    </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character64 " value="0"><span>アルハイゼン                          </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character86 " value="0"><span>エミリエ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character67 " value="0"><span>カーヴェ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character89 " value="0"><span>キィニチ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character69 " value="0"><span>綺良々                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character53 " value="0"><span>コレイ                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character54 " value="0"><span>ティナリ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character59 " value="0"><span>ナヒーダ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character68 " value="0"><span>白朮                                  </span></label><!--C6/42.66s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character63 " value="0"><span>ヨォーヨ                              </span></label><!--C6/45.00s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character1  " value="0"><span>空                                    </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character2  " value="0"><span>蛍                                    </span></label>
 		<tr class="color_Fontaine">
 			<!--▼一級アタッカー-->
-			<td><label><input type="checkbox" checked class="Neuvillette      "><span>ヌヴィレット<span>未計測</span>       </span></label><!--C /     s-->
-			    <label><input type="checkbox" checked class="Furina           "><span>フリーナ<span>C6</span>               </span></label><!--C6/11.66s-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character73 " value="0"><span>ヌヴィレット<span>未計測</span>       </span></label><!--C /     s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character76 " value="0"><span>フリーナ<span>C6</span>               </span></label><!--C6/11.66s-->
 			<!--▼二級アタッカー-->
-			<td><label><input type="checkbox" checked class="KamisatoAyato    "><span>神里綾人                              </span></label><!--C0/22.38s-->
-			    <label><input type="checkbox" checked class="Nilou            "><span>ニィロウ                              </span></label><!--C6/15.23s-->
-			    <label><input type="checkbox" checked class="Neuvillette      "><span>ヌヴィレット                          </span></label><!--C0/16.11s-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character49 " value="0"><span>神里綾人                              </span></label><!--C0/22.38s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character58 " value="0"><span>ニィロウ                              </span></label><!--C6/15.23s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character73 " value="0"><span>ヌヴィレット                          </span></label><!--C0/16.11s-->
 			<!--▼メインヒーラー-->
-			<td><label><input type="checkbox" checked class="SangonomiyaKokomi"><span>珊瑚宮心海                            </span></label>
-			    <label><input type="checkbox" checked class="Sigewinne        "><span>シグウィン                            </span></label>
-			    <label><input type="checkbox" checked class="Barbara          "><span>バーバラ                              </span></label>
-			    <label><input type="checkbox" checked class="Furina           "><span>フリーナ                              </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character42 " value="0"><span>珊瑚宮心海                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character85 " value="0"><span>シグウィン                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character6  " value="0"><span>バーバラ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character76 " value="0"><span>フリーナ                              </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label><input type="checkbox" checked class="SangonomiyaKokomi"><span>珊瑚宮心海                            </span></label>
-			    <label><input type="checkbox" checked class="Neuvillette      "><span>ヌヴィレット                          </span></label>
-			    <label><input type="checkbox" checked class="Barbara          "><span>バーバラ                              </span></label>
-			    <label><input type="checkbox" checked class="Mualani          "><span>ムアラニ                              </span></label>
-			    <label><input type="checkbox" checked class="Mona             "><span>モナ                                  </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character42 " value="0"><span>珊瑚宮心海                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character73 " value="0"><span>ヌヴィレット                          </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character6  " value="0"><span>バーバラ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character88 " value="0"><span>ムアラニ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character20 " value="0"><span>モナ                                  </span></label>
 			<!--▼ほか-->
-			<td><label><input type="checkbox" checked class="Yelan            "><span>夜蘭                                  </span></label>
-			    <label><input type="checkbox" checked class="KamisatoAyato    "><span>神里綾人                              </span></label>
-			    <label><input type="checkbox" checked class="Candace          "><span>キャンディス                          </span></label>
-			    <label><input type="checkbox" checked class="SangonomiyaKokomi"><span>珊瑚宮心海                            </span></label>
-			    <label><input type="checkbox" checked class="Sigewinne        "><span>シグウィン                            </span></label>
-			    <label><input type="checkbox" checked class="Tartaglia        "><span>タルタリヤ                            </span></label>
-			    <label><input type="checkbox" checked class="Nilou            "><span>ニィロウ                              </span></label>
-			    <label><input type="checkbox" checked class="Neuvillette      "><span>ヌヴィレット                          </span></label>
-			    <label><input type="checkbox" checked class="Barbara          "><span>バーバラ                              </span></label>
-			    <label><input type="checkbox" checked class="Furina           "><span>フリーナ                              </span></label>
-			    <label><input type="checkbox" checked class="Mualani          "><span>ムアラニ                              </span></label>
-			    <label><input type="checkbox" checked class="Mona             "><span>モナ                                  </span></label>
-			    <label><input type="checkbox" checked class="Xingqiu          "><span>行秋                                  </span></label><!--C /33.11s-->
-			    <label><input type="checkbox" checked class="Aether           "><span>空                                    </span></label>
-			    <label><input type="checkbox" checked class="Lumine           "><span>蛍                                    </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character50 " value="0"><span>夜蘭                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character49 " value="0"><span>神里綾人                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character56 " value="0"><span>キャンディス                          </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character42 " value="0"><span>珊瑚宮心海                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character85 " value="0"><span>シグウィン                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character25 " value="0"><span>タルタリヤ                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character58 " value="0"><span>ニィロウ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character73 " value="0"><span>ヌヴィレット                          </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character6  " value="0"><span>バーバラ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character76 " value="0"><span>フリーナ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character88 " value="0"><span>ムアラニ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character20 " value="0"><span>モナ                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character10 " value="0"><span>行秋                                  </span></label><!--C /33.11s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character1  " value="0"><span>空                                    </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character2  " value="0"><span>蛍                                    </span></label>
 		<tr class="color_Natlan">
 			<!--▼一級アタッカー-->
-			<td><label><input type="checkbox" checked class="Arlecchino       "><span>アルレッキーノ                        </span></label><!--C0/13.46s-->
-			    <label><input type="checkbox" checked class="Mavuika          "><span>マーヴィカ<span>未計測</span>         </span></label><!--C /     s-->
-			    <label><input type="checkbox" checked class="Lyney            "><span>リネ<span>C6</span>                   </span></label><!--C6/15.40s 詰めれば上がることが確定してるので一級扱いで-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character82 " value="0"><span>アルレッキーノ                        </span></label><!--C0/13.46s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character94 " value="0"><span>マーヴィカ<span>未計測</span>         </span></label><!--C /     s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character71 " value="0"><span>リネ<span>C6</span>                   </span></label><!--C6/15.40s 詰めれば上がることが確定してるので一級扱いで-->
 			<!--▼二級アタッカー-->
-			<td><label><input type="checkbox" checked class="Dehya            "><span>ディシア<span>C6</span>               </span></label><!--C6/20.00s-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character65 " value="0"><span>ディシア<span>C6</span>               </span></label><!--C6/20.00s-->
 			<!--▼メインヒーラー-->
-			<td><label><input type="checkbox" checked class="Bennett          "><span>ベネット                              </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character13 " value="0"><span>ベネット                              </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label><input type="checkbox" checked class="Yanfei           "><span>煙緋                                  </span></label>
-			    <label><input type="checkbox" checked class="Klee             "><span>クレー                                </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character33 " value="0"><span>煙緋                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character23 " value="0"><span>クレー                                </span></label>
 			<!--▼ほか-->
-			<td><label><input type="checkbox" checked class="Arlecchino       "><span>アルレッキーノ                        </span></label>
-			    <label><input type="checkbox" checked class="Amber            "><span>アンバー                              </span></label>
-			    <label><input type="checkbox" checked class="Yanfei           "><span>煙緋                                  </span></label><!--C6/25.58s-->
-			    <label><input type="checkbox" checked class="Gaming           "><span>嘉明                                  </span></label>
-			    <label><input type="checkbox" checked class="Klee             "><span>クレー                                </span></label>
-			    <label><input type="checkbox" checked class="Chevreuse        "><span>シュヴルーズ                          </span></label>
-			    <label><input type="checkbox" checked class="Xiangling        "><span>香菱                                  </span></label>
-			    <label><input type="checkbox" checked class="Xinyan           "><span>辛炎                                  </span></label>
-			    <label><input type="checkbox" checked class="Dehya            "><span>ディシア                              </span></label>
-			    <label><input type="checkbox" checked class="Diluc            "><span>ディルック                            </span></label>
-			    <label><input type="checkbox" checked class="Thoma            "><span>トーマ                                </span></label>
-			    <label><input type="checkbox" checked class="HuTao            "><span>胡桃                                  </span></label><!--C0/29.83s-->
-			    <label><input type="checkbox" checked class="Bennett          "><span>ベネット                              </span></label>
-			    <label><input type="checkbox" checked class="Mavuika          "><span>マーヴィカ                            </span></label>
-			    <label><input type="checkbox" checked class="Yoimiya          "><span>宵宮                                  </span></label>
-			    <label><input type="checkbox" checked class="Lyney            "><span>リネ                                  </span></label>
-			    <label><input type="checkbox" checked class="Aether           "><span>空                                    </span></label>
-			    <label><input type="checkbox" checked class="Lumine           "><span>蛍                                    </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character82 " value="0"><span>アルレッキーノ                        </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character3  " value="0"><span>アンバー                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character33 " value="0"><span>煙緋                                  </span></label><!--C6/25.58s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character79 " value="0"><span>嘉明                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character23 " value="0"><span>クレー                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character78 " value="0"><span>シュヴルーズ                          </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character8  " value="0"><span>香菱                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character26 " value="0"><span>辛炎                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character65 " value="0"><span>ディシア                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character18 " value="0"><span>ディルック                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character43 " value="0"><span>トーマ                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character31 " value="0"><span>胡桃                                  </span></label><!--C0/29.83s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character13 " value="0"><span>ベネット                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character94 " value="0"><span>マーヴィカ                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character38 " value="0"><span>宵宮                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character71 " value="0"><span>リネ                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character1  " value="0"><span>空                                    </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character2  " value="0"><span>蛍                                    </span></label>
 		<tr class="color_Snezhnaya">
 			<!--▼一級アタッカー-->
-			<td><label><input type="checkbox" checked class="Eula             "><span>エウルア<span>C6</span>               </span></label><!--C6/12.00s-->
-			    <label><input type="checkbox" checked class="Wriothesley      "><span>リオセスリ<span>C6</span>             </span></label><!--C6/11.81s-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character34 " value="0"><span>エウルア<span>C6</span>               </span></label><!--C6/12.00s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character74 " value="0"><span>リオセスリ<span>C6</span>             </span></label><!--C6/11.81s-->
 			<!--▼二級アタッカー-->
-			<td><label><input type="checkbox" checked class="Escoffier        "><span>エスコフィエ<span>C6</span>           </span></label><!--C6/16.00s-->
-			    <label><input type="checkbox" checked class="Ganyu            "><span>甘雨<span>C6</span>                   </span></label><!--C6/16.00s-->
-			    <label><input type="checkbox" checked class="Freminet         "><span>フレミネ<span>C6</span>               </span></label><!--C6/24.30s-->
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character100" value="0"><span>エスコフィエ<span>C6</span>           </span></label><!--C6/16.00s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character29 " value="0"><span>甘雨<span>C6</span>                   </span></label><!--C6/16.00s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character72 " value="0"><span>フレミネ<span>C6</span>               </span></label><!--C6/24.30s-->
 			<!--▼メインヒーラー-->
-			<td><label><input type="checkbox" checked class="Escoffier        "><span>エスコフィエ                          </span></label>
-			    <label><input type="checkbox" checked class="Charlotte        "><span>シャルロット                          </span></label>
-			    <label><input type="checkbox" checked class="Diona            "><span>ディオナ                              </span></label>
-			    <label><input type="checkbox" checked class="Qiqi             "><span>七七                                  </span></label>
-			    <label><input type="checkbox" checked class="Mika             "><span>ミカ                                  </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character100" value="0"><span>エスコフィエ                          </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character75 " value="0"><span>シャルロット                          </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character24 " value="0"><span>ディオナ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character19 " value="0"><span>七七                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character66 " value="0"><span>ミカ                                  </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label><input type="checkbox" checked class="Charlotte        "><span>シャルロット                          </span></label>
-			    <label><input type="checkbox" checked class="Wriothesley      "><span>リオセスリ                            </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character75 " value="0"><span>シャルロット                          </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character74 " value="0"><span>リオセスリ                            </span></label>
 			<!--▼ほか-->
-			<td><label><input type="checkbox" checked class="Aloy             "><span>アーロイ                              </span></label>
-			    <label><input type="checkbox" checked class="Eula             "><span>エウルア                              </span></label>
-			    <label><input type="checkbox" checked class="Escoffier        "><span>エスコフィエ                          </span></label>
-			    <label><input type="checkbox" checked class="Kaeya            "><span>ガイア                                </span></label><!--C /34.41s-->
-			    <label><input type="checkbox" checked class="KamisatoAyaka    "><span>神里綾華                              </span></label>
-			    <label><input type="checkbox" checked class="Ganyu            "><span>甘雨                                  </span></label>
-			    <label><input type="checkbox" checked class="Citlali          "><span>シトラリ                              </span></label>
-			    <label><input type="checkbox" checked class="Charlotte        "><span>シャルロット                          </span></label>
-			    <label><input type="checkbox" checked class="Shenhe           "><span>申鶴                                  </span></label>
-			    <label><input type="checkbox" checked class="Diona            "><span>ディオナ                              </span></label>
-			    <label><input type="checkbox" checked class="Chongyun         "><span>重雲                                  </span></label>
-			    <label><input type="checkbox" checked class="Qiqi             "><span>七七                                  </span></label>
-			    <label><input type="checkbox" checked class="Freminet         "><span>フレミネ                              </span></label>
-			    <label><input type="checkbox" checked class="Mika             "><span>ミカ                                  </span></label>
-			    <label><input type="checkbox" checked class="Wriothesley      "><span>リオセスリ                            </span></label>
-			    <label><input type="checkbox" checked class="Layla            "><span>レイラ                                </span></label>
-			    <label><input type="checkbox" checked class="Rosaria          "><span>ロサリア                              </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character39 " value="0"><span>アーロイ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character34 " value="0"><span>エウルア                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character100" value="0"><span>エスコフィエ                          </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character4  " value="0"><span>ガイア                                </span></label><!--C /34.41s-->
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character36 " value="0"><span>神里綾華                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character29 " value="0"><span>甘雨                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character93 " value="0"><span>シトラリ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character75 " value="0"><span>シャルロット                          </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character47 " value="0"><span>申鶴                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character24 " value="0"><span>ディオナ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character15 " value="0"><span>重雲                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character19 " value="0"><span>七七                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character72 " value="0"><span>フレミネ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character66 " value="0"><span>ミカ                                  </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character74 " value="0"><span>リオセスリ                            </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character60 " value="0"><span>レイラ                                </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character32 " value="0"><span>ロサリア                              </span></label>
 	</table>
 
-	<div style="border:1px solid #aaa;background:#eee;padding:0.5rem;margin:1rem auto;">※WR9/ソロプレイの条件で、魔偶剣鬼に接近してHPバーが表示された瞬間から、魔偶剣鬼のHPが残り70%になるまでにかかった時間(実測値)。レベルや武器、聖遺物については指定なし。<br>なお、魔偶剣鬼はHP残り71%になると元素爆発/Dual Sword Burstを行うが、元素爆発/Dual Sword Burst中でもHP残り70%までは削り続けることができる。計測の際には注意されたし<br>参考までに、Lv103の魔偶剣鬼の場合はHPを228,607削る必要がある。</div>
+	<div style="background:#eee;border:1px #888 solid;margin:1rem 0;padding:1rem;">
+		<div style="display:flex;">
+			<input type="button" value="セーブデータをインポート" onclick="DraftLocalLegend_hhhhhh()" style="padding:1rem;margin:1rem;width:20rem;">
+			<input type="textarea" id="DraftLocalLegend_gggggg" style="width:calc(100% - 20rem);height:auto;margin:1rem;">
+		</div>
+		<div style="display:flex;">
+			<input type="button" value="セーブデータをエクスポート" onclick="DraftLocalLegend_eeeeee()" style="padding:1rem;margin:1rem;width:20rem;">
+			<input type="textarea" id="DraftLocalLegend_ffffff" readonly style="width:calc(100% - 20rem);height:auto;margin:1rem;"><br>
+		</div>
+	</div>
+
+	<div style="border:1px solid #aaa;background:#eee;padding:0.5rem;margin:1rem auto;">※WR9/ソロプレイの条件で、魔偶剣鬼に接近してHPバーが表示された瞬間から、魔偶剣鬼のHPが残り70%になるまでにかかった時間(実測値)。レベルや武器、聖遺物については指定なし。<br>なお、魔偶剣鬼はHP残り71%になると元素爆発/Dual Sword Burstを行うが、元素爆発/Dual Sword Burst中でもHP残り70%までは削り続けることができる。計測の際には注意されたし<br>参考までに、Lv103の魔偶剣鬼の場合はHPを236,490削る必要がある。</div>
 	<hr style="margin:5rem auto;">
 
 	<script language="JavaScript">
-		const               IfaA=document.querySelectorAll('.Ifa'              );              IfaA.forEach(              IfaB=>{              IfaB.addEventListener('change',()=>{const               IfaC=              IfaB.checked;              IfaA.forEach(              IfaA=>{              IfaA.checked=              IfaC;});});});
-		const             VentiA=document.querySelectorAll('.Venti            ');            VentiA.forEach(            VentiB=>{            VentiB.addEventListener('change',()=>{const             VentiC=            VentiB.checked;            VentiA.forEach(            VentiA=>{            VentiA.checked=            VentiC;});});});
-		const   KaedeharaKazuhaA=document.querySelectorAll('.KaedeharaKazuha  ');  KaedeharaKazuhaA.forEach(  KaedeharaKazuhaB=>{  KaedeharaKazuhaB.addEventListener('change',()=>{const   KaedeharaKazuhaC=  KaedeharaKazuhaB.checked;  KaedeharaKazuhaA.forEach(  KaedeharaKazuhaA=>{  KaedeharaKazuhaA.checked=  KaedeharaKazuhaC;});});});
-		const           XianyunA=document.querySelectorAll('.Xianyun          ');          XianyunA.forEach(          XianyunB=>{          XianyunB.addEventListener('change',()=>{const           XianyunC=          XianyunB.checked;          XianyunA.forEach(          XianyunA=>{          XianyunA.checked=          XianyunC;});});});
-		const              SayuA=document.querySelectorAll('.Sayu             ');             SayuA.forEach(             SayuB=>{             SayuB.addEventListener('change',()=>{const              SayuC=             SayuB.checked;             SayuA.forEach(             SayuA=>{             SayuA.checked=             SayuC;});});});
-		const   ShikanoinHeizouA=document.querySelectorAll('.ShikanoinHeizou  ');  ShikanoinHeizouA.forEach(  ShikanoinHeizouB=>{  ShikanoinHeizouB.addEventListener('change',()=>{const   ShikanoinHeizouC=  ShikanoinHeizouB.checked;  ShikanoinHeizouA.forEach(  ShikanoinHeizouA=>{  ShikanoinHeizouA.checked=  ShikanoinHeizouC;});});});
-		const              XiaoA=document.querySelectorAll('.Xiao             ');             XiaoA.forEach(             XiaoB=>{             XiaoB.addEventListener('change',()=>{const              XiaoC=             XiaoB.checked;             XiaoA.forEach(             XiaoA=>{             XiaoA.checked=             XiaoC;});});});
-		const              JeanA=document.querySelectorAll('.Jean             ');             JeanA.forEach(             JeanB=>{             JeanB.addEventListener('change',()=>{const              JeanC=             JeanB.checked;             JeanA.forEach(             JeanA=>{             JeanA.checked=             JeanC;});});});
-		const           SucroseA=document.querySelectorAll('.Sucrose          ');          SucroseA.forEach(          SucroseB=>{          SucroseB.addEventListener('change',()=>{const           SucroseC=          SucroseB.checked;          SucroseA.forEach(          SucroseA=>{          SucroseA.checked=          SucroseC;});});});
-		const            ChascaA=document.querySelectorAll('.Chasca           ');           ChascaA.forEach(           ChascaB=>{           ChascaB.addEventListener('change',()=>{const            ChascaC=           ChascaB.checked;           ChascaA.forEach(           ChascaA=>{           ChascaA.checked=           ChascaC;});});});
-		const           FaruzanA=document.querySelectorAll('.Faruzan          ');          FaruzanA.forEach(          FaruzanB=>{          FaruzanB.addEventListener('change',()=>{const           FaruzanC=          FaruzanB.checked;          FaruzanA.forEach(          FaruzanA=>{          FaruzanA.checked=          FaruzanC;});});});
-		const          WandererA=document.querySelectorAll('.Wanderer         ');         WandererA.forEach(         WandererB=>{         WandererB.addEventListener('change',()=>{const          WandererC=         WandererB.checked;         WandererA.forEach(         WandererA=>{         WandererA.checked=         WandererC;});});});
-		const  YumemizukiMizukiA=document.querySelectorAll('.YumemizukiMizuki '); YumemizukiMizukiA.forEach( YumemizukiMizukiB=>{ YumemizukiMizukiB.addEventListener('change',()=>{const  YumemizukiMizukiC= YumemizukiMizukiB.checked; YumemizukiMizukiA.forEach( YumemizukiMizukiA=>{ YumemizukiMizukiA.checked= YumemizukiMizukiC;});});});
-		const            LanYanA=document.querySelectorAll('.LanYan           ');           LanYanA.forEach(           LanYanB=>{           LanYanB.addEventListener('change',()=>{const            LanYanC=           LanYanB.checked;           LanYanA.forEach(           LanYanA=>{           LanYanA.checked=           LanYanC;});});});
-		const           LynetteA=document.querySelectorAll('.Lynette          ');          LynetteA.forEach(          LynetteB=>{          LynetteB.addEventListener('change',()=>{const           LynetteC=          LynetteB.checked;          LynetteA.forEach(          LynetteA=>{          LynetteA.checked=          LynetteC;});});});
-		const       AratakiIttoA=document.querySelectorAll('.AratakiItto      ');      AratakiIttoA.forEach(      AratakiIttoB=>{      AratakiIttoB.addEventListener('change',()=>{const       AratakiIttoC=      AratakiIttoB.checked;      AratakiIttoA.forEach(      AratakiIttoA=>{      AratakiIttoA.checked=      AratakiIttoC;});});});
-		const            AlbedoA=document.querySelectorAll('.Albedo           ');           AlbedoA.forEach(           AlbedoB=>{           AlbedoB.addEventListener('change',()=>{const            AlbedoC=           AlbedoB.checked;           AlbedoA.forEach(           AlbedoA=>{           AlbedoA.checked=           AlbedoC;});});});
-		const            YunJinA=document.querySelectorAll('.YunJin           ');           YunJinA.forEach(           YunJinB=>{           YunJinB.addEventListener('change',()=>{const            YunJinC=           YunJinB.checked;           YunJinA.forEach(           YunJinA=>{           YunJinA.checked=           YunJinC;});});});
-		const           KachinaA=document.querySelectorAll('.Kachina          ');          KachinaA.forEach(          KachinaB=>{          KachinaB.addEventListener('change',()=>{const           KachinaC=          KachinaB.checked;          KachinaA.forEach(          KachinaA=>{          KachinaA.checked=          KachinaC;});});});
-		const         NingguangA=document.querySelectorAll('.Ningguang        ');        NingguangA.forEach(        NingguangB=>{        NingguangB.addEventListener('change',()=>{const         NingguangC=        NingguangB.checked;        NingguangA.forEach(        NingguangA=>{        NingguangA.checked=        NingguangC;});});});
-		const             GorouA=document.querySelectorAll('.Gorou            ');            GorouA.forEach(            GorouB=>{            GorouB.addEventListener('change',()=>{const             GorouC=            GorouB.checked;            GorouA.forEach(            GorouA=>{            GorouA.checked=            GorouC;});});});
-		const           ZhongliA=document.querySelectorAll('.Zhongli          ');          ZhongliA.forEach(          ZhongliB=>{          ZhongliB.addEventListener('change',()=>{const           ZhongliC=          ZhongliB.checked;          ZhongliA.forEach(          ZhongliA=>{          ZhongliA.checked=          ZhongliC;});});});
-		const           XilonenA=document.querySelectorAll('.Xilonen          ');          XilonenA.forEach(          XilonenB=>{          XilonenB.addEventListener('change',()=>{const           XilonenC=          XilonenB.checked;          XilonenA.forEach(          XilonenA=>{          XilonenA.checked=          XilonenC;});});});
-		const            ChioriA=document.querySelectorAll('.Chiori           ');           ChioriA.forEach(           ChioriB=>{           ChioriB.addEventListener('change',()=>{const            ChioriC=           ChioriB.checked;           ChioriA.forEach(           ChioriA=>{           ChioriA.checked=           ChioriC;});});});
-		const             NaviaA=document.querySelectorAll('.Navia            ');            NaviaA.forEach(            NaviaB=>{            NaviaB.addEventListener('change',()=>{const             NaviaC=            NaviaB.checked;            NaviaA.forEach(            NaviaA=>{            NaviaA.checked=            NaviaC;});});});
-		const            NoelleA=document.querySelectorAll('.Noelle           ');           NoelleA.forEach(           NoelleB=>{           NoelleB.addEventListener('change',()=>{const            NoelleC=           NoelleB.checked;           NoelleA.forEach(           NoelleA=>{           NoelleA.checked=           NoelleC;});});});
-		const            IansanA=document.querySelectorAll('.Iansan           ');           IansanA.forEach(           IansanB=>{           IansanB.addEventListener('change',()=>{const            IansanC=           IansanB.checked;           IansanA.forEach(           IansanA=>{           IansanA.checked=           IansanC;});});});
-		const            VaresaA=document.querySelectorAll('.Varesa           ');           VaresaA.forEach(           VaresaB=>{           VaresaB.addEventListener('change',()=>{const            VaresaC=           VaresaB.checked;           VaresaA.forEach(           VaresaA=>{           VaresaA.checked=           VaresaC;});});});
-		const            OroronA=document.querySelectorAll('.Ororon           ');           OroronA.forEach(           OroronB=>{           OroronB.addEventListener('change',()=>{const            OroronC=           OroronB.checked;           OroronA.forEach(           OroronA=>{           OroronA.checked=           OroronC;});});});
-		const       KukiShinobuA=document.querySelectorAll('.KukiShinobu      ');      KukiShinobuA.forEach(      KukiShinobuB=>{      KukiShinobuB.addEventListener('change',()=>{const       KukiShinobuC=      KukiShinobuB.checked;      KukiShinobuA.forEach(      KukiShinobuA=>{      KukiShinobuA.checked=      KukiShinobuC;});});});
-		const         KujouSaraA=document.querySelectorAll('.KujouSara        ');        KujouSaraA.forEach(        KujouSaraB=>{        KujouSaraB.addEventListener('change',()=>{const         KujouSaraC=        KujouSaraB.checked;        KujouSaraA.forEach(        KujouSaraA=>{        KujouSaraA.checked=        KujouSaraC;});});});
-		const          ClorindeA=document.querySelectorAll('.Clorinde         ');         ClorindeA.forEach(         ClorindeB=>{         ClorindeB.addEventListener('change',()=>{const          ClorindeC=         ClorindeB.checked;         ClorindeA.forEach(         ClorindeA=>{         ClorindeA.checked=         ClorindeC;});});});
-		const            KeqingA=document.querySelectorAll('.Keqing           ');           KeqingA.forEach(           KeqingB=>{           KeqingB.addEventListener('change',()=>{const            KeqingC=           KeqingB.checked;           KeqingA.forEach(           KeqingA=>{           KeqingA.checked=           KeqingC;});});});
-		const            SethosA=document.querySelectorAll('.Sethos           ');           SethosA.forEach(           SethosB=>{           SethosB.addEventListener('change',()=>{const            SethosC=           SethosB.checked;           SethosA.forEach(           SethosA=>{           SethosA.checked=           SethosC;});});});
-		const              CynoA=document.querySelectorAll('.Cyno             ');             CynoA.forEach(             CynoB=>{             CynoB.addEventListener('change',()=>{const              CynoC=             CynoB.checked;             CynoA.forEach(             CynoA=>{             CynoA.checked=             CynoC;});});});
-		const              DoriA=document.querySelectorAll('.Dori             ');             DoriA.forEach(             DoriB=>{             DoriB.addEventListener('change',()=>{const              DoriC=             DoriB.checked;             DoriA.forEach(             DoriA=>{             DoriA.checked=             DoriC;});});});
-		const            FischlA=document.querySelectorAll('.Fischl           ');           FischlA.forEach(           FischlB=>{           FischlB.addEventListener('change',()=>{const            FischlC=           FischlB.checked;           FischlA.forEach(           FischlA=>{           FischlA.checked=           FischlC;});});});
-		const            BeidouA=document.querySelectorAll('.Beidou           ');           BeidouA.forEach(           BeidouB=>{           BeidouB.addEventListener('change',()=>{const            BeidouC=           BeidouB.checked;           BeidouA.forEach(           BeidouA=>{           BeidouA.checked=           BeidouC;});});});
-		const           YaeMikoA=document.querySelectorAll('.YaeMiko          ');          YaeMikoA.forEach(          YaeMikoB=>{          YaeMikoB.addEventListener('change',()=>{const           YaeMikoC=          YaeMikoB.checked;          YaeMikoA.forEach(          YaeMikoA=>{          YaeMikoA.checked=          YaeMikoC;});});});
-		const      RaidenShogunA=document.querySelectorAll('.RaidenShogun     ');     RaidenShogunA.forEach(     RaidenShogunB=>{     RaidenShogunB.addEventListener('change',()=>{const      RaidenShogunC=     RaidenShogunB.checked;     RaidenShogunA.forEach(     RaidenShogunA=>{     RaidenShogunA.checked=     RaidenShogunC;});});});
-		const              LisaA=document.querySelectorAll('.Lisa             ');             LisaA.forEach(             LisaB=>{             LisaB.addEventListener('change',()=>{const              LisaC=             LisaB.checked;             LisaA.forEach(             LisaA=>{             LisaA.checked=             LisaC;});});});
-		const             RazorA=document.querySelectorAll('.Razor            ');            RazorA.forEach(            RazorB=>{            RazorB.addEventListener('change',()=>{const             RazorC=            RazorB.checked;            RazorA.forEach(            RazorA=>{            RazorA.checked=            RazorC;});});});
-		const         AlhaithamA=document.querySelectorAll('.Alhaitham        ');        AlhaithamA.forEach(        AlhaithamB=>{        AlhaithamB.addEventListener('change',()=>{const         AlhaithamC=        AlhaithamB.checked;        AlhaithamA.forEach(        AlhaithamA=>{        AlhaithamA.checked=        AlhaithamC;});});});
-		const            EmilieA=document.querySelectorAll('.Emilie           ');           EmilieA.forEach(           EmilieB=>{           EmilieB.addEventListener('change',()=>{const            EmilieC=           EmilieB.checked;           EmilieA.forEach(           EmilieA=>{           EmilieA.checked=           EmilieC;});});});
-		const             KavehA=document.querySelectorAll('.Kaveh            ');            KavehA.forEach(            KavehB=>{            KavehB.addEventListener('change',()=>{const             KavehC=            KavehB.checked;            KavehA.forEach(            KavehA=>{            KavehA.checked=            KavehC;});});});
-		const            KinichA=document.querySelectorAll('.Kinich           ');           KinichA.forEach(           KinichB=>{           KinichB.addEventListener('change',()=>{const            KinichC=           KinichB.checked;           KinichA.forEach(           KinichA=>{           KinichA.checked=           KinichC;});});});
-		const            KiraraA=document.querySelectorAll('.Kirara           ');           KiraraA.forEach(           KiraraB=>{           KiraraB.addEventListener('change',()=>{const            KiraraC=           KiraraB.checked;           KiraraA.forEach(           KiraraA=>{           KiraraA.checked=           KiraraC;});});});
-		const            ColleiA=document.querySelectorAll('.Collei           ');           ColleiA.forEach(           ColleiB=>{           ColleiB.addEventListener('change',()=>{const            ColleiC=           ColleiB.checked;           ColleiA.forEach(           ColleiA=>{           ColleiA.checked=           ColleiC;});});});
-		const          TighnariA=document.querySelectorAll('.Tighnari         ');         TighnariA.forEach(         TighnariB=>{         TighnariB.addEventListener('change',()=>{const          TighnariC=         TighnariB.checked;         TighnariA.forEach(         TighnariA=>{         TighnariA.checked=         TighnariC;});});});
-		const            NahidaA=document.querySelectorAll('.Nahida           ');           NahidaA.forEach(           NahidaB=>{           NahidaB.addEventListener('change',()=>{const            NahidaC=           NahidaB.checked;           NahidaA.forEach(           NahidaA=>{           NahidaA.checked=           NahidaC;});});});
-		const            BaizhuA=document.querySelectorAll('.Baizhu           ');           BaizhuA.forEach(           BaizhuB=>{           BaizhuB.addEventListener('change',()=>{const            BaizhuC=           BaizhuB.checked;           BaizhuA.forEach(           BaizhuA=>{           BaizhuA.checked=           BaizhuC;});});});
-		const            YaoyaoA=document.querySelectorAll('.Yaoyao           ');           YaoyaoA.forEach(           YaoyaoB=>{           YaoyaoB.addEventListener('change',()=>{const            YaoyaoC=           YaoyaoB.checked;           YaoyaoA.forEach(           YaoyaoA=>{           YaoyaoA.checked=           YaoyaoC;});});});
-		const             YelanA=document.querySelectorAll('.Yelan            ');            YelanA.forEach(            YelanB=>{            YelanB.addEventListener('change',()=>{const             YelanC=            YelanB.checked;            YelanA.forEach(            YelanA=>{            YelanA.checked=            YelanC;});});});
-		const     KamisatoAyatoA=document.querySelectorAll('.KamisatoAyato    ');    KamisatoAyatoA.forEach(    KamisatoAyatoB=>{    KamisatoAyatoB.addEventListener('change',()=>{const     KamisatoAyatoC=    KamisatoAyatoB.checked;    KamisatoAyatoA.forEach(    KamisatoAyatoA=>{    KamisatoAyatoA.checked=    KamisatoAyatoC;});});});
-		const           CandaceA=document.querySelectorAll('.Candace          ');          CandaceA.forEach(          CandaceB=>{          CandaceB.addEventListener('change',()=>{const           CandaceC=          CandaceB.checked;          CandaceA.forEach(          CandaceA=>{          CandaceA.checked=          CandaceC;});});});
-		const SangonomiyaKokomiA=document.querySelectorAll('.SangonomiyaKokomi');SangonomiyaKokomiA.forEach(SangonomiyaKokomiB=>{SangonomiyaKokomiB.addEventListener('change',()=>{const SangonomiyaKokomiC=SangonomiyaKokomiB.checked;SangonomiyaKokomiA.forEach(SangonomiyaKokomiA=>{SangonomiyaKokomiA.checked=SangonomiyaKokomiC;});});});
-		const         SigewinneA=document.querySelectorAll('.Sigewinne        ');        SigewinneA.forEach(        SigewinneB=>{        SigewinneB.addEventListener('change',()=>{const         SigewinneC=        SigewinneB.checked;        SigewinneA.forEach(        SigewinneA=>{        SigewinneA.checked=        SigewinneC;});});});
-		const         TartagliaA=document.querySelectorAll('.Tartaglia        ');        TartagliaA.forEach(        TartagliaB=>{        TartagliaB.addEventListener('change',()=>{const         TartagliaC=        TartagliaB.checked;        TartagliaA.forEach(        TartagliaA=>{        TartagliaA.checked=        TartagliaC;});});});
-		const             NilouA=document.querySelectorAll('.Nilou            ');            NilouA.forEach(            NilouB=>{            NilouB.addEventListener('change',()=>{const             NilouC=            NilouB.checked;            NilouA.forEach(            NilouA=>{            NilouA.checked=            NilouC;});});});
-		const       NeuvilletteA=document.querySelectorAll('.Neuvillette      ');      NeuvilletteA.forEach(      NeuvilletteB=>{      NeuvilletteB.addEventListener('change',()=>{const       NeuvilletteC=      NeuvilletteB.checked;      NeuvilletteA.forEach(      NeuvilletteA=>{      NeuvilletteA.checked=      NeuvilletteC;});});});
-		const           BarbaraA=document.querySelectorAll('.Barbara          ');          BarbaraA.forEach(          BarbaraB=>{          BarbaraB.addEventListener('change',()=>{const           BarbaraC=          BarbaraB.checked;          BarbaraA.forEach(          BarbaraA=>{          BarbaraA.checked=          BarbaraC;});});});
-		const            FurinaA=document.querySelectorAll('.Furina           ');           FurinaA.forEach(           FurinaB=>{           FurinaB.addEventListener('change',()=>{const            FurinaC=           FurinaB.checked;           FurinaA.forEach(           FurinaA=>{           FurinaA.checked=           FurinaC;});});});
-		const           MualaniA=document.querySelectorAll('.Mualani          ');          MualaniA.forEach(          MualaniB=>{          MualaniB.addEventListener('change',()=>{const           MualaniC=          MualaniB.checked;          MualaniA.forEach(          MualaniA=>{          MualaniA.checked=          MualaniC;});});});
-		const              MonaA=document.querySelectorAll('.Mona             ');             MonaA.forEach(             MonaB=>{             MonaB.addEventListener('change',()=>{const              MonaC=             MonaB.checked;             MonaA.forEach(             MonaA=>{             MonaA.checked=             MonaC;});});});
-		const           XingqiuA=document.querySelectorAll('.Xingqiu          ');          XingqiuA.forEach(          XingqiuB=>{          XingqiuB.addEventListener('change',()=>{const           XingqiuC=          XingqiuB.checked;          XingqiuA.forEach(          XingqiuA=>{          XingqiuA.checked=          XingqiuC;});});});
-		const        ArlecchinoA=document.querySelectorAll('.Arlecchino       ');       ArlecchinoA.forEach(       ArlecchinoB=>{       ArlecchinoB.addEventListener('change',()=>{const        ArlecchinoC=       ArlecchinoB.checked;       ArlecchinoA.forEach(       ArlecchinoA=>{       ArlecchinoA.checked=       ArlecchinoC;});});});
-		const             AmberA=document.querySelectorAll('.Amber            ');            AmberA.forEach(            AmberB=>{            AmberB.addEventListener('change',()=>{const             AmberC=            AmberB.checked;            AmberA.forEach(            AmberA=>{            AmberA.checked=            AmberC;});});});
-		const            YanfeiA=document.querySelectorAll('.Yanfei           ');           YanfeiA.forEach(           YanfeiB=>{           YanfeiB.addEventListener('change',()=>{const            YanfeiC=           YanfeiB.checked;           YanfeiA.forEach(           YanfeiA=>{           YanfeiA.checked=           YanfeiC;});});});
-		const            GamingA=document.querySelectorAll('.Gaming           ');           GamingA.forEach(           GamingB=>{           GamingB.addEventListener('change',()=>{const            GamingC=           GamingB.checked;           GamingA.forEach(           GamingA=>{           GamingA.checked=           GamingC;});});});
-		const              KleeA=document.querySelectorAll('.Klee             ');             KleeA.forEach(             KleeB=>{             KleeB.addEventListener('change',()=>{const              KleeC=             KleeB.checked;             KleeA.forEach(             KleeA=>{             KleeA.checked=             KleeC;});});});
-		const         ChevreuseA=document.querySelectorAll('.Chevreuse        ');        ChevreuseA.forEach(        ChevreuseB=>{        ChevreuseB.addEventListener('change',()=>{const         ChevreuseC=        ChevreuseB.checked;        ChevreuseA.forEach(        ChevreuseA=>{        ChevreuseA.checked=        ChevreuseC;});});});
-		const         XianglingA=document.querySelectorAll('.Xiangling        ');        XianglingA.forEach(        XianglingB=>{        XianglingB.addEventListener('change',()=>{const         XianglingC=        XianglingB.checked;        XianglingA.forEach(        XianglingA=>{        XianglingA.checked=        XianglingC;});});});
-		const            XinyanA=document.querySelectorAll('.Xinyan           ');           XinyanA.forEach(           XinyanB=>{           XinyanB.addEventListener('change',()=>{const            XinyanC=           XinyanB.checked;           XinyanA.forEach(           XinyanA=>{           XinyanA.checked=           XinyanC;});});});
-		const             DehyaA=document.querySelectorAll('.Dehya            ');            DehyaA.forEach(            DehyaB=>{            DehyaB.addEventListener('change',()=>{const             DehyaC=            DehyaB.checked;            DehyaA.forEach(            DehyaA=>{            DehyaA.checked=            DehyaC;});});});
-		const             DilucA=document.querySelectorAll('.Diluc            ');            DilucA.forEach(            DilucB=>{            DilucB.addEventListener('change',()=>{const             DilucC=            DilucB.checked;            DilucA.forEach(            DilucA=>{            DilucA.checked=            DilucC;});});});
-		const             ThomaA=document.querySelectorAll('.Thoma            ');            ThomaA.forEach(            ThomaB=>{            ThomaB.addEventListener('change',()=>{const             ThomaC=            ThomaB.checked;            ThomaA.forEach(            ThomaA=>{            ThomaA.checked=            ThomaC;});});});
-		const             HuTaoA=document.querySelectorAll('.HuTao            ');            HuTaoA.forEach(            HuTaoB=>{            HuTaoB.addEventListener('change',()=>{const             HuTaoC=            HuTaoB.checked;            HuTaoA.forEach(            HuTaoA=>{            HuTaoA.checked=            HuTaoC;});});});
-		const           BennettA=document.querySelectorAll('.Bennett          ');          BennettA.forEach(          BennettB=>{          BennettB.addEventListener('change',()=>{const           BennettC=          BennettB.checked;          BennettA.forEach(          BennettA=>{          BennettA.checked=          BennettC;});});});
-		const           MavuikaA=document.querySelectorAll('.Mavuika          ');          MavuikaA.forEach(          MavuikaB=>{          MavuikaB.addEventListener('change',()=>{const           MavuikaC=          MavuikaB.checked;          MavuikaA.forEach(          MavuikaA=>{          MavuikaA.checked=          MavuikaC;});});});
-		const           YoimiyaA=document.querySelectorAll('.Yoimiya          ');          YoimiyaA.forEach(          YoimiyaB=>{          YoimiyaB.addEventListener('change',()=>{const           YoimiyaC=          YoimiyaB.checked;          YoimiyaA.forEach(          YoimiyaA=>{          YoimiyaA.checked=          YoimiyaC;});});});
-		const             LyneyA=document.querySelectorAll('.Lyney            ');            LyneyA.forEach(            LyneyB=>{            LyneyB.addEventListener('change',()=>{const             LyneyC=            LyneyB.checked;            LyneyA.forEach(            LyneyA=>{            LyneyA.checked=            LyneyC;});});});
-		const              AloyA=document.querySelectorAll('.Aloy             ');             AloyA.forEach(             AloyB=>{             AloyB.addEventListener('change',()=>{const              AloyC=             AloyB.checked;             AloyA.forEach(             AloyA=>{             AloyA.checked=             AloyC;});});});
-		const              EulaA=document.querySelectorAll('.Eula             ');             EulaA.forEach(             EulaB=>{             EulaB.addEventListener('change',()=>{const              EulaC=             EulaB.checked;             EulaA.forEach(             EulaA=>{             EulaA.checked=             EulaC;});});});
-		const         EscoffierA=document.querySelectorAll('.Escoffier        ');        EscoffierA.forEach(        EscoffierB=>{        EscoffierB.addEventListener('change',()=>{const         EscoffierC=        EscoffierB.checked;        EscoffierA.forEach(        EscoffierA=>{        EscoffierA.checked=        EscoffierC;});});});
-		const             KaeyaA=document.querySelectorAll('.Kaeya            ');            KaeyaA.forEach(            KaeyaB=>{            KaeyaB.addEventListener('change',()=>{const             KaeyaC=            KaeyaB.checked;            KaeyaA.forEach(            KaeyaA=>{            KaeyaA.checked=            KaeyaC;});});});
-		const     KamisatoAyakaA=document.querySelectorAll('.KamisatoAyaka    ');    KamisatoAyakaA.forEach(    KamisatoAyakaB=>{    KamisatoAyakaB.addEventListener('change',()=>{const     KamisatoAyakaC=    KamisatoAyakaB.checked;    KamisatoAyakaA.forEach(    KamisatoAyakaA=>{    KamisatoAyakaA.checked=    KamisatoAyakaC;});});});
-		const             GanyuA=document.querySelectorAll('.Ganyu            ');            GanyuA.forEach(            GanyuB=>{            GanyuB.addEventListener('change',()=>{const             GanyuC=            GanyuB.checked;            GanyuA.forEach(            GanyuA=>{            GanyuA.checked=            GanyuC;});});});
-		const           CitlaliA=document.querySelectorAll('.Citlali          ');          CitlaliA.forEach(          CitlaliB=>{          CitlaliB.addEventListener('change',()=>{const           CitlaliC=          CitlaliB.checked;          CitlaliA.forEach(          CitlaliA=>{          CitlaliA.checked=          CitlaliC;});});});
-		const         CharlotteA=document.querySelectorAll('.Charlotte        ');        CharlotteA.forEach(        CharlotteB=>{        CharlotteB.addEventListener('change',()=>{const         CharlotteC=        CharlotteB.checked;        CharlotteA.forEach(        CharlotteA=>{        CharlotteA.checked=        CharlotteC;});});});
-		const            ShenheA=document.querySelectorAll('.Shenhe           ');           ShenheA.forEach(           ShenheB=>{           ShenheB.addEventListener('change',()=>{const            ShenheC=           ShenheB.checked;           ShenheA.forEach(           ShenheA=>{           ShenheA.checked=           ShenheC;});});});
-		const          ChongyunA=document.querySelectorAll('.Chongyun         ');         ChongyunA.forEach(         ChongyunB=>{         ChongyunB.addEventListener('change',()=>{const          ChongyunC=         ChongyunB.checked;         ChongyunA.forEach(         ChongyunA=>{         ChongyunA.checked=         ChongyunC;});});});
-		const             DionaA=document.querySelectorAll('.Diona            ');            DionaA.forEach(            DionaB=>{            DionaB.addEventListener('change',()=>{const             DionaC=            DionaB.checked;            DionaA.forEach(            DionaA=>{            DionaA.checked=            DionaC;});});});
-		const              QiqiA=document.querySelectorAll('.Qiqi             ');             QiqiA.forEach(             QiqiB=>{             QiqiB.addEventListener('change',()=>{const              QiqiC=             QiqiB.checked;             QiqiA.forEach(             QiqiA=>{             QiqiA.checked=             QiqiC;});});});
-		const          FreminetA=document.querySelectorAll('.Freminet         ');         FreminetA.forEach(         FreminetB=>{         FreminetB.addEventListener('change',()=>{const          FreminetC=         FreminetB.checked;         FreminetA.forEach(         FreminetA=>{         FreminetA.checked=         FreminetC;});});});
-		const              MikaA=document.querySelectorAll('.Mika             ');             MikaA.forEach(             MikaB=>{             MikaB.addEventListener('change',()=>{const              MikaC=             MikaB.checked;             MikaA.forEach(             MikaA=>{             MikaA.checked=             MikaC;});});});
-		const       WriothesleyA=document.querySelectorAll('.Wriothesley      ');      WriothesleyA.forEach(      WriothesleyB=>{      WriothesleyB.addEventListener('change',()=>{const       WriothesleyC=      WriothesleyB.checked;      WriothesleyA.forEach(      WriothesleyA=>{      WriothesleyA.checked=      WriothesleyC;});});});
-		const             LaylaA=document.querySelectorAll('.Layla            ');            LaylaA.forEach(            LaylaB=>{            LaylaB.addEventListener('change',()=>{const             LaylaC=            LaylaB.checked;            LaylaA.forEach(            LaylaA=>{            LaylaA.checked=            LaylaC;});});});
-		const           RosariaA=document.querySelectorAll('.Rosaria          ');          RosariaA.forEach(          RosariaB=>{          RosariaB.addEventListener('change',()=>{const           RosariaC=          RosariaB.checked;          RosariaA.forEach(          RosariaA=>{          RosariaA.checked=          RosariaC;});});});
-		const            AetherA=document.querySelectorAll('.Aether           ');           AetherA.forEach(           AetherB=>{           AetherB.addEventListener('change',()=>{const            AetherC=           AetherB.checked;           AetherA.forEach(           AetherA=>{           AetherA.checked=           AetherC;});});});
-		const            LumineA=document.querySelectorAll('.Lumine           ');           LumineA.forEach(           LumineB=>{           LumineB.addEventListener('change',()=>{const            LumineC=           LumineB.checked;           LumineA.forEach(           LumineA=>{           LumineA.checked=           LumineC;});});});
+		  // ラベルのクリックイベント
+		  document.querySelectorAll('.DraftLocalLegend_status').forEach(label => {
+		    label.addEventListener('click', () => {
+		      let current = parseInt(label.dataset.status, 10);
+		      let next = (current + 1) % 3;
+		      label.dataset.status = next;
+		      label.classList.remove('status0', 'status1', 'status2');
+		      label.classList.add(`status${next}`);
+
+		      const input = label.querySelector('input[type="hidden"]');
+		      if (input) {
+		        input.value = next;
+
+		        // 同じ characterX クラスを持つ input にすべて反映
+		        const className = Array.from(input.classList).find(cls => /^character\d+$/.test(cls));
+		        if (className) {
+		          document.querySelectorAll(`input.${className}`).forEach(el => {
+		            el.value = next;
+		            const lbl = el.closest('label');
+		            if (lbl) {
+		              lbl.dataset.status = next;
+		              lbl.classList.remove('status0', 'status1', 'status2');
+		              lbl.classList.add(`status${next}`);
+		            }
+		          });
+		        }
+		      }
+		    });
+		  });
+
+		  // 状態を表示
+		  function DraftLocalLegend_eeeeee() {
+		    const map = new Map();
+
+		    document.querySelectorAll('input[type="hidden"]').forEach(input => {
+		      const cls = Array.from(input.classList).find(c => /^character\d+$/.test(c));
+		      if (cls && !map.has(cls)) {
+		        map.set(cls, input.value);
+		      }
+		    });
+
+		    const result = Array.from(map.entries())
+		      .sort(([a], [b]) => parseInt(a.replace('character', '')) - parseInt(b.replace('character', '')))
+		      .map(([, val]) => val)
+		      .join('');
+
+		    document.getElementById('DraftLocalLegend_ffffff').value = result;
+		  }
+
+		  // 状態を反映
+		  function DraftLocalLegend_hhhhhh() {
+		    const inputText = document.getElementById('DraftLocalLegend_gggggg').value.trim();
+		    if (!inputText.match(/^[012]{1,}$/)) return;
+
+		    const classNames = Array.from(new Set(
+		      Array.from(document.querySelectorAll('input[type="hidden"]'))
+		        .map(el => Array.from(el.classList).find(cls => /^character\d+$/.test(cls)))
+		        .filter(cls => cls != null)
+		    )).sort((a, b) => parseInt(a.replace('character', '')) - parseInt(b.replace('character', '')));
+
+		    classNames.forEach((cls, index) => {
+		      const val = parseInt(inputText[index], 10);
+		      const state = isNaN(val) || val < 0 || val > 2 ? 0 : val;
+
+		      document.querySelectorAll(`input.${cls}`).forEach(input => {
+		        input.value = state;
+		        const label = input.closest('label');
+		        if (label) {
+		          label.dataset.status = state;
+		          label.classList.remove('status0', 'status1', 'status2');
+		          label.classList.add(`status${state}`);
+		        }
+		      });
+		    });
+		  }
 	</script>
 
 	<div style="background:#eee;border:1px solid #aaa;max-width:40rem;margin:1rem auto;">
@@ -2311,7 +2323,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 </div>
 
 <hr>
-<div style="text-align:center;margin:2rem;">最終更新…2025/05/24 (v5.6前半)</div>
+<div style="text-align:center;margin:2rem;">最終更新…2025/05/24 (v5.6前半)<br>変則遊戯 v1.1.0</div>
 
 </body></html>
 
@@ -2347,6 +2359,9 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
                       |-ヘ              ＼／      ﾞ_      ＼     |:|:::::|     
                       ﾉ┐ ＼__ノ|    r─ﾍ  ＿_.     ＼／⌒ヽヘ   |:|:::::|     
 
+v1.1.0 20250524 ドラフト地方伝説のキャラ使用状況をセーブデータとしてインポート・エクスポートできるようにしました
+                ドラフト地方伝説のキャラ使用状況について、「未使用」「使用済(生存)」「使用済(死亡)」の3種類を入力できるようにしました
+                その他軽微な変更・修正をしました
 v1.0.2 20250524 ディオナと重雲の並び順を修正しました
 v1.0.1 20250524 一部日本語を修正しました
 v1.0.0 20250524 公開しました
