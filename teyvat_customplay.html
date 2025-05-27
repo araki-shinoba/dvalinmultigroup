@@ -67,7 +67,8 @@ div.content:not(:target){display:none;}
 		#DraftLocalLegend .DraftLocalLegend_aaaaa{width:100%;}
 		#DraftLocalLegend .DraftLocalLegend_enemylist{display:flex;border-bottom:1px solid #888;text-align:center;}
 		#DraftLocalLegend .DraftLocalLegend_enemylist > div{width:25%;}
-
+		#DraftLocalLegend .DraftLocalLegend_lottery{display:flex;}
+		#DraftLocalLegend .DraftLocalLegend_lottery > div{background:#eee;border:1px solid #aaa;width:40%;max-width:50rem;margin:1rem auto;}
 	}
 	@media screen and (max-width: 479px) {
 		.pc{display:none!important;}
@@ -86,6 +87,8 @@ div.content:not(:target){display:none;}
 		#JoinGame #JoinGame_result > div{min-height:5rem;overflow:hidden;border:1px solid #0008;padding:0.5rem;}
 		#JoinGame #JoinGame_result > div > div:nth-child(1){font-weight:normal;margin:0.5rem 0 0.5rem;}
 		#JoinGame #JoinGame_result > div > div:nth-child(2){font-size:16px;font-weight:bold;}
+
+		#DraftLocalLegend .DraftLocalLegend_lottery > div{background:#eee;border:1px solid #aaa;margin:1rem auto;}
 	}
 /**************************************************************************************************/
 /*▼メニューバー*/
@@ -107,6 +110,9 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 #DraftLocalLegend #DraftLocalLegend_result{margin:1rem;background:#eee;border:1px solid #aaa;padding:1rem;}
 #DraftLocalLegend #DraftLocalLegend_result > li{margin-left:2.5rem;border:1px #888 solid;padding:0.5rem;font-size:1.5rem;font-weight:bold;}
 #DraftLocalLegend #DraftLocalLegend_result > li span{color:#0008;font-weight:normal;}
+
+/*▼更新履歴*/
+.updatehistory p{margin:0.5rem 0;}
 </style></head><body>
 
 <div class="contentslist">
@@ -1842,7 +1848,8 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		<ol>
 			<li>本プログラムを起動して、戦う地方伝説を選択する
 			<li>決定ボタンを押して、表示された順番をプレイヤー全員に共有し、その順番通りに戦う
-			<li>戦闘前に、その戦闘で使用するキャラクターを1体決める。他プレイヤーと重複した際は最下部にある重複用のプログラムを起動して、出た指示に従う
+			<li>戦闘前に、その戦闘で使用するキャラクターを1体決める。他プレイヤーと重複した際は最下部にあるキャラクター重複回避用抽選機を使用して、出た指示に従う
+			<li>星5完凸キャラクターを使用する場合は、コストとして追加で1キャラ使用済(生存)扱いにする必要がある。その際は最下部にある完凸コスト抽選機を使用して、出た指示に従う
 			<li>一度使ったことのあるキャラクターは再び使用することができない
 			<li>戦闘中にHPが0になった場合は、別キャラクターで戦闘に参加するか、その戦闘が終わるまで待機すること
 			<li>使用したキャラクターは下部にあるリストのチェックを外す(クリック/タップで色が外れる)
@@ -1853,8 +1860,10 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		</ul>
 		<div>レギュレーションの改変案について</div>
 		<ul>
-			<li style="color:#fff;">【易化】キャラクターの所持・育成状況に応じて、一部のキャラクターを複数回使えるようにする
-			<li style="color:#fff;">【難化】戦う順番をプレイヤー間で共有しない
+			<li style="color:#fff;">【易化】世界ランクを下げる
+			<li style="color:#fff;">【易化】星5完凸キャラクターを使用した際に払う追加コストを免除する
+			<li style="color:#fff;">【易化】星5完凸キャラクターを使用した際に払う追加コストについて、プレイヤーが完凸所持しているキャラクターはコスト支払いの候補から免除する
+			<li style="color:#fff;">【難化】使用キャラを選んでから次に戦う地方伝説を抽選する
 		</ul>
 	</div>
 
@@ -1982,7 +1991,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 </style>
 
 	<table border="1">
-		<tr><th colspan="5" style="text-align:center;font-size:1.5rem;padding:0.5rem;background:#444;color:#fff;">未使用キャラクターリスト<tr><th colspan="2">アタッカー<th colspan="2">ヒーラー<th rowspan="2">キャラ一覧<tr><th>一級アタッカー<br>(魔偶剣鬼15s以内※)<th>二級アタッカー<br>(魔偶剣鬼25s以内※)<th>メインヒーラー<th>金珀ヒーラー
+		<tr><th colspan="5" style="text-align:center;font-size:1.5rem;padding:0.5rem;background:#444;color:#fff;">未使用キャラクターリスト(すべて五十音順)<tr><th colspan="2">アタッカー<th colspan="2">ヒーラー<th rowspan="2">キャラ一覧<tr><th>一級アタッカー<br>(魔偶剣鬼15s以内※)<th>二級アタッカー<br>(魔偶剣鬼25s以内※)<th>メインヒーラー<th>金珀ヒーラー
 		<tr class="color_Mondstadt">
 			<!--▼一級アタッカー-->
 			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character30 " value="0"><span>&#39752;<span>未計測</span></span></label><!--C /     s-->
@@ -2181,7 +2190,8 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character19 " value="0"><span>七七                                  </span></label>
 			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character66 " value="0"><span>ミカ                                  </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character75 " value="0"><span>シャルロット                          </span></label>
+			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character93 " value="0"><span>シトラリ                              </span></label>
+			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character75 " value="0"><span>シャルロット                          </span></label>
 			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character74 " value="0"><span>リオセスリ                            </span></label>
 			<!--▼ほか-->
 			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character39 " value="0"><span>アーロイ                              </span></label>
@@ -2295,13 +2305,24 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		  }
 	</script>
 
-	<div style="background:#eee;border:1px solid #aaa;max-width:40rem;margin:1rem auto;">
-		<div style="margin:1rem;text-align:center;">キャラクター重複回避用抽選機<br>キャラクターが重複したプレイヤーは、以下の指示に従ってください</div>
-		<div style="display:flex;">
-			<input type="button" value="抽選" onclick="DraftLocalLegend_characterchange();" style="width:80px;padding:1rem;margin:1rem;font-weight:bold;">
-			<div id="result"></div>
+	<div class="DraftLocalLegend_lottery">
+		<div>
+			<div style="margin:1rem;text-align:center;">キャラクター重複回避用抽選機<br>キャラクターが重複したプレイヤーは、以下の指示に従ってください</div>
+			<div style="display:flex;">
+				<input type="button" value="抽選" onclick="DraftLocalLegend_characterchange();" style="width:80px;padding:1rem;margin:1rem;font-weight:bold;">
+				<div id="result" style="line-height:1.5rem;"></div>
+			</div>
+		</div>
+		<div>
+			<div style="margin:1rem;text-align:center;">完凸コスト抽選機<br>星5完凸キャラクターを使用する際は、以下の指示に従ってください</div>
+			<div style="display:flex;">
+				<input type="button" value="抽選" onclick="DraftLocalLegend_charactercost_aaaaa();" style="width:80px;padding:1rem;margin:1rem;font-weight:bold;">
+				<div id="DraftLocalLegend_cost" style="line-height:1.5rem;white-space:pre-wrap;margin-right:0.5rem;"></div>
+			</div>
 		</div>
 	</div>
+
+
 	<script language="JavaScript">
 		function DraftLocalLegend_characterchange() {
 		  const DraftLocalLegend_characterchange_aaaaa = [1, 2, 3, 4];
@@ -2313,17 +2334,91 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		  const DraftLocalLegend_characterchange_ddddd = DraftLocalLegend_characterchange_aaaaa.slice(0, 3);
 
 		  const DraftLocalLegend_characterchange_eeeee =
-		    `<div style="margin:0.5rem;font-size:1.5rem;">【第一操作】${DraftLocalLegend_characterchange_ddddd[0]}Pがキャラクターを変更してください</div>` +
-		    `<div style="margin:0.5rem;font-size:1.5rem;">【第二操作】${DraftLocalLegend_characterchange_ddddd[1]}Pがキャラクターを変更してください</div>` +
-		    `<div style="margin:0.5rem;font-size:1.5rem;">【第三操作】${DraftLocalLegend_characterchange_ddddd[2]}Pがキャラクターを変更してください</div>`;
+		    `【第一操作】${DraftLocalLegend_characterchange_ddddd[0]}Pがキャラクターを変更してください<br>` +
+		    `【第二操作】${DraftLocalLegend_characterchange_ddddd[1]}Pがキャラクターを変更してください<br>` +
+		    `【第三操作】${DraftLocalLegend_characterchange_ddddd[2]}Pがキャラクターを変更してください<br>`;
 
 		  document.getElementById("result").innerHTML = DraftLocalLegend_characterchange_eeeee;
 		}
 	</script>
+
+	<script language="JavaScript">
+  // シャッフル関数（重複除去済みリストから使用）
+  function DraftLocalLegend_charactercost_ddddd(arr, count) {
+    const shuffled = arr.slice();
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled.slice(0, count);
+  }
+
+  // 抽選処理（重複を characterクラスで排除）
+  function DraftLocalLegend_charactercost_aaaaa() {
+    const candidates = Array.from(document.querySelectorAll('.DraftLocalLegend_status'))
+      .filter(label => label.dataset.status === '0');
+
+    if (candidates.length < 3) {
+      document.getElementById('DraftLocalLegend_cost').textContent = '抽選できる対象が足りません。';
+      return;
+    }
+
+    // characterクラスで重複排除
+    const usedClasses = new Set();
+    const uniqueCandidates = [];
+
+    candidates.forEach(label => {
+      const input = label.querySelector('input[type="hidden"]');
+      if (!input) return;
+
+      const characterClass = Array.from(input.classList).find(c => /^character\d+$/.test(c));
+      if (!characterClass) return;
+
+      if (!usedClasses.has(characterClass)) {
+        usedClasses.add(characterClass);
+        uniqueCandidates.push(label);
+      }
+    });
+
+    const selected = DraftLocalLegend_charactercost_ddddd(uniqueCandidates, 3);
+    const results = selected.map((label, idx) => {
+      const span = label.querySelector('span');
+      let name = '不明';
+      if (span && span.firstChild && span.firstChild.nodeType === Node.TEXT_NODE) {
+        name = span.firstChild.textContent.trim();
+      }
+      return DraftLocalLegend_charactercost_ccccc(idx + 1, name);
+    });
+
+    document.getElementById('DraftLocalLegend_cost').textContent = results.join('\n');
+  }
+
+  // 表示文言生成
+  function DraftLocalLegend_charactercost_ccccc(order, name) {
+    const prefix = ['【第一操作】', '【第二操作】', '【第三操作】'][order - 1] || `【第${order}操作】`;
+    return `${prefix}${name}を使用済(生存)にしてください`;
+  }
+
+	</script>
 </div>
 
-<hr>
-<div style="text-align:center;margin:2rem;">最終更新…2025/05/24 (v5.6前半)<br>変則遊戯 v1.1.0</div>
+<hr style="margin-top:10rem;">
+
+<div style="text-align:center;margin:2rem;">
+	更新履歴
+	<table border="1" style="margin:1rem auto;" class="updatehistory">
+		<tr><td>v1.2.0<td>20250527<td><p>ドラフト地方伝説のレギュレーションを一部変更し、それに伴い完凸コスト抽選機を追加しました</p>
+		                              <p>ドラフト地方伝説の未使用キャラクターリストにて、シトラリが金珀ヒーラー欄に記載されていなかったため追加しました</p>
+		                              <p>更新履歴をページ最下部に表示しました</p>
+		                              <p>その他軽微な変更・修正をしました</p>
+		<tr><td>v1.1.0<td>20250524<td><p>ドラフト地方伝説のキャラ使用状況をセーブデータとしてインポート・エクスポートできるようにしました</p>
+		                              <p>ドラフト地方伝説のキャラ使用状況について、「未使用」「使用済(生存)」「使用済(死亡)」の3種類を入力できるようにしました</p>
+		                              <p>その他軽微な変更・修正をしました</p>
+		<tr><td>v1.0.2<td>20250524<td><p>ディオナと重雲の並び順を修正しました</p>
+		<tr><td>v1.0.1<td>20250524<td><p>一部日本語を修正しました</p>
+		<tr><td>v1.0.0<td>20250524<td><p>公開しました</p>
+	</table>
+</div>
 
 </body></html>
 
@@ -2358,12 +2453,4 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
                       l:〈／⌒し      ＼＼/ ﾉ    ﾞ_              |:|:::::|     
                       |-ヘ              ＼／      ﾞ_      ＼     |:|:::::|     
                       ﾉ┐ ＼__ノ|    r─ﾍ  ＿_.     ＼／⌒ヽヘ   |:|:::::|     
-
-v1.1.0 20250524 ドラフト地方伝説のキャラ使用状況をセーブデータとしてインポート・エクスポートできるようにしました
-                ドラフト地方伝説のキャラ使用状況について、「未使用」「使用済(生存)」「使用済(死亡)」の3種類を入力できるようにしました
-                その他軽微な変更・修正をしました
-v1.0.2 20250524 ディオナと重雲の並び順を修正しました
-v1.0.1 20250524 一部日本語を修正しました
-v1.0.0 20250524 公開しました
-
 -->
