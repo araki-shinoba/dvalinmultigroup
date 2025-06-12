@@ -2250,11 +2250,11 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 	<div style="background:#eee;border:1px #888 solid;margin:1rem 0;padding:1rem;">
 		<div style="display:flex;">
 			<input type="button" value="セーブデータをインポート" onclick="DraftLocalLegend_hhhhhh()" style="padding:1rem;margin:1rem;width:20rem;">
-			<input type="textarea" id="DraftLocalLegend_gggggg" style="width:calc(100% - 20rem);height:auto;margin:1rem;">
+			<input type="text" id="DraftLocalLegend_gggggg" style="width:calc(100% - 20rem);height:auto;margin:1rem;">
 		</div>
 		<div style="display:flex;">
 			<input type="button" value="セーブデータをエクスポート" onclick="DraftLocalLegend_eeeeee()" style="padding:1rem;margin:1rem;width:20rem;">
-			<input type="textarea" id="DraftLocalLegend_ffffff" readonly style="width:calc(100% - 20rem);height:auto;margin:1rem;"><br>
+			<input type="text" id="DraftLocalLegend_ffffff" style="width:calc(100% - 20rem);height:auto;margin:1rem;"><br>
 		</div>
 	</div>
 
@@ -2262,7 +2262,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 	<hr style="margin:5rem auto;">
 
 	<script language="JavaScript">
-		  // ラベルのクリックイベント
+		  //■■■input buttonをクリックする度に、data-statusを0→1→2に変更する■■■
 		  document.querySelectorAll('.DraftLocalLegend_status').forEach(label => {
 		    label.addEventListener('click', () => {
 		      let current = parseInt(label.dataset.status, 10);
@@ -2292,25 +2292,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		    });
 		  });
 
-		  // 状態を表示
-		  function DraftLocalLegend_eeeeee() {
-		    const map = new Map();
-
-		    document.querySelectorAll('input[type="hidden"]').forEach(input => {
-		      const cls = Array.from(input.classList).find(c => /^character\d+$/.test(c));
-		      if (cls && !map.has(cls)) {
-		        map.set(cls, input.value);
-		      }
-		    });
-
-		    const result = Array.from(map.entries())
-		      .sort(([a], [b]) => parseInt(a.replace('character', '')) - parseInt(b.replace('character', '')))
-		      .map(([, val]) => val)
-		      .join('');
-
-		    document.getElementById('DraftLocalLegend_ffffff').value = result;
-		  }
-
+		  // ■■■セーブデータのインプット■■■
 		  // 状態を反映
 		  function DraftLocalLegend_hhhhhh() {
 		    const inputText = document.getElementById('DraftLocalLegend_gggggg').value.trim();
@@ -2337,6 +2319,32 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		      });
 		    });
 		  }
+
+		  // ■■■セーブデータのアウトプット■■■
+		  function DraftLocalLegend_eeeeee() {
+		    const map = new Map();
+
+		    document.querySelectorAll('input[type="hidden"]').forEach(input => {
+		      const cls = Array.from(input.classList).find(c => /^character\d+$/.test(c));
+		      if (cls && !map.has(cls)) {
+		        map.set(cls, input.value);
+		      }
+		    });
+
+		    const result = Array.from(map.entries())
+		      .sort(([a], [b]) => parseInt(a.replace('character', '')) - parseInt(b.replace('character', '')))
+		      .map(([, val]) => val)
+		      .join('');
+
+		    const textarea = document.getElementById('DraftLocalLegend_ffffff');
+		    textarea.value = result;
+
+		    // 5秒後に内容を上書き
+		    setTimeout(() => {
+		      textarea.value = '出力から10秒間経過したため、出力内容を消去しました';
+		    }, 10000);
+		  }
+
 	</script>
 
 	<div style="background:#444;color:#fff;padding:0.5rem;font-size:1.5rem;font-weight:bold;text-align:center;">オプション</div>
@@ -2435,6 +2443,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 <div style="text-align:center;margin:2rem;">
 	更新履歴
 	<table border="1" style="margin:1rem auto;" class="updatehistory">
+		<tr><td>v1.4.1<td>20250613<td><p>【ドラフト地方伝説】セーブデータを再エクスポートせずに旧データを共有してしまう問題を解決するために、セーブデータをエクスポートしてから10秒後に自動で出力内容を消去するようにしました</p>
 		<tr><td>v1.4.0<td>20250613<td><p>【ドラフト地方伝説】レギュレーションの改変を前提とする形に変更しました。プレイヤーの練度や手持ち育成状況に合わせて、自由にレギュレーションを改変してください</p>
 		                              <p>【ドラフト地方伝説】地方伝説の抽選にマスク機能の実装をしました</p>
 		<tr><td>v1.3.1<td>20250608<td><p>【ドラフト地方伝説】未使用キャラクターリストにて、使用済(死亡)扱いのキャラクターの名前を薄く表示するようにしました</p>
