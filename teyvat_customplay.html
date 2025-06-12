@@ -108,9 +108,39 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 
 /*▼ドラフト地方伝説*/
 #DraftLocalLegend #DraftLocalLegend_result{margin:1rem;background:#eee;border:1px solid #aaa;padding:1rem;}
-#DraftLocalLegend #DraftLocalLegend_result > li{margin-left:2.5rem;border:1px #888 solid;padding:0.5rem;font-size:1.5rem;font-weight:bold;}
-#DraftLocalLegend #DraftLocalLegend_result > li span{color:#0008;font-weight:normal;}
+#DraftLocalLegend #DraftLocalLegend_result li{margin-left:2.5rem;border:1px #888 solid;font-size:1.5rem;font-weight:bold;}
+#DraftLocalLegend #DraftLocalLegend_result li div{padding:0.5rem;font-size:1.5rem;font-weight:bold;}
+#DraftLocalLegend #DraftLocalLegend_result li div span{color:#0008;font-weight:normal;}
+#DraftLocalLegend #DraftLocalLegend_result li.masked div,li.masked span{background-color:#aaa;color:transparent!important;cursor:pointer;position:relative;}
+#DraftLocalLegend #DraftLocalLegend_result li.masked div::after{content:'クリックで表示';color:#fff;position:absolute;left:1rem;top:0.5rem;}
+#DraftLocalLegend #DraftLocalLegend_result li.revealed,li.revealed span{color:inherit!important;cursor:default;}
 #DraftLocalLegend .DraftLocalLegend_lottery p{margin:0.5rem 0;}
+
+	/*▼ドラフト地方伝説　キャラ使用状況の表示*/
+	#DraftLocalLegend .color_Mondstadt label.status0 input ~ span{background:#484;color:#fff;}
+	#DraftLocalLegend .color_Mondstadt label.status1 input ~ span{background:#cec;color:#444;}
+	#DraftLocalLegend .color_Mondstadt label.status2 input ~ span{background:#cec;color:#4443;}
+	#DraftLocalLegend .color_Liyue     label.status0 input ~ span{background:#864;color:#fff;}
+	#DraftLocalLegend .color_Liyue     label.status1 input ~ span{background:#edc;color:#444;}
+	#DraftLocalLegend .color_Liyue     label.status2 input ~ span{background:#edc;color:#4443;}
+	#DraftLocalLegend .color_Inazuma   label.status0 input ~ span{background:#648;color:#fff;}
+	#DraftLocalLegend .color_Inazuma   label.status1 input ~ span{background:#dce;color:#444;}
+	#DraftLocalLegend .color_Inazuma   label.status2 input ~ span{background:#dce;color:#4443;}
+	#DraftLocalLegend .color_Sumeru    label.status0 input ~ span{background:#684;color:#fff;}
+	#DraftLocalLegend .color_Sumeru    label.status1 input ~ span{background:#dec;color:#444;}
+	#DraftLocalLegend .color_Sumeru    label.status2 input ~ span{background:#dec;color:#4443;}
+	#DraftLocalLegend .color_Fontaine  label.status0 input ~ span{background:#468;color:#fff;}
+	#DraftLocalLegend .color_Fontaine  label.status1 input ~ span{background:#cde;color:#444;}
+	#DraftLocalLegend .color_Fontaine  label.status2 input ~ span{background:#cde;color:#4443;}
+	#DraftLocalLegend .color_Natlan    label.status0 input ~ span{background:#844;color:#fff;}
+	#DraftLocalLegend .color_Natlan    label.status1 input ~ span{background:#ecc;color:#444;}
+	#DraftLocalLegend .color_Natlan    label.status2 input ~ span{background:#ecc;color:#4443;}
+	#DraftLocalLegend .color_Snezhnaya label.status0 input ~ span{background:#488;color:#fff;}
+	#DraftLocalLegend .color_Snezhnaya label.status1 input ~ span{background:#cee;color:#444;}
+	#DraftLocalLegend .color_Snezhnaya label.status2 input ~ span{background:#cee;color:#4443;}
+	#DraftLocalLegend label.status0 input ~ span span{color:#fff8;}
+	#DraftLocalLegend label.status1 input ~ span span{color:#4448;}
+	#DraftLocalLegend label.status2 input ~ span span{color:#4443;}
 
 /*▼更新履歴*/
 .updatehistory p{margin:0.5rem 0;}
@@ -150,6 +180,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		</ul>
 	</div>
 
+<!--■■■▼テイワット地図無しレース　候補地選択▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
 	<form name="NoMapRace">
 		<div class="NoMapRace_pointcategoryA">
 			<div class="NoMapRace_pointcategoryB pc">
@@ -904,10 +935,9 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 	<div style="text-align:center;">
 		<input type="button" value="決定" onclick="NoMapRace_aaaaa();" style="width:80px;margin:1rem;padding:1rem;font-weight:bold;">
 	</div>
-
 	<div id="NoMapRace_result"></div>
 
-<!--■■■▼全選択・全解除▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
+<!--■■■▼テイワット地図無しレース　全選択・全解除ボタン用プログラム▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
 	<script language="JavaScript">
 		function                NoMapRace_start_Mondstadt_allclick(){var                NoMapRace_start_Mondstadt=document.NoMapRace.               NoMapRace_start_Mondstadt_all.checked;for(var i=0;document.NoMapRace.               NoMapRace_start_Mondstadt.length>i;i++){document.NoMapRace.               NoMapRace_start_Mondstadt[i].checked=               NoMapRace_start_Mondstadt;}};
 		function                 NoMapRace_goal_Mondstadt_allclick(){var                 NoMapRace_goal_Mondstadt=document.NoMapRace.                NoMapRace_goal_Mondstadt_all.checked;for(var i=0;document.NoMapRace.                NoMapRace_goal_Mondstadt.length>i;i++){document.NoMapRace.                NoMapRace_goal_Mondstadt[i].checked=                NoMapRace_goal_Mondstadt;}};
@@ -935,7 +965,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		function                    NoMapRace_goal_Natlan_allclick(){var                    NoMapRace_goal_Natlan=document.NoMapRace.                   NoMapRace_goal_Natlan_all.checked;for(var i=0;document.NoMapRace.                   NoMapRace_goal_Natlan.length>i;i++){document.NoMapRace.                   NoMapRace_goal_Natlan[i].checked=                   NoMapRace_goal_Natlan;}};
 	</script>
 
-<!--■■■▼抽選結果表示▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
+<!--■■■▼テイワット地図無しレース　抽選結果表示用プログラム▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
 	<script language="JavaScript">
 		function NoMapRace_aaaaa() {
 		  function NoMapRace_bbbbb(NoMapRace_ccccc) {
@@ -1110,7 +1140,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		}
 	</script>
 
-<!--■■■▼移動に関する補足説明▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
+<!--■■■▼テイワット地図無しレース　移動に関する補足説明▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
 	<details>
 		<summary>移動に関する補足説明</summary>
 		<div style="margin:0 1rem 1rem;font-size:12px;">
@@ -1123,7 +1153,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		</div>
 	</details>
 
-<!--■■■▼各キャラクターの移動性能について▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
+<!--■■■▼テイワット地図無しレース　各キャラクターの移動性能について▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
 	<details class="charactermove">
 		<summary>各キャラクターの移動性能について(v5.6前半時点)</summary>
 		<div style="margin:1rem;">
@@ -1177,7 +1207,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		</div>
 	</details>
 
-<!--■■■▼各武器の移動性能について▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
+<!--■■■▼テイワット地図無しレース　各武器の移動性能について▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
 	<details class="weaponmove">
 		<summary>各武器の移動性能について(v5.6前半時点)</summary>
 		<div style="margin:1rem;">
@@ -1249,6 +1279,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		</ul>
 	</div>
 
+<!--■■■▼テイワットばらばら合流ゲーム　候補地選択▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
 	<form name="JoinGame" style="max-width:1000px;margin:0 auto;">
 		<div class="JoinGame_pointcategory pc">
 			<div class="JoinGame_point"></div>
@@ -1612,7 +1643,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 
 	<div id="JoinGame_result"></div>
 
-<!--■■■▼全選択・全解除▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
+<!--■■■▼テイワットばらばら合流ゲーム　全選択・全解除ボタン用プログラム▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
 	<script language="JavaScript">
 		function                JoinGame_Mondstadt_allclick(){var                JoinGame_Mondstadt=document.JoinGame.               JoinGame_Mondstadt_all.checked;for(var i=0;document.JoinGame.               JoinGame_Mondstadt.length>i;i++){document.JoinGame.               JoinGame_Mondstadt[i].checked=               JoinGame_Mondstadt;}};
 		function              JoinGame_Dragonspine_allclick(){var              JoinGame_Dragonspine=document.JoinGame.             JoinGame_Dragonspine_all.checked;for(var i=0;document.JoinGame.             JoinGame_Dragonspine.length>i;i++){document.JoinGame.             JoinGame_Dragonspine[i].checked=             JoinGame_Dragonspine;}};
@@ -1628,7 +1659,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		function                   JoinGame_Natlan_allclick(){var                   JoinGame_Natlan=document.JoinGame.                  JoinGame_Natlan_all.checked;for(var i=0;document.JoinGame.                  JoinGame_Natlan.length>i;i++){document.JoinGame.                  JoinGame_Natlan[i].checked=                  JoinGame_Natlan;}};
 	</script>
 
-<!--■■■▼抽選結果表示▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
+<!--■■■▼テイワットばらばら合流ゲーム　抽選結果表示用プログラム▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
 	<script language="JavaScript">
 		function JoinGame_bbbbb() {
 		  const JoinGame_startpoint = [...document.querySelectorAll('.JoinGame_startpoint input[type=checkbox]:checked')].map(JoinGame_ccccc => {
@@ -1848,9 +1879,8 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		<div>遊び方</div>
 		<ol>
 			<li>本プログラムを起動して、戦う地方伝説を選択する
-			<li>決定ボタンを押して、表示された順番をプレイヤー全員に共有し、その順番通りに戦う
-			<li>戦闘前に、その戦闘で使用するキャラクターを1体決める。他プレイヤーと重複した際は最下部にあるキャラクター重複回避用抽選機を使用して、出た指示に従う
-			<li>星5限定完凸キャラクターを使用する場合は、コストとして追加で0～2キャラを使用済(生存)扱いにする必要がある。その際は最下部にある完凸コスト抽選機を使用して、出た指示に従う
+			<li>決定ボタンを押して、表示された順番通りに戦う
+			<li>戦闘前に、その戦闘で使用するキャラクターを1体決める
 			<li>一度使ったことのあるキャラクターは再び使用することができない
 			<li>戦闘中にHPが0になった場合は、別キャラクターで戦闘に参加するか、その戦闘が終わるまで待機すること
 			<li>使用したキャラクターは下部にあるリストのチェックを外す(クリック/タップで色が外れる)
@@ -1861,13 +1891,15 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		</ul>
 		<div>レギュレーションの改変案について</div>
 		<ul>
-			<li style="color:#fff;">【易化】世界ランクを下げる
-			<li style="color:#fff;">【易化】星5完凸キャラクターを使用した際に払う追加コストを免除する
-			<li style="color:#fff;">【易化】星5完凸キャラクターを使用した際に払う追加コストについて、プレイヤーが完凸所持しているキャラクターはコスト支払いの候補から免除する
-			<li style="color:#fff;">【難化】使用キャラを選んでから次に戦う地方伝説を抽選する
+			<li>他プレイヤーと重複した際は、オプション項目にあるキャラクター重複回避用抽選機を使用する
+			<li>星5限定完凸キャラクターを使用する場合は、オプション項目にある完凸コスト抽選機を使用する
+			<li>星4キャラクターは死亡しない限り何度でも使える
+			<li>中盤で使用済(生存)キャラの復活をさせる
+			<li>その他、プレイヤーの練度や手持ち状況に併せて適宜改変する
 		</ul>
 	</div>
 
+<!--■■■▼ドラフト地方伝説　戦う敵の選択▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
 	<div class="DraftLocalLegend_aaaaa">
 		<div class="DraftLocalLegend_enemylist pc">
 			<div><span class="header">璃月</span></div>
@@ -1917,79 +1949,80 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 	<div style="text-align:center;">
 		<input type="button" value="決定" onclick="DraftLocalLegend_bbbbb();" style="width:80px;margin:1rem;padding:1rem;font-weight:bold;">
 	</div>
-
-	<ol id="DraftLocalLegend_result"><li><li><li><li><li><li><li><li><li><li></ol>
+	<ol id="DraftLocalLegend_result">
+		<li><div>&nbsp;</div>
+		<li><div>&nbsp;</div>
+		<li><div>&nbsp;</div>
+		<li><div>&nbsp;</div>
+		<li><div>&nbsp;</div>
+		<li><div>&nbsp;</div>
+		<li><div>&nbsp;</div>
+		<li><div>&nbsp;</div>
+		<li><div>&nbsp;</div>
+		<li><div>&nbsp;</div>
+	</ol>
 	<hr style="margin:5rem auto;">
 
 	<script language="JavaScript">
+		//■■■マスク機能の実装■■■
+		function DraftLocalLegend_maskbbbbb() {
+		  const DraftLocalLegend_maskccccc = document.querySelectorAll('#DraftLocalLegend_result li');
+		  DraftLocalLegend_maskccccc.forEach((DraftLocalLegend_maskddddd) => {
+		    if (DraftLocalLegend_maskddddd.textContent.trim() !== '使用済(生存)キャラ復活') {
+		      DraftLocalLegend_maskddddd.classList.add('masked');
+		      DraftLocalLegend_maskddddd.addEventListener('click', function () {
+		        DraftLocalLegend_maskddddd.classList.remove('masked');
+		        DraftLocalLegend_maskddddd.classList.add('revealed');
+		      }, { once: true });
+		    }
+		  });
+		}
+
+		//■■■地方伝説の表示部分■■■
 		function DraftLocalLegend_bbbbb() {
 		  const DraftLocalLegend_aaaaa = [...document.querySelectorAll('.DraftLocalLegend_aaaaa input[type=checkbox]:checked')].map(DraftLocalLegend_result => {
-		    if (DraftLocalLegend_result.value === '赤璋巡岳府君'                                  ) return '<li class="color_Liyue    ">赤璋巡岳府君<span>炎氷に耐性あり</span>                                </li>';
-		    if (DraftLocalLegend_result.value === '湖辺のニニアン'                                ) return '<li class="color_Fontaine ">湖辺のニニアン<span>水無効</span>                                      </li>';
-		    if (DraftLocalLegend_result.value === '湖辺のヴィヴィアン'                            ) return '<li class="color_Fontaine ">湖辺のヴィヴィアン<span>水無効</span>                                  </li>';
-		    if (DraftLocalLegend_result.value === 'イゾルト'                                      ) return '<li class="color_Fontaine ">イゾルト                                                               </li>';
-		    if (DraftLocalLegend_result.value === '自律スーパー・コンピューティング型力場生成装置') return '<li class="color_Fontaine ">自律スーパー・コンピューティング型力場生成装置<span>破砕攻撃推奨</span></li>';
-		    if (DraftLocalLegend_result.value === 'ロッキー・アヴィルドセン'                      ) return '<li class="color_Fontaine ">ロッキー・アヴィルドセン                                               </li>';
-		    if (DraftLocalLegend_result.value === 'リアム'                                        ) return '<li class="color_Fontaine ">リアム                                                                 </li>';
-		    if (DraftLocalLegend_result.value === 'スネージヴナのディアンナラ'                    ) return '<li class="color_Fontaine ">スネージヴナのディアンナラ                                             </li>';
-		    if (DraftLocalLegend_result.value === 'シネアス'                                      ) return '<li class="color_Fontaine ">シネアス<span>草元素推奨</span>                                        </li>';
-		    if (DraftLocalLegend_result.value === '鉄皮の子爵'                                    ) return '<li class="color_Fontaine ">鉄皮の子爵                                                             </li>';
-		    if (DraftLocalLegend_result.value === 'オーシャン巡回法官'                            ) return '<li class="color_Fontaine ">オーシャン巡回法官                                                     </li>';
-		    if (DraftLocalLegend_result.value === '隠者の王・ドアーチュ'                          ) return '<li class="color_Fontaine ">隠者の王・ドアーチュ                                                   </li>';
-		    if (DraftLocalLegend_result.value === '「消えゆく老兵」'                              ) return '<li class="color_Fontaine ">「消えゆく老兵」                                                       </li>';
-		    if (DraftLocalLegend_result.value === '双生妖精の騎士・アンジェリカ＆ミドロ'          ) return '<li class="color_Fontaine ">双生妖精の騎士・アンジェリカ＆ミドロ                                   </li>';
-		    if (DraftLocalLegend_result.value === '深谷の剣・コルタナ＆モーグレイ'                ) return '<li class="color_Fontaine ">深谷の剣・コルタナ＆モーグレイ                                         </li>';
-		    if (DraftLocalLegend_result.value === '極彩色のルケア'                                ) return '<li class="color_Fontaine ">極彩色のルケア                                                         </li>';
-		    if (DraftLocalLegend_result.value === 'シャサニョン'                                  ) return '<li class="color_Fontaine ">シャサニョン                                                           </li>';
-		    if (DraftLocalLegend_result.value === '魔剣クルージュ'                                ) return '<li class="color_Fontaine ">魔剣クルージュ                                                         </li>';
-		    if (DraftLocalLegend_result.value === '波のジャプー'                                  ) return '<li class="color_Natlan   ">波のジャプー<span>炎元素推奨</span>                                    </li>';
-		    if (DraftLocalLegend_result.value === 'コシーホ'                                      ) return '<li class="color_Natlan   ">コシーホ                                                               </li>';
-		    if (DraftLocalLegend_result.value === 'バラチコ'                                      ) return '<li class="color_Natlan   ">バラチコ                                                               </li>';
-		    if (DraftLocalLegend_result.value === '異色三連星'                                    ) return '<li class="color_Natlan   ">異色三連星<span>炎水氷元素推奨</span>                                  </li>';
-		    if (DraftLocalLegend_result.value === 'リライ'                                        ) return '<li class="color_Natlan   ">リライ                                                                 </li>';
-		    if (DraftLocalLegend_result.value === '銅の錠'                                        ) return '<li class="color_Natlan   ">銅の錠<span>元素耐性あり</span>                                        </li>';
-		    if (DraftLocalLegend_result.value === 'ピーク'                                        ) return '<li class="color_Natlan   ">ピーク<span>雷元素推奨</span>                                          </li>';
-		    if (DraftLocalLegend_result.value === '「戦羊」と「鉄爪」'                            ) return '<li class="color_Natlan   ">「戦羊」と「鉄爪」                                                     </li>';
-		    if (DraftLocalLegend_result.value === '「微末」'                                      ) return '<li class="color_Natlan   ">「微末」<span>破砕攻撃・炎元素推奨</span>                              </li>';
+		    if (DraftLocalLegend_result.value === '赤璋巡岳府君'                                  ) return '<li class="color_Liyue    "><div>赤璋巡岳府君<span>炎氷に耐性あり</span>                                </div></li>';
+		    if (DraftLocalLegend_result.value === '湖辺のニニアン'                                ) return '<li class="color_Fontaine "><div>湖辺のニニアン<span>水無効</span>                                      </div></li>';
+		    if (DraftLocalLegend_result.value === '湖辺のヴィヴィアン'                            ) return '<li class="color_Fontaine "><div>湖辺のヴィヴィアン<span>水無効</span>                                  </div></li>';
+		    if (DraftLocalLegend_result.value === 'イゾルト'                                      ) return '<li class="color_Fontaine "><div>イゾルト                                                               </div></li>';
+		    if (DraftLocalLegend_result.value === '自律スーパー・コンピューティング型力場生成装置') return '<li class="color_Fontaine "><div>自律スーパー・コンピューティング型力場生成装置<span>破砕攻撃推奨</span></div></li>';
+		    if (DraftLocalLegend_result.value === 'ロッキー・アヴィルドセン'                      ) return '<li class="color_Fontaine "><div>ロッキー・アヴィルドセン                                               </div></li>';
+		    if (DraftLocalLegend_result.value === 'リアム'                                        ) return '<li class="color_Fontaine "><div>リアム                                                                 </div></li>';
+		    if (DraftLocalLegend_result.value === 'スネージヴナのディアンナラ'                    ) return '<li class="color_Fontaine "><div>スネージヴナのディアンナラ                                             </div></li>';
+		    if (DraftLocalLegend_result.value === 'シネアス'                                      ) return '<li class="color_Fontaine "><div>シネアス<span>草元素推奨</span>                                        </div></li>';
+		    if (DraftLocalLegend_result.value === '鉄皮の子爵'                                    ) return '<li class="color_Fontaine "><div>鉄皮の子爵                                                             </div></li>';
+		    if (DraftLocalLegend_result.value === 'オーシャン巡回法官'                            ) return '<li class="color_Fontaine "><div>オーシャン巡回法官                                                     </div></li>';
+		    if (DraftLocalLegend_result.value === '隠者の王・ドアーチュ'                          ) return '<li class="color_Fontaine "><div>隠者の王・ドアーチュ                                                   </div></li>';
+		    if (DraftLocalLegend_result.value === '「消えゆく老兵」'                              ) return '<li class="color_Fontaine "><div>「消えゆく老兵」                                                       </div></li>';
+		    if (DraftLocalLegend_result.value === '双生妖精の騎士・アンジェリカ＆ミドロ'          ) return '<li class="color_Fontaine "><div>双生妖精の騎士・アンジェリカ＆ミドロ                                   </div></li>';
+		    if (DraftLocalLegend_result.value === '深谷の剣・コルタナ＆モーグレイ'                ) return '<li class="color_Fontaine "><div>深谷の剣・コルタナ＆モーグレイ                                         </div></li>';
+		    if (DraftLocalLegend_result.value === '極彩色のルケア'                                ) return '<li class="color_Fontaine "><div>極彩色のルケア                                                         </div></li>';
+		    if (DraftLocalLegend_result.value === 'シャサニョン'                                  ) return '<li class="color_Fontaine "><div>シャサニョン                                                           </div></li>';
+		    if (DraftLocalLegend_result.value === '魔剣クルージュ'                                ) return '<li class="color_Fontaine "><div>魔剣クルージュ                                                         </div></li>';
+		    if (DraftLocalLegend_result.value === '波のジャプー'                                  ) return '<li class="color_Natlan   "><div>波のジャプー<span>炎元素推奨</span>                                    </div></li>';
+		    if (DraftLocalLegend_result.value === 'コシーホ'                                      ) return '<li class="color_Natlan   "><div>コシーホ<span>炎氷草元素推奨</span>                                    </div></li>';
+		    if (DraftLocalLegend_result.value === 'バラチコ'                                      ) return '<li class="color_Natlan   "><div>バラチコ<span>水元素推奨</span>                                        </div></li>';
+		    if (DraftLocalLegend_result.value === '異色三連星'                                    ) return '<li class="color_Natlan   "><div>異色三連星<span>炎水氷元素推奨</span>                                  </div></li>';
+		    if (DraftLocalLegend_result.value === 'リライ'                                        ) return '<li class="color_Natlan   "><div>リライ                                                                 </div></li>';
+		    if (DraftLocalLegend_result.value === '銅の錠'                                        ) return '<li class="color_Natlan   "><div>銅の錠<span>元素耐性あり</span>                                        </div></li>';
+		    if (DraftLocalLegend_result.value === 'ピーク'                                        ) return '<li class="color_Natlan   "><div>ピーク<span>雷元素推奨</span>                                          </div></li>';
+		    if (DraftLocalLegend_result.value === '「戦羊」と「鉄爪」'                            ) return '<li class="color_Natlan   "><div>「戦羊」と「鉄爪」                                                     </div></li>';
+		    if (DraftLocalLegend_result.value === '「微末」'                                      ) return '<li class="color_Natlan   "><div>「微末」<span>破砕攻撃・炎元素推奨</span>                              </div></li>';
 		  }).filter(DraftLocalLegend_result => DraftLocalLegend_result !== undefined);
 
-		  // シャッフル処理
-		  const DraftLocalLegend_bbbbb = DraftLocalLegend_aaaaa.slice();
-		  for (let DraftLocalLegend_ddddd = DraftLocalLegend_bbbbb.length - 1; DraftLocalLegend_ddddd > 0; DraftLocalLegend_ddddd--) {
+		//■■■Fisher-Yatesアルゴリズムを用いた、地方伝説と戦う順番のシャッフル■■■
+		  const DraftLocalLegend_ccccc = DraftLocalLegend_aaaaa.slice();
+		  for (let DraftLocalLegend_ddddd = DraftLocalLegend_ccccc.length - 1; DraftLocalLegend_ddddd > 0; DraftLocalLegend_ddddd--) {
 		    const DraftLocalLegend_eeeee = Math.floor(Math.random() * (DraftLocalLegend_ddddd + 1));
-		    [DraftLocalLegend_bbbbb[DraftLocalLegend_ddddd], DraftLocalLegend_bbbbb[DraftLocalLegend_eeeee]] = [DraftLocalLegend_bbbbb[DraftLocalLegend_eeeee], DraftLocalLegend_bbbbb[DraftLocalLegend_ddddd]];
+		    [DraftLocalLegend_ccccc[DraftLocalLegend_ddddd], DraftLocalLegend_ccccc[DraftLocalLegend_eeeee]] = [DraftLocalLegend_ccccc[DraftLocalLegend_eeeee], DraftLocalLegend_ccccc[DraftLocalLegend_ddddd]];
 		  }
 
-		  document.getElementById('DraftLocalLegend_result').innerHTML = DraftLocalLegend_bbbbb.join('');
+		//■■■戦う順番を表示して■■■
+		  document.getElementById('DraftLocalLegend_result').innerHTML = DraftLocalLegend_ccccc.join('');
+		//■■■マスクする■■■
+		  DraftLocalLegend_maskbbbbb();
 		}
 	</script>
-
-<style type="text/css">
-#DraftLocalLegend .color_Mondstadt label.status0 input ~ span{background:#484;color:#fff;}
-#DraftLocalLegend .color_Mondstadt label.status1 input ~ span{background:#cec;color:#444;}
-#DraftLocalLegend .color_Mondstadt label.status2 input ~ span{background:#cec;color:#4443;}
-#DraftLocalLegend .color_Liyue     label.status0 input ~ span{background:#864;color:#fff;}
-#DraftLocalLegend .color_Liyue     label.status1 input ~ span{background:#edc;color:#444;}
-#DraftLocalLegend .color_Liyue     label.status2 input ~ span{background:#edc;color:#4443;}
-#DraftLocalLegend .color_Inazuma   label.status0 input ~ span{background:#648;color:#fff;}
-#DraftLocalLegend .color_Inazuma   label.status1 input ~ span{background:#dce;color:#444;}
-#DraftLocalLegend .color_Inazuma   label.status2 input ~ span{background:#dce;color:#4443;}
-#DraftLocalLegend .color_Sumeru    label.status0 input ~ span{background:#684;color:#fff;}
-#DraftLocalLegend .color_Sumeru    label.status1 input ~ span{background:#dec;color:#444;}
-#DraftLocalLegend .color_Sumeru    label.status2 input ~ span{background:#dec;color:#4443;}
-#DraftLocalLegend .color_Fontaine  label.status0 input ~ span{background:#468;color:#fff;}
-#DraftLocalLegend .color_Fontaine  label.status1 input ~ span{background:#cde;color:#444;}
-#DraftLocalLegend .color_Fontaine  label.status2 input ~ span{background:#cde;color:#4443;}
-#DraftLocalLegend .color_Natlan    label.status0 input ~ span{background:#844;color:#fff;}
-#DraftLocalLegend .color_Natlan    label.status1 input ~ span{background:#ecc;color:#444;}
-#DraftLocalLegend .color_Natlan    label.status2 input ~ span{background:#ecc;color:#4443;}
-#DraftLocalLegend .color_Snezhnaya label.status0 input ~ span{background:#488;color:#fff;}
-#DraftLocalLegend .color_Snezhnaya label.status1 input ~ span{background:#cee;color:#444;}
-#DraftLocalLegend .color_Snezhnaya label.status2 input ~ span{background:#cee;color:#4443;}
-#DraftLocalLegend label.status0 input ~ span span{color:#fff8;}
-#DraftLocalLegend label.status1 input ~ span span{color:#4448;}
-#DraftLocalLegend label.status2 input ~ span span{color:#4443;}
-</style>
 
 	<table border="1">
 		<tr><th colspan="5" style="text-align:center;font-size:1.5rem;padding:0.5rem;background:#444;color:#fff;">未使用キャラクターリスト(すべて五十音順)<tr><th colspan="2">アタッカー<th colspan="2">ヒーラー<th rowspan="2">キャラ一覧<tr><th>一級アタッカー<br>(魔偶剣鬼15s以内※)<th>二級アタッカー<br>(魔偶剣鬼25s以内※)<th>メインヒーラー<th>金珀ヒーラー
@@ -2306,6 +2339,7 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 		  }
 	</script>
 
+	<div style="background:#444;color:#fff;padding:0.5rem;font-size:1.5rem;font-weight:bold;text-align:center;">オプション</div>
 	<div class="DraftLocalLegend_lottery">
 		<div>
 			<div style="margin:1rem;text-align:center;">キャラクター重複回避用抽選機<br>キャラクターが重複したプレイヤーは、以下の指示に従ってください</div>
@@ -2401,19 +2435,21 @@ div.contentslist:hover a:hover{filter:none;transform:translateY(-3px);transition
 <div style="text-align:center;margin:2rem;">
 	更新履歴
 	<table border="1" style="margin:1rem auto;" class="updatehistory">
-		<tr><td>v1.3.1<td>20250608<td><p>ドラフト地方伝説の未使用キャラクターリストにて、使用済(死亡)扱いのキャラクターの名前を薄く表示するようにしました</p>
+		<tr><td>v1.4.0<td>20250613<td><p>【ドラフト地方伝説】レギュレーションの改変を前提とする形に変更しました。プレイヤーの練度や手持ち育成状況に合わせて、自由にレギュレーションを改変してください</p>
+		                              <p>【ドラフト地方伝説】地方伝説の抽選にマスク機能の実装をしました</p>
+		<tr><td>v1.3.1<td>20250608<td><p>【ドラフト地方伝説】未使用キャラクターリストにて、使用済(死亡)扱いのキャラクターの名前を薄く表示するようにしました</p>
 		<tr><td>v1.3.0<td>20250608<td><p>テイワットばらばら合流ゲームのレギュレーションを一部変更し、ゲームマスターが不在でも平等に遊べるようにしました</p>
-		                              <p>ドラフト地方伝説のレギュレーションを一部変更し、それに伴い完凸コスト抽選機の仕様を「未使用キャラから3体順番に抽選」ではなく「全キャラから2体を抽選」に変更しました</p>
-		                              <p>ドラフト地方伝説の未使用キャラクターリストにて、香菱とシュヴルーズの五十音順に誤りがあったため修正しました</p>
+		                              <p>【ドラフト地方伝説】レギュレーションを一部変更し、それに伴い完凸コスト抽選機の仕様を「未使用キャラから3体順番に抽選」ではなく「全キャラから2体を抽選」に変更しました</p>
+		                              <p>【ドラフト地方伝説】未使用キャラクターリストにて、香菱とシュヴルーズの五十音順に誤りがあったため修正しました</p>
 		                              <p>その他軽微な変更・修正をしました</p>
-		<tr><td>v1.2.0<td>20250527<td><p>ドラフト地方伝説のレギュレーションを一部変更し、それに伴い完凸コスト抽選機を追加しました</p>
-		                              <p>ドラフト地方伝説の未使用キャラクターリストにて、シトラリが金珀ヒーラー欄に記載されていなかったため追加しました</p>
+		<tr><td>v1.2.0<td>20250527<td><p>【ドラフト地方伝説】レギュレーションを一部変更し、それに伴い完凸コスト抽選機を追加しました</p>
+		                              <p>【ドラフト地方伝説】未使用キャラクターリストにて、シトラリが金珀ヒーラー欄に記載されていなかったため追加しました</p>
 		                              <p>更新履歴をページ最下部に表示しました</p>
 		                              <p>その他軽微な変更・修正をしました</p>
-		<tr><td>v1.1.0<td>20250524<td><p>ドラフト地方伝説のキャラ使用状況をセーブデータとしてインポート・エクスポートできるようにしました</p>
-		                              <p>ドラフト地方伝説のキャラ使用状況について、「未使用」「使用済(生存)」「使用済(死亡)」の3種類を入力できるようにしました</p>
+		<tr><td>v1.1.0<td>20250524<td><p>【ドラフト地方伝説】キャラ使用状況をセーブデータとしてインポート・エクスポートできるようにしました</p>
+		                              <p>【ドラフト地方伝説】キャラ使用状況について、「未使用」「使用済(生存)」「使用済(死亡)」の3種類を入力できるようにしました</p>
 		                              <p>その他軽微な変更・修正をしました</p>
-		<tr><td>v1.0.2<td>20250524<td><p>ドラフト地方伝説の未使用キャラクターリストにて、ディオナと重雲の五十音順に誤りがあったため修正しました</p>
+		<tr><td>v1.0.2<td>20250524<td><p>【ドラフト地方伝説】未使用キャラクターリストにて、ディオナと重雲の五十音順に誤りがあったため修正しました</p>
 		<tr><td>v1.0.1<td>20250524<td><p>一部日本語を修正しました</p>
 		<tr><td>v1.0.0<td>20250524<td><p>公開しました</p>
 	</table>
