@@ -1,4 +1,3 @@
-
 <html><head><meta charset="utf-8"><title>変則遊戯</title><meta name="viewport" content="width=device-width,user-scalable=0"><meta name="robots" content="noindex,nofollow,noarchive"><style type="text/css">
 /*▼共通*/
 *{font-size:12px;}
@@ -2244,6 +2243,9 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character74 " value="0"><span>リオセスリ                            </span></label>
 			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character60 " value="0"><span>レイラ                                </span></label>
 			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character32 " value="0"><span>ロサリア                              </span></label>
+		<tr style="text-align:center;">
+			<td colspan="5">
+			    <label><input type="button" onclick="DraftLocalLegend_resetStatus()"><span>使用済(生存)キャラの復活</span></label>
 	</table>
 
 	<div style="background:#eee;border:1px #888 solid;margin:1rem 0;padding:1rem;">
@@ -2290,6 +2292,18 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 		      }
 		    });
 		  });
+
+		  //■■■data-status=1を0に一括変更する■■■
+		function DraftLocalLegend_resetStatus() {
+		  //▼キャラ復活の際の確認ウィンドウ表示
+		  const confirmed = confirm("使用済(生存)キャラを復活させますか？");
+		  if (!confirmed) return; // 「いいえ」が選ばれた場合は処理しない
+		  document.querySelectorAll('label[data-status="1"]').forEach(label => {
+		    label.setAttribute('data-status', '0');
+		    label.classList.remove('status1');
+		    label.classList.add('status0');
+		  });
+		}
 
 		  // ■■■セーブデータのインプット■■■
 		  // 状態を反映
@@ -2465,6 +2479,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 <div style="text-align:center;margin:2rem;">
 	更新履歴
 	<table border="1" style="margin:1rem auto;" class="updatehistory">
+		<tr><td>v1.6.0<td>20250703<td><p>【ドラフト地方伝説】「使用済(生存)キャラの復活」ボタンを追加しました</p>
 		<tr><td>v1.5.1<td>20250622<td><p>【ドラフト地方伝説】未使用キャラクターリストにて、スカークとダリアのIDが逆だったものを修正しました</p>
 		<tr><td>v1.5.0<td>20250618<td><p>【ドラフト地方伝説】未使用キャラクターリストにスカークとダリアを追加しました</p>
 		                              <p>【ドラフト地方伝説】地方伝説のマスク機能解除と同時に、現時点でのセーブデータを出力するようにしました</p>
