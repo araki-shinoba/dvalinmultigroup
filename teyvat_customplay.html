@@ -1,20 +1,21 @@
 <html><head><meta charset="utf-8"><title>変則遊戯</title><meta name="viewport" content="width=device-width,user-scalable=0"><meta name="robots" content="noindex,nofollow,noarchive"><style type="text/css">
 /*▼共通*/
-*{font-size:12px;}
-body{margin:0;color:#444;}
-ul,ol{margin:0;padding:0;}
-li{margin:0.5rem 0 0 1.5rem;padding:0;}
-table{border:1px #888 solid;border-collapse:collapse;}
-
-details{background:#eee;border:1px solid #888;margin:3rem 1rem;}
-summary{padding:0.5rem;font-weight:bold;}
+*                   {font-size:12px;}
+body                {margin:0;color:#444;}
+ul,ol               {margin:0;padding:0;}
+li                  {margin:0.5rem 0 0 1.5rem;padding:0;}
+table               {border:1px #888 solid;border-collapse:collapse;}
+details             {background:#eee;border:1px solid #888;margin:3rem 1rem;}
+summary             {padding:0.5rem;font-weight:bold;}
 details div.category{font-weight:bold;margin:1rem 0 0.5rem;border-left:4px solid #888;padding-left:0.5rem;}
 
-div.content{max-width:1000px;margin:0 auto;}
-div.title{margin:5rem 2rem;padding:5rem;text-align:center;border:2px solid #444;font-size:1.5rem;font-weight:bold;}
-div.rule{padding:1rem;color:#fff;background:#444;}
+/*▼共通*/
+div.content {max-width:1000px;margin:0 auto;}
+div.title   {margin:5rem 2rem;padding:5rem;text-align:center;border:2px solid #444;font-size:1.5rem;font-weight:bold;}
+div.rule    {padding:1rem;color:#fff;background:#444;}
 div.rule div{padding:0.2rem;margin:1rem 0 0.2rem;border-bottom:1px solid #888;font-weight:bold;}
 
+/*▼共通 formの類*/
 .header{display:inline-block;padding:0.5rem;font-weight:bold;}
                                                        label input{display:none;}
                                                        label input          ~ span{display:inline-block;border:1px solid #4324;border-radius:1rem;margin:2px 0;padding:4px 8px;}
@@ -93,7 +94,9 @@ div.content:not(:target){display:none;}
 
 		#DraftLocalLegend .DraftLocalLegend_lottery > div{background:#eee;border:1px solid #aaa;margin:1rem auto;}
 	}
+
 /**************************************************************************************************/
+
 /*▼メニューバー*/
 div.contentslist{background:linear-gradient(#eee,#ddd);display:flex;}
 div.contentslist a{display:block;width:calc(100%/4);padding:1rem min(2%,1rem);text-align:center;display:grid;place-items:center;border-left:1px solid #fff;border-right:1px solid #aaa;text-decoration:none;color:#444;}
@@ -128,33 +131,38 @@ div#DraftLocalLegend ol#DraftLocalLegend_result li > div.revealed{color:inherit!
 div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 
 	/*▼ドラフト地方伝説　キャラ使用状況の表示*/
-	#DraftLocalLegend .color_Mondstadt label.status0 input ~ span{background:#484;color:#fff;}
-	#DraftLocalLegend .color_Mondstadt label.status1 input ~ span{background:#cec;color:#444;}
-	#DraftLocalLegend .color_Mondstadt label.status2 input ~ span{background:#cec;color:#4443;}
-	#DraftLocalLegend .color_Liyue     label.status0 input ~ span{background:#864;color:#fff;}
-	#DraftLocalLegend .color_Liyue     label.status1 input ~ span{background:#edc;color:#444;}
-	#DraftLocalLegend .color_Liyue     label.status2 input ~ span{background:#edc;color:#4443;}
-	#DraftLocalLegend .color_Inazuma   label.status0 input ~ span{background:#648;color:#fff;}
-	#DraftLocalLegend .color_Inazuma   label.status1 input ~ span{background:#dce;color:#444;}
-	#DraftLocalLegend .color_Inazuma   label.status2 input ~ span{background:#dce;color:#4443;}
-	#DraftLocalLegend .color_Sumeru    label.status0 input ~ span{background:#684;color:#fff;}
-	#DraftLocalLegend .color_Sumeru    label.status1 input ~ span{background:#dec;color:#444;}
-	#DraftLocalLegend .color_Sumeru    label.status2 input ~ span{background:#dec;color:#4443;}
-	#DraftLocalLegend .color_Fontaine  label.status0 input ~ span{background:#468;color:#fff;}
-	#DraftLocalLegend .color_Fontaine  label.status1 input ~ span{background:#cde;color:#444;}
-	#DraftLocalLegend .color_Fontaine  label.status2 input ~ span{background:#cde;color:#4443;}
-	#DraftLocalLegend .color_Natlan    label.status0 input ~ span{background:#844;color:#fff;}
-	#DraftLocalLegend .color_Natlan    label.status1 input ~ span{background:#ecc;color:#444;}
-	#DraftLocalLegend .color_Natlan    label.status2 input ~ span{background:#ecc;color:#4443;}
-	#DraftLocalLegend .color_Snezhnaya label.status0 input ~ span{background:#488;color:#fff;}
-	#DraftLocalLegend .color_Snezhnaya label.status1 input ~ span{background:#cee;color:#444;}
-	#DraftLocalLegend .color_Snezhnaya label.status2 input ~ span{background:#cee;color:#4443;}
-	#DraftLocalLegend label.status0 input ~ span span{color:#fff8;}
-	#DraftLocalLegend label.status1 input ~ span span{color:#4448;}
-	#DraftLocalLegend label.status2 input ~ span span{color:#4443;}
+	#DraftLocalLegend                  label                  > span{display:inline-block;border:1px solid #4324;border-radius:1rem;margin:2px 0;padding:4px 8px;}
+	#DraftLocalLegend .color_Mondstadt label[data-status="0"] > span{background:#484;color:#fff;}
+	#DraftLocalLegend .color_Mondstadt label[data-status="1"] > span{background:#cec;color:#444;}
+	#DraftLocalLegend .color_Mondstadt label[data-status="2"] > span{background:#cec;color:#4443;}
+	#DraftLocalLegend .color_Liyue     label[data-status="0"] > span{background:#864;color:#fff;}
+	#DraftLocalLegend .color_Liyue     label[data-status="1"] > span{background:#edc;color:#444;}
+	#DraftLocalLegend .color_Liyue     label[data-status="2"] > span{background:#edc;color:#4443;}
+	#DraftLocalLegend .color_Inazuma   label[data-status="0"] > span{background:#648;color:#fff;}
+	#DraftLocalLegend .color_Inazuma   label[data-status="1"] > span{background:#dce;color:#444;}
+	#DraftLocalLegend .color_Inazuma   label[data-status="2"] > span{background:#dce;color:#4443;}
+	#DraftLocalLegend .color_Sumeru    label[data-status="0"] > span{background:#684;color:#fff;}
+	#DraftLocalLegend .color_Sumeru    label[data-status="1"] > span{background:#dec;color:#444;}
+	#DraftLocalLegend .color_Sumeru    label[data-status="2"] > span{background:#dec;color:#4443;}
+	#DraftLocalLegend .color_Fontaine  label[data-status="0"] > span{background:#468;color:#fff;}
+	#DraftLocalLegend .color_Fontaine  label[data-status="1"] > span{background:#cde;color:#444;}
+	#DraftLocalLegend .color_Fontaine  label[data-status="2"] > span{background:#cde;color:#4443;}
+	#DraftLocalLegend .color_Natlan    label[data-status="0"] > span{background:#844;color:#fff;}
+	#DraftLocalLegend .color_Natlan    label[data-status="1"] > span{background:#ecc;color:#444;}
+	#DraftLocalLegend .color_Natlan    label[data-status="2"] > span{background:#ecc;color:#4443;}
+	#DraftLocalLegend .color_Snezhnaya label[data-status="0"] > span{background:#488;color:#fff;}
+	#DraftLocalLegend .color_Snezhnaya label[data-status="1"] > span{background:#cee;color:#444;}
+	#DraftLocalLegend .color_Snezhnaya label[data-status="2"] > span{background:#cee;color:#4443;}
+	#DraftLocalLegend                  label[data-status="0"] > span > span{font-size:10px;color:#fff8;}
+	#DraftLocalLegend                  label[data-status="1"] > span > span{font-size:10px;color:#4448;}
+	#DraftLocalLegend                  label[data-status="2"] > span > span{font-size:10px;color:#4443;}
 
 /*▼更新履歴*/
-.updatehistory p{margin:0.5rem 0;}
+
+/*▼バージョンアップデートに合わせて表示するCSS*/
+.v58a,.v60a,.v61a,v62a,.v63a,.v64a,.v65a,.v66a,.v67a,.v68a,
+.v58b,.v60b,.v61b,v62b,.v63b,.v64b,.v65b,.v66b,.v67b,.v68b{display:none;}
+
 </style></head><body>
 
 <div class="contentslist">
@@ -170,6 +178,10 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 <div class="content" id="NoMapRace">
 	<div class="title">テイワット地図無しレース</div>
 	<div class="rule">
+		<div>概要</div>
+		<ul>
+			<li>ミニマップを隠した状態で、ランダムに選択したスタート地点からゴール地点までの到着速度を競うゲームです
+		</ul>
 		<div>遊び方</div>
 		<ol>
 			<li>本プログラムを起動して、スタート候補・ゴール候補を選択する(選択されている地点は色が濃く表示される)
@@ -182,7 +194,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 		<ul>
 			<li>スメールや沈玉の谷の移動ギミック、ウェーブボード、料理は自由に使ってよい(基準：マルチプレイヤー全員が平等に使えるものか)
 			<li>ロマリタイムハーバー・ルミドゥースハーバーを下から上に登る際のみ、マップを開いて七天神像・ワープポイントに移動してよい<br>※エレベーターの奪い合いとそれによる遅延を防ぐため。エレベーターのある建物内に入ってからマップを開くものとする
-			<li>死亡した場合はスタート地点からやり直すものとする。溺れた場合は最後に足をつけた場所から復帰できるため、この場合はそのまま続けてよい<br>※死亡した場合、ゲーム内では「最後に訪れたワープポイントか七天神像から復活します」と表記されるが、正確には「死亡したプレイヤーのワールドで解放しているワープポイント類のうち一番近い場所から復帰する」仕様になっている。そのためデスワープを走者全員同じ条件で行うことが難しく、基本レギュレーションとしてはデスワープの一切を禁止している
+			<li>戦闘不能になった場合はスタート地点からやり直すものとする。溺れた場合は最後に足をつけた場所から復帰できるため、この場合はそのまま続けてよい<br>※戦闘不能になった場合、ゲーム内では「最後に訪れたワープポイントか七天神像から復活します」と表記されるが、正確には「戦闘不能になったプレイヤーのワールドで解放しているワープポイント類のうち一番近い場所から復帰する」仕様になっている。そのためデスワープを走者全員同じ条件で行うことが難しく、基本レギュレーションとしてはデスワープの一切を禁止している
 			<li>使用キャラや武器は影響がない範囲に統一すること。詳細は最下部、移動性能についての項目を参照<br>
 		</ul>
 		<div>レギュレーションの改変案について</div>
@@ -1156,6 +1168,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 				<tr><td>キィニチ      <td>【固有天賦】ナタで一部の採集物を採取すると移動速度+15%、継続時間10秒
 				<tr><td>鹿野院平蔵    <td>【固有天賦】チーム全員がダッシュに消費するスタミナ-20%
 				<tr><td>&#39752;      <td>【固有天賦】チーム全員が登りに消費するスタミナ-20%
+				<tr><td>ダリア        <td>【固有天賦】日中(6時から18時まで)、チーム内の自身のキャラクターの移動速度+10%
 				<tr><td>ディシア      <td>【固有天賦】日中(6時から18時まで)、チーム内の自身のキャラクターの移動速度+10%
 				<tr><td>フレミネ      <td>【固有天賦】チーム全員の水中スタミナ消費-35%
 				<tr><td>レザー        <td>【固有天賦】チーム全員がダッシュに消費するスタミナ-20%
@@ -1188,7 +1201,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 				<tr><td>ヨォーヨ      <td>【爆発】効果中移動速度+15%
 			</table>
 			<div style="margin:1rem 0;font-size:12px;">
-				※気付きにくい効果のキャラ、うっかり効果を発動してしまいかねないキャラのみ記載しています
+				※気付きにくい効果のキャラ、うっかり効果を発動してしまいかねないキャラのみ記載
 			</div>
 		</div>
 	</details>
@@ -1244,6 +1257,10 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 <div class="content" id="JoinGame">
 	<div class="title">テイワットばらばら合流ゲーム</div>
 	<div class="rule">
+		<div>概要</div>
+		<ul>
+			<li>ミニマップを隠した状態で、ランダムなワープポイントに飛んだプレイヤー同士が、視界に入ったモンスター情報のみを頼りに合流するゲームです
+		</ul>
 		<div>遊び方</div>
 		<ol>
 			<li>ゲームマスターが本プログラムを操作する。いない場合はプレイヤー全員が本プログラムを操作する
@@ -1484,9 +1501,9 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 				<label><input type="checkbox" checked class="JoinGame_DharmaForest" value="諸法の森_有頂の塔"            ><span><span class="sp">秘境          </span>【煉武秘境】有頂の塔        </span></label><br>
 				<label><input type="checkbox" checked class="JoinGame_DharmaForest" value="諸法の森_無学の塔"            ><span><span class="sp">秘境          </span>【熟知秘境】無学の塔        </span></label><br>
 				<label><input type="checkbox" checked class="JoinGame_DharmaForest" value="諸法の森_傘蓋の庇護"          ><span><span class="sp">秘境          </span>【通常秘境】傘蓋の庇護      </span></label><br>
-				<label><input type="checkbox" checked class="JoinGame_DharmaForest" value="諸法の森_幼夢の欠片"          ><span><span class="sp">秘境          </span>【通常秘境】幼夢の欠片      </span></label><br>
+				<label><input type="checkbox"         class="JoinGame_DharmaForest" value="諸法の森_幼夢の欠片"          ><span><span class="sp">秘境          </span>【通常秘境】幼夢の欠片      </span></label><br>
 				<label><input type="checkbox" checked class="JoinGame_DharmaForest" value="諸法の森_河谷の闇路"          ><span><span class="sp">秘境          </span>【通常秘境】河谷の闇路      </span></label><br>
-				<label><input type="checkbox" checked class="JoinGame_DharmaForest" value="諸法の森_晴雨の経緯"          ><span><span class="sp">秘境          </span>【通常秘境】晴雨の経緯      </span></label><br>
+				<label><input type="checkbox"         class="JoinGame_DharmaForest" value="諸法の森_晴雨の経緯"          ><span><span class="sp">秘境          </span>【通常秘境】晴雨の経緯      </span></label><br>
 			</div>
 			<div class="JoinGame_startpoint"></div>
 		</div>
@@ -1501,22 +1518,22 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_千尋の砂漠"                            ><span><span class="sp">七天神像      </span>千尋の砂漠                            </span></label><br>
 			</div>
 			<div class="JoinGame_startpoint">
-				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_捨身の道"                              ><span><span class="sp">ワープポイント</span>捨身の道                              </span></label><br>
+				<label><input type="checkbox"         class="JoinGame_GreatRedSand" value="大赤砂海_捨身の杭"                              ><span><span class="sp">ワープポイント</span>捨身の杭                              </span></label><br>
 				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_半永久統制マトリックス付近"            ><span><span class="sp">ワープポイント</span>半永久統制マトリックス付近            </span></label><br>
 				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_キングデシェレトの霊廟入口"            ><span><span class="sp">ワープポイント</span>キングデシェレトの霊廟入口            </span></label><br>
-				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_権杖殿"                                ><span><span class="sp">ワープポイント</span>権杖殿                                </span></label><br>
-				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_冥途殿"                                ><span><span class="sp">ワープポイント</span>冥途殿                                </span></label><br>
-				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_シュラバド廃都の神殿南側"              ><span><span class="sp">ワープポイント</span>シュラバド廃都の神殿南側              </span></label><br>
+				<label><input type="checkbox"         class="JoinGame_GreatRedSand" value="大赤砂海_権杖殿"                                ><span><span class="sp">ワープポイント</span>権杖殿                                </span></label><br>
+				<label><input type="checkbox"         class="JoinGame_GreatRedSand" value="大赤砂海_冥途殿"                                ><span><span class="sp">ワープポイント</span>冥途殿                                </span></label><br>
+				<label><input type="checkbox"         class="JoinGame_GreatRedSand" value="大赤砂海_シュラバド廃都の神殿南側"              ><span><span class="sp">ワープポイント</span>シュラバド廃都の神殿南側              </span></label><br>
 				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_「神の碁盤」(神に捨てられた殿閣)南東側"><span><span class="sp">ワープポイント</span>「神の碁盤」(神に捨てられた殿閣)南東側</span></label><br>
-				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_聖顕殿西"                              ><span><span class="sp">ワープポイント</span>聖顕殿西                              </span></label><br>
+				<label><input type="checkbox"         class="JoinGame_GreatRedSand" value="大赤砂海_聖顕殿西"                              ><span><span class="sp">ワープポイント</span>聖顕殿西                              </span></label><br>
 			</div>
 			<div class="JoinGame_startpoint">
-				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_原初の郷"                              ><span><span class="sp">秘境          </span>【征討領域】原初の郷                  </span></label><br>
+				<label><input type="checkbox"         class="JoinGame_GreatRedSand" value="大赤砂海_原初の郷"                              ><span><span class="sp">秘境          </span>【征討領域】原初の郷                  </span></label><br>
 				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_赤金の廃城"                            ><span><span class="sp">秘境          </span>【祈聖秘境】赤金の廃城                </span></label><br>
 				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_赤砂の檻"                              ><span><span class="sp">秘境          </span>【通常秘境】赤砂の檻                  </span></label><br>
-				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_ミラージュ祭場"                        ><span><span class="sp">秘境          </span>【通常秘境】ミラージュ祭場            </span></label><br>
+				<label><input type="checkbox"         class="JoinGame_GreatRedSand" value="大赤砂海_ミラージュ祭場"                        ><span><span class="sp">秘境          </span>【通常秘境】ミラージュ祭場            </span></label><br>
 				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_千柱の花園"                            ><span><span class="sp">秘境          </span>【通常秘境】千柱の花園                </span></label><br>
-				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_「望者の都」"                          ><span><span class="sp">秘境          </span>【通常秘境】「望者の都」              </span></label><br>
+				<label><input type="checkbox"         class="JoinGame_GreatRedSand" value="大赤砂海_「望者の都」"                          ><span><span class="sp">秘境          </span>【通常秘境】「望者の都」              </span></label><br>
 				<label><input type="checkbox" checked class="JoinGame_GreatRedSand" value="大赤砂海_五大オアシスの殿堂"                    ><span><span class="sp">秘境          </span>【通常秘境】五大オアシスの殿堂        </span></label><br>
 			</div>
 			<div class="JoinGame_startpoint"></div>
@@ -1756,7 +1773,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 		    if (ccccc.value === '大赤砂海_上風蝕地'                                        ) return '<div class="color_Sumeru   "><div>大赤砂海           / 七天神像      </div><div>上風蝕地                                    </div></div>';
 		    if (ccccc.value === '大赤砂海_列柱砂原'                                        ) return '<div class="color_Sumeru   "><div>大赤砂海           / 七天神像      </div><div>列柱砂原                                    </div></div>';
 		    if (ccccc.value === '大赤砂海_千尋の砂漠'                                      ) return '<div class="color_Sumeru   "><div>大赤砂海           / 七天神像      </div><div>千尋の砂漠                                  </div></div>';
-		    if (ccccc.value === '大赤砂海_捨身の道'                                        ) return '<div class="color_Sumeru   "><div>大赤砂海           / ワープポイント</div><div>捨身の道                                    </div></div>';
+		    if (ccccc.value === '大赤砂海_捨身の杭'                                        ) return '<div class="color_Sumeru   "><div>大赤砂海           / ワープポイント</div><div>捨身の杭                                    </div></div>';
 		    if (ccccc.value === '大赤砂海_半永久統制マトリックス付近'                      ) return '<div class="color_Sumeru   "><div>大赤砂海           / ワープポイント</div><div>半永久統制マトリックス付近                  </div></div>';
 		    if (ccccc.value === '大赤砂海_キングデシェレトの霊廟入口'                      ) return '<div class="color_Sumeru   "><div>大赤砂海           / ワープポイント</div><div>キングデシェレトの霊廟入口                  </div></div>';
 		    if (ccccc.value === '大赤砂海_権杖殿'                                          ) return '<div class="color_Sumeru   "><div>大赤砂海           / ワープポイント</div><div>権杖殿                                      </div></div>';
@@ -1822,7 +1839,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 		    if (ccccc.value === 'ナタ_天蛇の船'                                            ) return '<div class="color_Natlan   "><div>ナタ               / その他        </div><div>天蛇の船                                    </div></div>';
 		  });
 
-		  // 4回Math.random()を使って4つの要素を重複なくランダムに選ぶ処理
+		  //■■■4回Math.random()を使って4つの要素を重複なくランダムに選ぶ処理■■■
 		  const JoinGame_lottery = [];
 		  const ccccc = JoinGame_startpoint.slice();
 		  for (let ddddd = 0; ddddd < 4; ddddd++) {
@@ -1848,6 +1865,10 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 <div class="content" id="DraftLocalLegend">
 	<div class="title">ドラフト地方伝説</div>
 	<div class="rule">
+		<div>概要</div>
+		<ul>
+			<li>キャラクターを一度しか使えない縛りを設けて、各地に存在する地方伝説と戦うゲームです
+		</ul>
 		<div>遊び方</div>
 		<ol>
 			<li>本プログラムを起動して、戦う地方伝説を選択する
@@ -1857,15 +1878,15 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 			<li>戦闘中にHPが0になった場合は、別キャラクターで戦闘に参加するか、その戦闘が終わるまで待機すること
 			<li>使用したキャラクターは下部にあるリストのチェックを外す(クリック/タップで色が外れる)
 		</ol>
-		<div>ルール補足</div>
-		<ul>
-			<li>バーバラや七七の天賦による復活は、ゲーム中を通して各キャラ一度ずつのみ可能(戦闘時間が15分を超えても、二度目の復活をさせることはできない)
-		</ul>
+		<div>基本レギュレーション案について</div>
+		<ol>
+			<li>星4は戦闘不能にならない限り何度でも使用可 / 地方伝説6体毎に使用済(生存)キャラの復活
+		</ol>
 		<div>レギュレーションの改変案について</div>
 		<ul>
 			<li>他プレイヤーと重複した際は、オプション項目にあるキャラクター重複回避用抽選機を使用する
 			<li>星5限定完凸キャラクターを使用する場合は、オプション項目にある完凸コスト抽選機を使用する
-			<li>星4キャラクターは死亡しない限り何度でも使える
+			<li>星4キャラクターは戦闘不能にならない限り何度でも使える
 			<li>中盤で使用済(生存)キャラの復活をさせる
 			<li>その他、プレイヤーの練度や手持ち状況に併せて適宜改変する
 		</ul>
@@ -1884,8 +1905,8 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 				<label><input type="checkbox" checked value="赤璋巡岳府君"                                  ><span>赤璋巡岳府君                                  </span></label><br>
 			</div>
 			<div class="color_Fontaine">
-				<label><input type="checkbox" checked value="湖辺のニニアン"                                ><span>湖辺のニニアン                                </span></label><br>
-				<label><input type="checkbox" checked value="湖辺のヴィヴィアン"                            ><span>湖辺のヴィヴィアン                            </span></label><br>
+				<label><input type="checkbox" checked value="湖辺のニニアン"                                ><span>湖辺のニニアン(南)                            </span></label><br>
+				<label><input type="checkbox" checked value="湖辺のヴィヴィアン"                            ><span>湖辺のヴィヴィアン(北)                        </span></label><br>
 				<label><input type="checkbox" checked value="イゾルト"                                      ><span>イゾルト                                      </span></label><br>
 				<label><input type="checkbox" checked value="自律スーパー・コンピューティング型力場生成装置"><span>自律スーパー・コンピューティング型力場生成装置</span></label><br>
 				<label><input type="checkbox" checked value="ロッキー・アヴィルドセン"                      ><span>ロッキー・アヴィルドセン                      </span></label><br>
@@ -1935,314 +1956,320 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 	</ol>
 	<hr style="margin:5rem auto;">
 
-	<script language="JavaScript">
-		//■■■次に戦う地方伝説のマスク機能■■■
-		function DraftLocalLegend_maskbbbbb() {
-		  const DraftLocalLegend_maskccccc = document.querySelectorAll('#DraftLocalLegend_result li > div');
+	<script type="module">
+//■■■次に戦う地方伝説のマスク機能■■■
+function DraftLocalLegend_maskbbbbb() {
+  const DraftLocalLegend_maskccccc = document.querySelectorAll('#DraftLocalLegend_result li > div');
 
-		  DraftLocalLegend_maskccccc.forEach((DraftLocalLegend_maskddddd) => {
-		    DraftLocalLegend_maskddddd.classList.add('masked');
+  DraftLocalLegend_maskccccc.forEach((DraftLocalLegend_maskddddd) => {
+    DraftLocalLegend_maskddddd.classList.add('masked');
 
-		    DraftLocalLegend_maskddddd.addEventListener('click', function () {
-		      DraftLocalLegend_maskddddd.classList.remove('masked');
-		      DraftLocalLegend_maskddddd.classList.add('revealed');
+    DraftLocalLegend_maskddddd.addEventListener('click', function () {
+      DraftLocalLegend_maskddddd.classList.remove('masked');
+      DraftLocalLegend_maskddddd.classList.add('revealed');
 
-		      //■■■マスク解除時に現時点でのセーブデータを生成■■■
-		      const map = new Map();
+      //■■■マスク解除時に現時点でのセーブデータを生成■■■
+      const map = new Map();
 
-		      document.querySelectorAll('input[type="hidden"]').forEach(input => {
-		        const cls = Array.from(input.classList).find(c => /^character\d+$/.test(c));
-		        if (cls && !map.has(cls)) {
-		          map.set(cls, input.value);
-		        }
-		      });
+      document.querySelectorAll('label[data-status][data-character]').forEach(label => {
+        const character = label.dataset.character;
+        const status = label.dataset.status;
 
-		      const result = Array.from(map.entries())
-		        .sort(([a], [b]) => parseInt(a.replace('character', '')) - parseInt(b.replace('character', '')))
-		        .map(([, val]) => val)
-		        .join('');
+        if (!map.has(character)) {
+          map.set(character, status);
+        }
+      });
 
-		      // 対応する span.savedata に出力
-		      const span = DraftLocalLegend_maskddddd.querySelector('.savedata');
-		      if (span) {
-		        span.textContent = result;
-		      }
+      const result = Array.from(map.entries())
+        .sort(([a], [b]) => parseInt(a, 10) - parseInt(b, 10))
+        .map(([, status]) => status)
+        .join('');
 
-		    }, { once: true });
-		  });
-		}
+      // 対応する span.savedata に出力
+      const div = DraftLocalLegend_maskddddd.querySelector('.savedata');
+      if (div) {
+        div.textContent = result;
+      }
 
-		//■■■地方伝説の表示部分■■■
-		function DraftLocalLegend_bbbbb() {
-		  const DraftLocalLegend_aaaaa = [...document.querySelectorAll('.DraftLocalLegend_aaaaa input[type=checkbox]:checked')].map(DraftLocalLegend_result => {
-		    if (DraftLocalLegend_result.value === '赤璋巡岳府君'                                  ) return '<li><div><div class="savedata"></div><div class="color_Liyue    ">赤璋巡岳府君<span>炎氷に耐性あり</span>                                </div></div>';
-		    if (DraftLocalLegend_result.value === '湖辺のニニアン'                                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">湖辺のニニアン<span>水無効</span>                                      </div></div>';
-		    if (DraftLocalLegend_result.value === '湖辺のヴィヴィアン'                            ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">湖辺のヴィヴィアン<span>水無効</span>                                  </div></div>';
-		    if (DraftLocalLegend_result.value === 'イゾルト'                                      ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">イゾルト                                                               </div></div>';
-		    if (DraftLocalLegend_result.value === '自律スーパー・コンピューティング型力場生成装置') return '<li><div><div class="savedata"></div><div class="color_Fontaine ">自律スーパー・コンピューティング型力場生成装置<span>破砕攻撃推奨</span></div></div>';
-		    if (DraftLocalLegend_result.value === 'ロッキー・アヴィルドセン'                      ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">ロッキー・アヴィルドセン                                               </div></div>';
-		    if (DraftLocalLegend_result.value === 'リアム'                                        ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">リアム                                                                 </div></div>';
-		    if (DraftLocalLegend_result.value === 'スネージヴナのディアンナラ'                    ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">スネージヴナのディアンナラ                                             </div></div>';
-		    if (DraftLocalLegend_result.value === 'シネアス'                                      ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">シネアス<span>草元素推奨</span>                                        </div></div>';
-		    if (DraftLocalLegend_result.value === '鉄皮の子爵'                                    ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">鉄皮の子爵                                                             </div></div>';
-		    if (DraftLocalLegend_result.value === 'オーシャン巡回法官'                            ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">オーシャン巡回法官                                                     </div></div>';
-		    if (DraftLocalLegend_result.value === '隠者の王・ドアーチュ'                          ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">隠者の王・ドアーチュ                                                   </div></div>';
-		    if (DraftLocalLegend_result.value === '「消えゆく老兵」'                              ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">「消えゆく老兵」                                                       </div></div>';
-		    if (DraftLocalLegend_result.value === '双生妖精の騎士・アンジェリカ＆ミドロ'          ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">双生妖精の騎士・アンジェリカ＆ミドロ                                   </div></div>';
-		    if (DraftLocalLegend_result.value === '深谷の剣・コルタナ＆モーグレイ'                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">深谷の剣・コルタナ＆モーグレイ                                         </div></div>';
-		    if (DraftLocalLegend_result.value === '極彩色のルケア'                                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">極彩色のルケア                                                         </div></div>';
-		    if (DraftLocalLegend_result.value === 'シャサニョン'                                  ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">シャサニョン                                                           </div></div>';
-		    if (DraftLocalLegend_result.value === '魔剣クルージュ'                                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">魔剣クルージュ                                                         </div></div>';
-		    if (DraftLocalLegend_result.value === '波のジャプー'                                  ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">波のジャプー<span>炎元素推奨</span>                                    </div></div>';
-		    if (DraftLocalLegend_result.value === 'コシーホ'                                      ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">コシーホ<span>炎氷草元素推奨</span>                                    </div></div>';
-		    if (DraftLocalLegend_result.value === 'バラチコ'                                      ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">バラチコ<span>水元素推奨</span>                                        </div></div>';
-		    if (DraftLocalLegend_result.value === '異色三連星'                                    ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">異色三連星<span>炎水氷元素推奨</span>                                  </div></div>';
-		    if (DraftLocalLegend_result.value === 'リライ'                                        ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">リライ                                                                 </div></div>';
-		    if (DraftLocalLegend_result.value === '銅の錠'                                        ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">銅の錠<span>元素耐性あり</span>                                        </div></div>';
-		    if (DraftLocalLegend_result.value === 'ピーク'                                        ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">ピーク<span>雷元素推奨</span>                                          </div></div>';
-		    if (DraftLocalLegend_result.value === '「戦羊」と「鉄爪」'                            ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">「戦羊」と「鉄爪」                                                     </div></div>';
-		    if (DraftLocalLegend_result.value === '「微末」'                                      ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">「微末」<span>破砕攻撃・炎元素推奨</span>                              </div></div>';
-		  }).filter(DraftLocalLegend_result => DraftLocalLegend_result !== undefined);
+    }, { once: true });
+  });
+}
 
-		//■■■Fisher-Yatesアルゴリズムを用いた、地方伝説と戦う順番のシャッフル■■■
-		  const DraftLocalLegend_ccccc = DraftLocalLegend_aaaaa.slice();
-		  for (let DraftLocalLegend_ddddd = DraftLocalLegend_ccccc.length - 1; DraftLocalLegend_ddddd > 0; DraftLocalLegend_ddddd--) {
-		    const DraftLocalLegend_eeeee = Math.floor(Math.random() * (DraftLocalLegend_ddddd + 1));
-		    [DraftLocalLegend_ccccc[DraftLocalLegend_ddddd], DraftLocalLegend_ccccc[DraftLocalLegend_eeeee]] = [DraftLocalLegend_ccccc[DraftLocalLegend_eeeee], DraftLocalLegend_ccccc[DraftLocalLegend_ddddd]];
-		  }
+//■■■地方伝説の表示部分■■■
+function DraftLocalLegend_bbbbb() {
+  const DraftLocalLegend_aaaaa = [...document.querySelectorAll('.DraftLocalLegend_aaaaa input[type=checkbox]:checked')].map(DraftLocalLegend_result => {
+    if (DraftLocalLegend_result.value === '赤璋巡岳府君'                                  ) return '<li><div><div class="savedata"></div><div class="color_Liyue    ">赤璋巡岳府君<span>炎氷に耐性あり</span>                                </div></div>';
+    if (DraftLocalLegend_result.value === '湖辺のニニアン'                                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">湖辺のニニアン<span>南/水無効</span>                                   </div></div>';
+    if (DraftLocalLegend_result.value === '湖辺のヴィヴィアン'                            ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">湖辺のヴィヴィアン<span>北/水無効</span>                               </div></div>';
+    if (DraftLocalLegend_result.value === 'イゾルト'                                      ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">イゾルト                                                               </div></div>';
+    if (DraftLocalLegend_result.value === '自律スーパー・コンピューティング型力場生成装置') return '<li><div><div class="savedata"></div><div class="color_Fontaine ">自律スーパー・コンピューティング型力場生成装置<span>破砕攻撃推奨</span></div></div>';
+    if (DraftLocalLegend_result.value === 'ロッキー・アヴィルドセン'                      ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">ロッキー・アヴィルドセン                                               </div></div>';
+    if (DraftLocalLegend_result.value === 'リアム'                                        ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">リアム                                                                 </div></div>';
+    if (DraftLocalLegend_result.value === 'スネージヴナのディアンナラ'                    ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">スネージヴナのディアンナラ                                             </div></div>';
+    if (DraftLocalLegend_result.value === 'シネアス'                                      ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">シネアス<span>草元素推奨</span>                                        </div></div>';
+    if (DraftLocalLegend_result.value === '鉄皮の子爵'                                    ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">鉄皮の子爵                                                             </div></div>';
+    if (DraftLocalLegend_result.value === 'オーシャン巡回法官'                            ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">オーシャン巡回法官                                                     </div></div>';
+    if (DraftLocalLegend_result.value === '隠者の王・ドアーチュ'                          ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">隠者の王・ドアーチュ                                                   </div></div>';
+    if (DraftLocalLegend_result.value === '「消えゆく老兵」'                              ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">「消えゆく老兵」                                                       </div></div>';
+    if (DraftLocalLegend_result.value === '双生妖精の騎士・アンジェリカ＆ミドロ'          ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">双生妖精の騎士・アンジェリカ＆ミドロ                                   </div></div>';
+    if (DraftLocalLegend_result.value === '深谷の剣・コルタナ＆モーグレイ'                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">深谷の剣・コルタナ＆モーグレイ                                         </div></div>';
+    if (DraftLocalLegend_result.value === '極彩色のルケア'                                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">極彩色のルケア                                                         </div></div>';
+    if (DraftLocalLegend_result.value === 'シャサニョン'                                  ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">シャサニョン                                                           </div></div>';
+    if (DraftLocalLegend_result.value === '魔剣クルージュ'                                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">魔剣クルージュ                                                         </div></div>';
+    if (DraftLocalLegend_result.value === '波のジャプー'                                  ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">波のジャプー<span>炎元素推奨</span>                                    </div></div>';
+    if (DraftLocalLegend_result.value === 'コシーホ'                                      ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">コシーホ<span>炎氷草元素推奨</span>                                    </div></div>';
+    if (DraftLocalLegend_result.value === 'バラチコ'                                      ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">バラチコ<span>水元素推奨</span>                                        </div></div>';
+    if (DraftLocalLegend_result.value === '異色三連星'                                    ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">異色三連星<span>炎水氷元素推奨</span>                                  </div></div>';
+    if (DraftLocalLegend_result.value === 'リライ'                                        ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">リライ                                                                 </div></div>';
+    if (DraftLocalLegend_result.value === '銅の錠'                                        ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">銅の錠<span>元素耐性あり</span>                                        </div></div>';
+    if (DraftLocalLegend_result.value === 'ピーク'                                        ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">ピーク<span>雷元素推奨</span>                                          </div></div>';
+    if (DraftLocalLegend_result.value === '「戦羊」と「鉄爪」'                            ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">「戦羊」と「鉄爪」                                                     </div></div>';
+    if (DraftLocalLegend_result.value === '「微末」'                                      ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">「微末」<span>破砕攻撃・炎元素推奨</span>                              </div></div>';
+  }).filter(DraftLocalLegend_result => DraftLocalLegend_result !== undefined);
 
-		//■■■戦う順番を表示して■■■
-		  document.getElementById('DraftLocalLegend_result').innerHTML = DraftLocalLegend_ccccc.join('');
-		//■■■マスクする■■■
-		  DraftLocalLegend_maskbbbbb();
-		}
+  //■■■Fisher-Yatesアルゴリズムを用いた、地方伝説と戦う順番のシャッフル■■■
+  const DraftLocalLegend_ccccc = DraftLocalLegend_aaaaa.slice();
+  for (let DraftLocalLegend_ddddd = DraftLocalLegend_ccccc.length - 1; DraftLocalLegend_ddddd > 0; DraftLocalLegend_ddddd--) {
+    const DraftLocalLegend_eeeee = Math.floor(Math.random() * (DraftLocalLegend_ddddd + 1));
+    [DraftLocalLegend_ccccc[DraftLocalLegend_ddddd], DraftLocalLegend_ccccc[DraftLocalLegend_eeeee]] = [DraftLocalLegend_ccccc[DraftLocalLegend_eeeee], DraftLocalLegend_ccccc[DraftLocalLegend_ddddd]];
+  }
+
+  //■■■戦う順番を表示して■■■
+  document.getElementById('DraftLocalLegend_result').innerHTML = DraftLocalLegend_ccccc.join('');
+  //■■■マスクする■■■
+  DraftLocalLegend_maskbbbbb();
+}
+
+//■■■モジュールのグローバル公開■■■
+window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 	</script>
 
 	<table border="1">
 		<tr><th colspan="5" style="text-align:center;font-size:1.5rem;padding:0.5rem;background:#444;color:#fff;">未使用キャラクターリスト(すべて五十音順)<tr><th colspan="2">アタッカー<th colspan="2">ヒーラー<th rowspan="2">キャラ一覧<tr><th>一級アタッカー<br>(魔偶剣鬼15s以内※)<th>二級アタッカー<br>(魔偶剣鬼25s以内※)<th>メインヒーラー<th>金珀ヒーラー
 		<tr class="color_Mondstadt">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character30 " value="0"><span>&#39752;<span>未計測</span></span></label><!--C /     s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character62 " value="0"><span>放浪者<span>C6</span>                 </span></label><!--C6/14.53s-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="30" ><span>&#39752;<span>未計測</span>           </span></label><!--C /     s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="62" ><span>放浪者<span>C6</span>                 </span></label><!--C6/14.53s-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character99 " value="0"><span>イファ<span>C6</span>                 </span></label><!--C6/17.01s-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="99" ><span>イファ<span>C6</span>                 </span></label><!--C6/17.01s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character80 " value="0"><span>閑雲                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character37 " value="0"><span>早柚                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character17 " value="0"><span>ジン                                  </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="80" ><span>閑雲                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="37" ><span>早柚                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="17" ><span>ジン                                  </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character99 " value="0"><span>イファ                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character80 " value="0"><span>閑雲                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character16 " value="0"><span>スクロース                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character62 " value="0"><span>放浪者                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character96 " value="0"><span>夢見月瑞希                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character95 " value="0"><span>藍硯                                  </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="99" ><span>イファ                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="80" ><span>閑雲                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="16" ><span>スクロース                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="62" ><span>放浪者                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="96" ><span>夢見月瑞希                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="95" ><span>藍硯                                  </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character99 " value="0"><span>イファ                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character22 " value="0"><span>ウェンティ                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character35 " value="0"><span>楓原万葉                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character80 " value="0"><span>閑雲                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character37 " value="0"><span>早柚                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character52 " value="0"><span>鹿野院平蔵                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character30 " value="0"><span>&#39752;                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character17 " value="0"><span>ジン                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character16 " value="0"><span>スクロース                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character92 " value="0"><span>チャスカ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character61 " value="0"><span>ファルザン                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character62 " value="0"><span>放浪者                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character96 " value="0"><span>夢見月瑞希                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character95 " value="0"><span>藍硯                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character70 " value="0"><span>リネット                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character1  " value="0"><span>空                                    </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character2  " value="0"><span>蛍                                    </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="99" ><span>イファ                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="22" ><span>ウェンティ                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="35" ><span>楓原万葉                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="80" ><span>閑雲                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="37" ><span>早柚                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="52" ><span>鹿野院平蔵                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="30" ><span>&#39752;                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="17" ><span>ジン                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="16" ><span>スクロース                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="92" ><span>チャスカ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="61" ><span>ファルザン                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="62" ><span>放浪者                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="96" ><span>夢見月瑞希                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="95" ><span>藍硯                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="70" ><span>リネット                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="1"  ><span>空                                    </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="2"  ><span>蛍                                    </span></label>
 		<tr class="color_Liyue">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character90 " value="0"><span>シロネン<span>C6</span>               </span></label><!--C6/12.00s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character81 " value="0"><span>千織<span>C6</span>                   </span></label><!--C /     s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character77 " value="0"><span>ナヴィア<span>C6</span>               </span></label><!--C6/14.56s-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="90" ><span>シロネン<span>C6</span>               </span></label><!--C6/12.00s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="81" ><span>千織<span>C6</span>                   </span></label><!--C /     s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="77" ><span>ナヴィア<span>C6</span>               </span></label><!--C6/14.56s-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character14 " value="0"><span>ノエル<span>C6</span>                 </span></label><!--C6/23.68s-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="14" ><span>ノエル<span>C6</span>                 </span></label><!--C6/23.68s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character90 " value="0"><span>シロネン<span>C6/要4元素2人以上</span></span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character14 " value="0"><span>ノエル                                </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="90" ><span>シロネン<span>C6/要4元素2人以上</span></span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="14" ><span>ノエル                                </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character11 " value="0"><span>凝光                                  </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="11" ><span>凝光                                  </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character45 " value="0"><span>荒瀧一斗                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character28 " value="0"><span>アルベド                              </span></label><!--C0/35.76s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character46 " value="0"><span>雲菫                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character87 " value="0"><span>カチーナ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character11 " value="0"><span>凝光                                  </span></label><!--C6/31.00s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character44 " value="0"><span>ゴロー                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character27 " value="0"><span>鍾離                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character90 " value="0"><span>シロネン                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character81 " value="0"><span>千織                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character77 " value="0"><span>ナヴィア                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character14 " value="0"><span>ノエル                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character1  " value="0"><span>空                                    </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character2  " value="0"><span>蛍                                    </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="45" ><span>荒瀧一斗                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="28" ><span>アルベド                              </span></label><!--C0/35.76s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="46" ><span>雲菫                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="87" ><span>カチーナ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="11" ><span>凝光                                  </span></label><!--C6/31.00s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="44" ><span>ゴロー                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="27" ><span>鍾離                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="90" ><span>シロネン                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="81" ><span>千織                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="77" ><span>ナヴィア                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="14" ><span>ノエル                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="1"  ><span>空                                    </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="2"  ><span>蛍                                    </span></label>
 		<tr class="color_Inazuma">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character98 " value="0"><span>ヴァレサ<span>C6</span>               </span></label><!--C6/ 9.86s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character84 " value="0"><span>クロリンデ<span>C6</span>             </span></label><!--C6/15.00s-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="98" ><span>ヴァレサ<span>C6</span>               </span></label><!--C6/ 9.86s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="84" ><span>クロリンデ<span>C6</span>             </span></label><!--C6/15.00s-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character57 " value="0"><span>セノ<span>C2</span>                   </span></label><!--C2/17.21s-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="57" ><span>セノ<span>C2</span>                   </span></label><!--C2/17.21s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character51 " value="0"><span>九岐忍                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character55 " value="0"><span>ドリー                                </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="51" ><span>九岐忍                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="55" ><span>ドリー                                </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character98 " value="0"><span>ヴァレサ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character48 " value="0"><span>八重神子                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character5  " value="0"><span>リサ                                  </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="98" ><span>ヴァレサ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="48" ><span>八重神子                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="5"  ><span>リサ                                  </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character97 " value="0"><span>イアンサ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character98 " value="0"><span>ヴァレサ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character91 " value="0"><span>オロルン                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character51 " value="0"><span>九岐忍                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character40 " value="0"><span>九条裟羅                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character84 " value="0"><span>クロリンデ                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character21 " value="0"><span>刻晴                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character83 " value="0"><span>セトス                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character57 " value="0"><span>セノ                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character55 " value="0"><span>ドリー                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character12 " value="0"><span>フィッシュル                          </span></label><!--C /32.46s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character9  " value="0"><span>北斗                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character48 " value="0"><span>八重神子                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character41 " value="0"><span>雷電将軍                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character5  " value="0"><span>リサ                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character7  " value="0"><span>レザー                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character1  " value="0"><span>空                                    </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character2  " value="0"><span>蛍                                    </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="97" ><span>イアンサ                              </span></label>
+			<!--<label class="DraftLocalLegend_status" data-status="0" data-character="103"><span>イネファ                              </span></label>-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="98" ><span>ヴァレサ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="91" ><span>オロルン                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="51" ><span>九岐忍                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="40" ><span>九条裟羅                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="84" ><span>クロリンデ                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="21" ><span>刻晴                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="83" ><span>セトス                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="57" ><span>セノ                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="55" ><span>ドリー                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="12" ><span>フィッシュル                          </span></label><!--C /32.46s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="9"  ><span>北斗                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="48" ><span>八重神子                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="41" ><span>雷電将軍                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="5"  ><span>リサ                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="7"  ><span>レザー                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="1"  ><span>空                                    </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="2"  ><span>蛍                                    </span></label>
 		<tr class="color_Sumeru">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character89 " value="0"><span>キィニチ                              </span></label><!--C0/15.00s-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="89" ><span>キィニチ                              </span></label><!--C0/15.00s-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character64 " value="0"><span>アルハイゼン                          </span></label><!--C0/20.43s-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="64" ><span>アルハイゼン                          </span></label><!--C0/20.43s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character68 " value="0"><span>白朮                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character63 " value="0"><span>ヨォーヨ                              </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="68" ><span>白朮                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="63" ><span>ヨォーヨ                              </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character59 " value="0"><span>ナヒーダ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character68 " value="0"><span>白朮                                  </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="59" ><span>ナヒーダ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="68" ><span>白朮                                  </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character64 " value="0"><span>アルハイゼン                          </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character86 " value="0"><span>エミリエ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character67 " value="0"><span>カーヴェ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character89 " value="0"><span>キィニチ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character69 " value="0"><span>綺良々                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character53 " value="0"><span>コレイ                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character54 " value="0"><span>ティナリ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character59 " value="0"><span>ナヒーダ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character68 " value="0"><span>白朮                                  </span></label><!--C6/42.66s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character63 " value="0"><span>ヨォーヨ                              </span></label><!--C6/45.00s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character1  " value="0"><span>空                                    </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character2  " value="0"><span>蛍                                    </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="64" ><span>アルハイゼン                          </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="86" ><span>エミリエ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="67" ><span>カーヴェ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="89" ><span>キィニチ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="69" ><span>綺良々                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="53" ><span>コレイ                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="54" ><span>ティナリ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="59" ><span>ナヒーダ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="68" ><span>白朮                                  </span></label><!--C6/42.66s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="63" ><span>ヨォーヨ                              </span></label><!--C6/45.00s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="1"  ><span>空                                    </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="2"  ><span>蛍                                    </span></label>
 		<tr class="color_Fontaine">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character73 " value="0"><span>ヌヴィレット<span>未計測</span>       </span></label><!--C /     s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character76 " value="0"><span>フリーナ<span>C6</span>               </span></label><!--C6/11.66s-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="73" ><span>ヌヴィレット<span>未計測</span>       </span></label><!--C /     s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="76" ><span>フリーナ<span>C6</span>               </span></label><!--C6/11.66s-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character49 " value="0"><span>神里綾人                              </span></label><!--C0/22.38s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character42 " value="0"><span>珊瑚宮心海                            </span></label><!--C0/21.13s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character58 " value="0"><span>ニィロウ<span>C6</span>               </span></label><!--C6/15.23s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character73 " value="0"><span>ヌヴィレット                          </span></label><!--C0/16.11s-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="49" ><span>神里綾人                              </span></label><!--C0/22.38s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="42" ><span>珊瑚宮心海                            </span></label><!--C0/21.13s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="58" ><span>ニィロウ<span>C6</span>               </span></label><!--C6/15.23s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="73" ><span>ヌヴィレット                          </span></label><!--C0/16.11s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character42 " value="0"><span>珊瑚宮心海                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character85 " value="0"><span>シグウィン                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character6  " value="0"><span>バーバラ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character76 " value="0"><span>フリーナ                              </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="42" ><span>珊瑚宮心海                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="85" ><span>シグウィン                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="6"  ><span>バーバラ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="76" ><span>フリーナ                              </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character42 " value="0"><span>珊瑚宮心海                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character73 " value="0"><span>ヌヴィレット                          </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character6  " value="0"><span>バーバラ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character88 " value="0"><span>ムアラニ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character20 " value="0"><span>モナ                                  </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="42" ><span>珊瑚宮心海                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="73" ><span>ヌヴィレット                          </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="6"  ><span>バーバラ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="88" ><span>ムアラニ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="20" ><span>モナ                                  </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character50 " value="0"><span>夜蘭                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character49 " value="0"><span>神里綾人                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character56 " value="0"><span>キャンディス                          </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character42 " value="0"><span>珊瑚宮心海                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character85 " value="0"><span>シグウィン                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character101" value="0"><span>ダリア                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character25 " value="0"><span>タルタリヤ                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character58 " value="0"><span>ニィロウ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character73 " value="0"><span>ヌヴィレット                          </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character6  " value="0"><span>バーバラ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character76 " value="0"><span>フリーナ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character88 " value="0"><span>ムアラニ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character20 " value="0"><span>モナ                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character10 " value="0"><span>行秋                                  </span></label><!--C /33.11s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character1  " value="0"><span>空                                    </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character2  " value="0"><span>蛍                                    </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="50" ><span>夜蘭                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="49" ><span>神里綾人                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="56" ><span>キャンディス                          </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="42" ><span>珊瑚宮心海                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="85" ><span>シグウィン                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="101"><span>ダリア                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="25" ><span>タルタリヤ                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="58" ><span>ニィロウ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="73" ><span>ヌヴィレット                          </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="6"  ><span>バーバラ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="76" ><span>フリーナ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="88" ><span>ムアラニ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="20" ><span>モナ                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="10" ><span>行秋                                  </span></label><!--C /33.11s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="1"  ><span>空                                    </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="2"  ><span>蛍                                    </span></label>
 		<tr class="color_Natlan">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character82 " value="0"><span>アルレッキーノ                        </span></label><!--C0/13.46s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character94 " value="0"><span>マーヴィカ<span>未計測</span>         </span></label><!--C /     s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character71 " value="0"><span>リネ<span>C6</span>                   </span></label><!--C6/15.40s 詰めれば上がることが確定してるので一級扱いで-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="82" ><span>アルレッキーノ                        </span></label><!--C0/13.46s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="94" ><span>マーヴィカ<span>未計測</span>         </span></label><!--C /     s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="71" ><span>リネ<span>C6</span>                   </span></label><!--C6/15.40s 詰めれば上がることが確定してるので一級扱いで-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character65 " value="0"><span>ディシア<span>C6</span>               </span></label><!--C6/20.00s-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="65" ><span>ディシア<span>C6</span>               </span></label><!--C6/20.00s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character13 " value="0"><span>ベネット                              </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="13" ><span>ベネット                              </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character33 " value="0"><span>煙緋                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character23 " value="0"><span>クレー                                </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="33" ><span>煙緋                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="23" ><span>クレー                                </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character82 " value="0"><span>アルレッキーノ                        </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character3  " value="0"><span>アンバー                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character33 " value="0"><span>煙緋                                  </span></label><!--C6/25.58s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character79 " value="0"><span>嘉明                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character23 " value="0"><span>クレー                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character8  " value="0"><span>香菱                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character78 " value="0"><span>シュヴルーズ                          </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character26 " value="0"><span>辛炎                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character65 " value="0"><span>ディシア                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character18 " value="0"><span>ディルック                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character43 " value="0"><span>トーマ                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character31 " value="0"><span>胡桃                                  </span></label><!--C0/29.83s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character13 " value="0"><span>ベネット                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character94 " value="0"><span>マーヴィカ                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character38 " value="0"><span>宵宮                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character71 " value="0"><span>リネ                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character1  " value="0"><span>空                                    </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character2  " value="0"><span>蛍                                    </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="82" ><span>アルレッキーノ                        </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="3 " ><span>アンバー                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="33" ><span>煙緋                                  </span></label><!--C6/25.58s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="79" ><span>嘉明                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="23" ><span>クレー                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="8 " ><span>香菱                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="78" ><span>シュヴルーズ                          </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="26" ><span>辛炎                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="65" ><span>ディシア                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="18" ><span>ディルック                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="43" ><span>トーマ                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="31" ><span>胡桃                                  </span></label><!--C0/29.83s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="13" ><span>ベネット                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="94" ><span>マーヴィカ                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="38" ><span>宵宮                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="71" ><span>リネ                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="1"  ><span>空                                    </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="2"  ><span>蛍                                    </span></label>
 		<tr class="color_Snezhnaya">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character34 " value="0"><span>エウルア<span>C6</span>               </span></label><!--C6/12.00s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character74 " value="0"><span>リオセスリ<span>C6</span>             </span></label><!--C6/11.81s-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="34" ><span>エウルア<span>C6</span>               </span></label><!--C6/12.00s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="74" ><span>リオセスリ<span>C6</span>             </span></label><!--C6/11.81s-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character100" value="0"><span>エスコフィエ<span>C6</span>           </span></label><!--C6/16.00s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character29 " value="0"><span>甘雨                                  </span></label><!--C6/16.00s C0/20.56s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character102" value="0"><span>スカーク<span>C6</span>               </span></label><!--C6/13.00s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character72 " value="0"><span>フレミネ<span>C6</span>               </span></label><!--C6/24.30s-->
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="100"><span>エスコフィエ<span>C6</span>           </span></label><!--C6/16.00s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="29" ><span>甘雨                                  </span></label><!--C6/16.00s C0/20.56s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="102"><span>スカーク<span>C6</span>               </span></label><!--C6/13.00s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="72" ><span>フレミネ<span>C6</span>               </span></label><!--C6/24.30s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character100" value="0"><span>エスコフィエ                          </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character75 " value="0"><span>シャルロット                          </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character24 " value="0"><span>ディオナ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character19 " value="0"><span>七七                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character66 " value="0"><span>ミカ                                  </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="100"><span>エスコフィエ                          </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="75" ><span>シャルロット                          </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="24" ><span>ディオナ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="19" ><span>七七                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="66" ><span>ミカ                                  </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character93 " value="0"><span>シトラリ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character75 " value="0"><span>シャルロット                          </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character74 " value="0"><span>リオセスリ                            </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="93" ><span>シトラリ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="75" ><span>シャルロット                          </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="74" ><span>リオセスリ                            </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character39 " value="0"><span>アーロイ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character34 " value="0"><span>エウルア                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character100" value="0"><span>エスコフィエ                          </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character4  " value="0"><span>ガイア                                </span></label><!--C /34.41s-->
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character36 " value="0"><span>神里綾華                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character29 " value="0"><span>甘雨                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character93 " value="0"><span>シトラリ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character75 " value="0"><span>シャルロット                          </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character47 " value="0"><span>申鶴                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character102" value="0"><span>スカーク                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character24 " value="0"><span>ディオナ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character15 " value="0"><span>重雲                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character19 " value="0"><span>七七                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character72 " value="0"><span>フレミネ                              </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character66 " value="0"><span>ミカ                                  </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character74 " value="0"><span>リオセスリ                            </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character60 " value="0"><span>レイラ                                </span></label>
-			    <label class="DraftLocalLegend_status status0" data-status="0"><input type="hidden" class="character32 " value="0"><span>ロサリア                              </span></label>
+			<td><label class="DraftLocalLegend_status" data-status="0" data-character="39" ><span>アーロイ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="34" ><span>エウルア                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="100"><span>エスコフィエ                          </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="4"  ><span>ガイア                                </span></label><!--C /34.41s-->
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="36" ><span>神里綾華                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="29" ><span>甘雨                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="93" ><span>シトラリ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="75" ><span>シャルロット                          </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="47" ><span>申鶴                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="102"><span>スカーク                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="24" ><span>ディオナ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="15" ><span>重雲                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="19" ><span>七七                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="72" ><span>フレミネ                              </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="66" ><span>ミカ                                  </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="74" ><span>リオセスリ                            </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="60" ><span>レイラ                                </span></label>
+			    <label class="DraftLocalLegend_status" data-status="0" data-character="32" ><span>ロサリア                              </span></label>
 		<tr style="text-align:center;">
 			<td colspan="5">
 			    <label><input type="button" onclick="DraftLocalLegend_resetStatus()"><span>使用済(生存)キャラの復活</span></label>
@@ -2250,114 +2277,95 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 
 	<div style="background:#eee;border:1px #888 solid;margin:1rem 0;padding:1rem;">
 		<div style="display:flex;">
-			<input type="button" value="セーブデータをインポート" onclick="DraftLocalLegend_hhhhhh()" style="padding:1rem;margin:1rem;width:20rem;">
-			<input type="text" id="DraftLocalLegend_gggggg" style="width:calc(100% - 20rem);height:auto;margin:1rem;">
+			<button onclick="DraftLocalLegend_importStatus()" style="padding:1rem;margin:1rem;width:20rem;">セーブデータをインポート</button>
+			<input type="text" id="DraftLocalLegend_importText" style="width:calc(100% - 20rem);height:auto;margin:1rem;" autocomplete="off">
 		</div>
 		<div style="display:flex;">
-			<input type="button" value="セーブデータをエクスポート" onclick="DraftLocalLegend_eeeeee()" style="padding:1rem;margin:1rem;width:20rem;">
-			<input type="text" id="DraftLocalLegend_ffffff" readonly style="width:calc(100% - 20rem);height:auto;margin:1rem;"><br>
+			<button onclick="DraftLocalLegend_exportStatus()" style="padding:1rem;margin:1rem;width:20rem;">セーブデータをエクスポート</button>
+			<input type="text" id="DraftLocalLegend_exportText" style="width:calc(100% - 20rem);height:auto;margin:1rem;" autocomplete="off" readonly>
 		</div>
 	</div>
 
 	<div style="border:1px solid #aaa;background:#eee;padding:0.5rem;margin:1rem auto;">※WR9/ソロプレイの条件で、魔偶剣鬼に接近してHPバーが表示された瞬間から、魔偶剣鬼のHPが残り70%になるまでにかかった時間(実測値)。レベルや武器、聖遺物については指定なし。<br>なお、魔偶剣鬼はHP残り71%になると元素爆発/Dual Sword Burstを行うが、元素爆発/Dual Sword Burst中でもHP残り70%までは削り続けることができる。計測の際には注意されたし<br>参考までに、Lv103の魔偶剣鬼の場合はHPを236,490削る必要がある。</div>
 	<hr style="margin:5rem auto;">
 
-	<script language="JavaScript">
-		  //■■■input buttonをクリックする度に、data-statusを0→1→2に変更する■■■
-		  document.querySelectorAll('.DraftLocalLegend_status').forEach(label => {
-		    label.addEventListener('click', () => {
-		      let current = parseInt(label.dataset.status, 10);
-		      let next = (current + 1) % 3;
-		      label.dataset.status = next;
-		      label.classList.remove('status0', 'status1', 'status2');
-		      label.classList.add(`status${next}`);
+	<script type="module">
+		//■■■キャラクター名をクリックする度に、data-statusを0→1→2に更新する■■■
+		//■■■同じキャラクター名が複数存在する場合は、それらすべてのdata-status値が更新されるようにする■■■
+		document.querySelectorAll('label').forEach(label => {
+		  label.addEventListener('click', () => {
+		    const character = label.dataset.character;
 
-		      const input = label.querySelector('input[type="hidden"]');
-		      if (input) {
-		        input.value = next;
+		    // 同じcharacter番号のlabelをすべて取得
+		    const sameGroup = document.querySelectorAll(`label[data-character="${character}"]`);
 
-		        // 同じ characterX クラスを持つ input にすべて反映
-		        const className = Array.from(input.classList).find(cls => /^character\d+$/.test(cls));
-		        if (className) {
-		          document.querySelectorAll(`input.${className}`).forEach(el => {
-		            el.value = next;
-		            const lbl = el.closest('label');
-		            if (lbl) {
-		              lbl.dataset.status = next;
-		              lbl.classList.remove('status0', 'status1', 'status2');
-		              lbl.classList.add(`status${next}`);
-		            }
-		          });
-		        }
-		      }
+		    sameGroup.forEach(item => {
+		      let status = parseInt(item.dataset.status, 10);
+		      item.dataset.status = (status + 1) % 3; // 0→1→2→0 の繰り返し
 		    });
 		  });
-
-		  //■■■data-status=1を0に一括変更する■■■
+		});
+	</script>
+	<script type="module">
+		//■■■data-status=1を0に一括変更する■■■
 		function DraftLocalLegend_resetStatus() {
-		  //▼キャラ復活の際の確認ウィンドウ表示
-		  const confirmed = confirm("使用済(生存)キャラを復活させますか？");
-		  if (!confirmed) return; // 「いいえ」が選ばれた場合は処理しない
+		  if (!confirm("使用済(生存)キャラを復活させますか？")) return;
+
 		  document.querySelectorAll('label[data-status="1"]').forEach(label => {
 		    label.setAttribute('data-status', '0');
-		    label.classList.remove('status1');
-		    label.classList.add('status0');
 		  });
 		}
 
-		  // ■■■セーブデータのインプット■■■
-		  // 状態を反映
-		  function DraftLocalLegend_hhhhhh() {
-		    const inputText = document.getElementById('DraftLocalLegend_gggggg').value.trim();
-		    if (!inputText.match(/^[012]{1,}$/)) return;
+		//■■■モジュールのグローバル公開■■■
+		window.DraftLocalLegend_resetStatus = DraftLocalLegend_resetStatus;
+	</script>
+	<script type="module">
+		// ■■■セーブデータのインポート■■■
+		function DraftLocalLegend_importStatus() {
+		  const input = document.getElementById('DraftLocalLegend_importText').value.trim();
+		  const chars = input.split('');
 
-		    const classNames = Array.from(new Set(
-		      Array.from(document.querySelectorAll('input[type="hidden"]'))
-		        .map(el => Array.from(el.classList).find(cls => /^character\d+$/.test(cls)))
-		        .filter(cls => cls != null)
-		    )).sort((a, b) => parseInt(a.replace('character', '')) - parseInt(b.replace('character', '')));
-
-		    classNames.forEach((cls, index) => {
-		      const val = parseInt(inputText[index], 10);
-		      const state = isNaN(val) || val < 0 || val > 2 ? 0 : val;
-
-		      document.querySelectorAll(`input.${cls}`).forEach(input => {
-		        input.value = state;
-		        const label = input.closest('label');
-		        if (label) {
-		          label.dataset.status = state;
-		          label.classList.remove('status0', 'status1', 'status2');
-		          label.classList.add(`status${state}`);
-		        }
-		      });
-		    });
-		  }
-
-		  // ■■■セーブデータのアウトプット■■■
-		  function DraftLocalLegend_eeeeee() {
-		    const map = new Map();
-
-		    document.querySelectorAll('input[type="hidden"]').forEach(input => {
-		      const cls = Array.from(input.classList).find(c => /^character\d+$/.test(c));
-		      if (cls && !map.has(cls)) {
-		        map.set(cls, input.value);
+		  const labels = document.querySelectorAll('label[data-character]');
+		  chars.forEach((statusValue, index) => {
+		    const targetCharacter = (index + 1).toString();
+		    labels.forEach(label => {
+		      if (label.dataset.character === targetCharacter) {
+		        label.setAttribute('data-status', statusValue);
 		      }
 		    });
+		  });
+		}
 
-		    const result = Array.from(map.entries())
-		      .sort(([a], [b]) => parseInt(a.replace('character', '')) - parseInt(b.replace('character', '')))
-		      .map(([, val]) => val)
-		      .join('');
+		// ■■■セーブデータのエクスポート■■■
+		function DraftLocalLegend_exportStatus() {
+		  const labels = [...document.querySelectorAll('label[data-character]')];
 
-		    const textarea = document.getElementById('DraftLocalLegend_ffffff');
-		    textarea.value = result;
+		  // character番号でグループ化（重複排除）
+		  const map = new Map();
+		  labels.forEach(label => {
+		    const char = label.dataset.character;
+		    const status = label.dataset.status;
+		    if (!map.has(char)) map.set(char, status);
+		  });
 
-		    // 5秒後に内容を上書き
-		    setTimeout(() => {
-		      textarea.value = '出力から10秒間経過したため、出力内容を消去しました';
-		    }, 10000);
-		  }
+		  // character順に並べて文字列を生成
+		  const result = [...map.entries()]
+		    .sort((a, b) => Number(a[0]) - Number(b[0]))
+		    .map(([_, status]) => status)
+		    .join('');
 
+		  const output = document.getElementById('DraftLocalLegend_exportText');
+		  output.value = result;
+
+		  // 10秒後に内容を消去・上書き
+		  setTimeout(() => {
+		    output.value = '出力から10秒間経過したため、出力内容を消去しました';
+		  }, 10000); // 10000ミリ秒 = 10秒
+		}
+
+		//■■■モジュールのグローバル公開■■■
+		window.DraftLocalLegend_importStatus = DraftLocalLegend_importStatus;
+		window.DraftLocalLegend_exportStatus = DraftLocalLegend_exportStatus;
 	</script>
 
 	<div style="background:#444;color:#fff;padding:0.5rem;font-size:1.5rem;font-weight:bold;text-align:center;">オプション</div>
@@ -2365,146 +2373,375 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 		<div>
 			<div style="margin:1rem;text-align:center;">キャラクター重複回避用抽選機<br>キャラクターが重複したプレイヤーは、以下の指示に従ってください</div>
 			<div style="display:flex;">
-				<input type="button" value="抽選" onclick="DraftLocalLegend_characterchange();" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
-				<div id="result" style="margin-right:0.5rem;"></div>
+				<input type="button" value="抽選" onclick="DraftLocalLegend_CharacterChange();" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
+				<div id="DraftLocalLegend_CharacterChangeResult" style="margin-right:0.5rem;"></div>
 			</div>
+			<script type="module">
+				//■■■キャラクター重複回避用抽選機■■■
+				function DraftLocalLegend_CharacterChange() {
+				  const players = [1, 2, 3, 4];
+
+				  // Fisher-Yatesシャッフル（簡潔に）
+				  for (let i = players.length - 1; i > 0; i--) {
+				    const j = Math.floor(Math.random() * (i + 1));
+				    [players[i], players[j]] = [players[j], players[i]];
+				  }
+
+				  const selected = players.slice(0, 3);
+
+				  const labels = ['第一操作', '第二操作', '第三操作']
+				    .map((label, idx) => `<p>【${label}】${selected[idx]}Pがキャラクターを変更してください</p>`)
+				    .join('');
+
+				  document.getElementById("DraftLocalLegend_CharacterChangeResult").innerHTML = labels;
+				}
+
+				//■■■モジュールのグローバル公開■■■
+				window.DraftLocalLegend_CharacterChange = DraftLocalLegend_CharacterChange;
+			</script>
 		</div>
 		<div>
 			<div style="margin:1rem;text-align:center;">完凸コスト抽選機<br>星5限定完凸キャラクターを使用する際は、以下の指示に従ってください</div>
 			<div style="display:flex;">
-				<input type="button" value="抽選" onclick="DraftLocalLegend_charactercost_aaaaa();" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
-				<div id="DraftLocalLegend_cost" style="white-space:pre-wrap;margin-right:0.5rem;"></div>
+				<input type="button" value="抽選" onclick="DraftLocalLegend_CharacterCost();" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
+				<div id="DraftLocalLegend_CharacterCostResult" style="white-space:pre-wrap;margin-right:0.5rem;"></div>
 			</div>
+			<script type="module">
+				//■■■完凸コスト抽選機■■■
+				function DraftLocalLegend_CharacterCost() {
+				  const allLabels = Array.from(document.querySelectorAll('label[data-status]'));
+				  const labels = allLabels.filter(label => {
+				    const status = label.dataset.status;
+				    return status === "0" || status === "1" || status === "2";
+				  });
+
+				  const characterMap = new Map();
+				  labels.forEach(label => {
+				    const character = label.dataset.character;
+				    if (!characterMap.has(character)) {
+				      characterMap.set(character, label);
+				    }
+				  });
+
+				  const uniqueLabels = Array.from(characterMap.values());
+
+				  for (let i = uniqueLabels.length - 1; i > 0; i--) {
+				    const j = Math.floor(Math.random() * (i + 1));
+				    [uniqueLabels[i], uniqueLabels[j]] = [uniqueLabels[j], uniqueLabels[i]];
+				  }
+
+				  const selected = uniqueLabels.slice(0, 3);
+
+				  const resultHtml = selected.map(label => {
+				    const name = label.querySelector('span').firstChild.textContent.trim();
+				    return `<p>${name}が未使用であれば使用済(生存)にしてください</p>`;
+				  }).join('');
+
+				  document.getElementById('DraftLocalLegend_CharacterCostResult').innerHTML = resultHtml;
+				}
+
+				//■■■モジュールのグローバル公開■■■
+				window.DraftLocalLegend_CharacterCost = DraftLocalLegend_CharacterCost;
+			</script>
 		</div>
 	</div>
+	<div class="DraftLocalLegend_lottery">
+		<div>
+			<div style="margin:1rem;text-align:center;">エンドレスモード向けキャラクター復活抽選機<br>※復活処理は自動で行われます</div>
+			<div style="margin:1rem;text-align:center;">復活コスト：<input type="number" id="DraftLocalLegend_CharacterRechargeCost" style="width:40px;"value="6"></div>
+			<div style="display:flex;">
+				<input type="button" value="抽選" onclick="DraftLocalLegend_CharacterRecharge();" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
+				<div id="DraftLocalLegend_CharacterRechargeResult" style="white-space:pre-wrap;margin:0 0.5rem 0.5rem 0;"></div>
+			</div>
+			<script type="module">
+				function DraftLocalLegend_CharacterRecharge() {
+				  const confirmed = confirm("エンドレスモード向け：キャラクターを復活させてよいですか？");
+				  if (!confirmed) return;
 
+				  const cost = parseInt(document.getElementById("DraftLocalLegend_CharacterRechargeCost").value, 10);
+				  if (isNaN(cost) || cost <= 0) return;
 
-	<script language="JavaScript">
-		function DraftLocalLegend_characterchange() {
-		  const DraftLocalLegend_characterchange_aaaaa = [1, 2, 3, 4];
-		  for (let DraftLocalLegend_characterchange_bbbbb = DraftLocalLegend_characterchange_aaaaa.length - 1; DraftLocalLegend_characterchange_bbbbb > 0; DraftLocalLegend_characterchange_bbbbb--) {
-		    const DraftLocalLegend_characterchange_ccccc = Math.floor(Math.random() * (DraftLocalLegend_characterchange_bbbbb + 1));
-		    [DraftLocalLegend_characterchange_aaaaa[DraftLocalLegend_characterchange_bbbbb], DraftLocalLegend_characterchange_aaaaa[DraftLocalLegend_characterchange_ccccc]] = [DraftLocalLegend_characterchange_aaaaa[DraftLocalLegend_characterchange_ccccc], DraftLocalLegend_characterchange_aaaaa[DraftLocalLegend_characterchange_bbbbb]];
-		  }
+				  const allLabels = Array.from(document.querySelectorAll('label[data-status]'));
 
-		  const DraftLocalLegend_characterchange_ddddd = DraftLocalLegend_characterchange_aaaaa.slice(0, 3);
+				  // data-characterごとに1代表のみ保持（重複排除）
+				  const characterMap = new Map();
+				  allLabels.forEach(label => {
+				    const charId = label.dataset.character;
+				    if (!characterMap.has(charId)) {
+				      characterMap.set(charId, label);
+				    }
+				  });
 
-		  const DraftLocalLegend_characterchange_eeeee =
-		    `<p>【第一操作】${DraftLocalLegend_characterchange_ddddd[0]}Pがキャラクターを変更してください</p>` +
-		    `<p>【第二操作】${DraftLocalLegend_characterchange_ddddd[1]}Pがキャラクターを変更してください</p>` +
-		    `<p>【第三操作】${DraftLocalLegend_characterchange_ddddd[2]}Pがキャラクターを変更してください</p>`;
+				  // エントリを作成
+				  const characterEntries = Array.from(characterMap.entries()).map(([charId, label]) => ({
+				    charId,
+				    label,
+				    status: parseInt(label.dataset.status, 10)
+				  }));
 
-		  document.getElementById("result").innerHTML = DraftLocalLegend_characterchange_eeeee;
-		}
-	</script>
+				  let remainingCost = cost;
+				  const logs = [];
 
-	<script language="JavaScript">
-		  // シャッフル関数（重複除去済みリストから使用）
-		  function DraftLocalLegend_charactercost_ddddd(arr, count) {
-		    const shuffled = arr.slice();
-		    for (let i = shuffled.length - 1; i > 0; i--) {
-		      const j = Math.floor(Math.random() * (i + 1));
-		      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-		    }
-		    return shuffled.slice(0, count);
-		  }
+				  while (remainingCost > 0) {
+				    // 抽選対象：statusが1か2のキャラすべて（順番関係なし）
+				    const reducible = characterEntries.filter(entry => entry.status > 0);
+				    if (reducible.length === 0) break;
 
-		  // 抽選処理（data-statusを無視し、characterクラスで重複排除、抽選2件）
-		  function DraftLocalLegend_charactercost_aaaaa() {
-		    const candidates = Array.from(document.querySelectorAll('.DraftLocalLegend_status'));
+				    // ランダム抽選（statusに関係なく平等）
+				    const index = Math.floor(Math.random() * reducible.length);
+				    const entry = reducible[index];
 
-		    // characterクラスで重複排除
-		    const usedClasses = new Set();
-		    const uniqueCandidates = [];
+				    const oldStatus = entry.status;
+				    const newStatus = oldStatus - 1;
 
-		    candidates.forEach(label => {
-		      const input = label.querySelector('input[type="hidden"]');
-		      if (!input) return;
+				    // 更新
+				    entry.status = newStatus;
 
-		      const characterClass = Array.from(input.classList).find(c => /^character\d+$/.test(c));
-		      if (!characterClass) return;
+				    const allSameChar = document.querySelectorAll(`label[data-character="${entry.charId}"]`);
+				    allSameChar.forEach(label => {
+				      label.dataset.status = newStatus;
+				    });
 
-		      if (!usedClasses.has(characterClass)) {
-		        usedClasses.add(characterClass);
-		        uniqueCandidates.push(label);
-		      }
-		    });
+				    const name = entry.label.querySelector('span').firstChild.textContent.trim();
+				    let log = '';
 
-		    const selected = DraftLocalLegend_charactercost_ddddd(uniqueCandidates, 2);
-		    const results = selected.map((label) => {
-		      const span = label.querySelector('span');
-		      let name = '不明';
-		      if (span && span.firstChild && span.firstChild.nodeType === Node.TEXT_NODE) {
-		        name = span.firstChild.textContent.trim();
-		      }
-		      return DraftLocalLegend_charactercost_ccccc(name);
-		    });
+				    if (oldStatus === 2 && newStatus === 1) {
+				      log = `${name}を使用済(戦闘不能)から使用済(生存)に戻しました`;
+				    } else if (oldStatus === 1 && newStatus === 0) {
+				      log = `${name}を使用済(生存)から未使用に戻しました`;
+				    }
 
-		    document.getElementById('DraftLocalLegend_cost').innerHTML = results.join('');
-		  }
+				    if (log) logs.push(log);
+				    remainingCost--;
+				  }
 
-		  // 表示文言生成（操作番号は削除）
-		  function DraftLocalLegend_charactercost_ccccc(name) {
-		    return `<p>${name}が未使用であれば使用済(生存)にしてください</p>`;
-		  }
-	</script>
+				  document.getElementById("DraftLocalLegend_CharacterRechargeResult").textContent = logs.join('\n');
+				}
 
+				//■■■モジュールのグローバル公開■■■
+				window.DraftLocalLegend_CharacterRechargeCost = DraftLocalLegend_CharacterRechargeCost;
+				window.DraftLocalLegend_CharacterRecharge = DraftLocalLegend_CharacterRecharge;
+			</script>
+		</div>
+		<div>
+			<div style="margin:1rem;text-align:center;">エンドレスモード向けセーブデータ自動生成機</div>
+			<div style="text-align:center;">
+				0の比率：<input type="number" id="DraftLocalLegend_SaveDataCreateZero" value="6"><br>
+				1の比率：<input type="number" id="DraftLocalLegend_SaveDataCreateOne" value="2"><br>
+				2の比率：<input type="number" id="DraftLocalLegend_SaveDataCreateTwo" value="1"><br>
+			</div>
+			<div style="display:flex;">
+				<input type="button" id="DraftLocalLegend_SaveDataCreate" value="作成" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
+				<input type="text" id="DraftLocalLegend_SaveDataCreateResult" readonly style="width:calc(100% - 80px - 3rem);margin:0.75rem 1rem 1rem 0;">
+			</div>
+			<script type="module">
+				document.getElementById("DraftLocalLegend_SaveDataCreate").addEventListener("click", () => {
+				  const count = 120; // 120文字生成　キャラが増えたらここの数字を変更する
+
+				  const weight0 = parseFloat(document.getElementById("DraftLocalLegend_SaveDataCreateZero").value);
+				  const weight1 = parseFloat(document.getElementById("DraftLocalLegend_SaveDataCreateOne").value);
+				  const weight2 = parseFloat(document.getElementById("DraftLocalLegend_SaveDataCreateTwo").value);
+
+				  const totalWeight = weight0 + weight1 + weight2;
+
+				  if (totalWeight === 0) {
+				    alert("0、1、2の比率を1つ以上設定してください");
+				    return;
+				  }
+
+				  // 乱数の重みリスト（0?weight0の間→0、weight0?weight0+weight1の間→1、…）
+				  const result = [];
+				  for (let i = 0; i < count; i++) {
+				    const rand = Math.random() * totalWeight;
+				    if (rand < weight0) {
+				      result.push("0");
+				    } else if (rand < weight0 + weight1) {
+				      result.push("1");
+				    } else {
+				      result.push("2");
+				    }
+				  }
+
+				  document.getElementById("DraftLocalLegend_SaveDataCreateResult").value = result.join("");
+				});
+
+				//■■■モジュールのグローバル公開■■■
+				window.DraftLocalLegend_SaveDataCreateZero = DraftLocalLegend_SaveDataCreateZero;
+				window.DraftLocalLegend_SaveDataCreateOne = DraftLocalLegend_SaveDataCreateOne;
+				window.DraftLocalLegend_SaveDataCreateTwo = DraftLocalLegend_SaveDataCreateTwo;
+				window.DraftLocalLegend_SaveDataCreate = DraftLocalLegend_SaveDataCreate;
+			</script>
+		</div>
+
+	</div>
 </div>
 
 <hr style="margin-top:10rem;">
 
 <!--■■■▼テイワット地図無しレース・テイワットばらばら合流ゲーム　全選択・全解除ボタン用プログラム▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
-	<script type="module">
-		document.addEventListener("DOMContentLoaded", () => {
-		  const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+<script type="module">
+	document.addEventListener("DOMContentLoaded", () => {
+	  const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
 
-		  allCheckboxes.forEach(chk => {
-		    chk.addEventListener("change", () => {
-		      const className = chk.className;
-		      const group = document.querySelectorAll(`input[type="checkbox"].${className}`);
+	  allCheckboxes.forEach(chk => {
+	    chk.addEventListener("change", () => {
+	      const className = chk.className;
+	      const group = document.querySelectorAll(`input[type="checkbox"].${className}`);
 
-		      if (chk === group[0]) {
-		        //■■■親→子：全選択/全解除■■■
-		        group.forEach((c, i) => { if (i !== 0) c.checked = chk.checked; });
-		      } else {
-		        //■■■子→親：すべてチェックされているかを判定■■■
-		        const allChecked = [...group].slice(1).every(c => c.checked);
-		        group[0].checked = allChecked;
-		      }
-		    });
-		  });
-		});
-	</script>
+	      if (chk === group[0]) {
+	        //■■■親→子：全選択/全解除■■■
+	        group.forEach((c, i) => { if (i !== 0) c.checked = chk.checked; });
+	      } else {
+	        //■■■子→親：すべてチェックされているかを判定■■■
+	        const allChecked = [...group].slice(1).every(c => c.checked);
+	        group[0].checked = allChecked;
+	      }
+	    });
+	  });
+	});
+</script>
 
-<div style="text-align:center;margin:2rem;">
-	更新履歴
-	<table border="1" style="margin:1rem auto;" class="updatehistory">
-		<tr><td>v1.6.0<td>20250703<td><p>【ドラフト地方伝説】「使用済(生存)キャラの復活」ボタンを追加しました</p>
-		<tr><td>v1.5.1<td>20250622<td><p>【ドラフト地方伝説】未使用キャラクターリストにて、スカークとダリアのIDが逆だったものを修正しました</p>
-		<tr><td>v1.5.0<td>20250618<td><p>【ドラフト地方伝説】未使用キャラクターリストにスカークとダリアを追加しました</p>
-		                              <p>【ドラフト地方伝説】地方伝説のマスク機能解除と同時に、現時点でのセーブデータを出力するようにしました</p>
-		                              <p>その他軽微な変更・修正をしました</p>
-		<tr><td>v1.4.2<td>20250613<td><p>【ドラフト地方伝説】セーブデータのエクスポート欄に書き込みができるようになっていたため修正しました</p>
-		                              <p>【ドラフト地方伝説】未使用キャラクターリストのアタッカー欄について、甘雨と珊瑚宮心海とニィロウの情報を更新しました</p>
-		<tr><td>v1.4.1<td>20250613<td><p>【ドラフト地方伝説】セーブデータを再エクスポートせずに旧データを共有してしまう問題を解決するために、セーブデータをエクスポートしてから10秒後に自動で出力内容を消去するようにしました</p>
-		<tr><td>v1.4.0<td>20250613<td><p>【ドラフト地方伝説】レギュレーションの改変を前提とする形に変更しました。プレイヤーの練度や手持ち育成状況に合わせて、自由にレギュレーションを改変してください</p>
-		                              <p>【ドラフト地方伝説】地方伝説の抽選にマスク機能の実装をしました</p>
-		<tr><td>v1.3.1<td>20250608<td><p>【ドラフト地方伝説】未使用キャラクターリストにて、使用済(死亡)扱いのキャラクターの名前を薄く表示するようにしました</p>
-		<tr><td>v1.3.0<td>20250608<td><p>テイワットばらばら合流ゲームのレギュレーションを一部変更し、ゲームマスターが不在でも平等に遊べるようにしました</p>
-		                              <p>【ドラフト地方伝説】レギュレーションを一部変更し、それに伴い完凸コスト抽選機の仕様を「未使用キャラから3体順番に抽選」ではなく「全キャラから2体を抽選」に変更しました</p>
-		                              <p>【ドラフト地方伝説】未使用キャラクターリストにて、香菱とシュヴルーズの五十音順に誤りがあったため修正しました</p>
-		                              <p>その他軽微な変更・修正をしました</p>
-		<tr><td>v1.2.0<td>20250527<td><p>【ドラフト地方伝説】レギュレーションを一部変更し、それに伴い完凸コスト抽選機を追加しました</p>
-		                              <p>【ドラフト地方伝説】未使用キャラクターリストにて、シトラリが金珀ヒーラー欄に記載されていなかったため追加しました</p>
-		                              <p>更新履歴をページ最下部に表示しました</p>
-		                              <p>その他軽微な変更・修正をしました</p>
-		<tr><td>v1.1.0<td>20250524<td><p>【ドラフト地方伝説】キャラ使用状況をセーブデータとしてインポート・エクスポートできるようにしました</p>
-		                              <p>【ドラフト地方伝説】キャラ使用状況について、「未使用」「使用済(生存)」「使用済(死亡)」の3種類を入力できるようにしました</p>
-		                              <p>その他軽微な変更・修正をしました</p>
-		<tr><td>v1.0.2<td>20250524<td><p>【ドラフト地方伝説】未使用キャラクターリストにて、ディオナと重雲の五十音順に誤りがあったため修正しました</p>
-		<tr><td>v1.0.1<td>20250524<td><p>一部日本語を修正しました</p>
-		<tr><td>v1.0.0<td>20250524<td><p>公開しました</p>
-	</table>
+<!--■■■▼バージョンアップデートに応じて要素を表示するプログラム▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
+<script>
+(function () {
+  const schedule = [
+    { className: 'v58a', start: '2025-07-30T10:00:00+09:00' },
+    { className: 'v58b', start: '2025-08-20T19:00:00+09:00' },
+    { className: 'v60a', start: '2025-09-10T10:00:00+09:00' },
+    { className: 'v60b', start: '2025-10-01T19:00:00+09:00' },
+    { className: 'v61a', start: '2025-10-22T10:00:00+09:00' },
+    { className: 'v61b', start: '2025-11-12T19:00:00+09:00' },
+    { className: 'v62a', start: '2025-12-03T10:00:00+09:00' },
+    { className: 'v62b', start: '2025-12-24T19:00:00+09:00' },
+    { className: 'v63a', start: '2026-01-14T10:00:00+09:00' },
+    { className: 'v63b', start: '2026-02-04T19:00:00+09:00' },
+    { className: 'v64a', start: '2026-02-25T10:00:00+09:00' },
+    { className: 'v64b', start: '2026-03-18T19:00:00+09:00' },
+    { className: 'v65a', start: '2026-04-08T10:00:00+09:00' },
+    { className: 'v65b', start: '2026-04-29T19:00:00+09:00' },
+    { className: 'v66a', start: '2026-05-20T10:00:00+09:00' },
+    { className: 'v66b', start: '2026-06-10T19:00:00+09:00' },
+    { className: 'v67a', start: '2026-07-01T10:00:00+09:00' },
+    { className: 'v67b', start: '2026-07-22T19:00:00+09:00' },
+    { className: 'v68a', start: '2026-08-12T10:00:00+09:00' },
+    { className: 'v68b', start: '2026-09-02T19:00:00+09:00' }
+  ];
+
+  const now = new Date();
+
+  schedule.forEach(item => {
+    const startDate = new Date(item.start);
+    if (now >= startDate) {
+      const elements = document.querySelectorAll(`.${item.className}`);
+      elements.forEach(el => {
+        el.style.display = 'block';
+      });
+    }
+  });
+})();
+</script>
+
+<style type="text/css">
+div.updatehistory > div.version{font-weight:bold;font-size:1.5rem;border-bottom:1px #888 solid;padding:0.25rem;margin:0.25rem;}
+div.updatehistory > div.version > a{font-size:1.5rem;}
+div.updatehistory > div.version > span{display:inline-block;margin:0 1rem 0 0.5rem;font-weight:normal;}
+div.updatehistory > div.details{margin:0 0 2rem 2rem;}
+div.updatehistory > div.details > p{margin:0 0 0.5rem;}
+</style>
+
+<div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
+	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.7.0<span>2025/07/04</span></div>
+	<div class="details">
+		<p>すべてのゲームにおいて、「概要」の記述を追加しました</p>
+		<p>【テイワットばらばら合流ゲーム】初期選択地点から「幼夢の欠片」「晴雨の経緯」「捨身の杭」「権杖殿」「冥途殿」「シュラバド廃都の神殿南側」「聖顕殿西」「原初の郷」「ミラージュ祭場」「「望者の都」」を外しました</p>
+		<p>【ドラフト地方伝説】「基本レギュレーション案について」の記述を追加しました</p>
+		<p>【ドラフト地方伝説】湖辺のニニアン・湖辺のヴィヴィアンを分かりやすく区別するために「南」「北」の表記を追加しました</p>
+		<p>【ドラフト地方伝説】セーブデータのインポート・エクスポートが正常に行えない不具合を修正しました</p>
+		<p>【ドラフト地方伝説】エンドレスモード向けのキャラクター復活抽選機を追加しました</p>
+		<p>【ドラフト地方伝説】エンドレスモード向けのセーブデータ自動生成機を追加しました</p>
+		<p>【ドラフト地方伝説】エンドレスモードの実装に合わせて、ルール補足にあるバーバラや七七の固有天賦についての記述を削除しました</p>
+		<p>不具合があった際に以前のバージョンを利用できるよう、以前のバージョンに飛べるリンクを更新履歴内に設置しました</p>
+		<p>その他、軽微な変更・修正をしました</p>
+	</div>
+
+	<div class="version">v1.6.0<span>2025/07/03</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】「使用済(生存)キャラの復活」ボタンを追加しました</p>
+	</div>
+
+	<div class="version"><a href="teyvat_customplay_v1.5.1.html">v1.5.1</a><span>2025/06/22</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】未使用キャラクターリストにて、スカークとダリアのIDが逆だったものを修正しました</p>
+	</div>
+
+	<div class="version">v1.5.0<span>2025/06/18</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】未使用キャラクターリストにスカークとダリアを追加しました</p>
+		<p>【ドラフト地方伝説】地方伝説のマスク機能解除と同時に、現時点でのセーブデータを出力するようにしました</p>
+		<p>その他軽微な変更・修正をしました</p>
+	</div>
+
+	<div class="version">v1.4.2<span>2025/06/13</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】セーブデータのエクスポート欄に書き込みができるようになっていたため修正しました</p>
+		<p>【ドラフト地方伝説】未使用キャラクターリストのアタッカー欄について、甘雨と珊瑚宮心海とニィロウの情報を更新しました</p>
+	</div>
+
+	<div class="version">v1.4.1<span>2025/06/13</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】セーブデータを再エクスポートせずに旧データを共有してしまう問題を解決するために、セーブデータをエクスポートしてから10秒後に自動で出力内容を消去するようにしました</p>
+	</div>
+
+	<div class="version">v1.4.0<span>2025/06/13</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】レギュレーションの改変を前提とする形に変更しました。プレイヤーの練度や手持ち育成状況に合わせて、自由にレギュレーションを改変してください</p>
+		<p>【ドラフト地方伝説】地方伝説の抽選にマスク機能の実装をしました</p>
+	</div>
+
+	<div class="version"><a href="teyvat_customplay_v1.3.1.html">v1.3.1</a><span>2025/06/08</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】未使用キャラクターリストにて、使用済(戦闘不能)扱いのキャラクターの名前を薄く表示するようにしました</p>
+	</div>
+
+	<div class="version">v1.3.0<span>2025/06/08</span></div>
+	<div class="details">
+		<p>【テイワットばらばら合流ゲーム】レギュレーションを一部変更し、ゲームマスターが不在でも平等に遊べるようにしました</p>
+		<p>【ドラフト地方伝説】レギュレーションを一部変更し、それに伴い完凸コスト抽選機の仕様を「未使用キャラから3体順番に抽選」ではなく「全キャラから2体を抽選」に変更しました</p>
+		<p>【ドラフト地方伝説】未使用キャラクターリストにて、香菱とシュヴルーズの五十音順に誤りがあったため修正しました</p>
+		<p>その他軽微な変更・修正をしました</p>
+	</div>
+
+	<div class="version"><a href="teyvat_customplay_v1.2.0.html">v1.2.0</a><span>2025/05/27</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】レギュレーションを一部変更し、それに伴い完凸コスト抽選機を追加しました</p>
+		<p>【ドラフト地方伝説】未使用キャラクターリストにて、シトラリが金珀ヒーラー欄に記載されていなかったため追加しました</p>
+		<p>更新履歴をページ最下部に表示しました</p>
+		<p>その他軽微な変更・修正をしました</p>
+	</div>
+
+	<div class="version">v1.1.0<span>2025/05/24</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】キャラ使用状況をセーブデータとしてインポート・エクスポートできるようにしました</p>
+		<p>【ドラフト地方伝説】キャラ使用状況について、「未使用」「使用済(生存)」「使用済(戦闘不能)」の3種類を入力できるようにしました</p>
+		<p>その他軽微な変更・修正をしました</p>
+	</div>
+
+	<div class="version">v1.0.2<span>2025/05/24</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】未使用キャラクターリストにて、ディオナと重雲の五十音順に誤りがあったため修正しました</p>
+	</div>
+
+	<div class="version">v1.0.1<span>2025/05/24</span></div>
+	<div class="details">
+		<p>一部日本語を修正しました</p>
+	</div>
+
+	<div class="version"><a href="teyvat_customplay_v1.0.0.html">v1.0.0</a><span>2025/05/24</span></div>
+	<div class="details">
+		<p>公開しました</p>
+	</div>
 </div>
 
 </body></html>
