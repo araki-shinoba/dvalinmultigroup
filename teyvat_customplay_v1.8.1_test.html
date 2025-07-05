@@ -2897,182 +2897,110 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 
 
 	
-
-<!-- Firebase SDK の読み込み：インターネット経由でFirebaseの機能を使えるようにするおまじないです -->
-<!-- 必ずfirebase-app-compat.jsを最初に読み込みます -->
+<!-- Firebase SDK 読み込み -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<!-- 次にRealtime Database SDKを読み込みます。データ共有に必要な道具です -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
-<!-- ここからがFirebaseをあなたのウェブサイトで使えるようにするための設定です -->
 <script>
-  // あなたのFirebaseプロジェクトの設定情報（Firebaseコンソールからコピーしたものです）
+  // Firebase 設定
   const firebaseConfig = {
-    apiKey: "AIzaSyCRAN0BBpAApCMa3-KOmOfB8dswnvCzNG", // ここをあなたのAPIキーに置き換えてください！
+    apiKey: "AIzaSyCRAN0BBpAApCMa3-KOmOfB8dswnvCzNG",
     authDomain: "dvalinmultigroup.firebaseapp.com",
-    databaseURL: "https://dvalinmultigroup-default-rtdb.asia-southeast1.firebasedatabase.app", // あなたのRealtime DatabaseのURL
+    databaseURL: "https://dvalinmultigroup-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "dvalinmultigroup",
     storageBucket: "dvalinmultigroup.appspot.com",
-    messagingSenderId: "762222211196", // ここをあなたのMessaging Sender IDに置き換えてください！
-    appId: "1:762222211196:web:99190042e4ccfda92699f9" // ここをあなたのApp IDに置き換えてください！
+    messagingSenderId: "762222211196",
+    appId: "1:762222211196:web:99190042e4ccfda92699f9"
   };
 
-  // Firebaseのアプリを初期化します。これであなたのウェブサイトがFirebaseとつながります！
+  // Firebase 初期化
   const app = firebase.initializeApp(firebaseConfig);
-
-  // Realtime Databaseにアクセスするための「入り口」を用意します。
-  // これを使って、後でデータを読み書きします。
   const database = firebase.database();
 
-  // ★重要：この `database` という名前を覚えておいてください！
-  // 後でボタンのデータ送受信のコードで使います。
+  // ラベルのクリック処理
+  const labels = document.querySelectorAll('label[data-character]');
+  labels.forEach(label => {
+    label.addEventListener('click', () => {
+      const characterId = label.dataset.character;
+      const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
+      let currentStatus = parseInt(label.dataset.status, 10);
+      let newStatus = (currentStatus + 1) % 3;
 
+      group.forEach(el => {
+        el.dataset.status = newStatus.toString();
+        updateLabelAppearance(el, newStatus);
+      });
 
-
-  // ... (ステップ1の初期化コードがここにある) ...
-
-  // ここからが、ボタンのデータをFirebaseに送るコードです。
-
-  // data-character属性を持つ全てのボタンを見つけます。
-  // (例: <button data-character="1" data-status="0">...</button>)
-  const buttons = document.querySelectorAll('[data-character]');
-
-  // 見つかったボタン一つ一つに対して、クリックされたときの処理を設定します。
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      // クリックされたボタンの data-character の値（例: "1", "2"）を取得します。
-      const characterId = button.dataset.character; 
-      if (!characterId) { // もしボタンにdata-character属性がなかったら何もしない
-        console.warn('ボタンにdata-character属性がありません。', button);
-        return;
-      }
-
-      // 現在のボタンの data-status の値を取得します。（例: "0", "1", "2"）
-      let currentStatus = parseInt(button.dataset.status, 10);
-      // 次のステータスを計算します。(0 -> 1 -> 2 -> 0 のように循環させます)
-      let newStatus = (currentStatus + 1) % 3; 
-
-      // ボタンのHTML要素自身の data-status 属性を更新します。
-      button.dataset.status = newStatus.toString();
-      // ボタンの見た目も更新する関数を呼び出します（例: 色を変える）
-      updateButtonAppearance(button, newStatus);
-
-
-      // ★ここがRealtime Databaseにデータを送る部分です！★
-      // 'character_statuses/character_XXX' のパスに、新しいステータスを書き込みます。
-      // 'database' は、ステップ1で用意したRealtime Databaseの「入り口」です。
+      // Firebaseに保存
       database.ref(`character_statuses/character_${characterId}`).set(newStatus.toString())
         .then(() => {
-          // データがFirebaseに正常に送られたらコンソールに表示
-          console.log(`ボタン data-character="${characterId}" のステータスを ${newStatus} に更新してFirebaseに送りました！`);
+          console.log(`Firebase更新: character_${characterId} = ${newStatus}`);
         })
         .catch((error) => {
-          // 送信中にエラーが起きたらコンソールに表示
-          console.error(`Firebaseへの送信中にエラー:`, error);
+          console.error(`Firebase送信エラー:`, error);
         });
     });
   });
 
-  // ボタンの見た目を変えるための関数です。
-  // この関数は、上のボタンクリックイベントの中で呼び出されます。
-  function updateButtonAppearance(buttonElement, status) {
-    buttonElement.style.backgroundColor = ''; // 一旦色をリセット
-    if (status === 0) {
-      buttonElement.style.backgroundColor = '#ccc'; // グレー
-    } else if (status === 1) {
-      buttonElement.style.backgroundColor = '#ffc107'; // オレンジ
-    } else if (status === 2) {
-      buttonElement.style.backgroundColor = '#28a745'; // グリーン
-    }
+  // 外部から復活用に呼び出す関数
+  function DraftLocalLegend_resetStatus() {
+    if (!confirm("使用済(生存)キャラを復活させますか？")) return;
+
+    document.querySelectorAll('label[data-status="1"]').forEach(label => {
+      label.setAttribute('data-status', '0');
+      updateLabelAppearance(label, 0);
+      const characterId = label.dataset.character;
+      database.ref(`character_statuses/character_${characterId}`).set("0");
+    });
   }
 
+  window.DraftLocalLegend_resetStatus = DraftLocalLegend_resetStatus;
 
-
-
-
-
-
-
-
-  // ... (ステップ1とステップ2のコードがここにある) ...
-
-  // ここからが、Firebaseのデータ変更を監視して、ウェブサイトを更新するコードです。
-
-  // 'character_statuses' という場所にあるデータが変更されたら、この下の処理を実行します。
-  // 'on' はリアルタイムで監視し続けるという意味です。
+  // Firebase → DOM へのリアルタイム反映
   database.ref('character_statuses').on('child_changed', (snapshot) => {
-    // 変更されたデータの「キー」（例: "character_1", "character_2"）を取得
     const dbKey = snapshot.key;
-    // キーから "character_" という部分を取り除いて、数字だけ（例: "1", "2"）を取得
-    const characterId = dbKey.replace('character_', ''); 
-    // 変更されたデータの「新しい値」（例: "0", "1", "2"）を取得
-    const newStatus = snapshot.val(); 
+    const characterId = dbKey.replace('character_', '');
+    const newStatus = snapshot.val();
 
-    console.log(`Firebaseから更新が来ました！ ボタン data-character="${characterId}" が ${newStatus} になりました。`);
-
-    // ウェブサイトの中から、該当する data-character 属性を持つボタンを見つけます。
-    const buttonElement = document.querySelector(`[data-character="${characterId}"]`);
-
-    if (buttonElement) { // もしボタンが見つかったら
-      // そのボタンのHTML要素自身の data-status 属性を更新します。
-      buttonElement.dataset.status = newStatus;
-      // ボタンの見た目も更新します。
-      updateButtonAppearance(buttonElement, parseInt(newStatus, 10));
-    } else {
-      console.warn(`HTML内にdata-character="${characterId}" のボタンが見つかりませんでした。`);
-    }
+    const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
+    group.forEach(el => {
+      el.dataset.status = newStatus;
+      updateLabelAppearance(el, parseInt(newStatus, 10));
+    });
   });
 
-  // ★重要：ページが表示されたときに、Firebaseの最新の状態を一度だけ読み込むためのコードです。
-  // これがないと、ページを読み込んだ最初の時点では古い状態が表示されることがあります。
+  // 初回読み込み時にFirebaseから現在の状態を取得
   database.ref('character_statuses').once('value')
     .then((snapshot) => {
-      const allStatuses = snapshot.val(); // 全てのボタンの現在のステータスをFirebaseから取得
-
-      if (allStatuses) { // もしデータがあれば
-        // 取得した全てのステータスを一つずつ処理します
+      const allStatuses = snapshot.val();
+      if (allStatuses) {
         Object.keys(allStatuses).forEach(dbKey => {
-          const characterId = dbKey.replace('character_', ''); // キーから数字部分を取得
-          const status = allStatuses[dbKey]; // そのボタンのステータスを取得
-
-          // ウェブサイトの中から、該当するボタンを見つけます
-          const buttonElement = document.querySelector(`[data-character="${characterId}"]`);
-          if (buttonElement) { // もしボタンが見つかったら
-            // そのボタンのHTML要素自身の data-status 属性と見た目を更新します
-            buttonElement.dataset.status = status;
-            updateButtonAppearance(buttonElement, parseInt(status, 10));
-          }
+          const characterId = dbKey.replace('character_', '');
+          const status = allStatuses[dbKey];
+          const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
+          group.forEach(el => {
+            el.dataset.status = status;
+            updateLabelAppearance(el, parseInt(status, 10));
+          });
         });
-        console.log('初期同期が完了しました！ボタンの状態がFirebaseの最新になりました。');
+        console.log('Firebaseから初期状態を読み込みました。');
       }
     })
     .catch((error) => {
-      console.error("初期同期中にエラーが発生しました:", error);
+      console.error("初期同期中のエラー:", error);
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  // 見た目の切り替え（必要に応じて変更）
+  function updateLabelAppearance(el, status) {
+    el.style.backgroundColor = '';
+    if (status === 0) {
+      el.style.backgroundColor = '#ccc'; // グレー（未使用）
+    } else if (status === 1) {
+      el.style.backgroundColor = '#ffc107'; // オレンジ（使用済み生存）
+    } else if (status === 2) {
+      el.style.backgroundColor = '#28a745'; // 緑（使用済み死亡など）
+    }
+  }
 </script>
 
 
