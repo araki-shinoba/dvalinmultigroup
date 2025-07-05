@@ -2891,25 +2891,53 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
                       ﾉ┐ ＼__ノ|    r─ﾍ  ＿_.     ＼／⌒ヽヘ   |:|:::::|     
 -->
 
-<!-- Firebase App (必須) -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-
-<!-- Realtime Database -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-
 <script>
-  // ↓Firebaseコンソールの「設定（歯車マーク）> プロジェクトの設定 > 全般」から取得
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "XXXX",
-    appId: "XXXX"
-  };
+// Firebase の初期化は完了しているものとします
+// const database = firebase.database(); は既に実行済み
 
-  // Firebase初期化
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
+// 全てのdata-character属性を持つボタン要素を取得
+const buttons = document.querySelectorAll('[data-character]');
+
+buttons.forEach(button => {
+  // 各ボタンにクリックイベントリスナーを設定
+  button.addEventListener('click', () => {
+    const characterId = button.dataset.character; // data-characterの値を取得 (例: "1", "2"...)
+    if (!characterId) {
+      console.warn('ボタンにdata-character属性がありません。データ共有できません。', button);
+      return;
+    }
+
+    // 現在のdata-statusを取得し、次の状態に切り替える (例: 0 -> 1 -> 2 -> 0)
+    let currentStatus = parseInt(button.dataset.status, 10);
+    let newStatus = (currentStatus + 1) % 3; // 0, 1, 2 を循環させる
+
+    // ボタンのdata-status属性を更新
+    button.dataset.status = newStatus.toString();
+    // ここでボタンの見た目も更新するロジックを追加
+    updateButtonAppearance(button, newStatus);
+
+
+    // Realtime Database に新しいステータスを書き込む
+    // 'character_statuses/character_XXX' のパスに新しいステータスをセット
+    database.ref(`character_statuses/character_${characterId}`).set(newStatus.toString())
+      .then(() => {
+        console.log(`ボタン data-character="${characterId}" のステータスを ${newStatus} に更新しました！`);
+      })
+      .catch((error) => {
+        console.error(`ボタン data-character="${characterId}" のステータス更新エラー:`, error);
+      });
+  });
+});
+
+// ボタンの見た目を更新するヘルパー関数（例: 背景色を変更するなど）
+function updateButtonAppearance(buttonElement, status) {
+  buttonElement.style.backgroundColor = ''; // 一度リセット
+  if (status === 0) {
+    buttonElement.style.backgroundColor = '#ccc'; // グレー
+  } else if (status === 1) {
+    buttonElement.style.backgroundColor = '#ffc107'; // オレンジ
+  } else if (status === 2) {
+    buttonElement.style.backgroundColor = '#28a745'; // グリーン
+  }
+}
 </script>
