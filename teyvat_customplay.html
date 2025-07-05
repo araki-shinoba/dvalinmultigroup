@@ -30,6 +30,10 @@ div.rule div{padding:0.2rem;margin:1rem 0 0.2rem;border-bottom:1px solid #888;fo
 .color_Snezhnaya{background:#cee;}    .color_Snezhnaya label input:checked  ~ span{background-color:#488;color:#fff;}
                                                        label input:disabled ~ span{background-color:#0002;}
 
+/*▼ヘルプ*/
+.help-popup{position:absolute;background:#eee;border:1px solid #aaa;padding:0.5rem;border-radius:8px;box-shadow: 0 0 8px rgba(0,0,0,0.3);display:none;z-index:1000;max-width:250px;}
+.help-popup p{margin:0.5rem 0;line-height:1.25;}
+
 /*▼URLパラメータでコンテンツの表示切替*/
 div.content:target{display:block;}
 div.content:not(:target){display:none;}
@@ -128,6 +132,8 @@ div#DraftLocalLegend ol#DraftLocalLegend_result li > div.masked > div:nth-child(
 div#DraftLocalLegend ol#DraftLocalLegend_result li > div.masked > div:nth-child(2)::after{content:'クリックで表示';color:#fff;position:absolute;left:1rem;top:0.5rem;}
 div#DraftLocalLegend ol#DraftLocalLegend_result li > div.revealed{color:inherit!important;cursor:default;}
 
+div#DraftLocalLegend div.DraftLocalLegend_lottery > div{position:relative;}
+div#DraftLocalLegend div.DraftLocalLegend_lottery > div > button.help-button{position:absolute;top:0.5rem;right:0.5rem;}
 div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 
 	/*▼ドラフト地方伝説　キャラ使用状況の表示*/
@@ -158,11 +164,15 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 	#DraftLocalLegend                  label[data-status="2"] > span > span{font-size:10px;color:#4443;}
 
 /*▼更新履歴*/
+div.updatehistory > div.version{font-weight:bold;font-size:1.5rem;border-bottom:1px #888 solid;padding:0.25rem;margin:0.25rem;}
+div.updatehistory > div.version > a{font-size:1.5rem;}
+div.updatehistory > div.version > span{display:inline-block;margin:0 1rem 0 0.5rem;font-weight:normal;}
+div.updatehistory > div.details{margin:0 0 2rem 2rem;}
+div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 
 /*▼バージョンアップデートに合わせて表示するCSS*/
 .v58a,.v60a,.v61a,v62a,.v63a,.v64a,.v65a,.v66a,.v67a,.v68a,
 .v58b,.v60b,.v61b,v62b,.v63b,.v64b,.v65b,.v66b,.v67b,.v68b{display:none;}
-
 </style></head><body>
 
 <div class="contentslist">
@@ -1153,7 +1163,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 
 <!--■■■▼テイワット地図無しレース　各キャラクターの移動性能について▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
 	<details class="charactermove">
-		<summary>各キャラクターの移動性能について(v5.6前半時点)</summary>
+		<summary>各キャラクターの移動性能について(v5.7前半時点)</summary>
 		<div style="margin:1rem;">
 			<div class="category">高身長男性</div>
 			<table border="1">
@@ -1208,7 +1218,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 
 <!--■■■▼テイワット地図無しレース　各武器の移動性能について▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
 	<details class="weaponmove">
-		<summary>各武器の移動性能について(v5.6前半時点)</summary>
+		<summary>各武器の移動性能について(v5.7前半時点)</summary>
 		<div style="margin:1rem;">
 			<div class="category">片手剣</div>
 			<table border="1">
@@ -1880,7 +1890,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 		</ol>
 		<div>基本レギュレーション案について</div>
 		<ol>
-			<li>星4は戦闘不能にならない限り何度でも使用可 / 地方伝説6体毎に使用済(生存)キャラの復活
+			<li>星4は戦闘不能にならない限り何度でも使用可 / 地方伝説6体毎に使用済(生存)キャラの全復活
 		</ol>
 		<div>レギュレーションの改変案について</div>
 		<ul>
@@ -2048,228 +2058,228 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 		<tr><th colspan="5" style="text-align:center;font-size:1.5rem;padding:0.5rem;background:#444;color:#fff;">未使用キャラクターリスト(すべて五十音順)<tr><th colspan="2">アタッカー<th colspan="2">ヒーラー<th rowspan="2">キャラ一覧<tr><th>一級アタッカー<br>(魔偶剣鬼15s以内※)<th>二級アタッカー<br>(魔偶剣鬼25s以内※)<th>メインヒーラー<th>金珀ヒーラー
 		<tr class="color_Mondstadt">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="30" ><span>&#39752;<span>未計測</span>           </span></label><!--C /     s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="62" ><span>放浪者<span>C6</span>                 </span></label><!--C6/14.53s-->
+			<td><label data-status="0" data-character="30"  data-rarity="5"><span>&#39752;<span>未計測</span>           </span></label><!--C /     s-->
+			    <label data-status="0" data-character="62"  data-rarity="5"><span>放浪者<span>C6</span>                 </span></label><!--C6/14.53s-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="99" ><span>イファ<span>C6</span>                 </span></label><!--C6/17.01s-->
+			<td><label data-status="0" data-character="99"  data-rarity="4"><span>イファ<span>C6</span>                 </span></label><!--C6/17.01s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="80" ><span>閑雲                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="37" ><span>早柚                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="17" ><span>ジン                                  </span></label>
+			<td><label data-status="0" data-character="80"  data-rarity="5"><span>閑雲                                  </span></label>
+			    <label data-status="0" data-character="37"  data-rarity="4"><span>早柚                                  </span></label>
+			    <label data-status="0" data-character="17"  data-rarity="5"><span>ジン                                  </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="99" ><span>イファ                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="80" ><span>閑雲                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="16" ><span>スクロース                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="62" ><span>放浪者                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="96" ><span>夢見月瑞希                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="95" ><span>藍硯                                  </span></label>
+			<td><label data-status="0" data-character="99"  data-rarity="4"><span>イファ                                </span></label>
+			    <label data-status="0" data-character="80"  data-rarity="5"><span>閑雲                                  </span></label>
+			    <label data-status="0" data-character="16"  data-rarity="4"><span>スクロース                            </span></label>
+			    <label data-status="0" data-character="62"  data-rarity="5"><span>放浪者                                </span></label>
+			    <label data-status="0" data-character="96"  data-rarity="5"><span>夢見月瑞希                            </span></label>
+			    <label data-status="0" data-character="95"  data-rarity="4"><span>藍硯                                  </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="99" ><span>イファ                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="22" ><span>ウェンティ                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="35" ><span>楓原万葉                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="80" ><span>閑雲                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="37" ><span>早柚                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="52" ><span>鹿野院平蔵                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="30" ><span>&#39752;                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="17" ><span>ジン                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="16" ><span>スクロース                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="92" ><span>チャスカ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="61" ><span>ファルザン                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="62" ><span>放浪者                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="96" ><span>夢見月瑞希                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="95" ><span>藍硯                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="70" ><span>リネット                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="1"  ><span>空                                    </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="2"  ><span>蛍                                    </span></label>
+			<td><label data-status="0" data-character="99"  data-rarity="4"><span>イファ                                </span></label>
+			    <label data-status="0" data-character="22"  data-rarity="5"><span>ウェンティ                            </span></label>
+			    <label data-status="0" data-character="35"  data-rarity="5"><span>楓原万葉                              </span></label>
+			    <label data-status="0" data-character="80"  data-rarity="5"><span>閑雲                                  </span></label>
+			    <label data-status="0" data-character="37"  data-rarity="4"><span>早柚                                  </span></label>
+			    <label data-status="0" data-character="52"  data-rarity="4"><span>鹿野院平蔵                            </span></label>
+			    <label data-status="0" data-character="30"  data-rarity="5"><span>&#39752;                              </span></label>
+			    <label data-status="0" data-character="17"  data-rarity="5"><span>ジン                                  </span></label>
+			    <label data-status="0" data-character="16"  data-rarity="4"><span>スクロース                            </span></label>
+			    <label data-status="0" data-character="92"  data-rarity="5"><span>チャスカ                              </span></label>
+			    <label data-status="0" data-character="61"  data-rarity="4"><span>ファルザン                            </span></label>
+			    <label data-status="0" data-character="62"  data-rarity="5"><span>放浪者                                </span></label>
+			    <label data-status="0" data-character="96"  data-rarity="5"><span>夢見月瑞希                            </span></label>
+			    <label data-status="0" data-character="95"  data-rarity="4"><span>藍硯                                  </span></label>
+			    <label data-status="0" data-character="70"  data-rarity="4"><span>リネット                              </span></label>
+			    <label data-status="0" data-character="1"   data-rarity="5"><span>空                                    </span></label>
+			    <label data-status="0" data-character="2"   data-rarity="5"><span>蛍                                    </span></label>
 		<tr class="color_Liyue">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="90" ><span>シロネン<span>C6</span>               </span></label><!--C6/12.00s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="81" ><span>千織<span>C6</span>                   </span></label><!--C /     s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="77" ><span>ナヴィア<span>C6</span>               </span></label><!--C6/14.56s-->
+			<td><label data-status="0" data-character="90"  data-rarity="5"><span>シロネン<span>C6</span>               </span></label><!--C6/12.00s-->
+			    <label data-status="0" data-character="81"  data-rarity="5"><span>千織<span>C6</span>                   </span></label><!--C /     s-->
+			    <label data-status="0" data-character="77"  data-rarity="5"><span>ナヴィア<span>C6</span>               </span></label><!--C6/14.56s-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="14" ><span>ノエル<span>C6</span>                 </span></label><!--C6/23.68s-->
+			<td><label data-status="0" data-character="14"  data-rarity="4"><span>ノエル<span>C6</span>                 </span></label><!--C6/23.68s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="90" ><span>シロネン<span>C6/要4元素2人以上</span></span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="14" ><span>ノエル                                </span></label>
+			<td><label data-status="0" data-character="90"  data-rarity="5"><span>シロネン<span>C6/要4元素2人以上</span></span></label>
+			    <label data-status="0" data-character="14"  data-rarity="4"><span>ノエル                                </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="11" ><span>凝光                                  </span></label>
+			<td><label data-status="0" data-character="11"  data-rarity="4"><span>凝光                                  </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="45" ><span>荒瀧一斗                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="28" ><span>アルベド                              </span></label><!--C0/35.76s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="46" ><span>雲菫                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="87" ><span>カチーナ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="11" ><span>凝光                                  </span></label><!--C6/31.00s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="44" ><span>ゴロー                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="27" ><span>鍾離                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="90" ><span>シロネン                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="81" ><span>千織                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="77" ><span>ナヴィア                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="14" ><span>ノエル                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="1"  ><span>空                                    </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="2"  ><span>蛍                                    </span></label>
+			<td><label data-status="0" data-character="45"  data-rarity="5"><span>荒瀧一斗                              </span></label>
+			    <label data-status="0" data-character="28"  data-rarity="5"><span>アルベド                              </span></label><!--C0/35.76s-->
+			    <label data-status="0" data-character="46"  data-rarity="4"><span>雲菫                                  </span></label>
+			    <label data-status="0" data-character="87"  data-rarity="4"><span>カチーナ                              </span></label>
+			    <label data-status="0" data-character="11"  data-rarity="4"><span>凝光                                  </span></label><!--C6/31.00s-->
+			    <label data-status="0" data-character="44"  data-rarity="4"><span>ゴロー                                </span></label>
+			    <label data-status="0" data-character="27"  data-rarity="5"><span>鍾離                                  </span></label>
+			    <label data-status="0" data-character="90"  data-rarity="5"><span>シロネン                              </span></label>
+			    <label data-status="0" data-character="81"  data-rarity="5"><span>千織                                  </span></label>
+			    <label data-status="0" data-character="77"  data-rarity="5"><span>ナヴィア                              </span></label>
+			    <label data-status="0" data-character="14"  data-rarity="4"><span>ノエル                                </span></label>
+			    <label data-status="0" data-character="1"   data-rarity="5"><span>空                                    </span></label>
+			    <label data-status="0" data-character="2"   data-rarity="5"><span>蛍                                    </span></label>
 		<tr class="color_Inazuma">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="98" ><span>ヴァレサ<span>C6</span>               </span></label><!--C6/ 9.86s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="84" ><span>クロリンデ<span>C6</span>             </span></label><!--C6/15.00s-->
+			<td><label data-status="0" data-character="98"  data-rarity="5"><span>ヴァレサ<span>C6</span>               </span></label><!--C6/ 9.86s-->
+			    <label data-status="0" data-character="84"  data-rarity="5"><span>クロリンデ<span>C6</span>             </span></label><!--C6/15.00s-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="57" ><span>セノ<span>C2</span>                   </span></label><!--C2/17.21s-->
+			<td><label data-status="0" data-character="57"  data-rarity="5"><span>セノ<span>C2</span>                   </span></label><!--C2/17.21s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="51" ><span>九岐忍                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="55" ><span>ドリー                                </span></label>
+			<td><label data-status="0" data-character="51"  data-rarity="4"><span>九岐忍                                </span></label>
+			    <label data-status="0" data-character="55"  data-rarity="4"><span>ドリー                                </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="98" ><span>ヴァレサ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="48" ><span>八重神子                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="5"  ><span>リサ                                  </span></label>
+			<td><label data-status="0" data-character="98"  data-rarity="5"><span>ヴァレサ                              </span></label>
+			    <label data-status="0" data-character="48"  data-rarity="5"><span>八重神子                              </span></label>
+			    <label data-status="0" data-character="5"   data-rarity="4"><span>リサ                                  </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="97" ><span>イアンサ                              </span></label>
-			<!--<label class="DraftLocalLegend_status" data-status="0" data-character="103"><span>イネファ                              </span></label>-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="98" ><span>ヴァレサ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="91" ><span>オロルン                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="51" ><span>九岐忍                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="40" ><span>九条裟羅                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="84" ><span>クロリンデ                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="21" ><span>刻晴                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="83" ><span>セトス                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="57" ><span>セノ                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="55" ><span>ドリー                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="12" ><span>フィッシュル                          </span></label><!--C /32.46s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="9"  ><span>北斗                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="48" ><span>八重神子                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="41" ><span>雷電将軍                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="5"  ><span>リサ                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="7"  ><span>レザー                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="1"  ><span>空                                    </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="2"  ><span>蛍                                    </span></label>
+			<td><label data-status="0" data-character="97"  data-rarity="4"><span>イアンサ                              </span></label>
+			<!--<label data-status="0" data-character="103"                ><span>イネファ                              </span></label>-->
+			    <label data-status="0" data-character="98"  data-rarity="5"><span>ヴァレサ                              </span></label>
+			    <label data-status="0" data-character="91"  data-rarity="4"><span>オロルン                              </span></label>
+			    <label data-status="0" data-character="51"  data-rarity="4"><span>九岐忍                                </span></label>
+			    <label data-status="0" data-character="40"  data-rarity="4"><span>九条裟羅                              </span></label>
+			    <label data-status="0" data-character="84"  data-rarity="5"><span>クロリンデ                            </span></label>
+			    <label data-status="0" data-character="21"  data-rarity="5"><span>刻晴                                  </span></label>
+			    <label data-status="0" data-character="83"  data-rarity="4"><span>セトス                                </span></label>
+			    <label data-status="0" data-character="57"  data-rarity="5"><span>セノ                                  </span></label>
+			    <label data-status="0" data-character="55"  data-rarity="4"><span>ドリー                                </span></label>
+			    <label data-status="0" data-character="12"  data-rarity="4"><span>フィッシュル                          </span></label><!--C /32.46s-->
+			    <label data-status="0" data-character="9"   data-rarity="4"><span>北斗                                  </span></label>
+			    <label data-status="0" data-character="48"  data-rarity="5"><span>八重神子                              </span></label>
+			    <label data-status="0" data-character="41"  data-rarity="5"><span>雷電将軍                              </span></label>
+			    <label data-status="0" data-character="5"   data-rarity="4"><span>リサ                                  </span></label>
+			    <label data-status="0" data-character="7"   data-rarity="4"><span>レザー                                </span></label>
+			    <label data-status="0" data-character="1"   data-rarity="5"><span>空                                    </span></label>
+			    <label data-status="0" data-character="2"   data-rarity="5"><span>蛍                                    </span></label>
 		<tr class="color_Sumeru">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="89" ><span>キィニチ                              </span></label><!--C0/15.00s-->
+			<td><label data-status="0" data-character="89"  data-rarity="5"><span>キィニチ                              </span></label><!--C0/15.00s-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="64" ><span>アルハイゼン                          </span></label><!--C0/20.43s-->
+			<td><label data-status="0" data-character="64"  data-rarity="5"><span>アルハイゼン                          </span></label><!--C0/20.43s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="68" ><span>白朮                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="63" ><span>ヨォーヨ                              </span></label>
+			<td><label data-status="0" data-character="68"  data-rarity="5"><span>白朮                                  </span></label>
+			    <label data-status="0" data-character="63"  data-rarity="4"><span>ヨォーヨ                              </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="59" ><span>ナヒーダ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="68" ><span>白朮                                  </span></label>
+			<td><label data-status="0" data-character="59"  data-rarity="5"><span>ナヒーダ                              </span></label>
+			    <label data-status="0" data-character="68"  data-rarity="5"><span>白朮                                  </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="64" ><span>アルハイゼン                          </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="86" ><span>エミリエ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="67" ><span>カーヴェ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="89" ><span>キィニチ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="69" ><span>綺良々                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="53" ><span>コレイ                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="54" ><span>ティナリ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="59" ><span>ナヒーダ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="68" ><span>白朮                                  </span></label><!--C6/42.66s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="63" ><span>ヨォーヨ                              </span></label><!--C6/45.00s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="1"  ><span>空                                    </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="2"  ><span>蛍                                    </span></label>
+			<td><label data-status="0" data-character="64"  data-rarity="5"><span>アルハイゼン                          </span></label>
+			    <label data-status="0" data-character="86"  data-rarity="5"><span>エミリエ                              </span></label>
+			    <label data-status="0" data-character="67"  data-rarity="4"><span>カーヴェ                              </span></label>
+			    <label data-status="0" data-character="89"  data-rarity="5"><span>キィニチ                              </span></label>
+			    <label data-status="0" data-character="69"  data-rarity="4"><span>綺良々                                </span></label>
+			    <label data-status="0" data-character="53"  data-rarity="4"><span>コレイ                                </span></label>
+			    <label data-status="0" data-character="54"  data-rarity="5"><span>ティナリ                              </span></label>
+			    <label data-status="0" data-character="59"  data-rarity="5"><span>ナヒーダ                              </span></label>
+			    <label data-status="0" data-character="68"  data-rarity="5"><span>白朮                                  </span></label><!--C6/42.66s-->
+			    <label data-status="0" data-character="63"  data-rarity="4"><span>ヨォーヨ                              </span></label><!--C6/45.00s-->
+			    <label data-status="0" data-character="1"   data-rarity="5"><span>空                                    </span></label>
+			    <label data-status="0" data-character="2"   data-rarity="5"><span>蛍                                    </span></label>
 		<tr class="color_Fontaine">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="73" ><span>ヌヴィレット<span>未計測</span>       </span></label><!--C /     s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="76" ><span>フリーナ<span>C6</span>               </span></label><!--C6/11.66s-->
+			<td><label data-status="0" data-character="73"  data-rarity="5"><span>ヌヴィレット<span>未計測</span>       </span></label><!--C /     s-->
+			    <label data-status="0" data-character="76"  data-rarity="5"><span>フリーナ<span>C6</span>               </span></label><!--C6/11.66s-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="49" ><span>神里綾人                              </span></label><!--C0/22.38s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="42" ><span>珊瑚宮心海                            </span></label><!--C0/21.13s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="58" ><span>ニィロウ<span>C6</span>               </span></label><!--C6/15.23s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="73" ><span>ヌヴィレット                          </span></label><!--C0/16.11s-->
+			<td><label data-status="0" data-character="49"  data-rarity="5"><span>神里綾人                              </span></label><!--C0/22.38s-->
+			    <label data-status="0" data-character="42"  data-rarity="5"><span>珊瑚宮心海                            </span></label><!--C0/21.13s-->
+			    <label data-status="0" data-character="58"  data-rarity="5"><span>ニィロウ<span>C6</span>               </span></label><!--C6/15.23s-->
+			    <label data-status="0" data-character="73"  data-rarity="5"><span>ヌヴィレット                          </span></label><!--C0/16.11s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="42" ><span>珊瑚宮心海                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="85" ><span>シグウィン                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="6"  ><span>バーバラ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="76" ><span>フリーナ                              </span></label>
+			<td><label data-status="0" data-character="42"  data-rarity="5"><span>珊瑚宮心海                            </span></label>
+			    <label data-status="0" data-character="85"  data-rarity="5"><span>シグウィン                            </span></label>
+			    <label data-status="0" data-character="6"   data-rarity="4"><span>バーバラ                              </span></label>
+			    <label data-status="0" data-character="76"  data-rarity="5"><span>フリーナ                              </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="42" ><span>珊瑚宮心海                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="73" ><span>ヌヴィレット                          </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="6"  ><span>バーバラ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="88" ><span>ムアラニ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="20" ><span>モナ                                  </span></label>
+			<td><label data-status="0" data-character="42"  data-rarity="5"><span>珊瑚宮心海                            </span></label>
+			    <label data-status="0" data-character="73"  data-rarity="5"><span>ヌヴィレット                          </span></label>
+			    <label data-status="0" data-character="6"   data-rarity="4"><span>バーバラ                              </span></label>
+			    <label data-status="0" data-character="88"  data-rarity="5"><span>ムアラニ                              </span></label>
+			    <label data-status="0" data-character="20"  data-rarity="5"><span>モナ                                  </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="50" ><span>夜蘭                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="49" ><span>神里綾人                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="56" ><span>キャンディス                          </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="42" ><span>珊瑚宮心海                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="85" ><span>シグウィン                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="101"><span>ダリア                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="25" ><span>タルタリヤ                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="58" ><span>ニィロウ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="73" ><span>ヌヴィレット                          </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="6"  ><span>バーバラ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="76" ><span>フリーナ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="88" ><span>ムアラニ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="20" ><span>モナ                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="10" ><span>行秋                                  </span></label><!--C /33.11s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="1"  ><span>空                                    </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="2"  ><span>蛍                                    </span></label>
+			<td><label data-status="0" data-character="50"  data-rarity="5"><span>夜蘭                                  </span></label>
+			    <label data-status="0" data-character="49"  data-rarity="5"><span>神里綾人                              </span></label>
+			    <label data-status="0" data-character="56"  data-rarity="4"><span>キャンディス                          </span></label>
+			    <label data-status="0" data-character="42"  data-rarity="5"><span>珊瑚宮心海                            </span></label>
+			    <label data-status="0" data-character="85"  data-rarity="5"><span>シグウィン                            </span></label>
+			    <label data-status="0" data-character="101" data-rarity="4"><span>ダリア                                </span></label>
+			    <label data-status="0" data-character="25"  data-rarity="5"><span>タルタリヤ                            </span></label>
+			    <label data-status="0" data-character="58"  data-rarity="5"><span>ニィロウ                              </span></label>
+			    <label data-status="0" data-character="73"  data-rarity="5"><span>ヌヴィレット                          </span></label>
+			    <label data-status="0" data-character="6"   data-rarity="4"><span>バーバラ                              </span></label>
+			    <label data-status="0" data-character="76"  data-rarity="5"><span>フリーナ                              </span></label>
+			    <label data-status="0" data-character="88"  data-rarity="5"><span>ムアラニ                              </span></label>
+			    <label data-status="0" data-character="20"  data-rarity="5"><span>モナ                                  </span></label>
+			    <label data-status="0" data-character="10"  data-rarity="4"><span>行秋                                  </span></label><!--C /33.11s-->
+			    <label data-status="0" data-character="1"   data-rarity="5"><span>空                                    </span></label>
+			    <label data-status="0" data-character="2"   data-rarity="5"><span>蛍                                    </span></label>
 		<tr class="color_Natlan">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="82" ><span>アルレッキーノ                        </span></label><!--C0/13.46s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="94" ><span>マーヴィカ<span>未計測</span>         </span></label><!--C /     s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="71" ><span>リネ<span>C6</span>                   </span></label><!--C6/15.40s 詰めれば上がることが確定してるので一級扱いで-->
+			<td><label data-status="0" data-character="82"  data-rarity="5"><span>アルレッキーノ                        </span></label><!--C0/13.46s-->
+			    <label data-status="0" data-character="94"  data-rarity="5"><span>マーヴィカ<span>未計測</span>         </span></label><!--C /     s-->
+			    <label data-status="0" data-character="71"  data-rarity="5"><span>リネ<span>C6</span>                   </span></label><!--C6/15.40s 詰めれば上がることが確定してるので一級扱いで-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="65" ><span>ディシア<span>C6</span>               </span></label><!--C6/20.00s-->
+			<td><label data-status="0" data-character="65"  data-rarity="5"><span>ディシア<span>C6</span>               </span></label><!--C6/20.00s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="13" ><span>ベネット                              </span></label>
+			<td><label data-status="0" data-character="13"  data-rarity="4"><span>ベネット                              </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="33" ><span>煙緋                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="23" ><span>クレー                                </span></label>
+			<td><label data-status="0" data-character="33"  data-rarity="4"><span>煙緋                                  </span></label>
+			    <label data-status="0" data-character="23"  data-rarity="5"><span>クレー                                </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="82" ><span>アルレッキーノ                        </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="3"  ><span>アンバー                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="33" ><span>煙緋                                  </span></label><!--C6/25.58s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="79" ><span>嘉明                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="23" ><span>クレー                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="8"  ><span>香菱                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="78" ><span>シュヴルーズ                          </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="26" ><span>辛炎                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="65" ><span>ディシア                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="18" ><span>ディルック                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="43" ><span>トーマ                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="31" ><span>胡桃                                  </span></label><!--C0/29.83s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="13" ><span>ベネット                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="94" ><span>マーヴィカ                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="38" ><span>宵宮                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="71" ><span>リネ                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="1"  ><span>空                                    </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="2"  ><span>蛍                                    </span></label>
+			<td><label data-status="0" data-character="82"  data-rarity="5"><span>アルレッキーノ                        </span></label>
+			    <label data-status="0" data-character="3"   data-rarity="4"><span>アンバー                              </span></label>
+			    <label data-status="0" data-character="33"  data-rarity="4"><span>煙緋                                  </span></label><!--C6/25.58s-->
+			    <label data-status="0" data-character="79"  data-rarity="4"><span>嘉明                                  </span></label>
+			    <label data-status="0" data-character="23"  data-rarity="5"><span>クレー                                </span></label>
+			    <label data-status="0" data-character="8"   data-rarity="4"><span>香菱                                  </span></label>
+			    <label data-status="0" data-character="78"  data-rarity="4"><span>シュヴルーズ                          </span></label>
+			    <label data-status="0" data-character="26"  data-rarity="4"><span>辛炎                                  </span></label>
+			    <label data-status="0" data-character="65"  data-rarity="5"><span>ディシア                              </span></label>
+			    <label data-status="0" data-character="18"  data-rarity="5"><span>ディルック                            </span></label>
+			    <label data-status="0" data-character="43"  data-rarity="4"><span>トーマ                                </span></label>
+			    <label data-status="0" data-character="31"  data-rarity="5"><span>胡桃                                  </span></label><!--C0/29.83s-->
+			    <label data-status="0" data-character="13"  data-rarity="4"><span>ベネット                              </span></label>
+			    <label data-status="0" data-character="94"  data-rarity="5"><span>マーヴィカ                            </span></label>
+			    <label data-status="0" data-character="38"  data-rarity="5"><span>宵宮                                  </span></label>
+			    <label data-status="0" data-character="71"  data-rarity="5"><span>リネ                                  </span></label>
+			    <label data-status="0" data-character="1"   data-rarity="5"><span>空                                    </span></label>
+			    <label data-status="0" data-character="2"   data-rarity="5"><span>蛍                                    </span></label>
 		<tr class="color_Snezhnaya">
 			<!--▼一級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="34" ><span>エウルア<span>C6</span>               </span></label><!--C6/12.00s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="74" ><span>リオセスリ<span>C6</span>             </span></label><!--C6/11.81s-->
+			<td><label data-status="0" data-character="34"  data-rarity="5"><span>エウルア<span>C6</span>               </span></label><!--C6/12.00s-->
+			    <label data-status="0" data-character="74"  data-rarity="5"><span>リオセスリ<span>C6</span>             </span></label><!--C6/11.81s-->
 			<!--▼二級アタッカー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="100"><span>エスコフィエ<span>C6</span>           </span></label><!--C6/16.00s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="29" ><span>甘雨                                  </span></label><!--C6/16.00s C0/20.56s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="102"><span>スカーク<span>C6</span>               </span></label><!--C6/13.00s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="72" ><span>フレミネ<span>C6</span>               </span></label><!--C6/24.30s-->
+			<td><label data-status="0" data-character="100" data-rarity="5"><span>エスコフィエ<span>C6</span>           </span></label><!--C6/16.00s-->
+			    <label data-status="0" data-character="29"  data-rarity="5"><span>甘雨                                  </span></label><!--C6/16.00s C0/20.56s-->
+			    <label data-status="0" data-character="102" data-rarity="5"><span>スカーク<span>C6</span>               </span></label><!--C6/13.00s-->
+			    <label data-status="0" data-character="72"  data-rarity="4"><span>フレミネ<span>C6</span>               </span></label><!--C6/24.30s-->
 			<!--▼メインヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="100"><span>エスコフィエ                          </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="75" ><span>シャルロット                          </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="24" ><span>ディオナ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="19" ><span>七七                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="66" ><span>ミカ                                  </span></label>
+			<td><label data-status="0" data-character="100" data-rarity="5"><span>エスコフィエ                          </span></label>
+			    <label data-status="0" data-character="75"  data-rarity="4"><span>シャルロット                          </span></label>
+			    <label data-status="0" data-character="24"  data-rarity="4"><span>ディオナ                              </span></label>
+			    <label data-status="0" data-character="19"  data-rarity="5"><span>七七                                  </span></label>
+			    <label data-status="0" data-character="66"  data-rarity="4"><span>ミカ                                  </span></label>
 			<!--▼金珀ヒーラー-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="93" ><span>シトラリ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="75" ><span>シャルロット                          </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="74" ><span>リオセスリ                            </span></label>
+			<td><label data-status="0" data-character="93"  data-rarity="5"><span>シトラリ                              </span></label>
+			    <label data-status="0" data-character="75"  data-rarity="4"><span>シャルロット                          </span></label>
+			    <label data-status="0" data-character="74"  data-rarity="5"><span>リオセスリ                            </span></label>
 			<!--▼ほか-->
-			<td><label class="DraftLocalLegend_status" data-status="0" data-character="39" ><span>アーロイ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="34" ><span>エウルア                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="100"><span>エスコフィエ                          </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="4"  ><span>ガイア                                </span></label><!--C /34.41s-->
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="36" ><span>神里綾華                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="29" ><span>甘雨                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="93" ><span>シトラリ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="75" ><span>シャルロット                          </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="47" ><span>申鶴                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="102"><span>スカーク                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="24" ><span>ディオナ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="15" ><span>重雲                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="19" ><span>七七                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="72" ><span>フレミネ                              </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="66" ><span>ミカ                                  </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="74" ><span>リオセスリ                            </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="60" ><span>レイラ                                </span></label>
-			    <label class="DraftLocalLegend_status" data-status="0" data-character="32" ><span>ロサリア                              </span></label>
+			<td><label data-status="0" data-character="39"  data-rarity="5"><span>アーロイ                              </span></label>
+			    <label data-status="0" data-character="34"  data-rarity="5"><span>エウルア                              </span></label>
+			    <label data-status="0" data-character="100" data-rarity="5"><span>エスコフィエ                          </span></label>
+			    <label data-status="0" data-character="4"   data-rarity="4"><span>ガイア                                </span></label><!--C /34.41s-->
+			    <label data-status="0" data-character="36"  data-rarity="5"><span>神里綾華                              </span></label>
+			    <label data-status="0" data-character="29"  data-rarity="5"><span>甘雨                                  </span></label>
+			    <label data-status="0" data-character="93"  data-rarity="5"><span>シトラリ                              </span></label>
+			    <label data-status="0" data-character="75"  data-rarity="4"><span>シャルロット                          </span></label>
+			    <label data-status="0" data-character="47"  data-rarity="5"><span>申鶴                                  </span></label>
+			    <label data-status="0" data-character="102" data-rarity="5"><span>スカーク                              </span></label>
+			    <label data-status="0" data-character="24"  data-rarity="4"><span>ディオナ                              </span></label>
+			    <label data-status="0" data-character="15"  data-rarity="4"><span>重雲                                  </span></label>
+			    <label data-status="0" data-character="19"  data-rarity="5"><span>七七                                  </span></label>
+			    <label data-status="0" data-character="72"  data-rarity="4"><span>フレミネ                              </span></label>
+			    <label data-status="0" data-character="66"  data-rarity="4"><span>ミカ                                  </span></label>
+			    <label data-status="0" data-character="74"  data-rarity="5"><span>リオセスリ                            </span></label>
+			    <label data-status="0" data-character="60"  data-rarity="4"><span>レイラ                                </span></label>
+			    <label data-status="0" data-character="32"  data-rarity="4"><span>ロサリア                              </span></label>
 		<tr style="text-align:center;">
 			<td colspan="5">
 			    <label><input type="button" onclick="DraftLocalLegend_resetStatus()"><span>使用済(生存)キャラの復活</span></label>
@@ -2292,7 +2302,7 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 	<script type="module">
 		//■■■キャラクター名をクリックする度に、data-statusを0→1→2に更新する■■■
 		//■■■同じキャラクター名が複数存在する場合は、それらすべてのdata-status値が更新されるようにする■■■
-		document.querySelectorAll('label').forEach(label => {
+		document.querySelectorAll('label[data-character]').forEach(label => {
 		  label.addEventListener('click', () => {
 		    const character = label.dataset.character;
 
@@ -2447,20 +2457,34 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 	</div>
 	<div class="DraftLocalLegend_lottery">
 		<div>
-			<div style="margin:1rem;text-align:center;">エンドレスモード向けキャラクター復活抽選機<br>※復活処理は自動で行われます</div>
-			<div style="margin:1rem;text-align:center;">復活コスト：<input type="number" id="DraftLocalLegend_CharacterRechargeCost" style="width:40px;"value="6"></div>
+			<button class="help-button" data-help-id="DraftLocalLegend_help1">？</button>
+			<div id="DraftLocalLegend_help1" class="help-popup">
+				<p>◆復活コストについて</p>
+				<p>復活コスト1を消費することで、ランダムに選ばれたキャラクター1体を【使用済(戦闘不能)→使用済(生存)】または【使用済(生存)→未使用】に変更する。</p>
+				<p>復活コストを2以上に設定する場合、同じキャラクターが2回選ばれる場合がある。</p>
+				
+				<p>◆星4キャラクターの即復活について</p>
+				<p>星4キャラクターが抽選で選ばれた場合、1コストの消費で【使用済(戦闘不能)→未使用】にする。</p>
+			</div>
+			<div style="margin:1rem;text-align:center;">キャラクター復活抽選機<br>※復活処理は自動で行われます</div>
+			<div style="margin:1rem;text-align:center;">
+				復活コスト：<input type="number" id="DraftLocalLegend_CharacterRechargeCost" style="width:40px;"value="6">
+				 / 
+				星4キャラクターの即復活<input type="checkbox" checked id="DraftLocalLegend_CharacterRechargeR4">
+			</div>
 			<div style="display:flex;">
 				<input type="button" value="抽選" onclick="DraftLocalLegend_CharacterRecharge();" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
 				<div id="DraftLocalLegend_CharacterRechargeResult" style="white-space:pre-wrap;margin:0 0.5rem 0.5rem 0;"></div>
 			</div>
 			<script type="module">
 				function DraftLocalLegend_CharacterRecharge() {
-				  const confirmed = confirm("エンドレスモード向け：キャラクターを復活させてよいですか？");
+				  const confirmed = confirm("キャラクターを復活させてよいですか？");
 				  if (!confirmed) return;
 
 				  const cost = parseInt(document.getElementById("DraftLocalLegend_CharacterRechargeCost").value, 10);
 				  if (isNaN(cost) || cost <= 0) return;
 
+				  const isR4Instant = document.getElementById("DraftLocalLegend_CharacterRechargeR4").checked;
 				  const allLabels = Array.from(document.querySelectorAll('label[data-status]'));
 
 				  // data-characterごとに1代表のみ保持（重複排除）
@@ -2476,25 +2500,32 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 				  const characterEntries = Array.from(characterMap.entries()).map(([charId, label]) => ({
 				    charId,
 				    label,
-				    status: parseInt(label.dataset.status, 10)
+				    status: parseInt(label.dataset.status, 10),
+				    rarity: label.dataset.rarity || "5"
 				  }));
 
 				  let remainingCost = cost;
 				  const logs = [];
 
 				  while (remainingCost > 0) {
-				    // 抽選対象：statusが1か2のキャラすべて（順番関係なし）
+				    // 抽選対象：statusが1か2のキャラすべて
 				    const reducible = characterEntries.filter(entry => entry.status > 0);
 				    if (reducible.length === 0) break;
 
-				    // ランダム抽選（statusに関係なく平等）
 				    const index = Math.floor(Math.random() * reducible.length);
 				    const entry = reducible[index];
-
 				    const oldStatus = entry.status;
-				    const newStatus = oldStatus - 1;
 
-				    // 更新
+				    let decrease = 1;
+				    if (isR4Instant) {
+				      if (entry.rarity === "4") {
+				        decrease = 2;
+				      } else {
+				        decrease = 1;
+				      }
+				    }
+
+				    const newStatus = Math.max(0, oldStatus - decrease);
 				    entry.status = newStatus;
 
 				    const allSameChar = document.querySelectorAll(`label[data-character="${entry.charId}"]`);
@@ -2509,6 +2540,8 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 				      log = `${name}を使用済(戦闘不能)から使用済(生存)に戻しました`;
 				    } else if (oldStatus === 1 && newStatus === 0) {
 				      log = `${name}を使用済(生存)から未使用に戻しました`;
+				    } else if (oldStatus === 2 && newStatus === 0) {
+				      log = `${name}を使用済(戦闘不能)から未使用に戻しました`;
 				    }
 
 				    if (log) logs.push(log);
@@ -2524,11 +2557,24 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 			</script>
 		</div>
 		<div>
-			<div style="margin:1rem;text-align:center;">エンドレスモード向けセーブデータ自動生成機</div>
+			<button class="help-button" data-help-id="DraftLocalLegend_help2">？</button>
+			<div id="DraftLocalLegend_help2" class="help-popup">
+				<p>エンドレスモードなど、一部のキャラクターが使えない状態のセーブデータから始めたい場合は、この生成機を使用してセーブデータを生成してください。</p>
+			</div>
+			<div style="margin:1rem;text-align:center;">セーブデータ自動生成機</div>
 			<div style="text-align:center;">
-				0の比率：<input type="number" id="DraftLocalLegend_SaveDataCreateZero" value="6"><br>
-				1の比率：<input type="number" id="DraftLocalLegend_SaveDataCreateOne" value="2"><br>
-				2の比率：<input type="number" id="DraftLocalLegend_SaveDataCreateTwo" value="1"><br>
+				<div>
+					<span style="display:inline-block;width:13rem;text-align:right;">未使用の比率：</span>
+					<input type="number" id="DraftLocalLegend_SaveDataCreateZero" value="6" style="width:40px;margin-right:15%;">
+				</div>
+				<div>
+					<span style="display:inline-block;width:13rem;text-align:right;">使用済(生存)の比率：</span>
+					<input type="number" id="DraftLocalLegend_SaveDataCreateOne" value="2" style="width:40px;margin-right:15%;">
+				</div>
+				<div>
+					<span style="display:inline-block;width:13rem;text-align:right;">使用済(戦闘不能)の比率：</span>
+					<input type="number" id="DraftLocalLegend_SaveDataCreateTwo" value="1" style="width:40px;margin-right:15%;">
+				</div>
 			</div>
 			<div style="display:flex;">
 				<input type="button" id="DraftLocalLegend_SaveDataCreate" value="作成" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
@@ -2603,58 +2649,107 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 
 <!--■■■▼バージョンアップデートに応じて要素を表示するプログラム▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
 <script>
-(function () {
-  const schedule = [
-    { className: 'v58a', start: '2025-07-30T10:00:00+09:00' },
-    { className: 'v58b', start: '2025-08-20T19:00:00+09:00' },
-    { className: 'v60a', start: '2025-09-10T10:00:00+09:00' },
-    { className: 'v60b', start: '2025-10-01T19:00:00+09:00' },
-    { className: 'v61a', start: '2025-10-22T10:00:00+09:00' },
-    { className: 'v61b', start: '2025-11-12T19:00:00+09:00' },
-    { className: 'v62a', start: '2025-12-03T10:00:00+09:00' },
-    { className: 'v62b', start: '2025-12-24T19:00:00+09:00' },
-    { className: 'v63a', start: '2026-01-14T10:00:00+09:00' },
-    { className: 'v63b', start: '2026-02-04T19:00:00+09:00' },
-    { className: 'v64a', start: '2026-02-25T10:00:00+09:00' },
-    { className: 'v64b', start: '2026-03-18T19:00:00+09:00' },
-    { className: 'v65a', start: '2026-04-08T10:00:00+09:00' },
-    { className: 'v65b', start: '2026-04-29T19:00:00+09:00' },
-    { className: 'v66a', start: '2026-05-20T10:00:00+09:00' },
-    { className: 'v66b', start: '2026-06-10T19:00:00+09:00' },
-    { className: 'v67a', start: '2026-07-01T10:00:00+09:00' },
-    { className: 'v67b', start: '2026-07-22T19:00:00+09:00' },
-    { className: 'v68a', start: '2026-08-12T10:00:00+09:00' },
-    { className: 'v68b', start: '2026-09-02T19:00:00+09:00' }
-  ];
+	(function () {
+	  const schedule = [
+	    { className: 'v58a', start: '2025-07-30T10:00:00+09:00' },
+	    { className: 'v58b', start: '2025-08-20T19:00:00+09:00' },
+	    { className: 'v60a', start: '2025-09-10T10:00:00+09:00' },
+	    { className: 'v60b', start: '2025-10-01T19:00:00+09:00' },
+	    { className: 'v61a', start: '2025-10-22T10:00:00+09:00' },
+	    { className: 'v61b', start: '2025-11-12T19:00:00+09:00' },
+	    { className: 'v62a', start: '2025-12-03T10:00:00+09:00' },
+	    { className: 'v62b', start: '2025-12-24T19:00:00+09:00' },
+	    { className: 'v63a', start: '2026-01-14T10:00:00+09:00' },
+	    { className: 'v63b', start: '2026-02-04T19:00:00+09:00' },
+	    { className: 'v64a', start: '2026-02-25T10:00:00+09:00' },
+	    { className: 'v64b', start: '2026-03-18T19:00:00+09:00' },
+	    { className: 'v65a', start: '2026-04-08T10:00:00+09:00' },
+	    { className: 'v65b', start: '2026-04-29T19:00:00+09:00' },
+	    { className: 'v66a', start: '2026-05-20T10:00:00+09:00' },
+	    { className: 'v66b', start: '2026-06-10T19:00:00+09:00' },
+	    { className: 'v67a', start: '2026-07-01T10:00:00+09:00' },
+	    { className: 'v67b', start: '2026-07-22T19:00:00+09:00' },
+	    { className: 'v68a', start: '2026-08-12T10:00:00+09:00' },
+	    { className: 'v68b', start: '2026-09-02T19:00:00+09:00' }
+	  ];
 
-  const now = new Date();
+	  const now = new Date();
 
-  schedule.forEach(item => {
-    const startDate = new Date(item.start);
-    if (now >= startDate) {
-      const elements = document.querySelectorAll(`.${item.className}`);
-      elements.forEach(el => {
-        el.style.display = 'block';
-      });
-    }
-  });
-})();
+	  schedule.forEach(item => {
+	    const startDate = new Date(item.start);
+	    if (now >= startDate) {
+	      const elements = document.querySelectorAll(`.${item.className}`);
+	      elements.forEach(el => {
+	        el.style.display = 'block';
+	      });
+	    }
+	  });
+	})();
 </script>
 
-<style type="text/css">
-div.updatehistory > div.version{font-weight:bold;font-size:1.5rem;border-bottom:1px #888 solid;padding:0.25rem;margin:0.25rem;}
-div.updatehistory > div.version > a{font-size:1.5rem;}
-div.updatehistory > div.version > span{display:inline-block;margin:0 1rem 0 0.5rem;font-weight:normal;}
-div.updatehistory > div.details{margin:0 0 2rem 2rem;}
-div.updatehistory > div.details > p{margin:0 0 0.5rem;}
-</style>
+<!--■■■▼ヘルプ表示プログラム▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
+<script type="module">
+	const popup = document.createElement('div');
+	popup.className = 'help-popup';
+	document.body.appendChild(popup);
+
+	let currentButton = null;
+
+	document.querySelectorAll('.help-button').forEach(button => {
+	  button.addEventListener('click', event => {
+	    event.stopPropagation();
+
+	    const helpId = button.dataset.helpId;
+	    const contentElement = document.getElementById(helpId);
+	    if (!contentElement) return;
+
+	    if (popup.style.display === 'block' && currentButton === button) {
+	      popup.style.display = 'none';
+	      currentButton = null;
+	      return;
+	    }
+
+	    popup.innerHTML = contentElement.innerHTML;
+	    popup.style.display = 'block';
+
+	    const rect = button.getBoundingClientRect();
+	    const popupMaxWidth = 250;
+	    const margin = 10;
+
+	    let left = rect.left + window.scrollX;
+	    const rightEdge = left + popupMaxWidth;
+	    const windowWidth = window.innerWidth;
+
+	    if (rightEdge + margin > windowWidth) {
+	      left = windowWidth - popupMaxWidth - margin;
+	    }
+
+	    popup.style.top = `${rect.bottom + window.scrollY + 5}px`;
+	    popup.style.left = `${left}px`;
+
+	    currentButton = button;
+	  });
+	});
+
+	document.addEventListener('click', () => {
+	  popup.style.display = 'none';
+	  currentButton = null;
+	});
+</script>
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
 
+	<div class="version">v1.8.0<span>2025/07/05</span></div>
+	<div class="details">
+		<p>一部の機能にヘルプボタンを追加しました</p>
+		<p>【ドラフト地方伝説】キャラクター復活抽選機に星4キャラクターの即復活チェックボックスを追加しました</p>
+		<p>その他、軽微な変更・修正をしました</p>
+	</div>
+
 	<div class="version">v1.7.1<span>2025/07/04</span></div>
 	<div class="details">
-		<p>【ドラフト地方伝説】アンバーと香菱が正常に選択できなくなっている問題を修正しました</p>
+		<p>【ドラフト地方伝説】未使用キャラクターリストにて、アンバーと香菱が正常に選択できなくなっている問題を修正しました</p>
 	</div>
 
 	<div class="version">v1.7.0<span>2025/07/04</span></div>
