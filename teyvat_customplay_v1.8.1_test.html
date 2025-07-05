@@ -2895,8 +2895,6 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 	
 
 
-
-	
 <!-- Firebase SDK 読み込み -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
@@ -2913,28 +2911,41 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
     appId: "1:762222211196:web:99190042e4ccfda92699f9"
   };
 
-  // Firebase 初期化
   const app = firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
 
-  // ラベルのクリック処理
-  const labels = document.querySelectorAll('label[data-character]');
-  labels.forEach(label => {
+  // 見た目の更新関数
+  function updateLabelAppearance(el, status) {
+    el.style.backgroundColor = '';
+    if (status === 0) {
+      el.style.backgroundColor = '#ccc';       // 未使用：グレー
+    } else if (status === 1) {
+      el.style.backgroundColor = '#ffc107';    // 使用済(生存)：オレンジ
+    } else if (status === 2) {
+      el.style.backgroundColor = '#28a745';    // 使用済(死亡)：緑
+    }
+  }
+
+  // ラベルクリック処理
+  document.querySelectorAll('label[data-character]').forEach(label => {
     label.addEventListener('click', () => {
       const characterId = label.dataset.character;
       const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
-      let currentStatus = parseInt(label.dataset.status, 10);
-      let newStatus = (currentStatus + 1) % 3;
 
+      // 1つ目のラベルの現在statusをもとに、新しい値を決定
+      const currentStatus = parseInt(group[0].dataset.status, 10);
+      const newStatus = (currentStatus + 1) % 3;
+
+      // 全ラベルに反映 & 見た目更新
       group.forEach(el => {
         el.dataset.status = newStatus.toString();
         updateLabelAppearance(el, newStatus);
       });
 
-      // Firebaseに保存
+      // Firebaseに保存（1キャラ1回）
       database.ref(`character_statuses/character_${characterId}`).set(newStatus.toString())
         .then(() => {
-          console.log(`Firebase更新: character_${characterId} = ${newStatus}`);
+          console.log(`character_${characterId} を ${newStatus} に更新（Firebase送信済）`);
         })
         .catch((error) => {
           console.error(`Firebase送信エラー:`, error);
@@ -2942,66 +2953,60 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
     });
   });
 
-  // 外部から復活用に呼び出す関数
-  function DraftLocalLegend_resetStatus() {
-    if (!confirm("使用済(生存)キャラを復活させますか？")) return;
-
-    document.querySelectorAll('label[data-status="1"]').forEach(label => {
-      label.setAttribute('data-status', '0');
-      updateLabelAppearance(label, 0);
-      const characterId = label.dataset.character;
-      database.ref(`character_statuses/character_${characterId}`).set("0");
-    });
-  }
-
-  window.DraftLocalLegend_resetStatus = DraftLocalLegend_resetStatus;
-
-  // Firebase → DOM へのリアルタイム反映
+  // Firebase → ラベル反映（リアルタイム）
   database.ref('character_statuses').on('child_changed', (snapshot) => {
     const dbKey = snapshot.key;
     const characterId = dbKey.replace('character_', '');
-    const newStatus = snapshot.val();
+    const newStatus = parseInt(snapshot.val(), 10);
 
     const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
     group.forEach(el => {
-      el.dataset.status = newStatus;
-      updateLabelAppearance(el, parseInt(newStatus, 10));
+      el.dataset.status = newStatus.toString();
+      updateLabelAppearance(el, newStatus);
     });
   });
 
-  // 初回読み込み時にFirebaseから現在の状態を取得
+  // Firebase初期読み込み（ページ表示時）
   database.ref('character_statuses').once('value')
     .then((snapshot) => {
       const allStatuses = snapshot.val();
       if (allStatuses) {
-        Object.keys(allStatuses).forEach(dbKey => {
+        Object.entries(allStatuses).forEach(([dbKey, status]) => {
           const characterId = dbKey.replace('character_', '');
-          const status = allStatuses[dbKey];
           const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
           group.forEach(el => {
             el.dataset.status = status;
             updateLabelAppearance(el, parseInt(status, 10));
           });
         });
-        console.log('Firebaseから初期状態を読み込みました。');
+        console.log('Firebaseの初期状態を反映しました。');
       }
     })
     .catch((error) => {
-      console.error("初期同期中のエラー:", error);
+      console.error("初期同期エラー:", error);
     });
 
-  // 見た目の切り替え（必要に応じて変更）
-  function updateLabelAppearance(el, status) {
-    el.style.backgroundColor = '';
-    if (status === 0) {
-      el.style.backgroundColor = '#ccc'; // グレー（未使用）
-    } else if (status === 1) {
-      el.style.backgroundColor = '#ffc107'; // オレンジ（使用済み生存）
-    } else if (status === 2) {
-      el.style.backgroundColor = '#28a745'; // 緑（使用済み死亡など）
-    }
-  }
-</script>
+  // リセット関数（data-status=1を0に戻す）
+  function DraftLocalLegend_resetStatus() {
+    if (!confirm("使用済(生存)キャラを復活させますか？")) return;
 
+    document.querySelectorAll('label[data-status="1"]').forEach(label => {
+      const characterId = label.dataset.character;
+
+      // 全部の該当ラベルに反映
+      const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
+      group.forEach(el => {
+        el.dataset.status = "0";
+        updateLabelAppearance(el, 0);
+      });
+
+      // Firebaseにも反映
+      database.ref(`character_statuses/character_${characterId}`).set("0");
+    });
+  }
+
+  // グローバル公開
+  window.DraftLocalLegend_resetStatus = DraftLocalLegend_resetStatus;
+</script>
 
 	</body></html>
