@@ -2326,11 +2326,24 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 		function DraftLocalLegend_resetStatus() {
 		  if (!confirm("使用済(生存)キャラを復活させますか？")) return;
 
+		  const updatedCharacters = new Set();
+
 		  document.querySelectorAll('label[data-status="1"]').forEach(label => {
-		    label.setAttribute('data-status', '0');
+		    const characterId = label.dataset.character;
+
+		    // 同じキャラクターIDのすべてのlabelに反映
+		    document.querySelectorAll(`label[data-character="${characterId}"]`).forEach(el => {
+		      el.dataset.status = '0';
+		      updateLabelAppearance(el, 0);
+		    });
+
+		    // Firebaseに反映（重複送信防止のためSetで一度だけ送信）
+		    if (!updatedCharacters.has(characterId)) {
+		      updatedCharacters.add(characterId);
+		      firebase.database().ref(`character_statuses/character_${characterId}`).set("0");
+		    }
 		  });
 		}
-
 		//■■■モジュールのグローバル公開■■■
 		window.DraftLocalLegend_resetStatus = DraftLocalLegend_resetStatus;
 	</script>
@@ -2341,13 +2354,21 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 		  const chars = input.split('');
 
 		  const labels = document.querySelectorAll('label[data-character]');
+		  const updatedCharacters = new Set();
+
 		  chars.forEach((statusValue, index) => {
-		    const targetCharacter = (index + 1).toString();
-		    labels.forEach(label => {
-		      if (label.dataset.character === targetCharacter) {
-		        label.setAttribute('data-status', statusValue);
-		      }
+		    const characterId = (index + 1).toString();
+
+		    document.querySelectorAll(`label[data-character="${characterId}"]`).forEach(label => {
+		      label.dataset.status = statusValue;
+		      updateLabelAppearance(label, parseInt(statusValue, 10));
 		    });
+
+		    // Firebaseに反映（重複送信防止）
+		    if (!updatedCharacters.has(characterId)) {
+		      updatedCharacters.add(characterId);
+		      firebase.database().ref(`character_statuses/character_${characterId}`).set(statusValue);
+		    }
 		  });
 		}
 
@@ -2857,7 +2878,6 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 </div>
 
 
-
 <!--
                                                 ノ|                            
                                     ＿＿＿     [  ]                            
@@ -2891,16 +2911,11 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
                       ﾉ┐ ＼__ノ|    r─ﾍ  ＿_.     ＼／⌒ヽヘ   |:|:::::|     
 -->
 
-
-	
-
-
 <!-- Firebase SDK 読み込み -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
 <script>
-  // Firebase 設定
   const firebaseConfig = {
     apiKey: "AIzaSyCRAN0BBpAApCMa3-KOmOfB8dswnvCzNG",
     authDomain: "dvalinmultigroup.firebaseapp.com",
@@ -2914,7 +2929,6 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
   const app = firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
 
-  // 見た目の更新関数
   function updateLabelAppearance(el, status) {
     el.style.backgroundColor = '';
     if (status === 0) {
@@ -2926,87 +2940,85 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
     }
   }
 
-  // ラベルクリック処理
+  // ? Firebaseを正として、クリック時に次の値を計算
   document.querySelectorAll('label[data-character]').forEach(label => {
     label.addEventListener('click', () => {
       const characterId = label.dataset.character;
-      const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
+      const ref = database.ref(`character_statuses/character_${characterId}`);
 
-      // 1つ目のラベルの現在statusをもとに、新しい値を決定
-      const currentStatus = parseInt(group[0].dataset.status, 10);
-      const newStatus = (currentStatus + 1) % 3;
+      // ?? Firebaseの現在値を取得してから次の値を決定
+      ref.once('value').then(snapshot => {
+        const current = parseInt(snapshot.val(), 10) || 0;
+        const next = (current + 1) % 3;
 
-      // 全ラベルに反映 & 見た目更新
-      group.forEach(el => {
-        el.dataset.status = newStatus.toString();
-        updateLabelAppearance(el, newStatus);
-      });
+        // Firebase更新
+        ref.set(next.toString()).then(() => {
+          console.log(`Firebase更新: character_${characterId} = ${next}`);
 
-      // Firebaseに保存（1キャラ1回）
-      database.ref(`character_statuses/character_${characterId}`).set(newStatus.toString())
-        .then(() => {
-          console.log(`character_${characterId} を ${newStatus} に更新（Firebase送信済）`);
-        })
-        .catch((error) => {
-          console.error(`Firebase送信エラー:`, error);
-        });
-    });
-  });
-
-  // Firebase → ラベル反映（リアルタイム）
-  database.ref('character_statuses').on('child_changed', (snapshot) => {
-    const dbKey = snapshot.key;
-    const characterId = dbKey.replace('character_', '');
-    const newStatus = parseInt(snapshot.val(), 10);
-
-    const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
-    group.forEach(el => {
-      el.dataset.status = newStatus.toString();
-      updateLabelAppearance(el, newStatus);
-    });
-  });
-
-  // Firebase初期読み込み（ページ表示時）
-  database.ref('character_statuses').once('value')
-    .then((snapshot) => {
-      const allStatuses = snapshot.val();
-      if (allStatuses) {
-        Object.entries(allStatuses).forEach(([dbKey, status]) => {
-          const characterId = dbKey.replace('character_', '');
+          // DOMも更新
           const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
           group.forEach(el => {
-            el.dataset.status = status;
-            updateLabelAppearance(el, parseInt(status, 10));
+            el.dataset.status = next.toString();
+            updateLabelAppearance(el, next);
           });
         });
-        console.log('Firebaseの初期状態を反映しました。');
+      });
+    });
+  });
+
+  // ? 初期読み込み
+  database.ref('character_statuses').once('value')
+    .then((snapshot) => {
+      const all = snapshot.val();
+      if (all) {
+        Object.entries(all).forEach(([key, value]) => {
+          const characterId = key.replace('character_', '');
+          const status = parseInt(value, 10);
+          const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
+          group.forEach(el => {
+            el.dataset.status = status.toString();
+            updateLabelAppearance(el, status);
+          });
+        });
+        console.log("初期読み込み完了");
       }
-    })
-    .catch((error) => {
-      console.error("初期同期エラー:", error);
     });
 
-  // リセット関数（data-status=1を0に戻す）
+  // ? リアルタイム監視（他ユーザーによる更新を反映）
+  database.ref('character_statuses').on('child_changed', (snapshot) => {
+    const key = snapshot.key;
+    const characterId = key.replace('character_', '');
+    const status = parseInt(snapshot.val(), 10);
+    const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
+    group.forEach(el => {
+      el.dataset.status = status.toString();
+      updateLabelAppearance(el, status);
+    });
+  });
+
+  // ? 使用済(生存)キャラを一括復活（data-status="1"を"0"に）
   function DraftLocalLegend_resetStatus() {
     if (!confirm("使用済(生存)キャラを復活させますか？")) return;
 
+    const updated = new Set();
     document.querySelectorAll('label[data-status="1"]').forEach(label => {
       const characterId = label.dataset.character;
-
-      // 全部の該当ラベルに反映
-      const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
-      group.forEach(el => {
-        el.dataset.status = "0";
-        updateLabelAppearance(el, 0);
-      });
-
-      // Firebaseにも反映
-      database.ref(`character_statuses/character_${characterId}`).set("0");
+      if (!updated.has(characterId)) {
+        updated.add(characterId);
+        const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
+        group.forEach(el => {
+          el.dataset.status = "0";
+          updateLabelAppearance(el, 0);
+        });
+        database.ref(`character_statuses/character_${characterId}`).set("0");
+      }
     });
   }
 
-  // グローバル公開
   window.DraftLocalLegend_resetStatus = DraftLocalLegend_resetStatus;
 </script>
 
-	</body></html>
+
+
+
+</body></html>
