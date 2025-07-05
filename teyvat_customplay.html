@@ -892,6 +892,7 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 					<label><input type="checkbox" checked class="start_Natlan" value="ナタ_秘源機兵・精巧デバイス"><span><span class="sp">BOSS    </span>秘源機兵・精巧デバイス                </span></label><br>
 					<label><input type="checkbox" checked class="start_Natlan" value="ナタ_深遠なるミミックパピラ"><span><span class="sp">BOSS    </span>深遠なるミミックパピラ                </span></label><br>
 					<label><input type="checkbox" checked class="start_Natlan" value="ナタ_迷える霊覚の修験者"    ><span><span class="sp">BOSS    </span>迷える霊覚の修験者                    </span></label><br>
+					<label><input type="checkbox"         class="start_Natlan" value="ナタ_秘源機兵・統御デバイス"><span><span class="sp">BOSS    </span>秘源機兵・統御デバイス                </span></label><br>
 				</div>
 				<div class="NoMapRace_startpoint">
 					<label><input type="checkbox"         class="start_Natlan" value="ナタ_「こだまの子」"        ><span><span class="sp">その他  </span>「こだまの子」                        </span></label><br>
@@ -934,6 +935,7 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 					<label><input type="checkbox" checked  class="goal_Natlan" value="ナタ_秘源機兵・精巧デバイス"><span><span class="sp">BOSS    </span>秘源機兵・精巧デバイス                </span></label><br>
 					<label><input type="checkbox" checked  class="goal_Natlan" value="ナタ_深遠なるミミックパピラ"><span><span class="sp">BOSS    </span>深遠なるミミックパピラ                </span></label><br>
 					<label><input type="checkbox" checked  class="goal_Natlan" value="ナタ_迷える霊覚の修験者"    ><span><span class="sp">BOSS    </span>迷える霊覚の修験者                    </span></label><br>
+					<label><input type="checkbox"          class="goal_Natlan" value="ナタ_秘源機兵・統御デバイス"><span><span class="sp">BOSS    </span>秘源機兵・統御デバイス                </span></label><br>
 				</div>
 				<div class="NoMapRace_goalpoint">
 					<label><input type="checkbox"          class="goal_Natlan" value="ナタ_「こだまの子」"        ><span><span class="sp">その他  </span>「こだまの子」                        </span></label><br>
@@ -1118,6 +1120,7 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 		      if (ddddd.value === 'ナタ_秘源機兵・精巧デバイス'                              ) return '<div class="color_Natlan   "><div>ナタ               / BOSS    </div><div>秘源機兵・精巧デバイス                      </div></div>';
 		      if (ddddd.value === 'ナタ_深遠なるミミックパピラ'                              ) return '<div class="color_Natlan   "><div>ナタ               / BOSS    </div><div>深遠なるミミックパピラ                      </div></div>';
 		      if (ddddd.value === 'ナタ_迷える霊覚の修験者'                                  ) return '<div class="color_Natlan   "><div>ナタ               / BOSS    </div><div>迷える霊覚の修験者                          </div></div>';
+		      if (ddddd.value === 'ナタ_秘源機兵・統御デバイス'                              ) return '<div class="color_Natlan   "><div>ナタ               / BOSS    </div><div>秘源機兵・統御デバイス                      </div></div>';
 		      if (ddddd.value === 'ナタ_「こだまの子」'                                      ) return '<div class="color_Natlan   "><div>ナタ               / その他  </div><div>「こだまの子」                              </div></div>';
 		      if (ddddd.value === 'ナタ_「懸木の民」'                                        ) return '<div class="color_Natlan   "><div>ナタ               / その他  </div><div>「懸木の民」                                </div></div>';
 		      if (ddddd.value === 'ナタ_「流泉の衆」'                                        ) return '<div class="color_Natlan   "><div>ナタ               / その他  </div><div>「流泉の衆」                                </div></div>';
@@ -1891,6 +1894,7 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 		<div>基本レギュレーション案について</div>
 		<ol>
 			<li>星4は戦闘不能にならない限り何度でも使用可 / 地方伝説6体毎に使用済(生存)キャラの全復活
+			<li>星4は戦闘不能にならない限り何度でも使用可 / (星5+星4+星4)×4プレイヤー+4キャラランダム復活を初期キャラとして、各戦闘後に復活コスト8
 		</ol>
 		<div>レギュレーションの改変案について</div>
 		<ul>
@@ -2069,6 +2073,7 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 			<!--▼金珀ヒーラー-->
 			<td><label data-status="0" data-character="99"  data-rarity="4"><span>イファ                                </span></label>
 			    <label data-status="0" data-character="80"  data-rarity="5"><span>閑雲                                  </span></label>
+			    <label data-status="0" data-character="52"  data-rarity="4"><span>鹿野院平蔵                            </span></label>
 			    <label data-status="0" data-character="16"  data-rarity="4"><span>スクロース                            </span></label>
 			    <label data-status="0" data-character="62"  data-rarity="5"><span>放浪者                                </span></label>
 			    <label data-status="0" data-character="96"  data-rarity="5"><span>夢見月瑞希                            </span></label>
@@ -2463,8 +2468,7 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 				<p>復活コスト1を消費することで、ランダムに選ばれたキャラクター1体を【使用済(戦闘不能)→使用済(生存)】または【使用済(生存)→未使用】に変更する。</p>
 				<p>復活コストを2以上に設定する場合、同じキャラクターが2回選ばれる場合がある。</p>
 				
-				<p>◆星4キャラクターの即復活について</p>
-				<p>星4キャラクターが抽選で選ばれた場合、1コストの消費で【使用済(戦闘不能)→未使用】または【使用済(生存)→未使用】にする。</p>
+				<p>◆星4キャラクターの即復活について</p>				<p>星4キャラクターが抽選で選ばれた場合、1コストの消費で【使用済(戦闘不能)→未使用】または【使用済(生存)→未使用】にする。</p>
 
 			</div>
 			<div style="margin:1rem;text-align:center;">キャラクター復活抽選機<br>※復活処理は自動で行われます</div>
@@ -2740,6 +2744,13 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.8.1<span>2025/07/06</span></div>
+	<div class="details">
+		<p>【テイワット地図無しレース】「秘源機兵・統御デバイス」を追加しました</p>
+		<p>【ドラフト地方伝説】未使用キャラクターリストにて、鹿野院平蔵が金珀ヒーラー欄に記載されていなかったため追加しました</p>
+		<p>【ドラフト地方伝説】基本レギュレーション案を追加しました</p>
+	</div>
 
 	<div class="version">v1.8.0<span>2025/07/05</span></div>
 	<div class="details">
