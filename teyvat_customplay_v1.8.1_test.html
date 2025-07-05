@@ -2503,7 +2503,7 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 				<div id="DraftLocalLegend_CharacterRechargeResult" style="white-space:pre-wrap;margin:0 0.5rem 0.5rem 0;"></div>
 			</div>
 			<script type="module">
-				function DraftLocalLegend_CharacterRecharge() {
+								function DraftLocalLegend_CharacterRecharge() {
 				  const confirmed = confirm("キャラクターを復活させてよいですか？");
 				  if (!confirmed) return;
 
@@ -2522,7 +2522,6 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 				    }
 				  });
 
-				  // エントリを作成
 				  const characterEntries = Array.from(characterMap.entries()).map(([charId, label]) => ({
 				    charId,
 				    label,
@@ -2534,7 +2533,6 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 				  const logs = [];
 
 				  while (remainingCost > 0) {
-				    // 抽選対象：statusが1か2のキャラすべて
 				    const reducible = characterEntries.filter(entry => entry.status > 0);
 				    if (reducible.length === 0) break;
 
@@ -2546,18 +2544,21 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 				    if (isR4Instant) {
 				      if (entry.rarity === "4") {
 				        decrease = 2;
-				      } else {
-				        decrease = 1;
 				      }
 				    }
 
 				    const newStatus = Math.max(0, oldStatus - decrease);
 				    entry.status = newStatus;
 
+				    // DOMに反映（同一キャラすべて）
 				    const allSameChar = document.querySelectorAll(`label[data-character="${entry.charId}"]`);
 				    allSameChar.forEach(label => {
 				      label.dataset.status = newStatus;
+				      updateLabelAppearance(label, newStatus); // 見た目も更新
 				    });
+
+				    // ?? Firebaseに反映
+				    firebase.database().ref(`character_statuses/character_${entry.charId}`).set(newStatus.toString());
 
 				    const name = entry.label.querySelector('span').firstChild.textContent.trim();
 				    let log = '';
