@@ -1,3 +1,4 @@
+
 <html><head><meta charset="utf-8"><title>変則遊戯</title><meta name="viewport" content="width=device-width,user-scalable=0"><meta name="robots" content="noindex,nofollow,noarchive"><style type="text/css">
 /*▼共通*/
 *                   {font-size:12px;}
@@ -1970,94 +1971,6 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 	</ol>
 	<hr style="margin:5rem auto;">
 
-	<script type="module">
-//■■■次に戦う地方伝説のマスク機能■■■
-function DraftLocalLegend_maskbbbbb() {
-  const DraftLocalLegend_maskccccc = document.querySelectorAll('#DraftLocalLegend_result li > div');
-
-  DraftLocalLegend_maskccccc.forEach((DraftLocalLegend_maskddddd) => {
-    DraftLocalLegend_maskddddd.classList.add('masked');
-
-    DraftLocalLegend_maskddddd.addEventListener('click', function () {
-      DraftLocalLegend_maskddddd.classList.remove('masked');
-      DraftLocalLegend_maskddddd.classList.add('revealed');
-
-      //■■■マスク解除時に現時点でのセーブデータを生成■■■
-      const map = new Map();
-
-      document.querySelectorAll('label[data-status][data-character]').forEach(label => {
-        const character = label.dataset.character;
-        const status = label.dataset.status;
-
-        if (!map.has(character)) {
-          map.set(character, status);
-        }
-      });
-
-      const result = Array.from(map.entries())
-        .sort(([a], [b]) => parseInt(a, 10) - parseInt(b, 10))
-        .map(([, status]) => status)
-        .join('');
-
-      // 対応する span.savedata に出力
-      const div = DraftLocalLegend_maskddddd.querySelector('.savedata');
-      if (div) {
-        div.textContent = result;
-      }
-
-    }, { once: true });
-  });
-}
-
-//■■■地方伝説の表示部分■■■
-function DraftLocalLegend_bbbbb() {
-  const DraftLocalLegend_aaaaa = [...document.querySelectorAll('.DraftLocalLegend_aaaaa input[type=checkbox]:checked')].map(DraftLocalLegend_result => {
-    if (DraftLocalLegend_result.value === '赤璋巡岳府君'                                  ) return '<li><div><div class="savedata"></div><div class="color_Liyue    ">赤璋巡岳府君<span>炎氷に耐性あり</span>                                </div></div>';
-    if (DraftLocalLegend_result.value === '湖辺のニニアン'                                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">湖辺のニニアン<span>南/水無効</span>                                   </div></div>';
-    if (DraftLocalLegend_result.value === '湖辺のヴィヴィアン'                            ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">湖辺のヴィヴィアン<span>北/水無効</span>                               </div></div>';
-    if (DraftLocalLegend_result.value === 'イゾルト'                                      ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">イゾルト                                                               </div></div>';
-    if (DraftLocalLegend_result.value === '自律スーパー・コンピューティング型力場生成装置') return '<li><div><div class="savedata"></div><div class="color_Fontaine ">自律スーパー・コンピューティング型力場生成装置<span>破砕攻撃推奨</span></div></div>';
-    if (DraftLocalLegend_result.value === 'ロッキー・アヴィルドセン'                      ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">ロッキー・アヴィルドセン                                               </div></div>';
-    if (DraftLocalLegend_result.value === 'リアム'                                        ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">リアム                                                                 </div></div>';
-    if (DraftLocalLegend_result.value === 'スネージヴナのディアンナラ'                    ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">スネージヴナのディアンナラ                                             </div></div>';
-    if (DraftLocalLegend_result.value === 'シネアス'                                      ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">シネアス<span>草元素推奨</span>                                        </div></div>';
-    if (DraftLocalLegend_result.value === '鉄皮の子爵'                                    ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">鉄皮の子爵                                                             </div></div>';
-    if (DraftLocalLegend_result.value === 'オーシャン巡回法官'                            ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">オーシャン巡回法官                                                     </div></div>';
-    if (DraftLocalLegend_result.value === '隠者の王・ドアーチュ'                          ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">隠者の王・ドアーチュ                                                   </div></div>';
-    if (DraftLocalLegend_result.value === '「消えゆく老兵」'                              ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">「消えゆく老兵」                                                       </div></div>';
-    if (DraftLocalLegend_result.value === '双生妖精の騎士・アンジェリカ＆ミドロ'          ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">双生妖精の騎士・アンジェリカ＆ミドロ                                   </div></div>';
-    if (DraftLocalLegend_result.value === '深谷の剣・コルタナ＆モーグレイ'                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">深谷の剣・コルタナ＆モーグレイ                                         </div></div>';
-    if (DraftLocalLegend_result.value === '極彩色のルケア'                                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">極彩色のルケア                                                         </div></div>';
-    if (DraftLocalLegend_result.value === 'シャサニョン'                                  ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">シャサニョン                                                           </div></div>';
-    if (DraftLocalLegend_result.value === '魔剣クルージュ'                                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">魔剣クルージュ                                                         </div></div>';
-    if (DraftLocalLegend_result.value === '波のジャプー'                                  ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">波のジャプー<span>炎元素推奨</span>                                    </div></div>';
-    if (DraftLocalLegend_result.value === 'コシーホ'                                      ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">コシーホ<span>炎氷草元素推奨</span>                                    </div></div>';
-    if (DraftLocalLegend_result.value === 'バラチコ'                                      ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">バラチコ<span>水元素推奨</span>                                        </div></div>';
-    if (DraftLocalLegend_result.value === '異色三連星'                                    ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">異色三連星<span>炎水氷元素推奨</span>                                  </div></div>';
-    if (DraftLocalLegend_result.value === 'リライ'                                        ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">リライ                                                                 </div></div>';
-    if (DraftLocalLegend_result.value === '銅の錠'                                        ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">銅の錠<span>元素耐性あり</span>                                        </div></div>';
-    if (DraftLocalLegend_result.value === 'ピーク'                                        ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">ピーク<span>雷元素推奨</span>                                          </div></div>';
-    if (DraftLocalLegend_result.value === '「戦羊」と「鉄爪」'                            ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">「戦羊」と「鉄爪」                                                     </div></div>';
-    if (DraftLocalLegend_result.value === '「微末」'                                      ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">「微末」<span>破砕攻撃・炎元素推奨</span>                              </div></div>';
-  }).filter(DraftLocalLegend_result => DraftLocalLegend_result !== undefined);
-
-  //■■■Fisher-Yatesアルゴリズムを用いた、地方伝説と戦う順番のシャッフル■■■
-  const DraftLocalLegend_ccccc = DraftLocalLegend_aaaaa.slice();
-  for (let DraftLocalLegend_ddddd = DraftLocalLegend_ccccc.length - 1; DraftLocalLegend_ddddd > 0; DraftLocalLegend_ddddd--) {
-    const DraftLocalLegend_eeeee = Math.floor(Math.random() * (DraftLocalLegend_ddddd + 1));
-    [DraftLocalLegend_ccccc[DraftLocalLegend_ddddd], DraftLocalLegend_ccccc[DraftLocalLegend_eeeee]] = [DraftLocalLegend_ccccc[DraftLocalLegend_eeeee], DraftLocalLegend_ccccc[DraftLocalLegend_ddddd]];
-  }
-
-  //■■■戦う順番を表示して■■■
-  document.getElementById('DraftLocalLegend_result').innerHTML = DraftLocalLegend_ccccc.join('');
-  //■■■マスクする■■■
-  DraftLocalLegend_maskbbbbb();
-}
-
-//■■■モジュールのグローバル公開■■■
-window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
-	</script>
-
 	<table border="1">
 		<tr><th colspan="5" style="text-align:center;font-size:1.5rem;padding:0.5rem;background:#444;color:#fff;">未使用キャラクターリスト(すべて五十音順)<tr><th colspan="2">アタッカー<th colspan="2">ヒーラー<th rowspan="2">キャラ一覧<tr><th>一級アタッカー<br>(魔偶剣鬼15s以内※)<th>二級アタッカー<br>(魔偶剣鬼25s以内※)<th>メインヒーラー<th>金珀ヒーラー
 		<tr class="color_Mondstadt">
@@ -2326,11 +2239,21 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 		function DraftLocalLegend_resetStatus() {
 		  if (!confirm("使用済(生存)キャラを復活させますか？")) return;
 
-		  document.querySelectorAll('label[data-status="1"]').forEach(label => {
-		    label.setAttribute('data-status', '0');
+		  // data-status=1 のキャラクターIDを一意に集める
+		  const characterIds = new Set(
+		    [...document.querySelectorAll('label[data-status="1"]')]
+		      .map(label => label.dataset.character)
+		  );
+
+		  // 各キャラクターIDごとに一度だけ処理
+		  characterIds.forEach(characterId => {
+		    document.querySelectorAll(`label[data-character="${characterId}"]`).forEach(el => {
+		      el.dataset.status = '0';
+		    });
+
+		    firebase.database().ref(`character_statuses/character_${characterId}`).set("0");
 		  });
 		}
-
 		//■■■モジュールのグローバル公開■■■
 		window.DraftLocalLegend_resetStatus = DraftLocalLegend_resetStatus;
 	</script>
@@ -2341,16 +2264,27 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 		  const chars = input.split('');
 
 		  const labels = document.querySelectorAll('label[data-character]');
+		  const updatedCharacters = new Set();
+
 		  chars.forEach((statusValue, index) => {
-		    const targetCharacter = (index + 1).toString();
-		    labels.forEach(label => {
-		      if (label.dataset.character === targetCharacter) {
-		        label.setAttribute('data-status', statusValue);
-		      }
+		    const characterId = (index + 1).toString();
+
+		    document.querySelectorAll(`label[data-character="${characterId}"]`).forEach(label => {
+		      label.dataset.status = statusValue;
 		    });
+
+		    // Firebaseに反映（重複送信防止）
+		    if (!updatedCharacters.has(characterId)) {
+		      updatedCharacters.add(characterId);
+		      firebase.database().ref(`character_statuses/character_${characterId}`).set(statusValue);
+		    }
 		  });
 		}
 
+		//■■■モジュールのグローバル公開■■■
+		window.DraftLocalLegend_importStatus = DraftLocalLegend_importStatus;
+	</script>
+	<script type="module">
 		// ■■■セーブデータのエクスポート■■■
 		function DraftLocalLegend_exportStatus() {
 		  const labels = [...document.querySelectorAll('label[data-character]')];
@@ -2379,7 +2313,6 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 		}
 
 		//■■■モジュールのグローバル公開■■■
-		window.DraftLocalLegend_importStatus = DraftLocalLegend_importStatus;
 		window.DraftLocalLegend_exportStatus = DraftLocalLegend_exportStatus;
 	</script>
 
@@ -2501,7 +2434,6 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 				    }
 				  });
 
-				  // エントリを作成
 				  const characterEntries = Array.from(characterMap.entries()).map(([charId, label]) => ({
 				    charId,
 				    label,
@@ -2513,7 +2445,6 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 				  const logs = [];
 
 				  while (remainingCost > 0) {
-				    // 抽選対象：statusが1か2のキャラすべて
 				    const reducible = characterEntries.filter(entry => entry.status > 0);
 				    if (reducible.length === 0) break;
 
@@ -2525,18 +2456,20 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 				    if (isR4Instant) {
 				      if (entry.rarity === "4") {
 				        decrease = 2;
-				      } else {
-				        decrease = 1;
 				      }
 				    }
 
 				    const newStatus = Math.max(0, oldStatus - decrease);
 				    entry.status = newStatus;
 
+				    // DOMに反映（同一キャラすべて）
 				    const allSameChar = document.querySelectorAll(`label[data-character="${entry.charId}"]`);
 				    allSameChar.forEach(label => {
 				      label.dataset.status = newStatus;
 				    });
+
+				    // Firebaseに反映
+				    firebase.database().ref(`character_statuses/character_${entry.charId}`).set(newStatus.toString());
 
 				    const name = entry.label.querySelector('span').firstChild.textContent.trim();
 				    let log = '';
@@ -2557,7 +2490,6 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 				}
 
 				//■■■モジュールのグローバル公開■■■
-				window.DraftLocalLegend_CharacterRechargeCost = DraftLocalLegend_CharacterRechargeCost;
 				window.DraftLocalLegend_CharacterRecharge = DraftLocalLegend_CharacterRecharge;
 			</script>
 		</div>
@@ -2742,10 +2674,296 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 	});
 </script>
 
+<!-- Firebase SDK 読み込み -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script type="module">
+//▼ Firebaseの初期設定（編集不可）
+const firebaseConfig = {
+  apiKey: "AIzaSyCRAN0BBpAApCMa3-KOmOfB8dswnvCzNG",
+  authDomain: "dvalinmultigroup.firebaseapp.com",
+  databaseURL: "https://dvalinmultigroup-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "dvalinmultigroup",
+  storageBucket: "dvalinmultigroup.appspot.com",
+  messagingSenderId: "762222211196",
+  appId: "1:762222211196:web:99190042e4ccfda92699f9"
+};
+const app = firebase.initializeApp(firebaseConfig);  // Firebaseアプリ初期化
+const database = firebase.database();                // Realtime Databaseの参照を取得
+//▲ Firebase初期設定ここまで（編集不可）
+
+
+
+
+
+
+//■■■次に戦う地方伝説のマスク機能■■■
+async function DraftLocalLegend_maskbbbbb() {
+  const maskDivs = document.querySelectorAll('#DraftLocalLegend_result li > div');
+
+  // Firebaseから現在のマスク状態を取得
+  const snapshot = await firebase.database().ref('local_legend/masks').once('value');
+  const masks = snapshot.val() || {};
+
+  maskDivs.forEach((div, index) => {
+    // 既にrevealedの場合はマスクしない
+    if (masks[index] === 'revealed') {
+      div.classList.remove('masked');
+      div.classList.add('revealed');
+    } else {
+      div.classList.add('masked');
+      div.classList.remove('revealed');
+    }
+
+    // クリックイベントは一度だけ設定（既に解除済みは無効）
+    div.addEventListener('click', function handler() {
+      div.classList.remove('masked');
+      div.classList.add('revealed');
+
+      //■■■マスク解除時に現時点でのセーブデータを生成■■■
+      const map = new Map();
+
+      document.querySelectorAll('label[data-status][data-character]').forEach(label => {
+        const character = label.dataset.character;
+        const status = label.dataset.status;
+
+        if (!map.has(character)) {
+          map.set(character, status);
+        }
+      });
+
+      const result = Array.from(map.entries())
+        .sort(([a], [b]) => parseInt(a, 10) - parseInt(b, 10))
+        .map(([, status]) => status)
+        .join('');
+
+      // 対応する span.savedata に出力
+      const savedataDiv = div.querySelector('.savedata');
+      if (savedataDiv) {
+        savedataDiv.textContent = result;
+      }
+
+
+
+      // ここでFirebaseにマスク解除＆セーブデータを保存
+      // クリックした要素のインデックス取得
+      const updates = {};
+      updates[`local_legend/masks/${index}`] = "revealed";
+      updates[`local_legend/savedata/${index}`] = result;
+      firebase.database().ref().update(updates);
+
+      div.removeEventListener('click', handler);
+    }, { once: true });
+  });
+}
+
+
+
+//■■■地方伝説の表示部分■■■
+function DraftLocalLegend_bbbbb() {
+  const DraftLocalLegend_aaaaa = [...document.querySelectorAll('.DraftLocalLegend_aaaaa input[type=checkbox]:checked')].map(DraftLocalLegend_result => {
+    if (DraftLocalLegend_result.value === '赤璋巡岳府君'                                  ) return '<li><div><div class="savedata"></div><div class="color_Liyue    ">赤璋巡岳府君<span>炎氷に耐性あり</span>                                </div></div>';
+    if (DraftLocalLegend_result.value === '湖辺のニニアン'                                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">湖辺のニニアン<span>南/水無効</span>                                   </div></div>';
+    if (DraftLocalLegend_result.value === '湖辺のヴィヴィアン'                            ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">湖辺のヴィヴィアン<span>北/水無効</span>                               </div></div>';
+    if (DraftLocalLegend_result.value === 'イゾルト'                                      ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">イゾルト                                                               </div></div>';
+    if (DraftLocalLegend_result.value === '自律スーパー・コンピューティング型力場生成装置') return '<li><div><div class="savedata"></div><div class="color_Fontaine ">自律スーパー・コンピューティング型力場生成装置<span>破砕攻撃推奨</span></div></div>';
+    if (DraftLocalLegend_result.value === 'ロッキー・アヴィルドセン'                      ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">ロッキー・アヴィルドセン                                               </div></div>';
+    if (DraftLocalLegend_result.value === 'リアム'                                        ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">リアム                                                                 </div></div>';
+    if (DraftLocalLegend_result.value === 'スネージヴナのディアンナラ'                    ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">スネージヴナのディアンナラ                                             </div></div>';
+    if (DraftLocalLegend_result.value === 'シネアス'                                      ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">シネアス<span>草元素推奨</span>                                        </div></div>';
+    if (DraftLocalLegend_result.value === '鉄皮の子爵'                                    ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">鉄皮の子爵                                                             </div></div>';
+    if (DraftLocalLegend_result.value === 'オーシャン巡回法官'                            ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">オーシャン巡回法官                                                     </div></div>';
+    if (DraftLocalLegend_result.value === '隠者の王・ドアーチュ'                          ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">隠者の王・ドアーチュ                                                   </div></div>';
+    if (DraftLocalLegend_result.value === '「消えゆく老兵」'                              ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">「消えゆく老兵」                                                       </div></div>';
+    if (DraftLocalLegend_result.value === '双生妖精の騎士・アンジェリカ＆ミドロ'          ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">双生妖精の騎士・アンジェリカ＆ミドロ                                   </div></div>';
+    if (DraftLocalLegend_result.value === '深谷の剣・コルタナ＆モーグレイ'                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">深谷の剣・コルタナ＆モーグレイ                                         </div></div>';
+    if (DraftLocalLegend_result.value === '極彩色のルケア'                                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">極彩色のルケア                                                         </div></div>';
+    if (DraftLocalLegend_result.value === 'シャサニョン'                                  ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">シャサニョン                                                           </div></div>';
+    if (DraftLocalLegend_result.value === '魔剣クルージュ'                                ) return '<li><div><div class="savedata"></div><div class="color_Fontaine ">魔剣クルージュ                                                         </div></div>';
+    if (DraftLocalLegend_result.value === '波のジャプー'                                  ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">波のジャプー<span>炎元素推奨</span>                                    </div></div>';
+    if (DraftLocalLegend_result.value === 'コシーホ'                                      ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">コシーホ<span>炎氷草元素推奨</span>                                    </div></div>';
+    if (DraftLocalLegend_result.value === 'バラチコ'                                      ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">バラチコ<span>水元素推奨</span>                                        </div></div>';
+    if (DraftLocalLegend_result.value === '異色三連星'                                    ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">異色三連星<span>炎水氷元素推奨</span>                                  </div></div>';
+    if (DraftLocalLegend_result.value === 'リライ'                                        ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">リライ                                                                 </div></div>';
+    if (DraftLocalLegend_result.value === '銅の錠'                                        ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">銅の錠<span>元素耐性あり</span>                                        </div></div>';
+    if (DraftLocalLegend_result.value === 'ピーク'                                        ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">ピーク<span>雷元素推奨</span>                                          </div></div>';
+    if (DraftLocalLegend_result.value === '「戦羊」と「鉄爪」'                            ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">「戦羊」と「鉄爪」                                                     </div></div>';
+    if (DraftLocalLegend_result.value === '「微末」'                                      ) return '<li><div><div class="savedata"></div><div class="color_Natlan   ">「微末」<span>破砕攻撃・炎元素推奨</span>                              </div></div>';
+  }).filter(DraftLocalLegend_result => DraftLocalLegend_result !== undefined);
+
+  //■■■Fisher-Yatesアルゴリズムを用いた、地方伝説と戦う順番のシャッフル■■■
+  const DraftLocalLegend_ccccc = DraftLocalLegend_aaaaa.slice();
+  for (let DraftLocalLegend_ddddd = DraftLocalLegend_ccccc.length - 1; DraftLocalLegend_ddddd > 0; DraftLocalLegend_ddddd--) {
+    const DraftLocalLegend_eeeee = Math.floor(Math.random() * (DraftLocalLegend_ddddd + 1));
+    [DraftLocalLegend_ccccc[DraftLocalLegend_ddddd], DraftLocalLegend_ccccc[DraftLocalLegend_eeeee]] = [DraftLocalLegend_ccccc[DraftLocalLegend_eeeee], DraftLocalLegend_ccccc[DraftLocalLegend_ddddd]];
+  }
+
+  //■■■戦う順番を表示して■■■
+  document.getElementById('DraftLocalLegend_result').innerHTML = DraftLocalLegend_ccccc.join('');
+  //■■■マスクする■■■
+  DraftLocalLegend_maskbbbbb();
+
+
+  // 要素の名前とクラス名を抽出しFirebase用データを作成
+  const firebaseOrder = DraftLocalLegend_ccccc.map(htmlString => {
+    // htmlStringの例: '<li><div><div class="savedata"></div><div class="color_Liyue">赤璋巡岳府君<span>...</span></div></div></li>'
+    // DOMパースして必要情報だけ抽出
+    const div = document.createElement('div');
+    div.innerHTML = htmlString;
+    const colorDiv = div.querySelector('div.color_Liyue, div.color_Fontaine, div.color_Natlan');
+    const name = colorDiv ? colorDiv.textContent.trim() : '';
+    // クラス名は色分けクラス（色部分のみ抽出）
+    const classes = colorDiv ? Array.from(colorDiv.classList).filter(c => c.startsWith('color_')) : [];
+    return { name, classes };
+  });
+
+  const updates = {
+    'local_legend/order': firebaseOrder,
+    // savedataリセット：全要素を空文字で初期化
+    'local_legend/savedata': firebaseOrder.map(() => ''),
+    // masksもすべて "masked" にリセットしたい場合は以下を追加（必要に応じて）
+    'local_legend/masks': firebaseOrder.map(() => 'masked'),
+  };
+
+  // Firebaseに一括更新
+  firebase.database().ref().update(updates);
+}
+
+
+
+//■■■モジュールのグローバル公開■■■
+window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
+
+
+function DraftLocalLegend_renderFromFirebase() {
+  const ref = firebase.database().ref('local_legend');
+  ref.on('value', snapshot => {
+    const data = snapshot.val();
+    if (!data || !data.order) return;
+
+    // orderは [{name:"赤璋巡岳府君", classes:["color_Liyue"]}, ...] の配列を想定
+    const htmlList = data.order.map((item, index) => {
+      const maskClass = (data.masks && data.masks[index]) === "revealed" ? "revealed" : "masked";
+      const savedata = (data.savedata && data.savedata[index]) || "";
+      const classNames = (item.classes || []).join(' ');
+      return `
+        <li>
+          <div class="${maskClass}">
+            <div class="savedata">${savedata}</div>
+            <div class="${classNames}">${item.name}</div>
+          </div>
+        </li>
+      `;
+    }).join('');
+    document.getElementById('DraftLocalLegend_result').innerHTML = htmlList;
+
+    // マスククリックイベント再設定
+    DraftLocalLegend_maskbbbbb();
+  });
+}
+
+// ページロード時に呼び出し
+window.addEventListener('load', DraftLocalLegend_renderFromFirebase);
+
+
+
+
+
+
+//■■■ページ読み込み時にFirebaseから全キャラクターの状態を一括取得し、画面に反映する■■■
+database.ref('character_statuses').once('value')
+.then((snapshot) => {
+  const all = snapshot.val();
+  if (all) {
+    Object.entries(all).forEach(([key, value]) => {
+      const characterId = key.replace('character_', '');
+      const status = parseInt(value, 10);
+      const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
+
+      group.forEach(el => {
+        el.dataset.status = status.toString();
+      });
+    });
+    console.log("初期読み込み完了");
+  }
+});
+
+//■■■ページ内に存在するすべてのlabel[data-character]にイベントを登録■■■
+//■■■クリックされたキャラクターの状態をFirebaseから取得し、状態を0→1→2→0と切り替える■■■
+document.querySelectorAll('label[data-character]').forEach(label => {
+  label.addEventListener('click', () => {
+    const characterId = label.dataset.character;
+    const ref = database.ref(`character_statuses/character_${characterId}`);
+
+    ref.once('value').then(snapshot => {
+      const current = parseInt(snapshot.val(), 10) || 0;
+      const next = (current + 1) % 3;
+
+      ref.set(next.toString()).then(() => {
+        console.log(`Firebase更新: character_${characterId} = ${next}`);
+
+        const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
+        group.forEach(el => {
+          el.dataset.status = next.toString();
+        });
+      });
+    });
+  });
+});
+
+//■■■「使用済(生存)」のキャラクターを一括で「未使用」に戻す処理■■■
+function DraftLocalLegend_resetStatus() {
+  if (!confirm("使用済(生存)キャラを復活させますか？")) return;
+
+  const updated = new Set();
+
+  document.querySelectorAll('label[data-status="1"]').forEach(label => {
+    const characterId = label.dataset.character;
+    if (!updated.has(characterId)) {
+      updated.add(characterId);
+
+      const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
+      group.forEach(el => {
+        el.dataset.status = "0";
+      });
+
+      database.ref(`character_statuses/character_${characterId}`).set("0");
+    }
+  });
+}
+
+//■■■モジュールのグローバル公開■■■
+window.DraftLocalLegend_resetStatus = DraftLocalLegend_resetStatus;
+
+//■■■手元とFirebaseで値が違う場合、Firebaseを優先して即更新■■■
+database.ref('character_statuses').on('value', (snapshot) => {
+  const data = snapshot.val() || {};
+
+  Object.entries(data).forEach(([key, val]) => {
+    const characterId = key.replace('character_', '');
+    const group = document.querySelectorAll(`label[data-character="${characterId}"]`);
+
+    group.forEach(el => {
+      const currentStatus = el.dataset.status;
+      if (currentStatus !== val) {
+        // Firebaseの値と違うならFirebaseの値で上書き
+        el.dataset.status = val;
+      }
+    });
+  });
+});
+</script>
+
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
 
-	<div class="version">v1.8.1<span>2025/07/06</span></div>
+	<div class="version">v1.9.0<span>2025/07/06</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】地方伝説の戦闘順や未使用キャラクターリストをオンライン上でリアルタイムに共有できるようにしました</p>
+	</div>
+
+	<div class="version"><a href="teyvat_customplay_v1.8.1.html">v1.8.1</a><span>2025/07/06</span></div>
 	<div class="details">
 		<p>【テイワット地図無しレース】「秘源機兵・統御デバイス」を追加しました</p>
 		<p>【ドラフト地方伝説】未使用キャラクターリストにて、鹿野院平蔵が金珀ヒーラー欄に記載されていなかったため追加しました</p>
@@ -2855,7 +3073,6 @@ window.DraftLocalLegend_bbbbb = DraftLocalLegend_bbbbb;
 		<p>公開しました</p>
 	</div>
 </div>
-
 </body></html>
 
 <!--
