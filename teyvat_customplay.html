@@ -1,4 +1,3 @@
-
 <html><head><meta charset="utf-8"><title>変則遊戯</title><meta name="viewport" content="width=device-width,user-scalable=0"><meta name="robots" content="noindex,nofollow,noarchive"><style type="text/css">
 /*▼共通*/
 *                   {font-size:12px;}
@@ -2805,17 +2804,30 @@ function DraftLocalLegend_bbbbb() {
   DraftLocalLegend_maskbbbbb();
 
 
-  // 要素の名前とクラス名を抽出しFirebase用データを作成
+// 要素の名前とクラス名を抽出しFirebase用データを作成
   const firebaseOrder = DraftLocalLegend_ccccc.map(htmlString => {
-    // htmlStringの例: '<li><div><div class="savedata"></div><div class="color_Liyue">赤璋巡岳府君<span>...</span></div></div></li>'
-    // DOMパースして必要情報だけ抽出
     const div = document.createElement('div');
     div.innerHTML = htmlString;
+
     const colorDiv = div.querySelector('div.color_Liyue, div.color_Fontaine, div.color_Natlan');
-    const name = colorDiv ? colorDiv.textContent.trim() : '';
-    // クラス名は色分けクラス（色部分のみ抽出）
+
+    // spanを除いたテキスト（名前）を取得
+    let name = '';
+    if (colorDiv) {
+      // span以外のテキストノードを取り出す
+      for (const node of colorDiv.childNodes) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          name += node.textContent.trim();
+        }
+      }
+    }
+
+    const noteSpan = colorDiv.querySelector('span');
+    const note = noteSpan ? noteSpan.textContent.trim() : '';
+
     const classes = colorDiv ? Array.from(colorDiv.classList).filter(c => c.startsWith('color_')) : [];
-    return { name, classes };
+
+    return { name, note, classes };
   });
 
   const updates = {
@@ -2847,11 +2859,13 @@ function DraftLocalLegend_renderFromFirebase() {
       const maskClass = (data.masks && data.masks[index]) === "revealed" ? "revealed" : "masked";
       const savedata = (data.savedata && data.savedata[index]) || "";
       const classNames = (item.classes || []).join(' ');
+      const note = item.note ? `<span>${item.note}</span>` : '';
+
       return `
         <li>
           <div class="${maskClass}">
             <div class="savedata">${savedata}</div>
-            <div class="${classNames}">${item.name}</div>
+            <div class="${classNames}">${item.name}${note}</div>
           </div>
         </li>
       `;
@@ -2957,6 +2971,11 @@ database.ref('character_statuses').on('value', (snapshot) => {
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.9.1<span>2025/07/06</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】地方伝説名の表示ミスを修正しました</p>
+	</div>
 
 	<div class="version">v1.9.0<span>2025/07/06</span></div>
 	<div class="details">
