@@ -2413,84 +2413,6 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 				<input type="button" value="抽選" onclick="DraftLocalLegend_CharacterRecharge();" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
 				<div id="DraftLocalLegend_CharacterRechargeResult" style="white-space:pre-wrap;margin:0 0.5rem 0.5rem 0;"></div>
 			</div>
-			<script type="module">
-				function DraftLocalLegend_CharacterRecharge() {
-				  const confirmed = confirm("キャラクターを復活させてよいですか？");
-				  if (!confirmed) return;
-
-				  const cost = parseInt(document.getElementById("DraftLocalLegend_CharacterRechargeCost").value, 10);
-				  if (isNaN(cost) || cost <= 0) return;
-
-				  const isR4Instant = document.getElementById("DraftLocalLegend_CharacterRechargeR4").checked;
-				  const allLabels = Array.from(document.querySelectorAll('label[data-status]'));
-
-				  // data-characterごとに1代表のみ保持（重複排除）
-				  const characterMap = new Map();
-				  allLabels.forEach(label => {
-				    const charId = label.dataset.character;
-				    if (!characterMap.has(charId)) {
-				      characterMap.set(charId, label);
-				    }
-				  });
-
-				  const characterEntries = Array.from(characterMap.entries()).map(([charId, label]) => ({
-				    charId,
-				    label,
-				    status: parseInt(label.dataset.status, 10),
-				    rarity: label.dataset.rarity || "5"
-				  }));
-
-				  let remainingCost = cost;
-				  const logs = [];
-
-				  while (remainingCost > 0) {
-				    const reducible = characterEntries.filter(entry => entry.status > 0);
-				    if (reducible.length === 0) break;
-
-				    const index = Math.floor(Math.random() * reducible.length);
-				    const entry = reducible[index];
-				    const oldStatus = entry.status;
-
-				    let decrease = 1;
-				    if (isR4Instant) {
-				      if (entry.rarity === "4") {
-				        decrease = 2;
-				      }
-				    }
-
-				    const newStatus = Math.max(0, oldStatus - decrease);
-				    entry.status = newStatus;
-
-				    // DOMに反映（同一キャラすべて）
-				    const allSameChar = document.querySelectorAll(`label[data-character="${entry.charId}"]`);
-				    allSameChar.forEach(label => {
-				      label.dataset.status = newStatus;
-				    });
-
-				    // Firebaseに反映
-				    firebase.database().ref(`character_statuses/character_${entry.charId}`).set(newStatus.toString());
-
-				    const name = entry.label.querySelector('span').firstChild.textContent.trim();
-				    let log = '';
-
-				    if (oldStatus === 2 && newStatus === 1) {
-				      log = `${name}を使用済(戦闘不能)から使用済(生存)に戻しました`;
-				    } else if (oldStatus === 1 && newStatus === 0) {
-				      log = `${name}を使用済(生存)から未使用に戻しました`;
-				    } else if (oldStatus === 2 && newStatus === 0) {
-				      log = `${name}を使用済(戦闘不能)から未使用に戻しました`;
-				    }
-
-				    if (log) logs.push(log);
-				    remainingCost--;
-				  }
-
-				  document.getElementById("DraftLocalLegend_CharacterRechargeResult").textContent = logs.join('\n');
-				}
-
-				//■■■モジュールのグローバル公開■■■
-				window.DraftLocalLegend_CharacterRecharge = DraftLocalLegend_CharacterRecharge;
-			</script>
 		</div>
 		<div>
 			<button class="help-button" data-help-id="DraftLocalLegend_help2">？</button>
@@ -2679,6 +2601,7 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 
 <script type="module">
 //▼ Firebaseの初期設定（編集不可）
+
 const firebaseConfig = {
   apiKey: "AIzaSyCRAN0BBpAApCMa3-KOmOfB8dswnvCzNG",
   authDomain: "dvalinmultigroup.firebaseapp.com",
@@ -2950,6 +2873,169 @@ function DraftLocalLegend_resetStatus() {
 //■■■モジュールのグローバル公開■■■
 window.DraftLocalLegend_resetStatus = DraftLocalLegend_resetStatus;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//■■■復活抽選機の動作■■■
+function DraftLocalLegend_CharacterRecharge() {
+  const confirmed = confirm("キャラクターを復活させてよいですか？");
+  if (!confirmed) return;
+
+  const cost = parseInt(document.getElementById("DraftLocalLegend_CharacterRechargeCost").value, 10);
+  if (isNaN(cost) || cost <= 0) return;
+
+  const isR4Instant = document.getElementById("DraftLocalLegend_CharacterRechargeR4").checked;
+  const allLabels = Array.from(document.querySelectorAll('label[data-status]'));
+
+  // data-characterごとに1代表のみ保持（重複排除）
+  const characterMap = new Map();
+  allLabels.forEach(label => {
+    const charId = label.dataset.character;
+    if (!characterMap.has(charId)) {
+      characterMap.set(charId, label);
+    }
+  });
+
+  const characterEntries = Array.from(characterMap.entries()).map(([charId, label]) => ({
+    charId,
+    label,
+    status: parseInt(label.dataset.status, 10),
+    rarity: label.dataset.rarity || "5"
+  }));
+
+  let remainingCost = cost;
+  const logs = [];
+
+  while (remainingCost > 0) {
+    const reducible = characterEntries.filter(entry => entry.status > 0);
+    if (reducible.length === 0) break;
+
+    const index = Math.floor(Math.random() * reducible.length);
+    const entry = reducible[index];
+    const oldStatus = entry.status;
+
+    let decrease = 1;
+    if (isR4Instant) {
+      if (entry.rarity === "4") {
+        decrease = 2;
+      }
+    }
+
+    const newStatus = Math.max(0, oldStatus - decrease);
+    entry.status = newStatus;
+
+    // DOMに反映（同一キャラすべて）
+    const allSameChar = document.querySelectorAll(`label[data-character="${entry.charId}"]`);
+    allSameChar.forEach(label => {
+      label.dataset.status = newStatus;
+    });
+
+    // Firebaseに反映
+    firebase.database().ref(`character_statuses/character_${entry.charId}`).set(newStatus.toString());
+
+    const name = entry.label.querySelector('span').firstChild.textContent.trim();
+    let log = '';
+
+    if (oldStatus === 2 && newStatus === 1) {
+      log = `${name}を使用済(戦闘不能)から使用済(生存)に戻しました`;
+    } else if (oldStatus === 1 && newStatus === 0) {
+      log = `${name}を使用済(生存)から未使用に戻しました`;
+    } else if (oldStatus === 2 && newStatus === 0) {
+      log = `${name}を使用済(戦闘不能)から未使用に戻しました`;
+    }
+
+    if (log) logs.push(log);
+    remainingCost--;
+  }
+
+  const resultText = logs.join('\n');
+  document.getElementById("DraftLocalLegend_CharacterRechargeResult").textContent = resultText;
+
+  // 結果テキストも保存
+  firebase.database().ref(`character_statuses/recharge_result`).set(resultText);
+}
+
+//■■■復活抽選機の復活情報をリアルタイム共有■■■
+firebase.database().ref('character_statuses').on('value', (snapshot) => {
+  const data = snapshot.val();
+  if (!data) return;
+
+  // character_statuses配下の各キャラstatusを反映
+  Object.entries(data).forEach(([key, value]) => {
+    if (key === 'recharge_result') {
+      // 結果テキストの反映
+      document.getElementById("DraftLocalLegend_CharacterRechargeResult").textContent = value || '';
+      return;
+    }
+
+    // key例: "character_XXXX"
+    if (key.startsWith('character_')) {
+      const charId = key.slice('character_'.length);
+      const statusNum = parseInt(value, 10);
+      if (isNaN(statusNum)) return;
+
+      // 対応するlabelのdata-statusを更新
+      const labels = document.querySelectorAll(`label[data-character="${charId}"]`);
+      labels.forEach(label => {
+        label.dataset.status = statusNum;
+      });
+    }
+  });
+});
+
+//■■■モジュールのグローバル公開■■■
+window.DraftLocalLegend_CharacterRecharge = DraftLocalLegend_CharacterRecharge;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //■■■手元とFirebaseで値が違う場合、Firebaseを優先して即更新■■■
 database.ref('character_statuses').on('value', (snapshot) => {
   const data = snapshot.val() || {};
@@ -2971,6 +3057,11 @@ database.ref('character_statuses').on('value', (snapshot) => {
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.10.0<span>2025/07/13</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】キャラクター復活抽選機の復活情報をオンライン上でリアルタイムに共有できるようにしました</p>
+	</div>
 
 	<div class="version">v1.9.1<span>2025/07/06</span></div>
 	<div class="details">
