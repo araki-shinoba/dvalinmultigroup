@@ -2403,7 +2403,7 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 				<p>◆星4キャラクターの即復活について</p>				<p>星4キャラクターが抽選で選ばれた場合、1コストの消費で【使用済(戦闘不能)→未使用】または【使用済(生存)→未使用】にする。</p>
 
 			</div>
-			<div style="margin:1rem;text-align:center;">キャラクター復活抽選機<br>※復活処理は自動で行われます</div>
+			<div style="margin:1rem;text-align:center;">キャラクター復活抽選機<br>※復活処理は自動で行われます<br>※結果表示は他ユーザーとリアルタイム共有されます</div>
 			<div style="margin:1rem;text-align:center;">
 				復活コスト：<input type="number" id="DraftLocalLegend_CharacterRechargeCost" style="width:40px;"value="6">
 				 / 
@@ -2476,7 +2476,58 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 				window.DraftLocalLegend_SaveDataCreate = DraftLocalLegend_SaveDataCreate;
 			</script>
 		</div>
+	</div>
+	<div class="DraftLocalLegend_lottery">
+		<div>
+			<button class="help-button" data-help-id="DraftLocalLegend_help3">？</button>
+			<div id="DraftLocalLegend_help3" class="help-popup">
+				<p>元素反応縛りをする場合は、この抽選機を使用してください。</p>
+			</div>
+			<div style="margin:1rem;text-align:center;">元素反応抽選機</div>
+			<div style="text-align:center;">
+				<label><input type="checkbox" data-reaction="vaporise"       checked><span class="vaporise"      >蒸発  </span></label><style>label input:checked ~ span.vaporise      {background:linear-gradient(135deg,#ecc 49%,#cde 51%);}</style>
+				<label><input type="checkbox" data-reaction="melt"           checked><span class="melt"          >溶解  </span></label><style>label input:checked ~ span.melt          {background:linear-gradient(135deg,#ecc 49%,#cee 51%);}</style>
+				<label><input type="checkbox" data-reaction="frozen"         checked><span class="frozen"        >凍結  </span></label><style>label input:checked ~ span.frozen        {background:linear-gradient(135deg,#cde 49%,#cee 51%);}</style>
+				<label><input type="checkbox" data-reaction="overloaded"     checked><span class="overloaded"    >過負荷</span></label><style>label input:checked ~ span.overloaded    {background:linear-gradient(135deg,#dce 49%,#ecc 51%);}</style>
+				<label><input type="checkbox" data-reaction="electrocharged" checked><span class="electrocharged">感電  </span></label><style>label input:checked ~ span.electrocharged{background:linear-gradient(135deg,#dce 49%,#cde 51%);}</style>
+				<label><input type="checkbox" data-reaction="superconduct"   checked><span class="superconduct"  >超電導</span></label><style>label input:checked ~ span.superconduct  {background:linear-gradient(135deg,#dce 49%,#cee 51%);}</style><br>
+				<label><input type="checkbox" data-reaction="shatter"               ><span class="shatter"       >氷砕き</span></label><style>label input:checked ~ span.shatter       {background:linear-gradient(135deg,#cee 49%,#fff 51%);}</style><br>
+				<label><input type="checkbox" data-reaction="swirl"                 ><span class="swirl"         >拡散  </span></label><style>label input:checked ~ span.swirl         {background:                       #cec              ;}</style>
+				<label><input type="checkbox" data-reaction="crystallise"           ><span class="crystallise"   >結晶化</span></label><style>label input:checked ~ span.crystallise   {background:                       #edc              ;}</style><br>
+				<label><input type="checkbox" data-reaction="bloom"          checked><span class="bloom"         >開花  </span></label><style>label input:checked ~ span.bloom         {background:linear-gradient(135deg,#dec 49%,#cde 51%);}</style>
+				<label><input type="checkbox" data-reaction="burgeon"               ><span class="burgeon"       >烈開花</span></label><style>label input:checked ~ span.burgeon       {background:linear-gradient(135deg,#dec 33%,#ecc 35%,#ecc 65%,#cde 67%);}</style>
+				<label><input type="checkbox" data-reaction="hyperbloom"            ><span class="hyperbloom"    >超開花</span></label><style>label input:checked ~ span.hyperbloom    {background:linear-gradient(135deg,#dec 33%,#dce 35%,#dce 65%,#cde 51%);}</style><br>
+				<label><input type="checkbox" data-reaction="catalyze"       checked><span class="catalyze"      >激化  </span></label><style>label input:checked ~ span.catalyze      {background:linear-gradient(135deg,#dce 49%,#dec 51%);}</style>
+				<label><input type="checkbox" data-reaction="quicken"               ><span class="quicken"       >原激化</span></label><style>label input:checked ~ span.quicken       {background:linear-gradient(135deg,#dce 49%,#dec 51%);}</style>
+				<label><input type="checkbox" data-reaction="aggravate"             ><span class="aggravate"     >超激化</span></label><style>label input:checked ~ span.aggravate     {background:linear-gradient(135deg,#dce 49%,#dec 51%);}</style>
+				<label><input type="checkbox" data-reaction="spread"                ><span class="spread"        >草激化</span></label><style>label input:checked ~ span.spread        {background:linear-gradient(135deg,#dce 49%,#dec 51%);}</style>
+			</div>
+			<div style="display:flex;">
+				<input type="button" id="DraftLocalLegend_ElementReaction" value="抽選" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
+				<div id="DraftLocalLegend_ElementReactionResult" style="white-space:pre-wrap;margin:0.5rem 0.5rem 0.5rem 0;"></div>
+			</div>
+			<script type="module">
+				document.getElementById("DraftLocalLegend_ElementReaction").addEventListener("click", () => {
+				  // チェックされているinputを全部取得
+				  const checkedInputs = Array.from(document.querySelectorAll('input[type="checkbox"][data-reaction]:checked'));
 
+				  // シャッフルして先頭3つを選ぶ
+				  const shuffled = checkedInputs.sort(() => 0.5 - Math.random());
+				  const selected = shuffled.slice(0, 3);
+
+				  // 表示するHTMLを作る
+				  const resultHTML = selected.map((input, index) => {
+				    const label = input.parentElement.querySelector('span');
+				    return `<p>${index + 1}. ${label.textContent.trim()}</p>`;
+				  }).join('');
+
+				  // 結果を表示
+				  document.getElementById("DraftLocalLegend_ElementReactionResult").innerHTML = resultHTML;
+				});
+			</script>
+		</div>
+		<!--<div>
+		</div>-->
 	</div>
 </div>
 
@@ -3057,6 +3108,12 @@ database.ref('character_statuses').on('value', (snapshot) => {
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.11.0<span>2025/07/15</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】元素反応抽選機を追加しました</p>
+		<p>その他、軽微な変更・修正をしました</p>
+	</div>
 
 	<div class="version">v1.10.0<span>2025/07/13</span></div>
 	<div class="details">
