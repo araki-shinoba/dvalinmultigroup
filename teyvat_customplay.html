@@ -2490,13 +2490,14 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 				<label><input type="checkbox" data-reaction="frozen"         checked><span class="frozen"        >凍結  </span></label><style>label input:checked ~ span.frozen        {background:linear-gradient(135deg,#cde 49%,#cee 51%);}</style>
 				<label><input type="checkbox" data-reaction="overloaded"     checked><span class="overloaded"    >過負荷</span></label><style>label input:checked ~ span.overloaded    {background:linear-gradient(135deg,#dce 49%,#ecc 51%);}</style>
 				<label><input type="checkbox" data-reaction="electrocharged" checked><span class="electrocharged">感電  </span></label><style>label input:checked ~ span.electrocharged{background:linear-gradient(135deg,#dce 49%,#cde 51%);}</style>
-				<label><input type="checkbox" data-reaction="superconduct"   checked><span class="superconduct"  >超電導</span></label><style>label input:checked ~ span.superconduct  {background:linear-gradient(135deg,#dce 49%,#cee 51%);}</style><br>
-				<label><input type="checkbox" data-reaction="shatter"               ><span class="shatter"       >氷砕き</span></label><style>label input:checked ~ span.shatter       {background:linear-gradient(135deg,#cee 49%,#fff 51%);}</style><br>
+				<label><input type="checkbox" data-reaction="superconduct"   checked><span class="superconduct"  >超電導</span></label><style>label input:checked ~ span.superconduct  {background:linear-gradient(135deg,#dce 49%,#cee 51%);}</style>
+				<label><input type="checkbox" data-reaction="burning"        checked><span class="burning"       >燃焼  </span></label><style>label input:checked ~ span.burning       {background:linear-gradient(135deg,#dec 49%,#ecc 51%);}</style><br>
+				<label><input type="checkbox" data-reaction="shatter"               ><span class="shatter"       >氷砕き</span></label><style>label input:checked ~ span.shatter       {background:linear-gradient(135deg,#cde 33%,#cee 35%,#cee 65%,#fff 67%);}</style><br>
 				<label><input type="checkbox" data-reaction="swirl"                 ><span class="swirl"         >拡散  </span></label><style>label input:checked ~ span.swirl         {background:                       #cec              ;}</style>
 				<label><input type="checkbox" data-reaction="crystallise"           ><span class="crystallise"   >結晶化</span></label><style>label input:checked ~ span.crystallise   {background:                       #edc              ;}</style><br>
 				<label><input type="checkbox" data-reaction="bloom"          checked><span class="bloom"         >開花  </span></label><style>label input:checked ~ span.bloom         {background:linear-gradient(135deg,#dec 49%,#cde 51%);}</style>
 				<label><input type="checkbox" data-reaction="burgeon"               ><span class="burgeon"       >烈開花</span></label><style>label input:checked ~ span.burgeon       {background:linear-gradient(135deg,#dec 33%,#ecc 35%,#ecc 65%,#cde 67%);}</style>
-				<label><input type="checkbox" data-reaction="hyperbloom"            ><span class="hyperbloom"    >超開花</span></label><style>label input:checked ~ span.hyperbloom    {background:linear-gradient(135deg,#dec 33%,#dce 35%,#dce 65%,#cde 51%);}</style><br>
+				<label><input type="checkbox" data-reaction="hyperbloom"            ><span class="hyperbloom"    >超開花</span></label><style>label input:checked ~ span.hyperbloom    {background:linear-gradient(135deg,#dec 33%,#dce 35%,#dce 65%,#cde 67%);}</style><br>
 				<label><input type="checkbox" data-reaction="catalyze"       checked><span class="catalyze"      >激化  </span></label><style>label input:checked ~ span.catalyze      {background:linear-gradient(135deg,#dce 49%,#dec 51%);}</style>
 				<label><input type="checkbox" data-reaction="quicken"               ><span class="quicken"       >原激化</span></label><style>label input:checked ~ span.quicken       {background:linear-gradient(135deg,#dce 49%,#dec 51%);}</style>
 				<label><input type="checkbox" data-reaction="aggravate"             ><span class="aggravate"     >超激化</span></label><style>label input:checked ~ span.aggravate     {background:linear-gradient(135deg,#dce 49%,#dec 51%);}</style>
@@ -3108,6 +3109,12 @@ database.ref('character_statuses').on('value', (snapshot) => {
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.11.1<span>2025/07/15</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】元素反応抽選機に燃焼反応を追加しました</p>
+		<p>【ドラフト地方伝説】元素反応抽選機の氷砕き反応の色を修正しました</p>
+	</div>
 
 	<div class="version">v1.11.0<span>2025/07/15</span></div>
 	<div class="details">
