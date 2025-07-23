@@ -2354,8 +2354,10 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 					<label><input type="checkbox" data-pick="none"    data-picknumber="2"  ><span>蛍            </span></label>
 			</table>
 			<div style="padding:1rem 0;">
-				<input type="button" id="DraftLocalLegend_createcharacterpick" value="作成" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
-				<input type="text" id="DraftLocalLegend_exportcreatecharacterpick" readonly style="width:calc(100% - 80px - 4rem);padding:1rem 0;margin:0.75rem 1rem 1rem 0;">
+				<input type="button" id="DraftLocalLegend_InBtCharacterpick" value="インポート" style="width:8rem;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
+				<input type="text" id="DraftLocalLegend_InTeCharacterpick" style="width:calc(100% - 12rem);padding:1rem 0;margin:0.75rem 1rem 1rem 0;">
+				<input type="button" id="DraftLocalLegend_ExBtCharacterpick" value="エクスポート" style="width:8rem;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
+				<input type="text" id="DraftLocalLegend_ExTeCharacterpick" readonly style="width:calc(100% - 12rem);padding:1rem 0;margin:0.75rem 1rem 1rem 0;">
 			</div>
 		</div>
 	</div>
@@ -3448,9 +3450,33 @@ firebase.database().ref('character_statuses').on('value', (snapshot) => {
 //▲▲▲ドラフト地方伝説　オプション関連　復活抽選機▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
 //▼▼▼ドラフト地方伝説　カスタムキャラクターリスト用コード生成機▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
-const createButton = document.getElementById('DraftLocalLegend_createcharacterpick');
-const exportInput = document.getElementById('DraftLocalLegend_exportcreatecharacterpick');
+const importButton = document.getElementById('DraftLocalLegend_InBtCharacterpick');
+const importInput = document.getElementById('DraftLocalLegend_InTeCharacterpick');
+const createButton = document.getElementById('DraftLocalLegend_ExBtCharacterpick');
+const exportInput = document.getElementById('DraftLocalLegend_ExTeCharacterpick');
 
+//▼▼▼インポート▼▼▼
+importButton.addEventListener('click', () => {
+  const inputString = importInput.value.trim();
+  if (!inputString) return;
+
+  const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"][data-pick]'));
+
+  // data-picknumber 順にソート
+  checkboxes.sort((a, b) => {
+    return Number(a.dataset.picknumber) - Number(b.dataset.picknumber);
+  });
+
+  checkboxes.forEach((cb, index) => {
+    if (inputString[index] === 'o') {
+      cb.checked = true;
+    } else {
+      cb.checked = false;
+    }
+  });
+});
+
+//▼▼▼エクスポート▼▼▼
 createButton.addEventListener('click', () => {
   // 全チェックボックスを取得
   const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"][data-pick]'));
@@ -3618,6 +3644,11 @@ window.DraftLocalLegend_SaveDataCreate     = DraftLocalLegend_SaveDataCreate    
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.14.0<span>2025/07/24</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】カスタムキャラクターリスト用コード生成機にインポート機能を追加しました</p>
+	</div>
 
 	<div class="version">v1.13.1<span>2025/07/24</span></div>
 	<div class="details">
