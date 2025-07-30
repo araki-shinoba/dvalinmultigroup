@@ -1629,6 +1629,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 				<label><input type="checkbox" checked value="35"><span>ピーク                                        </span></label><br>
 				<label><input type="checkbox" checked value="36"><span>「戦羊」と「鉄爪」                            </span></label><br>
 				<label><input type="checkbox" checked value="37"><span>「微末」                                      </span></label><br>
+				<label><input type="checkbox" checked value="38"><span>最後のテノチズトク人                          </span></label><br>
 			</div>
 		</div>
 	</div>
@@ -1806,7 +1807,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 		<tr style="background:var(--electro-light);">
 			<td data-characterpick="A">
 				<label data-status="0" data-character="97"  data-rarity="4" data-weapon="polearm" ><span>イアンサ                                   </span></label>
-				<label data-status="0" data-character="103" data-rarity="5" data-weapon="polearm" class="v58a"><span>イネファ                                   </span></label>
+				<label data-status="0" data-character="103" data-rarity="5" data-weapon="polearm" ><span>イネファ                                   </span></label>
 				<label data-status="0" data-character="98"  data-rarity="5" data-weapon="catalyst"><span>ヴァレサ                                   </span></label>
 				<label data-status="0" data-character="91"  data-rarity="4" data-weapon="bow"     ><span>オロルン                                   </span></label>
 				<label data-status="0" data-character="51"  data-rarity="4" data-weapon="sword"   ><span>九岐忍                                     </span></label>
@@ -1846,7 +1847,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 				<label data-status="0" data-character="2"   data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
 			<td data-characterpick="C">
 				<label data-status="0" data-character="97"  data-rarity="4" data-weapon="polearm" ><span>イアンサ                                   </span></label>
-				<label data-status="0" data-character="103" data-rarity="5" data-weapon="polearm" class="v58a"><span>イネファ                                   </span></label>
+				<label data-status="0" data-character="103" data-rarity="5" data-weapon="polearm" ><span>イネファ                                   </span></label>
 				<label data-status="0" data-character="98"  data-rarity="5" data-weapon="catalyst"><span>ヴァレサ                                   </span></label>
 				<label data-status="0" data-character="91"  data-rarity="4" data-weapon="bow"     ><span>オロルン                                   </span></label>
 				<label data-status="0" data-character="51"  data-rarity="4" data-weapon="sword"   ><span>九岐忍                                     </span></label>
@@ -1866,7 +1867,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 				<label data-status="0" data-character="2"   data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
 			<td>
 				<label data-status="0" data-character="97"  data-rarity="4" data-weapon="polearm" ><span>イアンサ                                   </span></label>
-				<label data-status="0" data-character="103" data-rarity="5" data-weapon="polearm" class="v58a"><span>イネファ                                   </span></label>
+				<label data-status="0" data-character="103" data-rarity="5" data-weapon="polearm" ><span>イネファ                                   </span></label>
 				<label data-status="0" data-character="98"  data-rarity="5" data-weapon="catalyst"><span>ヴァレサ                                   </span></label>
 				<label data-status="0" data-character="91"  data-rarity="4" data-weapon="bow"     ><span>オロルン                                   </span></label>
 				<label data-status="0" data-character="51"  data-rarity="4" data-weapon="sword"   ><span>九岐忍                                     </span></label>
@@ -2312,7 +2313,7 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 					<td>
 					<td><label><input type="checkbox" data-reaction="catalyze"            class="catalyze"            checked><span style="width:calc(100% - 16px);text-wrap:wrap;">激化    </span></label>
 					<td><label><input type="checkbox" data-reaction="electrocharged"      class="electrocharged"      checked><span style="width:calc(100% - 16px);text-wrap:wrap;">感電    </span></label>
-					    <label class="v58a"><input type="checkbox" data-reaction="lunarelectrocharged" class="lunarelectrocharged"        ><span style="width:calc(100% - 16px);text-wrap:wrap;">月感電  </span></label>
+					    <label><input type="checkbox" data-reaction="lunarelectrocharged" class="lunarelectrocharged"        ><span style="width:calc(100% - 16px);text-wrap:wrap;">月感電  </span></label>
 					<td><label><input type="checkbox" data-reaction="overloaded"          class="overloaded"          checked><span style="width:calc(100% - 16px);text-wrap:wrap;">過負荷  </span></label>
 					<td><label><input type="checkbox" data-reaction="superconduct"        class="superconduct"        checked><span style="width:calc(100% - 16px);text-wrap:wrap;">超電導  </span></label>
 				<tr>
@@ -2498,6 +2499,44 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);  // Firebaseアプリ初期化
 const database = firebase.database();                // Realtime Databaseの参照を取得
 //▲▲▲Firebase初期設定(編集不可)▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
+//▼▼▼バージョンアップデートに応じて要素を表示するプログラム▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+(function () {
+  const schedule = [
+    { className: 'v58b', start: '2025-08-20T19:00:00+09:00' },
+    { className: 'v60a', start: '2025-09-10T10:00:00+09:00' },
+    { className: 'v60b', start: '2025-10-01T19:00:00+09:00' },
+    { className: 'v61a', start: '2025-10-22T10:00:00+09:00' },
+    { className: 'v61b', start: '2025-11-12T19:00:00+09:00' },
+    { className: 'v62a', start: '2025-12-03T10:00:00+09:00' },
+    { className: 'v62b', start: '2025-12-24T19:00:00+09:00' },
+    { className: 'v63a', start: '2026-01-14T10:00:00+09:00' },
+    { className: 'v63b', start: '2026-02-04T19:00:00+09:00' },
+    { className: 'v64a', start: '2026-02-25T10:00:00+09:00' },
+    { className: 'v64b', start: '2026-03-18T19:00:00+09:00' },
+    { className: 'v65a', start: '2026-04-08T10:00:00+09:00' },
+    { className: 'v65b', start: '2026-04-29T19:00:00+09:00' },
+    { className: 'v66a', start: '2026-05-20T10:00:00+09:00' },
+    { className: 'v66b', start: '2026-06-10T19:00:00+09:00' },
+    { className: 'v67a', start: '2026-07-01T10:00:00+09:00' },
+    { className: 'v67b', start: '2026-07-22T19:00:00+09:00' },
+    { className: 'v68a', start: '2026-08-12T10:00:00+09:00' },
+    { className: 'v68b', start: '2026-09-02T19:00:00+09:00' }
+  ];
+
+  const now = new Date();
+
+  schedule.forEach(item => {
+    const startDate = new Date(item.start);
+    if (now >= startDate) {
+      const elements = document.querySelectorAll(`.${item.className}`);
+      elements.forEach(el => {
+        el.style.display = 'block';
+      });
+    }
+  });
+})();
+//▲▲▲バージョンアップデートに応じて要素を表示するプログラム▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
 //▼▼▼テイワット地図無しレース　抽選結果表示用プログラム▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
 function NoMapRace_lottery() {
@@ -2971,6 +3010,7 @@ function DraftLocalLegend_bbbbb() {
     if (DraftLocalLegend_result.value === '35') return '<li><div><div class="savedata"></div><div class="background-pyro ">ピーク<span>雷元素推奨</span>                                          </div></div>';
     if (DraftLocalLegend_result.value === '36') return '<li><div><div class="savedata"></div><div class="background-pyro ">「戦羊」と「鉄爪」                                                     </div></div>';
     if (DraftLocalLegend_result.value === '37') return '<li><div><div class="savedata"></div><div class="background-pyro ">「微末」<span>破砕攻撃・炎元素推奨</span>                              </div></div>';
+    if (DraftLocalLegend_result.value === '38') return '<li><div><div class="savedata"></div><div class="background-pyro ">最後のテノチズトク人<span>雷元素推奨</span>                            </div></div>';
   }).filter(DraftLocalLegend_result => DraftLocalLegend_result !== undefined);
 
   //■■■Fisher-Yatesアルゴリズムを用いた、地方伝説と戦う順番のシャッフル■■■
@@ -3673,45 +3713,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 //▲▲▲テイワット地図無しレース・テイワットばらばら合流ゲーム　全選択・全解除ボタン用プログラム▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
-//▼▼▼バージョンアップデートに応じて要素を表示するプログラム▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
-(function () {
-  const schedule = [
-    { className: 'v58a', start: '2025-07-30T10:00:00+09:00' },
-    { className: 'v58b', start: '2025-08-20T19:00:00+09:00' },
-    { className: 'v60a', start: '2025-09-10T10:00:00+09:00' },
-    { className: 'v60b', start: '2025-10-01T19:00:00+09:00' },
-    { className: 'v61a', start: '2025-10-22T10:00:00+09:00' },
-    { className: 'v61b', start: '2025-11-12T19:00:00+09:00' },
-    { className: 'v62a', start: '2025-12-03T10:00:00+09:00' },
-    { className: 'v62b', start: '2025-12-24T19:00:00+09:00' },
-    { className: 'v63a', start: '2026-01-14T10:00:00+09:00' },
-    { className: 'v63b', start: '2026-02-04T19:00:00+09:00' },
-    { className: 'v64a', start: '2026-02-25T10:00:00+09:00' },
-    { className: 'v64b', start: '2026-03-18T19:00:00+09:00' },
-    { className: 'v65a', start: '2026-04-08T10:00:00+09:00' },
-    { className: 'v65b', start: '2026-04-29T19:00:00+09:00' },
-    { className: 'v66a', start: '2026-05-20T10:00:00+09:00' },
-    { className: 'v66b', start: '2026-06-10T19:00:00+09:00' },
-    { className: 'v67a', start: '2026-07-01T10:00:00+09:00' },
-    { className: 'v67b', start: '2026-07-22T19:00:00+09:00' },
-    { className: 'v68a', start: '2026-08-12T10:00:00+09:00' },
-    { className: 'v68b', start: '2026-09-02T19:00:00+09:00' }
-  ];
-
-  const now = new Date();
-
-  schedule.forEach(item => {
-    const startDate = new Date(item.start);
-    if (now >= startDate) {
-      const elements = document.querySelectorAll(`.${item.className}`);
-      elements.forEach(el => {
-        el.style.display = 'block';
-      });
-    }
-  });
-})();
-//▲▲▲バージョンアップデートに応じて要素を表示するプログラム▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
-
 //▼▼▼ヘルプ表示プログラム▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
 const popup = document.createElement('div');
 popup.className = 'help-popup';
@@ -3801,6 +3802,12 @@ window.DraftLocalLegend_SaveDataCreate     = DraftLocalLegend_SaveDataCreate    
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.17.0<span>2025/07/30</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】地方伝説の一覧に「最後のテノチズトク人」を追加しました</p>
+		<p>原神バージョンアップに合わせて自動で要素を表示するプログラムが一部正常に機能していなかったため、修正しました</p>
+	</div>
 
 	<div class="version">v1.16.0<span>2025/07/26</span></div>
 	<div class="details">
