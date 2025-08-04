@@ -1,4 +1,3 @@
-
 <html><head><meta charset="utf-8"><title>変則遊戯</title><meta name="viewport" content="width=device-width,user-scalable=0"><meta name="robots" content="noindex,nofollow,noarchive"><style type="text/css">
 /*▼▼▼CSS変数 ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
 :root{
@@ -3001,27 +3000,12 @@ function DraftLocalLegend_bbbbb() {
 async function DraftLocalLegend_maskbbbbb() {
   const maskDivs = document.querySelectorAll('#DraftLocalLegend_result li > div');
 
-  // Firebase から最新状態を取得
-  const snapshot = await firebase.database().ref(`LocalLegend_order`).once('value');
-  const data = snapshot.val() || {};
-
-  // MaskedList 描画用
+  // MaskedList を作るだけ。mask 状態は initDisplay でセット済
   const maskedNames = [];
 
   maskDivs.forEach((div, index) => {
-    const entry = data[index] || {};
-    const currentMask = entry.mask || "masked";
+    const isRevealed = div.classList.contains('revealed');
 
-    // 現状に合わせてクラスを付け替え
-    if (currentMask === 'revealed') {
-      div.classList.add('revealed');
-      div.classList.remove('masked');
-    } else {
-      div.classList.add('masked');
-      div.classList.remove('revealed');
-    }
-
-    // 背景色 div から名前を抽出
     const colorDiv = div.querySelector('div[class*="background-"]');
     let name = '';
     let backgroundClass = '';
@@ -3031,7 +3015,6 @@ async function DraftLocalLegend_maskbbbbb() {
           name += node.textContent.trim();
         }
       }
-      // 背景クラス名を取得
       colorDiv.classList.forEach(cls => {
         if (cls.startsWith('background-')) {
           backgroundClass = cls;
@@ -3041,23 +3024,20 @@ async function DraftLocalLegend_maskbbbbb() {
 
     const parentLi = div.closest('li');
     const inputValue = parentLi ? parseInt(parentLi.dataset.value, 10) : index + 1;
-    if (currentMask !== 'revealed') {
+    if (!isRevealed) {
       maskedNames.push({ value: inputValue, name, backgroundClass });
     }
 
-    // クリックで revealed にする（既に revealed の場合は何もしない）
+    // クリックで revealed にする
     div.onclick = () => {
       if (div.classList.contains('revealed')) return;
 
-      div.classList.remove('masked');
-      div.classList.add('revealed');
+      const updates = {};
+      updates[`LocalLegend_order/${index}/mask`] = "revealed";
 
-      // savedata 再生成
       const map = new Map();
       document.querySelectorAll('label[data-status][data-character]').forEach(label => {
-        const character = label.dataset.character;
-        const status = label.dataset.status;
-        map.set(character, status);
+        map.set(label.dataset.character, label.dataset.status);
       });
 
       const result = Array.from(map.entries())
@@ -3065,16 +3045,9 @@ async function DraftLocalLegend_maskbbbbb() {
         .map(([, status]) => status)
         .join('');
 
-      const savedataDiv = div.querySelector('.savedata');
-      if (savedataDiv) savedataDiv.textContent = result;
-
-      // Firebase に反映
-      const updates = {};
-      updates[`LocalLegend_order/${index}/mask`] = "revealed";
       updates[`LocalLegend_order/${index}/savedata`] = result;
-      firebase.database().ref().update(updates);
 
-      updateMaskedList();
+      firebase.database().ref().update(updates);
     };
   });
 
@@ -3130,51 +3103,45 @@ async function updateMaskedList() {
 
 
 // ページロード時にFirebaseから保存データを読み込み、表示を復元する関数
+// ページロード時に呼ぶ
 async function DraftLocalLegend_initDisplay() {
-  const snapshot = await firebase.database().ref('LocalLegend_order').once('value');
-  const data = snapshot.val();
-  if (!data) {
-    // データなしの場合は空表示に
-    document.getElementById('DraftLocalLegend_result').innerHTML = '';
-    renderMaskedList([]);
-    return;
-  }
+  const ref = firebase.database().ref('LocalLegend_order');
 
-  // Firebaseのkey（index）でソートし順序通りに取得
-  const sortedEntries = Object.entries(data).sort((a, b) => Number(a[0]) - Number(b[0]));
-
-  // HTMLリスト作成。order文字列はliタグ全体なのでそのまま使うが、
-  // mask状態に応じてclass書き換え・savedata反映を行う
-  const htmlList = sortedEntries.map(([_, item]) => {
-    if (!item.order) return '';
-
-    // 一時DOMにorder文字列を挿入して操作しやすくする
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = item.order.trim();
-    const li = tempDiv.querySelector('li');
-    if (!li) return '';
-
-    const maskDiv = li.querySelector('div');
-    if (maskDiv) {
-      // maskクラスの付け替え
-      maskDiv.classList.remove('masked', 'revealed');
-      maskDiv.classList.add(item.mask === 'revealed' ? 'revealed' : 'masked');
-
-      // savedataがあればテキストを反映
-      const savedataDiv = maskDiv.querySelector('.savedata');
-      if (savedataDiv) savedataDiv.textContent = item.savedata || '';
+  ref.on('value', (snapshot) => {
+    const data = snapshot.val();
+    if (!data) {
+      document.getElementById('DraftLocalLegend_result').innerHTML = '';
+      renderMaskedList([]);
+      return;
     }
 
-    return li.outerHTML;
-  }).filter(Boolean).join('');
+    const sortedEntries = Object.entries(data).sort((a, b) => Number(a[0]) - Number(b[0]));
 
-  document.getElementById('DraftLocalLegend_result').innerHTML = htmlList;
+    const htmlList = sortedEntries.map(([_, item]) => {
+      if (!item.order) return '';
 
-  // マスククリックイベントをセットしなおす
-  DraftLocalLegend_maskbbbbb();
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = item.order.trim();
+      const li = tempDiv.querySelector('li');
+      if (!li) return '';
 
-  // MaskedListも更新
-  updateMaskedList();
+      const maskDiv = li.querySelector('div');
+      if (maskDiv) {
+        maskDiv.classList.remove('masked', 'revealed');
+        maskDiv.classList.add(item.mask === 'revealed' ? 'revealed' : 'masked');
+
+        const savedataDiv = maskDiv.querySelector('.savedata');
+        if (savedataDiv) savedataDiv.textContent = item.savedata || '';
+      }
+
+      return li.outerHTML;
+    }).filter(Boolean).join('');
+
+    document.getElementById('DraftLocalLegend_result').innerHTML = htmlList;
+
+    // クリックイベントは必ず最新DOMに再セット
+    DraftLocalLegend_maskbbbbb();
+  });
 }
 
 // ページロード時に呼ぶ例
@@ -3888,6 +3855,11 @@ window.DraftLocalLegend_SaveDataCreate     = DraftLocalLegend_SaveDataCreate    
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.18.1<span>2025/08/05</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】地方伝説抽選リストがリアルタイムに反映されない問題を修正しました</p>
+	</div>
 
 	<div class="version">v1.18.0<span>2025/07/31</span></div>
 	<div class="details">
