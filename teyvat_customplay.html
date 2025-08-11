@@ -188,6 +188,13 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery > div{position:relative;backgr
 div#DraftLocalLegend div.DraftLocalLegend_lottery > div > button.help-button{position:absolute;top:0.5rem;right:0.5rem;}
 div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 
+div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile{border:1px solid #aaa;margin:1rem;padding:1rem;text-align:center;display:flex;}
+div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-child(1){font-size:1.5rem;text-align:left;margin:1.5rem 0.5rem 1.5rem 0;}
+div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-child(2){width:100%;}
+div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-child(2) > input:nth-of-type(1){width:20%;height:2rem;padding:0.5rem;}
+div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-child(2) > input:nth-of-type(2){width:80%;height:2rem;padding:0.5rem;}
+div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-child(2) > input:nth-of-type(3){width:100%;height:2rem;padding:0.5rem;margin-top:4px;border:3px double #777;border-radius:3px;}
+
 @media screen and (min-width: 480px) {
 	#DraftLocalLegend .DraftLocalLegend_aaaaa{width:100%;}
 	#DraftLocalLegend .DraftLocalLegend_enemylist{display:flex;border-bottom:1px solid #888;text-align:center;}
@@ -2488,6 +2495,51 @@ div#DraftLocalLegend div.DraftLocalLegend_lottery p{margin:0.5rem 0;}
 			</div>
 		</div>
 	</div>
+	<div class="DraftLocalLegend_Savedatalist">
+		<div style="background:#444;color:#fff;padding:0.5rem;font-size:1.5rem;font-weight:bold;text-align:center;">セーブデータ保管場所</div>
+		<div style="background:#eee;border:1px solid #aaa;padding:1rem;">
+			<div class="savefile">
+				<div>001</div>
+				<div>
+					   <input type="date" id="DraftLocalLegend_SavedataDate1"   autocomplete="off"><!--
+					--><input type="text" id="DraftLocalLegend_SavedataText1"   autocomplete="off"><br>
+					   <input type="text" id="DraftLocalLegend_SavedataNumber1" autocomplete="off">
+				</div>
+			</div>
+			<div class="savefile">
+				<div>002</div>
+				<div>
+					   <input type="date" id="DraftLocalLegend_SavedataDate2"   autocomplete="off"><!--
+					--><input type="text" id="DraftLocalLegend_SavedataText2"   autocomplete="off"><br>
+					   <input type="text" id="DraftLocalLegend_SavedataNumber2" autocomplete="off">
+				</div>
+			</div>
+			<div class="savefile">
+				<div>003</div>
+				<div>
+					   <input type="date" id="DraftLocalLegend_SavedataDate3"   autocomplete="off"><!--
+					--><input type="text" id="DraftLocalLegend_SavedataText3"   autocomplete="off"><br>
+					   <input type="text" id="DraftLocalLegend_SavedataNumber3" autocomplete="off">
+				</div>
+			</div>
+			<div class="savefile">
+				<div>004</div>
+				<div>
+					   <input type="date" id="DraftLocalLegend_SavedataDate4"   autocomplete="off"><!--
+					--><input type="text" id="DraftLocalLegend_SavedataText4"   autocomplete="off"><br>
+					   <input type="text" id="DraftLocalLegend_SavedataNumber4" autocomplete="off">
+				</div>
+			</div>
+			<div class="savefile">
+				<div>005</div>
+				<div>
+					   <input type="date" id="DraftLocalLegend_SavedataDate5"   autocomplete="off"><!--
+					--><input type="text" id="DraftLocalLegend_SavedataText5"   autocomplete="off"><br>
+					   <input type="text" id="DraftLocalLegend_SavedataNumber5" autocomplete="off">
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <hr style="margin-top:10rem;">
@@ -2943,8 +2995,8 @@ function DraftLocalLegend_bbbbb() {
   const htmlList = selected.map(input => {
     const val = input.value;
     let html = '';
-    if (val === '1' ) html = '<li data-value="1" ><div class="masked"><div class="savedata"></div><div class="background-hydro">湖辺のニニアン<span>南/水無効</span>                                   </div></div>';
-    if (val === '2' ) html = '<li data-value="2" ><div class="masked"><div class="savedata"></div><div class="background-hydro">湖辺のヴィヴィアン<span>北/水無効</span>                               </div></div>';
+    if (val === '1' ) html = '<li data-value="1" ><div class="masked"><div class="savedata"></div><div class="background-hydro">湖辺のニニアン<span>南/水元素無効</span>                               </div></div>';
+    if (val === '2' ) html = '<li data-value="2" ><div class="masked"><div class="savedata"></div><div class="background-hydro">湖辺のヴィヴィアン<span>北/水元素無効</span>                           </div></div>';
     if (val === '3' ) html = '<li data-value="3" ><div class="masked"><div class="savedata"></div><div class="background-hydro">オーシャン巡回法官                                                     </div></div>';
     if (val === '4' ) html = '<li data-value="4" ><div class="masked"><div class="savedata"></div><div class="background-hydro">鉄皮の子爵                                                             </div></div>';
     if (val === '5' ) html = '<li data-value="5" ><div class="masked"><div class="savedata"></div><div class="background-hydro">隠者の王・ドアーチュ                                                   </div></div>';
@@ -2959,7 +3011,7 @@ function DraftLocalLegend_bbbbb() {
     if (val === '14') html = '<li data-value="14"><div class="masked"><div class="savedata"></div><div class="background-hydro">ロッキー・アヴィルドセン                                               </div></div>';
     if (val === '15') html = '<li data-value="15"><div class="masked"><div class="savedata"></div><div class="background-hydro">リアム                                                                 </div></div>';
     if (val === '16') html = '<li data-value="16"><div class="masked"><div class="savedata"></div><div class="background-hydro">スネージヴナのディアンナラ                                             </div></div>';
-    if (val === '17') html = '<li data-value="17"><div class="masked"><div class="savedata"></div><div class="background-geo  ">赤璋巡岳府君<span>炎氷に耐性あり</span>                                </div></div>';
+    if (val === '17') html = '<li data-value="17"><div class="masked"><div class="savedata"></div><div class="background-geo  ">赤璋巡岳府君<span>炎氷元素に耐性あり</span>                            </div></div>';
     if (val === '18') html = '<li data-value="18"><div class="masked"><div class="savedata"></div><div class="background-hydro">シネアス<span>草元素推奨</span>                                        </div></div>';
     if (val === '19') html = '<li data-value="19"><div class="masked"><div class="savedata"></div><div class="background-pyro ">異色三連星<span>炎水氷元素推奨</span>                                  </div></div>';
     if (val === '20') html = '<li data-value="20"><div class="masked"><div class="savedata"></div><div class="background-pyro ">コシーホ<span>炎氷草元素推奨</span>                                    </div></div>';
@@ -3727,6 +3779,48 @@ createButton.addEventListener('click', () => {
 });
 //▲▲▲ドラフト地方伝説　カスタムキャラクターリスト用コード生成機▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
+//▼▼▼ドラフト地方伝説　セーブデータ保存用プログラム▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+  // Firebase Database 参照
+  const db = firebase.database();
+
+  // 保存・同期対象のinput IDとFirebaseパスの対応表を作成
+  const fields = [
+    { id: "DraftLocalLegend_SavedataDate1",   path: "DraftLocalLegend_Savedata/001/Date" },
+    { id: "DraftLocalLegend_SavedataText1",   path: "DraftLocalLegend_Savedata/001/Text" },
+    { id: "DraftLocalLegend_SavedataNumber1", path: "DraftLocalLegend_Savedata/001/Number" },
+    { id: "DraftLocalLegend_SavedataDate2",   path: "DraftLocalLegend_Savedata/002/Date" },
+    { id: "DraftLocalLegend_SavedataText2",   path: "DraftLocalLegend_Savedata/002/Text" },
+    { id: "DraftLocalLegend_SavedataNumber2", path: "DraftLocalLegend_Savedata/002/Number" },
+    { id: "DraftLocalLegend_SavedataDate3",   path: "DraftLocalLegend_Savedata/003/Date" },
+    { id: "DraftLocalLegend_SavedataText3",   path: "DraftLocalLegend_Savedata/003/Text" },
+    { id: "DraftLocalLegend_SavedataNumber3", path: "DraftLocalLegend_Savedata/003/Number" },
+    { id: "DraftLocalLegend_SavedataDate4",   path: "DraftLocalLegend_Savedata/004/Date" },
+    { id: "DraftLocalLegend_SavedataText4",   path: "DraftLocalLegend_Savedata/004/Text" },
+    { id: "DraftLocalLegend_SavedataNumber4", path: "DraftLocalLegend_Savedata/004/Number" },
+    { id: "DraftLocalLegend_SavedataDate5",   path: "DraftLocalLegend_Savedata/005/Date" },
+    { id: "DraftLocalLegend_SavedataText5",   path: "DraftLocalLegend_Savedata/005/Text" },
+    { id: "DraftLocalLegend_SavedataNumber5", path: "DraftLocalLegend_Savedata/005/Number" }
+  ];
+
+  fields.forEach(({ id, path }) => {
+    const inputEl = document.getElementById(id);
+    if (!inputEl) return;
+
+    // Firebase → input（リアルタイム反映）
+    db.ref(path).on("value", snapshot => {
+      const val = snapshot.val() ?? "";
+      if (inputEl.value !== val) {
+        inputEl.value = val;
+      }
+    });
+
+    // input → Firebase（変更即保存）
+    inputEl.addEventListener("input", () => {
+      db.ref(path).set(inputEl.value);
+    });
+  });
+//▲▲▲ドラフト地方伝説　セーブデータ保存用プログラム▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
 //▼▼▼テイワット地図無しレース・テイワットばらばら合流ゲーム　全選択・全解除ボタン用プログラム▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
 //■■■同じ className を持つチェックボックスを「親子グループ」として扱う
 document.addEventListener("DOMContentLoaded", () => {
@@ -3855,6 +3949,12 @@ window.DraftLocalLegend_SaveDataCreate     = DraftLocalLegend_SaveDataCreate    
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.19.0<span>2025/08/11</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】セーブデータ保管場所を追加しました</p>
+		<p>その他、軽微な変更・修正をしました</p>
+	</div>
 
 	<div class="version">v1.18.1<span>2025/08/05</span></div>
 	<div class="details">
