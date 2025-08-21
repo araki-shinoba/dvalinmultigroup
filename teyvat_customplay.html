@@ -2193,6 +2193,19 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 	<hr style="margin:5rem auto;">
 
 	<div style="background:#444;color:#fff;padding:0.5rem;font-size:1.5rem;font-weight:bold;text-align:center;">オプション</div>
+
+		<details>
+			<summary>エンドレスモード用復活抽選機</summary>
+			<div style="background:#eee;border:#aaa 1px solid;margin:1rem;padding:1rem;">
+				<div style="display:inline;font-size:1.5rem;">
+					生存率： <span id="DraftLocalLegend_proportion1"></span> / <span id="DraftLocalLegend_proportion2"></span> ( <span id="DraftLocalLegend_percentage"></span> )
+					復活コスト：<span id="DraftLocalLegend_CharacterRechargeCostEndless"></span>
+					<input type="button" value="抽選" onclick="DraftLocalLegend_CharacterRechargeEndless();" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
+					<div id="DraftLocalLegend_CharacterRechargeResultEndless" style="font-size:12px;"></div>
+				</div>
+			</div>
+		</details>
+
 	<div class="DraftLocalLegend_lottery">
 		<div>
 			<div style="margin:1rem;text-align:center;">キャラクター重複回避用抽選機<br>キャラクターが重複したプレイヤーは、以下の指示に従ってください</div>
@@ -3497,6 +3510,165 @@ function DraftLocalLegend_exportStatus() {
 }
 //▲▲▲ドラフト地方伝説　セーブデータ関連▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
+//▼▼▼ドラフト地方伝説　ローグライクモード用復活抽選機▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+
+//■■■復活抽選機（Endless版）の動作■■■
+function DraftLocalLegend_CharacterRechargeEndless() {
+  const confirmed = confirm("キャラクターを復活させてよいですか？");
+  if (!confirmed) return;
+
+  // コスト値は事前に計算済みspanから取得
+  const costText = document.getElementById("DraftLocalLegend_CharacterRechargeCostEndless").textContent;
+  const cost = parseInt(costText, 10);
+  if (isNaN(cost) || cost <= 0) return;
+
+  const allLabels = Array.from(document.querySelectorAll('label[data-status]'));
+
+  // data-characterごとに1代表のみ保持（重複排除）
+  const characterMap = new Map();
+  allLabels.forEach(label => {
+    const charId = label.dataset.character;
+    if (!characterMap.has(charId)) {
+      characterMap.set(charId, label);
+    }
+  });
+
+  const characterEntries = Array.from(characterMap.entries()).map(([charId, label]) => ({
+    charId,
+    label,
+    status: parseInt(label.dataset.status, 10),
+    rarity: label.dataset.rarity || "5"
+  }));
+
+  let remainingCost = cost;
+  const logs = [];
+
+  while (remainingCost > 0) {
+    const reducible = characterEntries.filter(entry => entry.status > 0);
+    if (reducible.length === 0) break;
+
+    const index = Math.floor(Math.random() * reducible.length);
+    const entry = reducible[index];
+    const oldStatus = entry.status;
+
+    // いつでも段階を踏んだ変更（rarityによる分岐なし）
+    let decrease = 1;
+    const newStatus = Math.max(0, oldStatus - decrease);
+    entry.status = newStatus;
+
+    // DOMに反映（同一キャラすべて）
+    const allSameChar = document.querySelectorAll(`label[data-character="${entry.charId}"]`);
+    allSameChar.forEach(label => {
+      label.dataset.status = newStatus;
+    });
+
+    // Firebaseに反映
+    firebase.database().ref(`character_statuses/character_${entry.charId}`).set(newStatus.toString());
+
+    const name = entry.label.querySelector('span').firstChild.textContent.trim();
+    let log = '';
+
+    if (oldStatus === 2 && newStatus === 1) {
+      log = `${name}を使用済(戦闘不能)から使用済(生存)に戻しました<br>`;
+    } else if (oldStatus === 1 && newStatus === 0) {
+      log = `${name}を使用済(生存)から未使用に戻しました<br>`;
+    } else if (oldStatus === 2 && newStatus === 0) {
+      log = `${name}を使用済(戦闘不能)から未使用に戻しました<br>`;
+    }
+
+    if (log) logs.push(log);
+    remainingCost--;
+  }
+
+  const resultText = logs.join('');
+  document.getElementById("DraftLocalLegend_CharacterRechargeResultEndless").innerHTML = resultText;
+
+  // 結果テキストも保存
+  firebase.database().ref(`character_statuses/recharge_result_Endless`).set(resultText);
+};
+
+//■■■proportion/percentage計算 + コスト算出■■■
+function updateProportionsAndCost() {
+  const allLabels = Array.from(document.querySelectorAll('label[data-status]'));
+
+  // data-characterごとに1代表のみ保持
+  const characterMap = new Map();
+  allLabels.forEach(label => {
+    const charId = label.dataset.character;
+    if (!characterMap.has(charId)) {
+      characterMap.set(charId, label);
+    }
+  });
+
+  // 最大キャラIDの2倍
+  const maxCharId = Math.max(...Array.from(characterMap.keys()).map(Number));
+  const proportion2 = maxCharId * 2;
+  document.getElementById("DraftLocalLegend_proportion2").textContent = proportion2;
+
+  // data-status合計（キャラごと1回のみ）
+  let statusSum = 0;
+  characterMap.forEach(label => {
+    statusSum += parseInt(label.dataset.status, 10);
+  });
+  const proportion1 = proportion2 - statusSum;
+  document.getElementById("DraftLocalLegend_proportion1").textContent = proportion1;
+
+  // percentage
+  const percentage = (proportion2 > 0) ? (proportion1 / proportion2 * 100) : 0;
+  document.getElementById("DraftLocalLegend_percentage").textContent = percentage.toFixed(1) + "%";
+
+  // ★ここでコスト算出＆リアルタイム反映★
+  let cost;
+  if (percentage >= 80) cost = 5;
+  else if (percentage >= 70) cost = 6;
+  else if (percentage >= 60) cost = 7;
+  else if (percentage >= 50) cost = 8;
+  else if (percentage >= 40) cost = 9;
+  else if (percentage >= 30) cost = 10;
+  else if (percentage >= 20) cost = 11;
+  else if (percentage >= 10) cost = 12;
+  else cost = 13;
+
+  document.getElementById("DraftLocalLegend_CharacterRechargeCostEndless").textContent = cost;
+}
+
+//■■■data-statusが変わったら自動反映■■■
+const labels = document.querySelectorAll('label[data-status]');
+labels.forEach(label => {
+  const observer = new MutationObserver(() => {
+    updateProportionsAndCost();
+  });
+  observer.observe(label, { attributes: true, attributeFilter: ["data-status"] });
+});
+
+// 初回実行
+updateProportionsAndCost();
+
+//■■■復活抽選機（Endless版）の復活情報をリアルタイム共有■■■
+firebase.database().ref("character_statuses").on("value", (snapshot) => {
+  const data = snapshot.val();
+  if (!data) return;
+
+  Object.entries(data).forEach(([key, value]) => {
+    if (key === "recharge_result_Endless") {
+      document.getElementById("DraftLocalLegend_CharacterRechargeResultEndless").innerHTML = value || "";
+      return;
+    }
+
+    if (key.startsWith("character_")) {
+      const charId = key.slice("character_".length);
+      const statusNum = parseInt(value, 10);
+      if (isNaN(statusNum)) return;
+
+      const labels = document.querySelectorAll(`label[data-character="${charId}"]`);
+      labels.forEach(label => {
+        label.dataset.status = statusNum;
+      });
+    }
+  });
+});
+//▲▲▲ドラフト地方伝説　ローグライクモード用復活抽選機▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
 //▼▼▼ドラフト地方伝説　オプション関連▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
 //■■■キャラクター重複回避用抽選機■■■
 function DraftLocalLegend_CharacterChange() {
@@ -3929,26 +4101,32 @@ database.ref('character_statuses').on('value', (snapshot) => {
 //▲▲▲手元とFirebaseで値が違う場合、Firebaseを優先して即更新▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
 //▼▼▼モジュールのグローバル公開▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
-window.NoMapRace_lottery                   = NoMapRace_lottery                  ; //テイワット地図無しレース　抽選結果表示用プログラム
-window.JoinGame_lottery                    = JoinGame_lottery                   ; //テイワットばらばら合流ゲーム　抽選結果表示用プログラム
-window.DraftLocalLegend_bbbbb              = DraftLocalLegend_bbbbb             ; //ドラフト地方伝説　地方伝説のシャッフルと表示
-window.DraftLocalLegend_resetStatus        = DraftLocalLegend_resetStatus       ; //ドラフト地方伝説　data-status=1を0に一括変更する
-window.DraftLocalLegend_setAllUnused       = DraftLocalLegend_setAllUnused      ; //ドラフト地方伝説　「使用済(生存)」のキャラクターを一括で「未使用」に戻す処理
-window.DraftLocalLegend_importStatus       = DraftLocalLegend_importStatus      ; //ドラフト地方伝説　セーブデータのインポート
-window.DraftLocalLegend_exportStatus       = DraftLocalLegend_exportStatus      ; //ドラフト地方伝説　セーブデータのエクスポート
-window.DraftLocalLegend_CharacterChange    = DraftLocalLegend_CharacterChange   ; //ドラフト地方伝説　キャラクター重複回避用抽選機
-window.DraftLocalLegend_CharacterCost      = DraftLocalLegend_CharacterCost     ; //ドラフト地方伝説　コスト抽選機
-window.DraftLocalLegend_CharacterRecharge  = DraftLocalLegend_CharacterRecharge ; //ドラフト地方伝説　復活抽選機の復活情報
-window.DraftLocalLegend_SaveDataCreateZero = DraftLocalLegend_SaveDataCreateZero; //ドラフト地方伝説　セーブデータ自動生成機
-window.DraftLocalLegend_SaveDataCreateOne  = DraftLocalLegend_SaveDataCreateOne ; //ドラフト地方伝説　セーブデータ自動生成機
-window.DraftLocalLegend_SaveDataCreateTwo  = DraftLocalLegend_SaveDataCreateTwo ; //ドラフト地方伝説　セーブデータ自動生成機
-window.DraftLocalLegend_SaveDataCreate     = DraftLocalLegend_SaveDataCreate    ; //ドラフト地方伝説　セーブデータ自動生成機
+window.NoMapRace_lottery                         = NoMapRace_lottery                        ; //テイワット地図無しレース　抽選結果表示用プログラム
+window.JoinGame_lottery                          = JoinGame_lottery                         ; //テイワットばらばら合流ゲーム　抽選結果表示用プログラム
+window.DraftLocalLegend_bbbbb                    = DraftLocalLegend_bbbbb                   ; //ドラフト地方伝説　地方伝説のシャッフルと表示
+window.DraftLocalLegend_resetStatus              = DraftLocalLegend_resetStatus             ; //ドラフト地方伝説　data-status=1を0に一括変更する
+window.DraftLocalLegend_setAllUnused             = DraftLocalLegend_setAllUnused            ; //ドラフト地方伝説　「使用済(生存)」のキャラクターを一括で「未使用」に戻す処理
+window.DraftLocalLegend_importStatus             = DraftLocalLegend_importStatus            ; //ドラフト地方伝説　セーブデータのインポート
+window.DraftLocalLegend_exportStatus             = DraftLocalLegend_exportStatus            ; //ドラフト地方伝説　セーブデータのエクスポート
+window.DraftLocalLegend_CharacterChange          = DraftLocalLegend_CharacterChange         ; //ドラフト地方伝説　キャラクター重複回避用抽選機
+window.DraftLocalLegend_CharacterCost            = DraftLocalLegend_CharacterCost           ; //ドラフト地方伝説　コスト抽選機
+window.DraftLocalLegend_CharacterRecharge        = DraftLocalLegend_CharacterRecharge       ; //ドラフト地方伝説　復活抽選機の復活情報
+window.DraftLocalLegend_SaveDataCreateZero       = DraftLocalLegend_SaveDataCreateZero      ; //ドラフト地方伝説　セーブデータ自動生成機
+window.DraftLocalLegend_SaveDataCreateOne        = DraftLocalLegend_SaveDataCreateOne       ; //ドラフト地方伝説　セーブデータ自動生成機
+window.DraftLocalLegend_SaveDataCreateTwo        = DraftLocalLegend_SaveDataCreateTwo       ; //ドラフト地方伝説　セーブデータ自動生成機
+window.DraftLocalLegend_SaveDataCreate           = DraftLocalLegend_SaveDataCreate          ; //ドラフト地方伝説　セーブデータ自動生成機
+window.DraftLocalLegend_CharacterRechargeEndless = DraftLocalLegend_CharacterRechargeEndless; //ドラフト地方伝説　エンドレス復活抽選
 //▲▲▲モジュールのグローバル公開▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
 </script>
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.20.0<span>2025/08/22</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】エンドレスモード専用の復活抽選機を追加しました</p>
+	</div>
 
 	<div class="version">v1.19.0<span>2025/08/11</span></div>
 	<div class="details">
