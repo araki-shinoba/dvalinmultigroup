@@ -3619,15 +3619,25 @@ function updateProportionsAndCost() {
 
   // ★ここでコスト算出＆リアルタイム反映★
   let cost;
-  if (percentage >= 80) cost = 5;
-  else if (percentage >= 70) cost = 6;
-  else if (percentage >= 60) cost = 7;
-  else if (percentage >= 50) cost = 8;
-  else if (percentage >= 40) cost = 9;
-  else if (percentage >= 30) cost = 10;
-  else if (percentage >= 20) cost = 11;
-  else if (percentage >= 10) cost = 12;
-  else cost = 13;
+  if (percentage >= 90) cost = 5;
+  else if (percentage >= 85) cost = 6;
+  else if (percentage >= 80) cost = 7;
+  else if (percentage >= 75) cost = 8;
+  else if (percentage >= 70) cost = 9;
+  else if (percentage >= 65) cost = 10;
+  else if (percentage >= 60) cost = 11;
+  else if (percentage >= 55) cost = 12;
+  else if (percentage >= 50) cost = 13;
+  else if (percentage >= 45) cost = 14;
+  else if (percentage >= 40) cost = 15;
+  else if (percentage >= 35) cost = 16;
+  else if (percentage >= 30) cost = 17;
+  else if (percentage >= 25) cost = 18;
+  else if (percentage >= 20) cost = 19;
+  else if (percentage >= 15) cost = 20;
+  else if (percentage >= 10) cost = 21;
+  else if (percentage >= 5) cost = 22;
+  else cost = 23;
 
   document.getElementById("DraftLocalLegend_CharacterRechargeCostEndless").textContent = cost;
 }
@@ -4122,6 +4132,11 @@ window.DraftLocalLegend_CharacterRechargeEndless = DraftLocalLegend_CharacterRec
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.21.0<span>2025/08/25</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】エンドレスモード専用復活抽選機のコスト計算の使用を変更しました</p>
+	</div>
 
 	<div class="version">v1.20.0<span>2025/08/22</span></div>
 	<div class="details">
