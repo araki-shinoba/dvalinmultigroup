@@ -3074,6 +3074,12 @@ function DraftLocalLegend_CharacterRechargeNormal() {
   set(ref(db, 'DraftLocalLegend/option/recharge_result_normal'), resultText);
 }
 
+onValue(ref(db, 'DraftLocalLegend/option/recharge_result_normal'), snapshot => {
+  const val = snapshot.val() ?? '';
+  const resultElem = document.getElementById("DraftLocalLegend_CharacterRechargeResultNormal");
+  if (resultElem) resultElem.innerHTML = val;
+});
+
 //■■■ボタン発火設定■■■
 window.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById("DraftLocalLegend_CharacterRechargeNormal");
@@ -3197,6 +3203,12 @@ labels.forEach(label => {
 updateProportionsAndCostEndless();
 
 //■■■復活情報リアルタイム共有■■■
+onValue(ref(db, 'DraftLocalLegend/option/recharge_result_endless'), snapshot => {
+  const val = snapshot.val() ?? '';
+  const resultElem = document.getElementById("DraftLocalLegend_CharacterRechargeResultEndless");
+  if (resultElem) resultElem.innerHTML = val;
+});
+
 onValue(ref(db, 'DraftLocalLegend/character_statuses'), snapshot => {
   const data = snapshot.val();
   if (!data) return;
@@ -3351,6 +3363,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.22.1<span>2025/08/27</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】ノーマルモード用復活抽選機、およびエンドレスモード用復活抽選機において、抽選結果のテキスト表示がリアルタイムに反映されていなかった問題を修正しました</p>
+	</div>
 
 	<div class="version">v1.22.0<span>2025/08/27</span></div>
 	<div class="details">
