@@ -2381,6 +2381,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
   updateVisibility();
+  updateProportionsAndCostEndless();
 });
 //▲▲▲ドラフト地方伝説　キャラクターの表示▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 //▼▼▼ドラフト地方伝説　キャラクターの生存情報反映▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
@@ -2897,6 +2898,7 @@ export function DraftLocalLegend_CharacterRechargeEndless() {
   if (resultElem) resultElem.innerHTML = resultText;
 
   set(ref(db, 'DraftLocalLegend/option/recharge_result_endless'), resultText);
+  updateProportionsAndCostEndless();
 }
 
 //■■■proportion/percentage計算 + コスト算出■■■
@@ -2908,8 +2910,7 @@ function updateProportionsAndCostEndless() {
     if (!characterMap.has(charId)) characterMap.set(charId, label);
   });
 
-  const maxCharId = Math.max(...Array.from(characterMap.keys()).map(Number));
-  const proportion2 = maxCharId * 2;
+  const proportion2 = characterMap.size * 2;
   document.getElementById("DraftLocalLegend_proportion2").textContent = proportion2;
 
   let statusSum = 0;
@@ -2978,6 +2979,7 @@ onValue(ref(db, 'DraftLocalLegend/character_statuses'), snapshot => {
     const labels = document.querySelectorAll(`label[data-character="${charId3}"]`);
     labels.forEach(label => label.dataset.status = statusNum);
   });
+  updateProportionsAndCostEndless();
 });
 
 //■■■ボタン発火設定■■■
@@ -3115,6 +3117,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.24.1<span>2025/09/13</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】エンドレスモード用復活抽選機が正常に動作しない問題を修正しました</p>
+	</div>
 
 	<div class="version">v1.24.0<span>2025/09/12</span></div>
 	<div class="details">
