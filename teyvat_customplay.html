@@ -92,7 +92,7 @@ div.content:not(:target){display:none;}
 /*▼▼▼更新履歴▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
 div.updatehistory > div.version{font-weight:bold;font-size:1.5rem;border-bottom:1px #888 solid;padding:0.25rem;margin:0.25rem;}
 div.updatehistory > div.version > a{font-size:1.5rem;}
-div.updatehistory > div.version > span{display:inline-block;margin:0 1rem 0 0.5rem;font-weight:normal;}
+div.updatehistory > div.version > span{display:inline-block;margin:0 1rem 0 0.5rem;font-weight:normal;font-size:12px;}
 div.updatehistory > div.details{margin:0 0 2rem 2rem;}
 div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 
@@ -1306,7 +1306,7 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 	<div style="text-align:center;">
 		<input type="button" value="決定" id="DraftLocalLegend_lottery" style="width:80px;margin:1rem;padding:1rem;font-weight:bold;">
 	</div>
-	<ol id="DraftLocalLegend_result"></ol>
+	<ol id="DraftLocalLegend_result" style="max-height:300px;overflow-y:scroll;"></ol>
 
 	<div style="text-align:center;font-size:1.5rem;padding:0.5rem;margin:auto 1rem;background:#444;color:#fff;">残りの地方伝説一覧</div>
 	<div id="DraftLocalLegend_MaskedList" style="background:#eee;border:1px solid #aaa;margin:0 1rem 1rem;padding:1rem;"></div>
@@ -1432,6 +1432,9 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 				<label data-status="0" data-character="053" data-rarity="4" data-weapon="bow"     ><span>コレイ                                     </span></label>
 				<label data-status="0" data-character="054" data-rarity="5" data-weapon="bow"     ><span>ティナリ                                   </span></label>
 				<label data-status="0" data-character="059" data-rarity="5" data-weapon="catalyst"><span>ナヒーダ                                   </span></label>
+				<script>new Date()>=new Date('2025-10-22T10:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
+				<label data-status="0" data-character="107" data-rarity="5" data-weapon="catalyst"><span>ネフェル                                   </span></label>
+				`)</script>
 				<label data-status="0" data-character="068" data-rarity="5" data-weapon="catalyst"><span>白朮                                       </span></label>
 				<label data-status="0" data-character="063" data-rarity="4" data-weapon="polearm" ><span>ヨォーヨ                                   </span></label>
 				<label data-status="0" data-character="105" data-rarity="5" data-weapon="catalyst"><span>ラウマ                                     </span></label>
@@ -1644,22 +1647,21 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 	</details>
 
 	<details>
-		<summary>ノーマルモード用復活抽選機</summary>
+		<summary>ノーマルモード用復活抽選機 ・コスト抽選機</summary>
 		<div style="margin:1rem;padding:1rem;position:relative;">
 			<button class="help-button" data-help-id="DraftLocalLegend_help1" style="position:absolute;top:0.5rem;right:0.5rem;">？</button>
 			<div id="DraftLocalLegend_help1" class="help-popup">
 				<p>◆復活コストについて</p>
-				<p>復活コスト1を消費することで、ランダムに選ばれたキャラクター1体を【使用済(戦闘不能)→使用済(生存)】または【使用済(生存)→未使用】に変更します</p>
+				<p>復活コスト1で、ランダムに選ばれたキャラクター1体を【使用済(戦闘不能)→使用済(生存)】または【使用済(生存)→未使用】に変更します</p>
 				<p>復活コストを2以上に設定する場合、同じキャラクターが2回選ばれる場合があります</p>
-				
-				<p>◆星4キャラクターの即復活について</p>
-				<p>星4キャラクターが抽選で選ばれた場合、1コストの消費で【使用済(戦闘不能)→未使用】または【使用済(生存)→未使用】にします</p>
+				<p>星4キャラクターの即復活ボタンにチェックを入れると、星4キャラクターに限り復活コスト1で【使用済(戦闘不能)→未使用】または【使用済(生存)→未使用】にします</p>
+				<p>復活コストを負の値に設定すると、ランダムに選ばれたキャラクターを使用済に変更します</p>
 
 			</div>
 			<div style="font-size:1.5rem;text-align:center;">
 				復活コスト：<input type="number" id="DraftLocalLegend_CharacterRechargeNormalCost" style="width:40px;"value="6">
 				 / 
-				星4キャラクターの即復活<input type="checkbox" checked id="DraftLocalLegend_CharacterRechargeNormalR4">
+				星4キャラクターの即復活<input type="checkbox" id="DraftLocalLegend_CharacterRechargeNormalR4">
 				<input type="button" value="抽選" id="DraftLocalLegend_CharacterRechargeNormal" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
 			</div>
 			<div id="DraftLocalLegend_CharacterRechargeResultNormal"></div>
@@ -1687,23 +1689,44 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 					<p>エンドレスモードなど、一部のキャラクターが使えない状態のセーブデータから始めたい場合は、この生成機を使用してセーブデータを生成してください</p>
 				</div>
 				<div style="margin:1rem;text-align:center;">セーブデータ自動生成機</div>
-				<div style="text-align:center;">
-					<div>
-						<span style="display:inline-block;width:calc(80% - 4rem);max-width:13rem;text-align:right;">未使用の比率：</span>
-						<input type="number" id="DraftLocalLegend_SaveDataCreateZero" value="6" style="width:40px;margin-right:calc(20% - 40px);">
-					</div>
-					<div>
-						<span style="display:inline-block;width:calc(80% - 4rem);max-width:13rem;text-align:right;">使用済(生存)の比率：</span>
-						<input type="number" id="DraftLocalLegend_SaveDataCreateOne" value="2" style="width:40px;margin-right:calc(20% - 40px);">
-					</div>
-					<div>
-						<span style="display:inline-block;width:calc(80% - 4rem);max-width:13rem;text-align:right;">使用済(戦闘不能)の比率：</span>
-						<input type="number" id="DraftLocalLegend_SaveDataCreateTwo" value="1" style="width:40px;margin-right:calc(20% - 40px);">
+				<div style="text-align:center;margin:auto;">
+					<div style="text-align:right;display:inline-block;">
+						<div>
+							<span>未使用の比率：</span>
+							<input type="number" id="DraftLocalLegend_SaveDataCreateZero" value="6" style="width:40px;">
+						</div>
+						<div>
+							<span>使用済(生存)の比率：</span>
+							<input type="number" id="DraftLocalLegend_SaveDataCreateOne" value="2" style="width:40px;">
+						</div>
+						<div>
+							<span>使用済(戦闘不能)の比率：</span>
+							<input type="number" id="DraftLocalLegend_SaveDataCreateTwo" value="1" style="width:40px;">
+						</div>
 					</div>
 				</div>
 				<div style="display:flex;">
 					<input type="button" id="DraftLocalLegend_SaveDataCreate" value="作成" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
 					<input type="text" id="DraftLocalLegend_SaveDataCreateResult" readonly style="width:calc(100% - 80px - 3rem);margin:0.75rem 1rem 1rem 0;">
+				</div>
+			</div>
+			<div>
+				<button class="help-button" data-help-id="DraftLocalLegend_help4">？</button>
+				<div id="DraftLocalLegend_help4" class="help-popup">
+					<p>なんだよこの機能</p>
+				</div>
+				<div style="margin:1rem;text-align:center;">特殊ギミック導入確率</div>
+				<div style="text-align:center;margin:auto;">
+					<div style="text-align:right;display:inline-block;">
+						<div>
+							<span>ボチャチコ：</span>
+							<input type="number" id="DraftLocalLegend_Bochachko" value="0" style="width:40px;"> %
+						</div>
+						<div>
+							<span>ボチャルド：</span>
+							<input type="number" id="DraftLocalLegend_Bochard" value="0" style="width:40px;"> %
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -1712,119 +1735,122 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 				<div style="margin:1rem;text-align:center;">カスタムキャラクターリスト用コード生成機</div>
 				<table border="1" style="margin:0 1rem;">
 					<tr><td class="background-anemo">
-						<label><input type="checkbox" data-picknumber="99" ><span>イファ        </span></label>
-						<label><input type="checkbox" data-picknumber="22" ><span>ウェンティ    </span></label>
-						<label><input type="checkbox" data-picknumber="35" ><span>楓原万葉      </span></label>
-						<label><input type="checkbox" data-picknumber="80" ><span>閑雲          </span></label>
-						<label><input type="checkbox" data-picknumber="37" ><span>早柚          </span></label>
-						<label><input type="checkbox" data-picknumber="52" ><span>鹿野院平蔵    </span></label>
-						<label><input type="checkbox" data-picknumber="30" ><span>&#39752;      </span></label>
-						<label><input type="checkbox" data-picknumber="17" ><span>ジン          </span></label>
-						<label><input type="checkbox" data-picknumber="16" ><span>スクロース    </span></label>
-						<label><input type="checkbox" data-picknumber="92" ><span>チャスカ      </span></label>
-						<label><input type="checkbox" data-picknumber="61" ><span>ファルザン    </span></label>
-						<label><input type="checkbox" data-picknumber="62" ><span>放浪者        </span></label>
-						<label><input type="checkbox" data-picknumber="96" ><span>夢見月瑞希    </span></label>
-						<label><input type="checkbox" data-picknumber="95" ><span>藍硯          </span></label>
-						<label><input type="checkbox" data-picknumber="70" ><span>リネット      </span></label>
+						<label><input type="checkbox" data-picknumber="099"><span>イファ        </span></label>
+						<label><input type="checkbox" data-picknumber="022"><span>ウェンティ    </span></label>
+						<label><input type="checkbox" data-picknumber="035"><span>楓原万葉      </span></label>
+						<label><input type="checkbox" data-picknumber="080"><span>閑雲          </span></label>
+						<label><input type="checkbox" data-picknumber="037"><span>早柚          </span></label>
+						<label><input type="checkbox" data-picknumber="052"><span>鹿野院平蔵    </span></label>
+						<label><input type="checkbox" data-picknumber="030"><span>&#39752;      </span></label>
+						<label><input type="checkbox" data-picknumber="017"><span>ジン          </span></label>
+						<label><input type="checkbox" data-picknumber="016"><span>スクロース    </span></label>
+						<label><input type="checkbox" data-picknumber="092"><span>チャスカ      </span></label>
+						<label><input type="checkbox" data-picknumber="061"><span>ファルザン    </span></label>
+						<label><input type="checkbox" data-picknumber="062"><span>放浪者        </span></label>
+						<script>new Date()>=new Date('2025-10-22T10:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
+						<label><input type="checkbox" data-picknumber="107"><span>ネフェル      </span></label>
+						`)</script>
+						<label><input type="checkbox" data-picknumber="096"><span>夢見月瑞希    </span></label>
+						<label><input type="checkbox" data-picknumber="095"><span>藍硯          </span></label>
+						<label><input type="checkbox" data-picknumber="070"><span>リネット      </span></label>
 					<tr><td class="background-geo">
-						<label><input type="checkbox" data-picknumber="45" ><span>荒瀧一斗      </span></label>
-						<label><input type="checkbox" data-picknumber="28" ><span>アルベド      </span></label>
-						<label><input type="checkbox" data-picknumber="46" ><span>雲菫          </span></label>
-						<label><input type="checkbox" data-picknumber="87" ><span>カチーナ      </span></label>
-						<label><input type="checkbox" data-picknumber="11" ><span>凝光          </span></label>
-						<label><input type="checkbox" data-picknumber="44" ><span>ゴロー        </span></label>
-						<label><input type="checkbox" data-picknumber="27" ><span>鍾離          </span></label>
-						<label><input type="checkbox" data-picknumber="90" ><span>シロネン      </span></label>
-						<label><input type="checkbox" data-picknumber="81" ><span>千織          </span></label>
-						<label><input type="checkbox" data-picknumber="77" ><span>ナヴィア      </span></label>
-						<label><input type="checkbox" data-picknumber="14" ><span>ノエル        </span></label>
+						<label><input type="checkbox" data-picknumber="045"><span>荒瀧一斗      </span></label>
+						<label><input type="checkbox" data-picknumber="028"><span>アルベド      </span></label>
+						<label><input type="checkbox" data-picknumber="046"><span>雲菫          </span></label>
+						<label><input type="checkbox" data-picknumber="087"><span>カチーナ      </span></label>
+						<label><input type="checkbox" data-picknumber="011"><span>凝光          </span></label>
+						<label><input type="checkbox" data-picknumber="044"><span>ゴロー        </span></label>
+						<label><input type="checkbox" data-picknumber="027"><span>鍾離          </span></label>
+						<label><input type="checkbox" data-picknumber="090"><span>シロネン      </span></label>
+						<label><input type="checkbox" data-picknumber="081"><span>千織          </span></label>
+						<label><input type="checkbox" data-picknumber="077"><span>ナヴィア      </span></label>
+						<label><input type="checkbox" data-picknumber="014"><span>ノエル        </span></label>
 					<tr><td class="background-electro">
-						<label><input type="checkbox" data-picknumber="97" ><span>イアンサ      </span></label>
+						<label><input type="checkbox" data-picknumber="097"><span>イアンサ      </span></label>
 						<label><input type="checkbox" data-picknumber="103"><span>イネファ      </span></label>
-						<label><input type="checkbox" data-picknumber="98" ><span>ヴァレサ      </span></label>
-						<label><input type="checkbox" data-picknumber="91" ><span>オロルン      </span></label>
-						<label><input type="checkbox" data-picknumber="51" ><span>久岐忍        </span></label>
-						<label><input type="checkbox" data-picknumber="40" ><span>九条裟羅      </span></label>
-						<label><input type="checkbox" data-picknumber="84" ><span>クロリンデ    </span></label>
-						<label><input type="checkbox" data-picknumber="21" ><span>刻晴          </span></label>
-						<label><input type="checkbox" data-picknumber="83" ><span>セトス        </span></label>
-						<label><input type="checkbox" data-picknumber="57" ><span>セノ          </span></label>
-						<label><input type="checkbox" data-picknumber="55" ><span>ドリー        </span></label>
-						<label><input type="checkbox" data-picknumber="12" ><span>フィッシュル  </span></label>
+						<label><input type="checkbox" data-picknumber="098"><span>ヴァレサ      </span></label>
+						<label><input type="checkbox" data-picknumber="091"><span>オロルン      </span></label>
+						<label><input type="checkbox" data-picknumber="051"><span>久岐忍        </span></label>
+						<label><input type="checkbox" data-picknumber="040"><span>九条裟羅      </span></label>
+						<label><input type="checkbox" data-picknumber="084"><span>クロリンデ    </span></label>
+						<label><input type="checkbox" data-picknumber="021"><span>刻晴          </span></label>
+						<label><input type="checkbox" data-picknumber="083"><span>セトス        </span></label>
+						<label><input type="checkbox" data-picknumber="057"><span>セノ          </span></label>
+						<label><input type="checkbox" data-picknumber="055"><span>ドリー        </span></label>
+						<label><input type="checkbox" data-picknumber="012"><span>フィッシュル  </span></label>
 						<label><input type="checkbox" data-picknumber="106"><span>フリンズ      </span></label>
-						<label><input type="checkbox" data-picknumber="9"  ><span>北斗          </span></label>
-						<label><input type="checkbox" data-picknumber="48" ><span>八重神子      </span></label>
-						<label><input type="checkbox" data-picknumber="41" ><span>雷電将軍      </span></label>
-						<label><input type="checkbox" data-picknumber="5"  ><span>リサ          </span></label>
-						<label><input type="checkbox" data-picknumber="7"  ><span>レザー        </span></label>
+						<label><input type="checkbox" data-picknumber="009"><span>北斗          </span></label>
+						<label><input type="checkbox" data-picknumber="048"><span>八重神子      </span></label>
+						<label><input type="checkbox" data-picknumber="041"><span>雷電将軍      </span></label>
+						<label><input type="checkbox" data-picknumber="005"><span>リサ          </span></label>
+						<label><input type="checkbox" data-picknumber="007"><span>レザー        </span></label>
 					<tr><td class="background-dendro">
-						<label><input type="checkbox" data-picknumber="64" ><span>アルハイゼン  </span></label>
-						<label><input type="checkbox" data-picknumber="86" ><span>エミリエ      </span></label>
-						<label><input type="checkbox" data-picknumber="67" ><span>カーヴェ      </span></label>
-						<label><input type="checkbox" data-picknumber="89" ><span>キィニチ      </span></label>
-						<label><input type="checkbox" data-picknumber="69" ><span>綺良々        </span></label>
-						<label><input type="checkbox" data-picknumber="53" ><span>コレイ        </span></label>
-						<label><input type="checkbox" data-picknumber="54" ><span>ティナリ      </span></label>
-						<label><input type="checkbox" data-picknumber="59" ><span>ナヒーダ      </span></label>
-						<label><input type="checkbox" data-picknumber="68" ><span>白朮          </span></label>
-						<label><input type="checkbox" data-picknumber="63" ><span>ヨォーヨ      </span></label>
+						<label><input type="checkbox" data-picknumber="064"><span>アルハイゼン  </span></label>
+						<label><input type="checkbox" data-picknumber="086"><span>エミリエ      </span></label>
+						<label><input type="checkbox" data-picknumber="067"><span>カーヴェ      </span></label>
+						<label><input type="checkbox" data-picknumber="089"><span>キィニチ      </span></label>
+						<label><input type="checkbox" data-picknumber="069"><span>綺良々        </span></label>
+						<label><input type="checkbox" data-picknumber="053"><span>コレイ        </span></label>
+						<label><input type="checkbox" data-picknumber="054"><span>ティナリ      </span></label>
+						<label><input type="checkbox" data-picknumber="059"><span>ナヒーダ      </span></label>
+						<label><input type="checkbox" data-picknumber="068"><span>白朮          </span></label>
+						<label><input type="checkbox" data-picknumber="063"><span>ヨォーヨ      </span></label>
 						<label><input type="checkbox" data-picknumber="105"><span>ラウマ        </span></label>
 					<tr><td class="background-hydro">
 						<label><input type="checkbox" data-picknumber="104"><span>アイノ        </span></label>
-						<label><input type="checkbox" data-picknumber="50" ><span>夜蘭          </span></label>
-						<label><input type="checkbox" data-picknumber="49" ><span>神里綾人      </span></label>
-						<label><input type="checkbox" data-picknumber="56" ><span>キャンディス  </span></label>
-						<label><input type="checkbox" data-picknumber="42" ><span>珊瑚宮心海    </span></label>
-						<label><input type="checkbox" data-picknumber="85" ><span>シグウィン    </span></label>
+						<label><input type="checkbox" data-picknumber="050"><span>夜蘭          </span></label>
+						<label><input type="checkbox" data-picknumber="049"><span>神里綾人      </span></label>
+						<label><input type="checkbox" data-picknumber="056"><span>キャンディス  </span></label>
+						<label><input type="checkbox" data-picknumber="042"><span>珊瑚宮心海    </span></label>
+						<label><input type="checkbox" data-picknumber="085"><span>シグウィン    </span></label>
 						<label><input type="checkbox" data-picknumber="101"><span>ダリア        </span></label>
-						<label><input type="checkbox" data-picknumber="25" ><span>タルタリヤ    </span></label>
-						<label><input type="checkbox" data-picknumber="58" ><span>ニィロウ      </span></label>
-						<label><input type="checkbox" data-picknumber="73" ><span>ヌヴィレット  </span></label>
-						<label><input type="checkbox" data-picknumber="6"  ><span>バーバラ      </span></label>
-						<label><input type="checkbox" data-picknumber="76" ><span>フリーナ      </span></label>
-						<label><input type="checkbox" data-picknumber="88" ><span>ムアラニ      </span></label>
-						<label><input type="checkbox" data-picknumber="20" ><span>モナ          </span></label>
-						<label><input type="checkbox" data-picknumber="10" ><span>行秋          </span></label>
+						<label><input type="checkbox" data-picknumber="025"><span>タルタリヤ    </span></label>
+						<label><input type="checkbox" data-picknumber="058"><span>ニィロウ      </span></label>
+						<label><input type="checkbox" data-picknumber="073"><span>ヌヴィレット  </span></label>
+						<label><input type="checkbox" data-picknumber="006"><span>バーバラ      </span></label>
+						<label><input type="checkbox" data-picknumber="076"><span>フリーナ      </span></label>
+						<label><input type="checkbox" data-picknumber="088"><span>ムアラニ      </span></label>
+						<label><input type="checkbox" data-picknumber="020"><span>モナ          </span></label>
+						<label><input type="checkbox" data-picknumber="010"><span>行秋          </span></label>
 					<tr><td class="background-pyro">
-						<label><input type="checkbox" data-picknumber="82" ><span>アルレッキーノ</span></label>
-						<label><input type="checkbox" data-picknumber="3"  ><span>アンバー      </span></label>
-						<label><input type="checkbox" data-picknumber="33" ><span>煙緋          </span></label>
-						<label><input type="checkbox" data-picknumber="79" ><span>嘉明          </span></label>
-						<label><input type="checkbox" data-picknumber="23" ><span>クレー        </span></label>
-						<label><input type="checkbox" data-picknumber="8"  ><span>香菱          </span></label>
-						<label><input type="checkbox" data-picknumber="78" ><span>シュヴルーズ  </span></label>
-						<label><input type="checkbox" data-picknumber="26" ><span>辛炎          </span></label>
-						<label><input type="checkbox" data-picknumber="65" ><span>ディシア      </span></label>
-						<label><input type="checkbox" data-picknumber="18" ><span>ディルック    </span></label>
-						<label><input type="checkbox" data-picknumber="43" ><span>トーマ        </span></label>
-						<label><input type="checkbox" data-picknumber="31" ><span>胡桃          </span></label>
-						<label><input type="checkbox" data-picknumber="13" ><span>ベネット      </span></label>
-						<label><input type="checkbox" data-picknumber="94" ><span>マーヴィカ    </span></label>
-						<label><input type="checkbox" data-picknumber="38" ><span>宵宮          </span></label>
-						<label><input type="checkbox" data-picknumber="71" ><span>リネ          </span></label>
+						<label><input type="checkbox" data-picknumber="082"><span>アルレッキーノ</span></label>
+						<label><input type="checkbox" data-picknumber="003"><span>アンバー      </span></label>
+						<label><input type="checkbox" data-picknumber="033"><span>煙緋          </span></label>
+						<label><input type="checkbox" data-picknumber="079"><span>嘉明          </span></label>
+						<label><input type="checkbox" data-picknumber="023"><span>クレー        </span></label>
+						<label><input type="checkbox" data-picknumber="008"><span>香菱          </span></label>
+						<label><input type="checkbox" data-picknumber="078"><span>シュヴルーズ  </span></label>
+						<label><input type="checkbox" data-picknumber="026"><span>辛炎          </span></label>
+						<label><input type="checkbox" data-picknumber="065"><span>ディシア      </span></label>
+						<label><input type="checkbox" data-picknumber="018"><span>ディルック    </span></label>
+						<label><input type="checkbox" data-picknumber="043"><span>トーマ        </span></label>
+						<label><input type="checkbox" data-picknumber="031"><span>胡桃          </span></label>
+						<label><input type="checkbox" data-picknumber="013"><span>ベネット      </span></label>
+						<label><input type="checkbox" data-picknumber="094"><span>マーヴィカ    </span></label>
+						<label><input type="checkbox" data-picknumber="038"><span>宵宮          </span></label>
+						<label><input type="checkbox" data-picknumber="071"><span>リネ          </span></label>
 					<tr><td class="background-cryo">
-						<label><input type="checkbox" data-picknumber="39" ><span>アーロイ      </span></label>
-						<label><input type="checkbox" data-picknumber="34" ><span>エウルア      </span></label>
+						<label><input type="checkbox" data-picknumber="039"><span>アーロイ      </span></label>
+						<label><input type="checkbox" data-picknumber="034"><span>エウルア      </span></label>
 						<label><input type="checkbox" data-picknumber="100"><span>エスコフィエ  </span></label>
-						<label><input type="checkbox" data-picknumber="4"  ><span>ガイア        </span></label>
-						<label><input type="checkbox" data-picknumber="36" ><span>神里綾華      </span></label>
-						<label><input type="checkbox" data-picknumber="29" ><span>甘雨          </span></label>
-						<label><input type="checkbox" data-picknumber="93" ><span>シトラリ      </span></label>
-						<label><input type="checkbox" data-picknumber="75" ><span>シャルロット  </span></label>
-						<label><input type="checkbox" data-picknumber="47" ><span>申鶴          </span></label>
+						<label><input type="checkbox" data-picknumber="004"><span>ガイア        </span></label>
+						<label><input type="checkbox" data-picknumber="036"><span>神里綾華      </span></label>
+						<label><input type="checkbox" data-picknumber="029"><span>甘雨          </span></label>
+						<label><input type="checkbox" data-picknumber="093"><span>シトラリ      </span></label>
+						<label><input type="checkbox" data-picknumber="075"><span>シャルロット  </span></label>
+						<label><input type="checkbox" data-picknumber="047"><span>申鶴          </span></label>
 						<label><input type="checkbox" data-picknumber="102"><span>スカーク      </span></label>
-						<label><input type="checkbox" data-picknumber="15" ><span>重雲          </span></label>
-						<label><input type="checkbox" data-picknumber="24" ><span>ディオナ      </span></label>
-						<label><input type="checkbox" data-picknumber="19" ><span>七七          </span></label>
-						<label><input type="checkbox" data-picknumber="72" ><span>フレミネ      </span></label>
-						<label><input type="checkbox" data-picknumber="66" ><span>ミカ          </span></label>
-						<label><input type="checkbox" data-picknumber="74" ><span>リオセスリ    </span></label>
-						<label><input type="checkbox" data-picknumber="60" ><span>レイラ        </span></label>
-						<label><input type="checkbox" data-picknumber="32" ><span>ロサリア      </span></label>
+						<label><input type="checkbox" data-picknumber="015"><span>重雲          </span></label>
+						<label><input type="checkbox" data-picknumber="024"><span>ディオナ      </span></label>
+						<label><input type="checkbox" data-picknumber="019"><span>七七          </span></label>
+						<label><input type="checkbox" data-picknumber="072"><span>フレミネ      </span></label>
+						<label><input type="checkbox" data-picknumber="066"><span>ミカ          </span></label>
+						<label><input type="checkbox" data-picknumber="074"><span>リオセスリ    </span></label>
+						<label><input type="checkbox" data-picknumber="060"><span>レイラ        </span></label>
+						<label><input type="checkbox" data-picknumber="032"><span>ロサリア      </span></label>
 					<tr><td class="background-none">
-						<label><input type="checkbox" data-picknumber="1"  ><span>空            </span></label>
-						<label><input type="checkbox" data-picknumber="2"  ><span>蛍            </span></label>
+						<label><input type="checkbox" data-picknumber="001"><span>空            </span></label>
+						<label><input type="checkbox" data-picknumber="002"><span>蛍            </span></label>
 				</table>
 				<div style="padding:1rem 0;">
 					<input type="button" id="DraftLocalLegend_InBtCharacterpick" value="インポート" style="width:8rem;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
@@ -2068,12 +2094,23 @@ export async function DraftLocalLegend_bbbbb() {
   // チェックされている地方伝説を取得
   const selected = [...document.querySelectorAll('.DraftLocalLegend_aaaaa input[type=checkbox]:checked')];
 
+  // ボチャシリーズの確率設定を取得
+  const chanceBochachko = parseFloat(document.getElementById("DraftLocalLegend_Bochachko")?.value) || 0;
+  const chanceBochard = parseFloat(document.getElementById("DraftLocalLegend_Bochard")?.value) || 0;
+
   // li を生成
   const htmlList = selected.map(input => {
     const val = input.value;
     const css = input.dataset.css || '';
-    const name = input.dataset.name || '';
+    let name = input.dataset.name || '';
     const memo = input.dataset.memo || '';
+
+    // ボチャシリーズのdata-nameを書き換え
+    if (val === "22" && Math.random() < chanceBochachko / 100) {
+      name = "ボチャチコ";
+    } else if (val === "39" && Math.random() < chanceBochard / 100) {
+      name = "ボチャルド";
+    }
 
     return `
       <li data-value="${val}">
@@ -2170,11 +2207,20 @@ function renderMaskedList(nameList) {
   nameList.forEach(item => {
     const div = document.createElement('div');
     div.className = item.backgroundClass;
-    div.textContent = item.name;
+
+    // ボチャをボチャじゃない名前に偽装
+    let displayName = item.name;
+    if (displayName.includes("ボチャチコ")) {
+      displayName = displayName.replace(/ボチャチコ/g, "バラチコ");
+    }
+    if (displayName.includes("ボチャルド")) {
+      displayName = displayName.replace(/ボチャルド/g, "シグルド");
+    }
+
+    div.textContent = displayName;
     container.appendChild(div);
   });
 }
-
 //■■■ ページロード時にFirebaseから復元 ■■■
 export function DraftLocalLegend_initDisplay() {
   const orderRef = ref(db, 'DraftLocalLegend/locallegend_order');
@@ -2584,7 +2630,7 @@ drawButton.addEventListener('click', () => {
     htmlString = `<p>元素を選択してください。</p>`;
   } else {
     const joined = results.join('/');
-    htmlString = `<p>次の戦闘では${joined}元素を使用できます</p><p>または、各プレイヤーはそれぞれ${joined}元素を使用してください</p>`;
+    htmlString = `<p>次の戦闘では${joined}元素を使用できます</p><p>または、1Pから順番に${joined}元素を使用してください</p>`;
   }
 
   // DOM に反映
@@ -2700,7 +2746,7 @@ importButton.addEventListener('click', () => {
 
   // data-picknumber 順にソート
   checkboxes.sort((a, b) => {
-    return Number(a.dataset.picknumber) - Number(b.dataset.picknumber);
+    return a.dataset.picknumber.localeCompare(b.dataset.picknumber);
   });
 
   checkboxes.forEach((cb, index) => {
@@ -2719,7 +2765,7 @@ createButton.addEventListener('click', () => {
 
   // data-picknumber 順にソート
   checkboxes.sort((a, b) => {
-    return Number(a.dataset.picknumber) - Number(b.dataset.picknumber);
+    return a.dataset.picknumber.localeCompare(b.dataset.picknumber);
   });
 
   // チェック状態で文字列生成
@@ -3117,15 +3163,23 @@ document.addEventListener("DOMContentLoaded", () => {
 //▲▲▲テイワット地図無しレース・テイワットばらばら合流ゲーム　全選択・全解除ボタン用プログラム▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 </script>
 
-<div style="margin:auto;padding:2rem;max-width:1000px;" class="updatehistory">
+<div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.26.0<span>2025/10/12</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】キャラクターリスト、およびカスタムキャラクターリスト用コード生成機に「ネフェル」を追加しました。v6.1前半開始時に表示されます</p>
+		<p>【ドラフト地方伝説】特殊ギミック導入確率の欄を追加しました</p>
+		<p>縦に長くなってしまった一部コンテンツをスクロールエリア化しました</p>
+		<p>その他、軽微な変更・修正をしました</p>
+	</div>
 
 	<div class="version">v1.25.1<span>2025/10/01</span></div>
 	<div class="details">
 		<p>【ドラフト地方伝説】キャラクターリスト、およびカスタムキャラクターリスト用コード生成機にて、アーロイと九条裟羅と雷電将軍が正常に連携されていなかった問題を修正しました</p>
-		<p>【ドラフト地方伝説】キャラクターリストにて、重雲とディオナの五十音順に誤りがあったため修正しました</p>
-		<p>【ドラフト地方伝説】カスタムキャラクターリスト用コード生成機にて、シュヴルーズと辛炎の五十音順に誤りがあったため修正しました</p>
-		<p>【ドラフト地方伝説】カスタムキャラクターリスト用コード生成機にて、ダリアとタルタリヤの五十音順に誤りがあったため修正しました</p>
+		<p>【ドラフト地方伝説】キャラクターリストにて、「重雲」と「ディオナ」の五十音順に誤りがあったため修正しました</p>
+		<p>【ドラフト地方伝説】カスタムキャラクターリスト用コード生成機にて、「シュヴルーズ」と「辛炎」の五十音順に誤りがあったため修正しました</p>
+		<p>【ドラフト地方伝説】カスタムキャラクターリスト用コード生成機にて、「ダリア」と「タルタリヤ」の五十音順に誤りがあったため修正しました</p>
 	</div>
 
 	<div class="version">v1.25.0<span>2025/10/01</span></div>
@@ -3213,7 +3267,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	<div class="version">v1.17.1<span>2025/07/30</span></div>
 	<div class="details">
-		<p>【ドラフト地方伝説】カスタムキャラクターリスト用コード生成機にイネファが表示されない不具合を修正しました</p>
+		<p>【ドラフト地方伝説】カスタムキャラクターリスト用コード生成機に「イネファ」が表示されない不具合を修正しました</p>
 	</div>
 
 	<div class="version">v1.17.0<span>2025/07/30</span></div>
@@ -3273,21 +3327,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	<div class="version">v1.12.0<span>2025/07/23</span></div>
 	<div class="details">
-		<p>【テイワット地図無しレース】武器の移動性能欄に鎮山の釘を追加しました</p>
+		<p>【テイワット地図無しレース】武器の移動性能欄に「鎮山の釘」を追加しました</p>
 		<p>【ドラフト地方伝説】地方伝説一覧の並び順をアチーブメント順に変更しました</p>
 		<p>【ドラフト地方伝説】キャラクターリストに詳細情報の表示・非表示ボタンを追加しました</p>
 		<p>【ドラフト地方伝説】キャラクターリストに武器種別絞り込み機能を追加しました</p>
 		<p>【ドラフト地方伝説】キャラクターリストの内容を変更しました<br>　旧：一級アタッカー / 二級アタッカー / メインヒーラー / 金珀ヒーラー / キャラ一覧<br>　新：切り札 / ヒーラー / 一覧</p>
-		<p>【ドラフト地方伝説】キャラクターリストにイネファを追加しました。v5.8開始時に表示されます</p>
-		<p>【ドラフト地方伝説】元素反応抽選機に月感電を追加しました。v5.8開始時に表示されます</p>
+		<p>【ドラフト地方伝説】キャラクターリストに「イネファ」を追加しました。v5.8前半開始時に表示されます</p>
+		<p>【ドラフト地方伝説】元素反応抽選機に「月感電」を追加しました。v5.8前半開始時に表示されます</p>
 		<p>プログラム全体の調整をしました</p>
 		<p>その他、軽微な変更・修正をしました</p>
 	</div>
 
 	<div class="version"><a href="teyvat_customplay_v1.11.1.html">v1.11.1</a><span>2025/07/15</span></div>
 	<div class="details">
-		<p>【ドラフト地方伝説】元素反応抽選機に燃焼反応を追加しました</p>
-		<p>【ドラフト地方伝説】元素反応抽選機の氷砕き反応の色を修正しました</p>
+		<p>【ドラフト地方伝説】元素反応抽選機に「燃焼」を追加しました</p>
+		<p>【ドラフト地方伝説】元素反応抽選機の「氷砕き」の色を修正しました</p>
 	</div>
 
 	<div class="version">v1.11.0<span>2025/07/15</span></div>
@@ -3314,7 +3368,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	<div class="version"><a href="teyvat_customplay_v1.8.1.html">v1.8.1</a><span>2025/07/06</span></div>
 	<div class="details">
 		<p>【テイワット地図無しレース】「秘源機兵・統御デバイス」を追加しました</p>
-		<p>【ドラフト地方伝説】未使用キャラクターリストにて、鹿野院平蔵が金珀ヒーラー欄に記載されていなかったため追加しました</p>
+		<p>【ドラフト地方伝説】未使用キャラクターリストにて、「鹿野院平蔵」が金珀ヒーラー欄に記載されていなかったため追加しました</p>
 		<p>【ドラフト地方伝説】基本レギュレーション案を追加しました</p>
 	</div>
 
@@ -3327,7 +3381,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	<div class="version">v1.7.1<span>2025/07/04</span></div>
 	<div class="details">
-		<p>【ドラフト地方伝説】未使用キャラクターリストにて、アンバーと香菱が正常に選択できなくなっている問題を修正しました</p>
+		<p>【ドラフト地方伝説】未使用キャラクターリストにて、「アンバー」と「香菱」が正常に選択できなくなっている問題を修正しました</p>
 	</div>
 
 	<div class="version">v1.7.0<span>2025/07/04</span></div>
@@ -3335,7 +3389,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		<p>すべてのゲームにおいて、「概要」の記述を追加しました</p>
 		<p>【テイワットばらばら合流ゲーム】初期選択地点から「幼夢の欠片」「晴雨の経緯」「捨身の杭」「権杖殿」「冥途殿」「シュラバド廃都の神殿南側」「聖顕殿西」「原初の郷」「ミラージュ祭場」「「望者の都」」を外しました</p>
 		<p>【ドラフト地方伝説】「基本レギュレーション案について」の記述を追加しました</p>
-		<p>【ドラフト地方伝説】湖辺のニニアン・湖辺のヴィヴィアンを分かりやすく区別するために「南」「北」の表記を追加しました</p>
+		<p>【ドラフト地方伝説】「湖辺のニニアン」と「湖辺のヴィヴィアン」を分かりやすく区別するために「南」「北」の表記を追加しました</p>
 		<p>【ドラフト地方伝説】セーブデータのインポート・エクスポートが正常に行えない不具合を修正しました</p>
 		<p>【ドラフト地方伝説】エンドレスモード向けのキャラクター復活抽選機を追加しました</p>
 		<p>【ドラフト地方伝説】エンドレスモード向けのセーブデータ自動生成機を追加しました</p>
@@ -3351,12 +3405,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	<div class="version"><a href="teyvat_customplay_v1.5.1.html">v1.5.1</a><span>2025/06/22</span></div>
 	<div class="details">
-		<p>【ドラフト地方伝説】未使用キャラクターリストにて、スカークとダリアのIDが逆だったものを修正しました</p>
+		<p>【ドラフト地方伝説】未使用キャラクターリストにて、「スカーク」と「ダリア」のIDが逆だったものを修正しました</p>
 	</div>
 
 	<div class="version">v1.5.0<span>2025/06/18</span></div>
 	<div class="details">
-		<p>【ドラフト地方伝説】未使用キャラクターリストにスカークとダリアを追加しました</p>
+		<p>【ドラフト地方伝説】未使用キャラクターリストに「スカーク」と「ダリア」を追加しました</p>
 		<p>【ドラフト地方伝説】地方伝説のマスク機能解除と同時に、現時点でのセーブデータを出力するようにしました</p>
 		<p>その他軽微な変更・修正をしました</p>
 	</div>
@@ -3364,7 +3418,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	<div class="version">v1.4.2<span>2025/06/13</span></div>
 	<div class="details">
 		<p>【ドラフト地方伝説】セーブデータのエクスポート欄に書き込みができるようになっていたため修正しました</p>
-		<p>【ドラフト地方伝説】未使用キャラクターリストのアタッカー欄について、甘雨と珊瑚宮心海とニィロウの情報を更新しました</p>
+		<p>【ドラフト地方伝説】未使用キャラクターリストのアタッカー欄について、「甘雨」と「珊瑚宮心海」と「ニィロウ」の情報を更新しました</p>
 	</div>
 
 	<div class="version">v1.4.1<span>2025/06/13</span></div>
@@ -3387,14 +3441,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	<div class="details">
 		<p>【テイワットばらばら合流ゲーム】レギュレーションを一部変更し、ゲームマスターが不在でも平等に遊べるようにしました</p>
 		<p>【ドラフト地方伝説】レギュレーションを一部変更し、それに伴い完凸コスト抽選機の仕様を「未使用キャラから3体順番に抽選」ではなく「全キャラから2体を抽選」に変更しました</p>
-		<p>【ドラフト地方伝説】未使用キャラクターリストにて、香菱とシュヴルーズの五十音順に誤りがあったため修正しました</p>
+		<p>【ドラフト地方伝説】未使用キャラクターリストにて、「香菱」と「シュヴルーズ」の五十音順に誤りがあったため修正しました</p>
 		<p>その他軽微な変更・修正をしました</p>
 	</div>
 
 	<div class="version"><a href="teyvat_customplay_v1.2.0.html">v1.2.0</a><span>2025/05/27</span></div>
 	<div class="details">
 		<p>【ドラフト地方伝説】レギュレーションを一部変更し、それに伴い完凸コスト抽選機を追加しました</p>
-		<p>【ドラフト地方伝説】未使用キャラクターリストにて、シトラリが金珀ヒーラー欄に記載されていなかったため追加しました</p>
+		<p>【ドラフト地方伝説】未使用キャラクターリストにて、「シトラリ」が金珀ヒーラー欄に記載されていなかったため追加しました</p>
 		<p>更新履歴をページ最下部に表示しました</p>
 		<p>その他軽微な変更・修正をしました</p>
 	</div>
@@ -3408,7 +3462,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	<div class="version">v1.0.2<span>2025/05/24</span></div>
 	<div class="details">
-		<p>【ドラフト地方伝説】未使用キャラクターリストにて、ディオナと重雲の五十音順に誤りがあったため修正しました</p>
+		<p>【ドラフト地方伝説】未使用キャラクターリストにて、「ディオナ」と「重雲」の五十音順に誤りがあったため修正しました</p>
 	</div>
 
 	<div class="version">v1.0.1<span>2025/05/24</span></div>
