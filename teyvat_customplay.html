@@ -1324,12 +1324,13 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 		</colgroup>
 		<tr><th colspan="4" style="text-align:center;font-size:1.5rem;padding:0.5rem;background:#444;color:#fff;">キャラクターリスト(すべて五十音順)
 		<tr><td colspan="4" style="text-align:center;">
-			<label><input type="checkbox" id="DetailToggle"         checked class="checkbox"><span>詳細情報の表示</span></label><br>
-			<label><input type="checkbox" id="WeaponSwordToggle"    class="checkbox"><span>片手剣        </span></label>
-			<label><input type="checkbox" id="WeaponClaymoreToggle" class="checkbox"><span>両手剣        </span></label>
-			<label><input type="checkbox" id="WeaponPolearmToggle"  class="checkbox"><span>長柄武器      </span></label>
-			<label><input type="checkbox" id="WeaponCatalystToggle" class="checkbox"><span>法器          </span></label>
-			<label><input type="checkbox" id="WeaponBowToggle"      class="checkbox"><span>弓            </span></label>
+			<label><input type="checkbox" id="DetailToggle"         checked class="checkbox"><span>詳細情報の表示</span></label>
+			<label><input type="checkbox" id="DollToggle"                   class="checkbox"><span>ドールの表示  </span></label><br>
+			<label><input type="checkbox" id="WeaponSwordToggle"            class="checkbox"><span>片手剣        </span></label>
+			<label><input type="checkbox" id="WeaponClaymoreToggle"         class="checkbox"><span>両手剣        </span></label>
+			<label><input type="checkbox" id="WeaponPolearmToggle"          class="checkbox"><span>長柄武器      </span></label>
+			<label><input type="checkbox" id="WeaponCatalystToggle"         class="checkbox"><span>法器          </span></label>
+			<label><input type="checkbox" id="WeaponBowToggle"              class="checkbox"><span>弓            </span></label>
 		<tr>
 			<th colspan="3" style="padding:0.5rem;">
 				<input type="text" id="DraftLocalLegend_usernameInput" placeholder="プレイヤー名を入力してください" style="width:7rem;">
@@ -1372,6 +1373,8 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 				<label data-status="0" data-character="070" data-rarity="4" data-weapon="sword"   ><span>リネット                                   </span></label>
 				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"   ><span>空                                         </span></label>
 				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
+				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"   ><span>ドール(男)                                 </span></label>
+				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"   ><span>ドール(女)                                 </span></label>
 			</template>
 		<tr style="background:var(--geo-light);">
 			<td data-characterelement="geo" data-characterpick="A">
@@ -1392,6 +1395,8 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 				<label data-status="0" data-character="014" data-rarity="4" data-weapon="claymore"><span>ノエル                                     </span></label>
 				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"   ><span>空                                         </span></label>
 				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
+				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"   ><span>ドール(男)                                 </span></label>
+				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"   ><span>ドール(女)                                 </span></label>
 			</template>
 		<tr style="background:var(--electro-light);">
 			<td data-characterelement="electro" data-characterpick="A">
@@ -1419,6 +1424,8 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 				<label data-status="0" data-character="007" data-rarity="4" data-weapon="claymore"><span>レザー<span>【自己付着】爆発</span>        </span></label>
 				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"   ><span>空                                         </span></label>
 				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
+				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"   ><span>ドール(男)                                 </span></label>
+				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"   ><span>ドール(女)                                 </span></label>
 			</template>
 		<tr style="background:var(--dendro-light);">
 			<td data-characterelement="dendro" data-characterpick="A">
@@ -1435,13 +1442,15 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 				<label data-status="0" data-character="054" data-rarity="5" data-weapon="bow"     ><span>ティナリ                                   </span></label>
 				<label data-status="0" data-character="059" data-rarity="5" data-weapon="catalyst"><span>ナヒーダ                                   </span></label>
 				<script>new Date()>=new Date('2025-10-22T10:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
-				<label data-status="0" data-character="107" data-rarity="5" data-weapon="catalyst"><span>ネフェル                                   </span></label>
+				<label data-status="0" data-character="109" data-rarity="5" data-weapon="catalyst"><span>ネフェル                                   </span></label>
 				`)</script>
 				<label data-status="0" data-character="068" data-rarity="5" data-weapon="catalyst"><span>白朮                                       </span></label>
 				<label data-status="0" data-character="063" data-rarity="4" data-weapon="polearm" ><span>ヨォーヨ                                   </span></label>
 				<label data-status="0" data-character="105" data-rarity="5" data-weapon="catalyst"><span>ラウマ                                     </span></label>
 				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"   ><span>空                                         </span></label>
 				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
+				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"   ><span>ドール(男)                                 </span></label>
+				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"   ><span>ドール(女)                                 </span></label>
 			</template>
 		<tr style="background:var(--hydro-light);">
 			<td data-characterelement="hydro" data-characterpick="A">
@@ -1466,6 +1475,8 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 				<label data-status="0" data-character="010" data-rarity="4" data-weapon="sword"   ><span>行秋<span>【自己付着】スキル・爆発</span>  </span></label>
 				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"   ><span>空                                         </span></label>
 				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
+				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"   ><span>ドール(男)                                 </span></label>
+				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"   ><span>ドール(女)                                 </span></label>
 			</template>
 		<tr style="background:var(--pyro-light);">
 			<td data-characterelement="pyro" data-characterpick="A">
@@ -1491,6 +1502,8 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 				<label data-status="0" data-character="071" data-rarity="5" data-weapon="bow"     ><span>リネ                                       </span></label>
 				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"   ><span>空                                         </span></label>
 				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
+				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"   ><span>ドール(男)                                 </span></label>
+				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"   ><span>ドール(女)                                 </span></label>
 			</template>
 		<tr style="background:var(--cryo-light);">
 			<td data-characterelement="cryo" data-characterpick="A">
@@ -1520,6 +1533,8 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 		<tr style="text-align:center;">
 			<td colspan="6">
 			    <label><input type="button" id="DraftLocalLegend_setAllUnused"><span>使用済(生存)キャラの復活</span></label>
+			    <label><input type="button" id="DraftLocalLegend_ResetStatuses0"><span>リセット(全キャラ復活)</span></label>
+			    <label><input type="button" id="DraftLocalLegend_ResetStatuses2"><span>リセット(全キャラ戦闘不能)</span></label>
 	</table>
 
 	<div style="background:#eee;border:1px #888 solid;margin:1rem 0;padding:1rem;">
@@ -1663,10 +1678,32 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 			<div style="font-size:1.5rem;text-align:center;">
 				復活コスト：<input type="number" id="DraftLocalLegend_CharacterRechargeNormalCost" style="width:40px;"value="6">
 				 / 
-				星4キャラクターの即復活<input type="checkbox" id="DraftLocalLegend_CharacterRechargeNormalR4">
+				星5即復活<input type="checkbox" id="DraftLocalLegend_CharacterRechargeNormalR5">
+				 / 
+				星4即復活<input type="checkbox" id="DraftLocalLegend_CharacterRechargeNormalR4">
 				<input type="button" value="抽選" id="DraftLocalLegend_CharacterRechargeNormal" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
 			</div>
 			<div id="DraftLocalLegend_CharacterRechargeResultNormal"></div>
+
+			<table border="1" style="border:1px #aaa solid;border-collapse:collapse;margin:2rem auto 0;text-align:center;">
+				<tr><th style="padding:0.5rem;background:#444;color:#fff;" colspan="8">復活コスト確認用ラジオボタン
+				<tr><td><td>1戦目<td>2戦目<td>3戦目<td>4戦目<td>5戦目<td>6戦目<td>
+				<tr><td style="padding:0.5rem;text-align:center;">ノーミス
+				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio1">
+				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio2">
+				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio3">
+				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio4">
+				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio5">
+				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio6">
+				    <td rowspan="2"><input type="button" id="DraftLocalLegend_CharacterRechargeReset" value="リセット">
+				<tr><td style="padding:0.5rem;text-align:center;">ミスあり
+				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio1">
+				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio2">
+				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio3">
+				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio4">
+				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio5">
+				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio6">
+			</table>
 		</div>
 	</details>
 
@@ -1793,7 +1830,7 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 						<label><input type="checkbox" data-picknumber="054"><span>ティナリ      </span></label>
 						<label><input type="checkbox" data-picknumber="059"><span>ナヒーダ      </span></label>
 						<script>new Date()>=new Date('2025-10-22T10:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
-						<label><input type="checkbox" data-picknumber="107"><span>ネフェル      </span></label>
+						<label><input type="checkbox" data-picknumber="109"><span>ネフェル      </span></label>
 						`)</script>
 						<label><input type="checkbox" data-picknumber="068"><span>白朮          </span></label>
 						<label><input type="checkbox" data-picknumber="063"><span>ヨォーヨ      </span></label>
@@ -1853,6 +1890,8 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 					<tr><td class="background-none">
 						<label><input type="checkbox" data-picknumber="001"><span>空            </span></label>
 						<label><input type="checkbox" data-picknumber="002"><span>蛍            </span></label>
+						<label><input type="checkbox" data-picknumber="107"><span>ドール(男)    </span></label>
+						<label><input type="checkbox" data-picknumber="108"><span>ドール(女)    </span></label>
 				</table>
 				<div style="padding:1rem 0;">
 					<input type="button" id="DraftLocalLegend_InBtCharacterpick" value="インポート" style="width:8rem;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
@@ -2294,6 +2333,58 @@ window.addEventListener('load', () => {
   // 初期表示で適用
   updateDetailVisibility();
 //▲▲▲ドラフト地方伝説　キャラクター詳細情報の表示・非表示切り替えボタン▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+//▼▼▼ドラフト地方伝説　ドールの表示・非表示切り替えボタン▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+document.addEventListener('DOMContentLoaded', () => {
+  const dollToggle = document.getElementById('DollToggle');
+  if (!dollToggle) return;
+
+  function updateDollVisibility() {
+    const showDoll = dollToggle.checked;
+
+    // data-character="107" および data-character="108" の label を対象
+    const targetLabels = document.querySelectorAll('label[data-character="107"], label[data-character="108"]');
+
+    targetLabels.forEach(label => {
+      if (showDoll) {
+        // 元の位置に戻す
+        label.style.position = '';
+        label.style.left = '';
+        label.style.top = '';
+        label.style.width = '';
+        label.style.height = '';
+        label.style.pointerEvents = '';
+      } else {
+        // 画面外に移動
+        const rect = label.getBoundingClientRect();
+        label.style.position = 'absolute';
+        label.style.left = '-9999px';
+        label.style.top = `${rect.top + window.scrollY}px`; // 元の位置を維持しつつ画面外
+        label.style.width = `${rect.width}px`;
+        label.style.height = `${rect.height}px`;
+        label.style.pointerEvents = 'none'; // クリックなどを無効化
+      }
+    });
+  }
+
+  // チェックボックス変更時に反映
+  dollToggle.addEventListener('change', updateDollVisibility);
+
+  // 初期状態を反映
+  updateDollVisibility();
+
+  // 初期状態を非表示状態にする
+  setTimeout(updateDollVisibility, 0);
+
+  // 既存の updateVisibility が呼ばれた後にも Doll の状態を維持
+  const originalUpdateVisibility = window.updateVisibility;
+  if (typeof originalUpdateVisibility === 'function') {
+    window.updateVisibility = function() {
+      originalUpdateVisibility();
+      updateDollVisibility();
+    };
+  }
+});
+//▲▲▲ドラフト地方伝説　ドールの表示・非表示切り替えボタン▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 //▼▼▼ドラフト地方伝説　キャラクターの絞り込み機能▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
 //▼▼▼武器種絞り込み▼▼▼
 const swordToggle = document.getElementById('WeaponSwordToggle');
@@ -2468,6 +2559,45 @@ onValue(statusesRef, (snapshot) => {
   });
 });
 //▲▲▲ドラフト地方伝説　キャラクターの生存情報反映▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+//▼▼▼ドラフト地方伝説　リセット処理（全復活・全戦闘不能）▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+function resetAllStatuses(value) {
+  return async function() {
+    // valueごとにメッセージを変更
+    let message = '';
+    if (value === 0) {
+      message = 'すべてのキャラクターを未使用状態に変更しますか？';
+    } else if (value === 2) {
+      message = 'すべてのキャラクターを使用済(戦闘不能)状態に変更しますか？';
+    } else {
+      message = `すべてのキャラクターのステータスを${value}にリセットします。よろしいですか？`;
+    }
+
+    if (!confirm(message)) return;
+
+    const statusesRef = ref(db, 'DraftLocalLegend/character_statuses');
+
+    try {
+      const snapshot = await get(statusesRef);
+      const data = snapshot.val() || {};
+
+      const updates = {};
+      Object.keys(data).forEach(charId => updates[charId] = String(value));
+
+      await update(statusesRef, updates);
+    } catch (error) {
+      console.error('ステータスリセット時にエラーが発生しました:', error);
+    }
+  };
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const reset0 = document.getElementById('DraftLocalLegend_ResetStatuses0');
+  if (reset0) reset0.addEventListener('click', resetAllStatuses(0));
+
+  const reset2 = document.getElementById('DraftLocalLegend_ResetStatuses2');
+  if (reset2) reset2.addEventListener('click', resetAllStatuses(2));
+});
+//▲▲▲ドラフト地方伝説　リセット処理（全復活・全戦闘不能）▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 //▼▼▼ドラフト地方伝説　data-status=1を0に一括変更する▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
 async function DraftLocalLegend_resetStatus() {
   if (!confirm("使用済(生存)キャラを復活させますか？")) return;
@@ -2785,6 +2915,7 @@ function DraftLocalLegend_CharacterRechargeNormal() {
   if (isNaN(cost) || cost === 0) return;
 
   const isR4Instant = document.getElementById("DraftLocalLegend_CharacterRechargeNormalR4").checked;
+  const isR5Instant = document.getElementById("DraftLocalLegend_CharacterRechargeNormalR5").checked;
   const allLabels = Array.from(document.querySelectorAll('label[data-status]'));
 
   const characterMap = new Map();
@@ -2815,6 +2946,7 @@ function DraftLocalLegend_CharacterRechargeNormal() {
 
       let decrease = 1;
       if (isR4Instant && entry.rarity === "4") decrease = 2;
+      if (isR5Instant && entry.rarity === "5") decrease = 2;
 
       const newStatus = Math.max(0, oldStatus - decrease);
       entry.status = newStatus;
@@ -2848,6 +2980,7 @@ function DraftLocalLegend_CharacterRechargeNormal() {
 
       let increase = 1;
       if (isR4Instant && entry.rarity === "4") increase = 2;
+      if (isR5Instant && entry.rarity === "5") increase = 2;
 
       const newStatus = Math.min(2, oldStatus + increase); // 2を上限とする
       entry.status = newStatus;
@@ -2889,6 +3022,29 @@ window.addEventListener('DOMContentLoaded', () => {
   if (btn) btn.addEventListener('click', DraftLocalLegend_CharacterRechargeNormal);
 });
 //▲▲▲ドラフト地方伝説　ノーマルモード復活抽選機▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+//▼▼▼ドラフト地方伝説　ノーマルモードミス記録機▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+// 前回クリックしたラジオボタンを保持
+let lastClickedRadio = null;
+
+document.querySelectorAll('input[type="radio"]').forEach(radio => {
+  radio.addEventListener('click', function() {
+    // もし前回と同じラジオボタンなら選択解除
+    if (lastClickedRadio === this) {
+      this.checked = false;
+      lastClickedRadio = null; // リセット
+    } else {
+      // 新しいボタンをクリックした場合は前回の更新
+      lastClickedRadio = this;
+    }
+  });
+});
+
+// 既存のリセットボタン処理も保持
+document.getElementById('DraftLocalLegend_CharacterRechargeReset').addEventListener('click', () => {
+  document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+  lastClickedRadio = null; // クリック履歴もリセット
+});
+//▲▲▲ドラフト地方伝説　ノーマルモードミス記録機▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 //▼▼▼ドラフト地方伝説　エンドレスモード復活抽選機▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
 export function DraftLocalLegend_CharacterRechargeEndless() {
   const confirmed = confirm("キャラクターを復活させてよいですか？");
@@ -3167,6 +3323,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.28.0<span>2025/10/26</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】キャラクターリスト、およびカスタムキャラクターリスト用コード生成機に「ドール(男)」「ドール(女)」を追加しました</p>
+		<p>【ドラフト地方伝説】キャラクターリスト、およびカスタムキャラクターリスト用コード生成機の「ネフェル」の番号を変更しました</p>
+		<p>【ドラフト地方伝説】キャラクターリストにて、「ドール(男)」「ドール(女)」の非表示ボタンを追加しました</p>
+		<p>【ドラフト地方伝説】キャラクターリストにて、「リセット(全キャラ復活)」「リセット(全キャラ戦闘不能)」ボタンを追加しました</p>
+		<p>【ドラフト地方伝説】ノーマルモード用復活抽選機・コスト抽選機にて、星5即復活ボタンを追加しました</p>
+		<p>【ドラフト地方伝説】ノーマルモード用復活抽選機・コスト抽選機にて、復活コスト確認用ラジオボタンを追加しました</p>
+		<p>【ドラフト地方伝説】</p>
+		<p>【ドラフト地方伝説】</p>
+	</div>
 
 	<div class="version">v1.27.0<span>2025/10/23</span></div>
 	<div class="details">
