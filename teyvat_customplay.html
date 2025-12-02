@@ -32,6 +32,7 @@ input.checkbox-pyro    ~ span{background:var(--pyro-light   );} input.checkbox-p
 input.checkbox-cryo    ~ span{background:var(--cryo-light   );} input.checkbox-cryo:checked    ~ span{background:var(--cryo-dark   );color:#fff;}
 input.checkbox-lunar   ~ span{background:var(--lunar-light  );} input.checkbox-lunar:checked   ~ span{background:var(--lunar-dark  );color:#fff;}
 input.checkbox-none    ~ span{background:#ddd                ;} input.checkbox-none:checked    ~ span{background:#666               ;color:#fff;}
+input.checkbox         ~ span{background:transparent         ;} input.checkbox:checked         ~ span{background:#888               ;color:#fff;}
 
 input.checkbox-anemolight:checked   ~ span{background:var(--anemo-light  );}
 input.checkbox-geolight:checked     ~ span{background:var(--geo-light    );}
@@ -163,8 +164,6 @@ div#JoinGame div#JoinGame_result > div > div:nth-child(2){font-size:16px;font-we
 }
 
 /*▼▼▼ドラフト地方伝説▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
-div#DraftLocalLegend  tr input.checkbox:checked ~ span{background:#888;color:#fff;}
-
                      /*▼リスト番号表示用*/
                      ol#DraftLocalLegend_result{counter-reset:item;list-style:none;}
                      ol#DraftLocalLegend_result li > div{position:relative;cursor:pointer;}
@@ -1573,41 +1572,84 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 					<p>1行目から4行目までがそれぞれ独立して抽選されます。特定の元素が必要な場合は、その元素のみを選択した行がある状態で抽選してください</p>
 				</div>
 				<div style="margin:1rem;text-align:center;">元素抽選機</div>
-				<div style="text-align:center;">
-					<label><input type="checkbox" data-element="A" data-number="11" class="checkbox-anemolight"  ><span>風</span></label>
-					<label><input type="checkbox" data-element="A" data-number="12" class="checkbox-geolight"    ><span>岩</span></label>
-					<label><input type="checkbox" data-element="A" data-number="13" class="checkbox-electrolight"><span>雷</span></label>
-					<label><input type="checkbox" data-element="A" data-number="14" class="checkbox-dendrolight" ><span>草</span></label>
-					<label><input type="checkbox" data-element="A" data-number="15" class="checkbox-hydrolight"  ><span>水</span></label>
-					<label><input type="checkbox" data-element="A" data-number="16" class="checkbox-pyrolight"   ><span>炎</span></label>
-					<label><input type="checkbox" data-element="A" data-number="17" class="checkbox-cryolight"   ><span>氷</span></label><br>
-					<label><input type="checkbox" data-element="B" data-number="21" class="checkbox-anemolight"  ><span>風</span></label>
-					<label><input type="checkbox" data-element="B" data-number="22" class="checkbox-geolight"    ><span>岩</span></label>
-					<label><input type="checkbox" data-element="B" data-number="23" class="checkbox-electrolight"><span>雷</span></label>
-					<label><input type="checkbox" data-element="B" data-number="24" class="checkbox-dendrolight" ><span>草</span></label>
-					<label><input type="checkbox" data-element="B" data-number="25" class="checkbox-hydrolight"  ><span>水</span></label>
-					<label><input type="checkbox" data-element="B" data-number="26" class="checkbox-pyrolight"   ><span>炎</span></label>
-					<label><input type="checkbox" data-element="B" data-number="27" class="checkbox-cryolight"   ><span>氷</span></label><br>
-					<label><input type="checkbox" data-element="C" data-number="31" class="checkbox-anemolight"  ><span>風</span></label>
-					<label><input type="checkbox" data-element="C" data-number="32" class="checkbox-geolight"    ><span>岩</span></label>
-					<label><input type="checkbox" data-element="C" data-number="33" class="checkbox-electrolight"><span>雷</span></label>
-					<label><input type="checkbox" data-element="C" data-number="34" class="checkbox-dendrolight" ><span>草</span></label>
-					<label><input type="checkbox" data-element="C" data-number="35" class="checkbox-hydrolight"  ><span>水</span></label>
-					<label><input type="checkbox" data-element="C" data-number="36" class="checkbox-pyrolight"   ><span>炎</span></label>
-					<label><input type="checkbox" data-element="C" data-number="37" class="checkbox-cryolight"   ><span>氷</span></label><br>
-					<label><input type="checkbox" data-element="D" data-number="41" class="checkbox-anemolight"  ><span>風</span></label>
-					<label><input type="checkbox" data-element="D" data-number="42" class="checkbox-geolight"    ><span>岩</span></label>
-					<label><input type="checkbox" data-element="D" data-number="43" class="checkbox-electrolight"><span>雷</span></label>
-					<label><input type="checkbox" data-element="D" data-number="44" class="checkbox-dendrolight" ><span>草</span></label>
-					<label><input type="checkbox" data-element="D" data-number="45" class="checkbox-hydrolight"  ><span>水</span></label>
-					<label><input type="checkbox" data-element="D" data-number="46" class="checkbox-pyrolight"   ><span>炎</span></label>
-					<label><input type="checkbox" data-element="D" data-number="47" class="checkbox-cryolight"   ><span>氷</span></label><br>
-				</div>
+				<table border="1" style="margin:auto;">
+					<tr><td>選択肢1/1P<td>
+						<label><input type="checkbox" data-element="A" data-elementnumber="11" class="checkbox-anemolight"  ><span>風</span></label>
+						<label><input type="checkbox" data-element="A" data-elementnumber="12" class="checkbox-geolight"    ><span>岩</span></label>
+						<label><input type="checkbox" data-element="A" data-elementnumber="13" class="checkbox-electrolight"><span>雷</span></label>
+						<label><input type="checkbox" data-element="A" data-elementnumber="14" class="checkbox-dendrolight" ><span>草</span></label>
+						<label><input type="checkbox" data-element="A" data-elementnumber="15" class="checkbox-hydrolight"  ><span>水</span></label>
+						<label><input type="checkbox" data-element="A" data-elementnumber="16" class="checkbox-pyrolight"   ><span>炎</span></label>
+						<label><input type="checkbox" data-element="A" data-elementnumber="17" class="checkbox-cryolight"   ><span>氷</span></label>
+					<tr><td>選択肢2/2P<td>
+						<label><input type="checkbox" data-element="B" data-elementnumber="21" class="checkbox-anemolight"  ><span>風</span></label>
+						<label><input type="checkbox" data-element="B" data-elementnumber="22" class="checkbox-geolight"    ><span>岩</span></label>
+						<label><input type="checkbox" data-element="B" data-elementnumber="23" class="checkbox-electrolight"><span>雷</span></label>
+						<label><input type="checkbox" data-element="B" data-elementnumber="24" class="checkbox-dendrolight" ><span>草</span></label>
+						<label><input type="checkbox" data-element="B" data-elementnumber="25" class="checkbox-hydrolight"  ><span>水</span></label>
+						<label><input type="checkbox" data-element="B" data-elementnumber="26" class="checkbox-pyrolight"   ><span>炎</span></label>
+						<label><input type="checkbox" data-element="B" data-elementnumber="27" class="checkbox-cryolight"   ><span>氷</span></label>
+					<tr><td>選択肢3/3P<td>
+						<label><input type="checkbox" data-element="C" data-elementnumber="31" class="checkbox-anemolight"  ><span>風</span></label>
+						<label><input type="checkbox" data-element="C" data-elementnumber="32" class="checkbox-geolight"    ><span>岩</span></label>
+						<label><input type="checkbox" data-element="C" data-elementnumber="33" class="checkbox-electrolight"><span>雷</span></label>
+						<label><input type="checkbox" data-element="C" data-elementnumber="34" class="checkbox-dendrolight" ><span>草</span></label>
+						<label><input type="checkbox" data-element="C" data-elementnumber="35" class="checkbox-hydrolight"  ><span>水</span></label>
+						<label><input type="checkbox" data-element="C" data-elementnumber="36" class="checkbox-pyrolight"   ><span>炎</span></label>
+						<label><input type="checkbox" data-element="C" data-elementnumber="37" class="checkbox-cryolight"   ><span>氷</span></label>
+					<tr><td>選択肢4/4P<td>
+						<label><input type="checkbox" data-element="D" data-elementnumber="41" class="checkbox-anemolight"  ><span>風</span></label>
+						<label><input type="checkbox" data-element="D" data-elementnumber="42" class="checkbox-geolight"    ><span>岩</span></label>
+						<label><input type="checkbox" data-element="D" data-elementnumber="43" class="checkbox-electrolight"><span>雷</span></label>
+						<label><input type="checkbox" data-element="D" data-elementnumber="44" class="checkbox-dendrolight" ><span>草</span></label>
+						<label><input type="checkbox" data-element="D" data-elementnumber="45" class="checkbox-hydrolight"  ><span>水</span></label>
+						<label><input type="checkbox" data-element="D" data-elementnumber="46" class="checkbox-pyrolight"   ><span>炎</span></label>
+						<label><input type="checkbox" data-element="D" data-elementnumber="47" class="checkbox-cryolight"   ><span>氷</span></label>
+				</table>
 				<div style="display:flex;">
 					<input type="button" id="DraftLocalLegend_Element" value="抽選" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
 					<div id="DraftLocalLegend_ElementResult" style="white-space:pre-wrap;margin:0.5rem 0.5rem 0.5rem 0;"></div>
 				</div>
 			</div>
+			<div>
+				<div style="margin:1rem;text-align:center;">武器種抽選機</div>
+				<button class="help-button" data-help-id="DraftLocalLegend_help6">？</button>
+				<div id="DraftLocalLegend_help6" class="help-popup">
+					<p>1行目から4行目までがそれぞれ独立して抽選されます。特定の武器種が必要な場合は、その武器種のみを選択した行がある状態で抽選してください</p>
+				</div>
+				<table border="1" style="margin:auto;">
+					<tr><td>選択肢1/1P<td>
+						<label><input type="checkbox" data-weapon="A" data-weaponnumber="11" class="checkbox"><span>片手剣</span></label>
+						<label><input type="checkbox" data-weapon="A" data-weaponnumber="12" class="checkbox"><span>両手剣</span></label>
+						<label><input type="checkbox" data-weapon="A" data-weaponnumber="13" class="checkbox"><span>長柄武器</span></label>
+						<label><input type="checkbox" data-weapon="A" data-weaponnumber="14" class="checkbox"><span>法器</span></label>
+						<label><input type="checkbox" data-weapon="A" data-weaponnumber="15" class="checkbox"><span>弓</span></label>
+					<tr><td>選択肢2/2P<td>
+						<label><input type="checkbox" data-weapon="B" data-weaponnumber="21" class="checkbox"><span>片手剣</span></label>
+						<label><input type="checkbox" data-weapon="B" data-weaponnumber="22" class="checkbox"><span>両手剣</span></label>
+						<label><input type="checkbox" data-weapon="B" data-weaponnumber="23" class="checkbox"><span>長柄武器</span></label>
+						<label><input type="checkbox" data-weapon="B" data-weaponnumber="24" class="checkbox"><span>法器</span></label>
+						<label><input type="checkbox" data-weapon="B" data-weaponnumber="25" class="checkbox"><span>弓</span></label>
+					<tr><td>選択肢3/3P<td>
+						<label><input type="checkbox" data-weapon="C" data-weaponnumber="31" class="checkbox"><span>片手剣</span></label>
+						<label><input type="checkbox" data-weapon="C" data-weaponnumber="32" class="checkbox"><span>両手剣</span></label>
+						<label><input type="checkbox" data-weapon="C" data-weaponnumber="33" class="checkbox"><span>長柄武器</span></label>
+						<label><input type="checkbox" data-weapon="C" data-weaponnumber="34" class="checkbox"><span>法器</span></label>
+						<label><input type="checkbox" data-weapon="C" data-weaponnumber="35" class="checkbox"><span>弓</span></label>
+					<tr><td>選択肢4/4P<td>
+						<label><input type="checkbox" data-weapon="D" data-weaponnumber="41" class="checkbox"><span>片手剣</span></label>
+						<label><input type="checkbox" data-weapon="D" data-weaponnumber="42" class="checkbox"><span>両手剣</span></label>
+						<label><input type="checkbox" data-weapon="D" data-weaponnumber="43" class="checkbox"><span>長柄武器</span></label>
+						<label><input type="checkbox" data-weapon="D" data-weaponnumber="44" class="checkbox"><span>法器</span></label>
+						<label><input type="checkbox" data-weapon="D" data-weaponnumber="45" class="checkbox"><span>弓</span></label>
+				</table>
+				<div style="display:flex;">
+					<input type="button" id="DraftLocalLegend_Weapon" value="抽選" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
+					<div id="DraftLocalLegend_WeaponResult" style="white-space:pre-wrap;margin:0.5rem 0.5rem 0.5rem 0;"></div>
+				</div>
+			</div>
+		</div>
+		<div class="DraftLocalLegend_lottery">
 			<div>
 				<div style="margin:1rem;text-align:center;">元素反応抽選機</div>
 				<table style="margin:auto;border:none;overflow:scroll;width:auto;">
@@ -2730,7 +2772,7 @@ const checkboxes = document.querySelectorAll('input[type="checkbox"][data-elemen
 
 // チェックボックスの状態を Firebase に保存＆リアルタイム反映
 checkboxes.forEach(cb => {
-  const number = cb.dataset.number;
+  const number = cb.dataset.elementnumber;
 
   // クリック時に Firebase 更新
   cb.addEventListener('change', () => {
@@ -2780,6 +2822,70 @@ onValue(ref(db, 'DraftLocalLegend/option/elemental/result'), snapshot => {
   const val = snapshot.val();
   if (val !== null) {
     elementalResultDiv.innerHTML = val;
+  }
+});
+
+//■■■武器種抽選機■■■
+// DOM 要素
+const drawWeaponButton = document.getElementById('DraftLocalLegend_Weapon');
+const weaponResultDiv   = document.getElementById('DraftLocalLegend_WeaponResult');
+const weaponCheckboxes  = document.querySelectorAll('input[type="checkbox"][data-weapon]');
+
+// チェックボックスの状態を Firebase に保存＆リアルタイム反映
+weaponCheckboxes.forEach(cb => {
+  // data-weaponnumber を取得
+  const number = cb.dataset.weaponnumber;
+
+  // クリック時に Firebase 更新
+  cb.addEventListener('change', () => {
+    set(ref(db, `DraftLocalLegend/option/weapon/checkbox/${number}`), cb.checked);
+  });
+
+  // Firebase からのリアルタイム更新
+  onValue(ref(db, `DraftLocalLegend/option/weapon/checkbox/${number}`), snapshot => {
+    const val = snapshot.val();
+    cb.checked = !!val;
+  });
+});
+
+// 抽選ボタン
+drawWeaponButton.addEventListener('click', () => {
+  const groups = ['A', 'B', 'C', 'D'];
+  const results = [];
+
+  groups.forEach(gr => {
+    const groupCheckboxes = Array.from(document.querySelectorAll(`input[type="checkbox"][data-weapon="${gr}"]`));
+    const checked = groupCheckboxes.filter(cb => cb.checked);
+
+    if (checked.length > 0) {
+      const random = checked[Math.floor(Math.random() * checked.length)];
+      const span = random.parentElement.querySelector('span');
+      results.push(span ? span.textContent : '○');
+    }
+  });
+
+  let htmlString;
+  if (results.length === 0) {
+    htmlString = `<p>武器を選択してください。</p>`;
+  } else {
+    const joined = results.join('/');
+    htmlString =
+      `<p>次の戦闘では${joined}を使用できます</p>` +
+      `<p>または、1Pから順番に${joined}を使用してください</p>`;
+  }
+
+  // DOM に反映
+  weaponResultDiv.innerHTML = htmlString;
+
+  // Firebase に保存
+  set(ref(db, 'DraftLocalLegend/option/weapon/result'), htmlString);
+});
+
+// 抽選結果のリアルタイム更新
+onValue(ref(db, 'DraftLocalLegend/option/weapon/result'), snapshot => {
+  const val = snapshot.val();
+  if (val !== null) {
+    weaponResultDiv.innerHTML = val;
   }
 });
 
@@ -3326,6 +3432,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.30.0<span>2025/12/03</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】元素抽選機のUIを修正しました</p>
+		<p>【ドラフト地方伝説】武器種抽選機を追加しました</p>
+		<p>その他、軽微な変更・修正をしました</p>
+	</div>
 
 	<div class="version">v1.29.0<span>2025/11/26</span></div>
 	<div class="details">
