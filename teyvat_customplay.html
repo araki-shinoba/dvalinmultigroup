@@ -1,4 +1,3 @@
-
 <html><head><meta charset="utf-8"><title>変則遊戯</title><meta name="viewport" content="width=device-width,user-scalable=0"><meta name="robots" content="noindex,nofollow,noarchive"><style type="text/css">
 /*▼▼▼CSS変数 ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
 :root{
@@ -247,6 +246,12 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 /*        水炎    */label input.vaporise:checked            ~ span{background:linear-gradient(160deg,var(--hydro-light)   49%,var(--pyro-light)    51%);}
 /*        水  氷  */label input.frozen:checked              ~ span{background:linear-gradient(160deg,var(--hydro-light)   49%,var(--cryo-light)    51%);}
 /*          炎氷  */label input.melt:checked                ~ span{background:linear-gradient(160deg,var(--pyro-light)    49%,var(--cryo-light)    51%);}
+
+/*▼▼▼便利ツール▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
+div#Tools div.stygian div.resin_date input:nth-child(1){width:3rem;}
+div#Tools div.stygian input{padding:0.25rem;border:1px solid #888;text-align:center;border-radius:4px;width:2rem;}
+div#Tools div.stygian stygian_resin label{border:;}
+
 </style></head><body>
 
 <div class="contentslist">
@@ -254,6 +259,7 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 	<a href="#HideAndSeek">かくれんぼ</a>
 	<a href="#JoinGame">テイワットばらばら合流ゲーム</a>
 	<a href="#DraftLocalLegend">ドラフト地方伝説</a>
+	<a href="#Tools">便利ツール</a>
 </div>
 
 <!--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
@@ -1733,7 +1739,7 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 
 			</div>
 			<div style="font-size:1.5rem;text-align:center;">
-				復活コスト：<input type="number" id="DraftLocalLegend_CharacterRechargeNormalCost" style="width:40px;"value="6">
+				復活コスト：<input type="number" id="DraftLocalLegend_CharacterRechargeNormalCost" style="width:40px;" value="6">
 				 / 
 				星5即復活<input type="checkbox" id="DraftLocalLegend_CharacterRechargeNormalR5">
 				 / 
@@ -1742,7 +1748,7 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 			</div>
 			<div id="DraftLocalLegend_CharacterRechargeResultNormal"></div>
 
-			<table border="1" style="border:1px #aaa solid;border-collapse:collapse;margin:2rem auto 0;text-align:center;">
+			<table border="1" id="DraftLocalLegend_CharacterRechargeCount" style="border:1px #aaa solid;border-collapse:collapse;margin:2rem auto 0;text-align:center;">
 				<tr><th style="padding:0.5rem;background:#444;color:#fff;" colspan="8">復活コスト確認用ラジオボタン
 				<tr><td><td>1戦目<td>2戦目<td>3戦目<td>4戦目<td>5戦目<td>6戦目<td>
 				<tr><td style="padding:0.5rem;text-align:center;">ノーミス
@@ -1752,7 +1758,7 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio4">
 				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio5">
 				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio6">
-				    <td rowspan="2"><input type="button" id="DraftLocalLegend_CharacterRechargeReset" value="リセット">
+				    <td rowspan="2"><input type="button" id="DraftLocalLegend_CharacterRechargeCountReset" value="リセット">
 				<tr><td style="padding:0.5rem;text-align:center;">ミスあり
 				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio1">
 				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio2">
@@ -2010,6 +2016,56 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 			</div>
 		</div>
 	</div>
+</div>
+
+<!--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
+<!--■■■▼便利ツール▼■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
+<!--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->
+<div class="content" id="Tools">
+	<div class="title">便利ツール</div>
+
+	<div class="stygian" style="max-width:400px;margin:auto;">
+		<div style="background:#444;color:#fff;padding:0.5rem;font-size:1.5rem;font-weight:bold;text-align:center;">幽境の激戦用樹脂消費計算機</div>
+		<div style="border:1px solid #aaa;background:#eee;padding:0.5rem;margin:0.5rem 0;">
+			次回の幽境の激戦開催時刻：
+			<span id="stygian_nextEvent" style="font-weight:bold;margin:0 0.5rem;"></span>
+		</div>
+
+		<div class="resin_date">
+			<input id="stygian_y"  type="textbox"> 年
+			<input id="stygian_m"  type="textbox"> 月
+			<input id="stygian_d"  type="textbox"> 日
+			<input id="stygian_hh" type="textbox"> 時
+			<input id="stygian_mm" type="textbox"> 分
+		</div>
+		<div style="margin:0.5rem;text-align:right;">に樹脂を200溜めるには、現在の樹脂が</div>
+
+		<div style="text-align:center;">
+			<span id="stygian_result" style="font-size:1.5rem;font-weight:bold;border-bottom:1px solid #aaa;"></span>
+			/200であることが理想です
+		</div>
+
+		<div style="margin:1rem 0 0.5rem;text-align:right;">※数値がマイナスの場合は樹脂を使い切って問題ありません。<br>それだけの余裕があることを示しています。</div>
+
+		<div style="margin:1rem;">
+			<div id="stygian_weekBoss">
+				幽境当週の週ボス：
+				<label><input name="stygian_weekBoss_rb" type="radio" class="checkbox" value="true"         ><span>未終了</span></label>
+				<label><input name="stygian_weekBoss_rb" type="radio" class="checkbox" value="false" checked><span>終了  </span></label>
+			</div>
+
+			<div id="stygian_resin">
+				濃縮樹脂の数：
+				<label><input name="stygian_resin_rb" type="radio" class="checkbox" value="0"        ><span>0</span></label>
+				<label><input name="stygian_resin_rb" type="radio" class="checkbox" value="1"        ><span>1</span></label>
+				<label><input name="stygian_resin_rb" type="radio" class="checkbox" value="2"        ><span>2</span></label>
+				<label><input name="stygian_resin_rb" type="radio" class="checkbox" value="3"        ><span>3</span></label>
+				<label><input name="stygian_resin_rb" type="radio" class="checkbox" value="4"        ><span>4</span></label>
+				<label><input name="stygian_resin_rb" type="radio" class="checkbox" value="5" checked><span>5</span></label>
+			</div>
+		</div>
+	</div>
+
 </div>
 
 <hr style="margin-top:10rem;">
@@ -3228,12 +3284,15 @@ window.addEventListener('DOMContentLoaded', () => {
 // 前回クリックしたラジオボタンを保持
 let lastClickedRadio = null;
 
-document.querySelectorAll('input[type="radio"]').forEach(radio => {
+// 対象は table 内の radio のみに限定
+const targetRadios = document.querySelectorAll('#DraftLocalLegend_CharacterRechargeCount input[type="radio"]');
+
+targetRadios.forEach(radio => {
   radio.addEventListener('click', function() {
     // もし前回と同じラジオボタンなら選択解除
     if (lastClickedRadio === this) {
       this.checked = false;
-      lastClickedRadio = null; // リセット
+      lastClickedRadio = null;
     } else {
       // 新しいボタンをクリックした場合は前回の更新
       lastClickedRadio = this;
@@ -3241,10 +3300,10 @@ document.querySelectorAll('input[type="radio"]').forEach(radio => {
   });
 });
 
-// 既存のリセットボタン処理も保持
-document.getElementById('DraftLocalLegend_CharacterRechargeReset').addEventListener('click', () => {
-  document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
-  lastClickedRadio = null; // クリック履歴もリセット
+// リセットボタン
+document.getElementById('DraftLocalLegend_CharacterRechargeCountReset').addEventListener('click', () => {
+  targetRadios.forEach(radio => radio.checked = false);
+  lastClickedRadio = null;
 });
 //▲▲▲ドラフト地方伝説　ノーマルモードミス記録機▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 //▼▼▼ドラフト地方伝説　エンドレスモード復活抽選機▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
@@ -3435,6 +3494,150 @@ fields.forEach(({ id, path }) => {
   });
 });
 //▲▲▲ドラフト地方伝説　セーブデータ保存用プログラム▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+//▼▼▼便利ツール　幽境の激戦用樹脂消費計算機▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+{
+	// ===== Utilities =====
+	const qs = id => document.getElementById(id);
+
+	// ID参照
+	const elNextEvent = qs("stygian_nextEvent");
+	const elY = qs("stygian_y");
+	const elM = qs("stygian_m");
+	const elD = qs("stygian_d");
+	const elHH = qs("stygian_hh");
+	const elMM = qs("stygian_mm");
+	const elResult = qs("stygian_result");
+	const elResinGroup = qs("stygian_resin");
+	const elWeekGroup = qs("stygian_weekBoss");
+
+	// ===== 設定 =====
+	const BASE = new Date(2025, 5, 25, 11, 0, 0); // 2025/06/25 11:00
+	const PERIOD = 42 * 86400000;
+	const STEP = 8 * 60000;
+
+	let intervalId = null;
+
+	// ===== 次回イベント日時の計算 =====
+	function calcNextEvent() {
+		let next = BASE;
+		const now = new Date();
+		while (next <= now) next = new Date(next.getTime() + PERIOD);
+
+		const pad = n => n.toString().padStart(2, "0");
+		const txt = `${next.getFullYear()}/${pad(next.getMonth() + 1)}/${pad(next.getDate())} ${pad(next.getHours())}:${pad(next.getMinutes())}`;
+
+		elNextEvent.textContent = txt;
+
+		elY.value = next.getFullYear();
+		elM.value = pad(next.getMonth() + 1);
+		elD.value = pad(next.getDate());
+		elHH.value = pad(next.getHours());
+		elMM.value = pad(next.getMinutes());
+	}
+
+	// ===== 日時生成 =====
+	const makeDate = () => new Date(
+		Number(elY.value),
+		Number(elM.value) - 1,
+		Number(elD.value),
+		Number(elHH.value),
+		Number(elMM.value)
+	);
+
+	// ===== 計算ロジック =====
+	const baseCount = (now, target) => {
+		if (now >= target) return 200;
+		const diff = target - now;
+		return 200 - Math.ceil(diff / STEP);
+	};
+
+	const nextRemain = (now, target) => {
+		if (now >= target) return [0, 0];
+		const diff = target - now;
+		const step = Math.ceil(diff / STEP);
+		const remain = diff - (step - 1) * STEP;
+		const sec = Math.ceil(remain / 1000);
+		return [Math.floor(sec / 60), sec % 60];
+	};
+
+	const totalCount = (base, resin, isWeek) => {
+		return Math.min(200, base + (5 - resin) * 60 + (isWeek ? 90 : 0));
+	};
+
+	// ===== ラジオ値取得 =====
+	const getResinValue = () => {
+		const rb = document.querySelector('input[name="stygian_resin_rb"]:checked');
+		return rb ? Number(rb.value) : 5; // デフォルト5
+	};
+
+	const getWeekValue = () => {
+		const rb = document.querySelector('input[name="stygian_weekBoss_rb"]:checked');
+		return rb ? rb.value === "true" : false; // true/false文字列をBooleanに変換
+	};
+
+	// ===== 表示更新 =====
+	function update() {
+		const now = new Date();
+		const target = makeDate();
+
+		const base = baseCount(now, target);
+		const total = totalCount(
+			base,
+			getResinValue(),
+			getWeekValue()
+		);
+
+		let [m, s] = nextRemain(now, target);
+
+		// totalが200以上なら残り時間は00:00に固定
+		if (total >= 200) {
+			m = 0;
+			s = 0;
+		}
+
+		const pad = v => v.toString().padStart(2, "0");
+		elResult.textContent = `${total} (${pad(m)}:${pad(s)})`;
+	}
+
+	// ===== Tools 表示判定 =====
+	function isToolsVisible() {
+		return location.hash === "#Tools";
+	}
+
+	// ===== interval の制御 =====
+	function start() {
+		if (intervalId !== null) return;
+		update();
+		intervalId = setInterval(update, 1000);
+	}
+
+	function stop() {
+		if (intervalId === null) return;
+		clearInterval(intervalId);
+		intervalId = null;
+	}
+
+	// ===== hashchange 時の動作 =====
+	window.addEventListener("hashchange", () => {
+		if (isToolsVisible()) start();
+		else stop();
+	});
+
+	// ===== 入力時もリアルタイム更新 =====
+	[elY, elM, elD, elHH, elMM].forEach(el =>
+		el.addEventListener("input", update)
+	);
+
+	// ラジオボタンは change イベント
+	document.querySelectorAll('input[name="stygian_resin_rb"], input[name="stygian_weekBoss_rb"]').forEach(el =>
+		el.addEventListener("change", update)
+	);
+
+	// ===== 初回処理 =====
+	calcNextEvent();
+	if (isToolsVisible()) start();
+}
+//▲▲▲便利ツール　幽境の激戦用樹脂消費計算機▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 //▼▼▼ヘルプ表示プログラム▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
 const popup = document.createElement('div');
 popup.className = 'help-popup';
@@ -3525,6 +3728,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.32.0<span>2025/12/08</span></div>
+	<div class="details">
+		<p>ページ最上部のメニューバーに「便利ツール」を追加しました</p>
+		<p>【便利ツール】幽境の激戦用樹脂消費計算機を追加しました</p>
+		<p>その他、軽微な変更・修正をしました</p>
+	</div>
 
 	<div class="version">v1.31.1<span>2025/12/06</span></div>
 	<div class="details">
