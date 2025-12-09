@@ -2039,13 +2039,12 @@ div#Tools div.stygian stygian_resin label{border:;}
 			<input id="stygian_mm" type="textbox"> 分
 		</div>
 		<div style="margin:0.5rem;text-align:right;">に樹脂を200溜めるには、現在の樹脂が</div>
-
-		<div style="text-align:center;">
+		<div style="text-align:center;margin:0.5rem;">
 			<span id="stygian_result" style="font-size:1.5rem;font-weight:bold;border-bottom:1px solid #aaa;"></span>
-			/200であることが理想です
 		</div>
+		<div style="text-align:right;">の範囲内にあることが理想です</div>
 
-		<div style="margin:1rem 0 0.5rem;text-align:right;">※数値がマイナスの場合は樹脂を使い切って問題ありません。<br>それだけの余裕があることを示しています。</div>
+		<div style="margin:1rem 0 0.5rem;">※数値がマイナスの場合は樹脂を使い切って問題ありません。<br>　それだけの余裕があることを示しています。</div>
 
 		<div style="margin:1rem;">
 			<div id="stygian_weekBoss">
@@ -3507,13 +3506,13 @@ fields.forEach(({ id, path }) => {
 	const elHH = qs("stygian_hh");
 	const elMM = qs("stygian_mm");
 	const elResult = qs("stygian_result");
-	const elResinGroup = qs("stygian_resin");
-	const elWeekGroup = qs("stygian_weekBoss");
 
 	// ===== 設定 =====
 	const BASE = new Date(2025, 5, 25, 11, 0, 0); // 2025/06/25 11:00
 	const PERIOD = 42 * 86400000;
-	const STEP = 8 * 60000;
+	const STEP_MS = 8 * 60000;   // 480000 ms
+	const STEP_S = STEP_MS / 1000; // 480 s
+	const SUBTRACT_SECONDS = 35 * STEP_S; // YXの差
 
 	let intervalId = null;
 
@@ -3544,59 +3543,111 @@ fields.forEach(({ id, path }) => {
 		Number(elMM.value)
 	);
 
-	// ===== 計算ロジック =====
+	// ===== 既存ロジック関数 =====
 	const baseCount = (now, target) => {
 		if (now >= target) return 200;
 		const diff = target - now;
-		return 200 - Math.ceil(diff / STEP);
+		return 200 - Math.ceil(diff / STEP_MS);
 	};
 
+	// nextRemain: 次の +1 までの「残り mm:ss」を返す（正確な秒）
 	const nextRemain = (now, target) => {
 		if (now >= target) return [0, 0];
-		const diff = target - now;
-		const step = Math.ceil(diff / STEP);
-		const remain = diff - (step - 1) * STEP;
+		const diff = target - now; // ms
+		const step = Math.ceil(diff / STEP_MS);
+		const remain = diff - (step - 1) * STEP_MS; // ms until next +1
 		const sec = Math.ceil(remain / 1000);
 		return [Math.floor(sec / 60), sec % 60];
 	};
 
 	const totalCount = (base, resin, isWeek) => {
-		return Math.min(200, base + (5 - resin) * 60 + (isWeek ? 90 : 0));
+		return Math.min(base + (5 - resin) * 60 + (isWeek ? 90 : 0));
 	};
 
-	// ===== ラジオ値取得 =====
+	// ===== ラジオ値取得（stygian系のみ） =====
 	const getResinValue = () => {
 		const rb = document.querySelector('input[name="stygian_resin_rb"]:checked');
-		return rb ? Number(rb.value) : 5; // デフォルト5
+		return rb ? Number(rb.value) : 5;
 	};
-
 	const getWeekValue = () => {
 		const rb = document.querySelector('input[name="stygian_weekBoss_rb"]:checked');
-		return rb ? rb.value === "true" : false; // true/false文字列をBooleanに変換
+		return rb ? rb.value === "true" : false;
 	};
 
-	// ===== 表示更新 =====
+	// ===== 正確な表示更新 =====
+	// ===== 正確な表示更新 =====
 	function update() {
 		const now = new Date();
 		const target = makeDate();
 
+		// ---- X（既存表示） ----
 		const base = baseCount(now, target);
-		const total = totalCount(
-			base,
-			getResinValue(),
-			getWeekValue()
-		);
+		const total = totalCount(base, getResinValue(), getWeekValue()); // integer
 
-		let [m, s] = nextRemain(now, target);
+		// X の残り秒（正確）
+		let [xm, xs] = nextRemain(now, target);
+		let xRemSec = xm * 60 + xs; // seconds until next +1
 
-		// totalが200以上なら残り時間は00:00に固定
-		if (total >= 200) {
-			m = 0;
-			s = 0;
-		}
+		// （仕様変更）X の 200 超過処理は、この時点では行わない
+		// → 後段で xText 確定後に一括処理するため、ここでは何もしない
+
+		// continuous (fractional) count for X in seconds:
+		const actualSeconds = total * STEP_S - xRemSec;
+
+		// ---- Y calculation: subtract 380 minutes (22800 sec) ----
+		let ySeconds = actualSeconds - SUBTRACT_SECONDS;
+		// （仕様変更）負の値も許容するため clamp しない
+
+		// yIntCount = floor(ySeconds / STEP_S)
+		const yIntCount = Math.floor(ySeconds / STEP_S);
+
+		// yDisplay = yIntCount + 1
+		let yDisplay = yIntCount + 1;
+
+		// yRemSec = seconds until next yDisplay
+		let yRemSec = Math.round(yDisplay * STEP_S - ySeconds);
+
+		// 負の残り秒は許容しない（安全処理）
+		if (yRemSec < 0) yRemSec = 0;
+
+		// Convert yRemSec -> mm:ss
+		const yM = Math.floor(yRemSec / 60);
+		const yS = yRemSec % 60;
 
 		const pad = v => v.toString().padStart(2, "0");
-		elResult.textContent = `${total} (${pad(m)}:${pad(s)})`;
+
+		// --- ここから仕様変更（xText / yText を先に計算し、その後で200超過判定） ---
+
+		// X の純粋な表示値（上限なし）
+		let rawXCount = total;
+		let rawXM = xm;
+		let rawXS = xs;
+
+		// Y の純粋な表示値（上限なし）
+		let rawYCount = yDisplay;
+		let rawYM = yM;
+		let rawYS = yS;
+
+		// ---- 200超過処理（仕様B） ----
+		// X が 200超過したら count=200, mm:ss=00:00
+		if (rawXCount >= 200) {
+			rawXCount = 200;
+			rawXM = 0;
+			rawXS = 0;
+		}
+
+		// Y が 200超過したら count=200, mm:ss=00:00
+		if (rawYCount >= 200) {
+			rawYCount = 200;
+			rawYM = 0;
+			rawYS = 0;
+		}
+
+		// ---- 最終表示 ----
+		const xText = `${rawXCount} (${pad(rawXM)}:${pad(rawXS)})`;
+		const yText = `${rawYCount} (${pad(rawYM)}:${pad(rawYS)})`;
+
+		elResult.textContent = `${yText} ～ ${xText}`;
 	}
 
 	// ===== Tools 表示判定 =====
@@ -3604,36 +3655,32 @@ fields.forEach(({ id, path }) => {
 		return location.hash === "#Tools";
 	}
 
-	// ===== interval の制御 =====
+	// ===== interval 制御 =====
 	function start() {
 		if (intervalId !== null) return;
 		update();
 		intervalId = setInterval(update, 1000);
 	}
-
 	function stop() {
 		if (intervalId === null) return;
 		clearInterval(intervalId);
 		intervalId = null;
 	}
 
-	// ===== hashchange 時の動作 =====
+	// hashchange で開始/停止
 	window.addEventListener("hashchange", () => {
 		if (isToolsVisible()) start();
 		else stop();
 	});
 
-	// ===== 入力時もリアルタイム更新 =====
-	[elY, elM, elD, elHH, elMM].forEach(el =>
-		el.addEventListener("input", update)
-	);
-
-	// ラジオボタンは change イベント
+	// 入力の監視（日時フィールド）
+	[elY, elM, elD, elHH, elMM].forEach(el => el.addEventListener("input", update));
+	// ラジオだけ監視（stygian 系のみ）
 	document.querySelectorAll('input[name="stygian_resin_rb"], input[name="stygian_weekBoss_rb"]').forEach(el =>
 		el.addEventListener("change", update)
 	);
 
-	// ===== 初回処理 =====
+	// 初期処理
 	calcNextEvent();
 	if (isToolsVisible()) start();
 }
@@ -3728,6 +3775,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.33.0<span>2025/12/09</span></div>
+	<div class="details">
+		<p>【便利ツール】幽境の激戦用樹脂消費計算機の表示方式を変更し、それに伴いUIを調整しました</p>
+	</div>
 
 	<div class="version">v1.32.0<span>2025/12/08</span></div>
 	<div class="details">
