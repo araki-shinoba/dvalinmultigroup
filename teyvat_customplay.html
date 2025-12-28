@@ -1347,6 +1347,15 @@ div#Tools div.stygian stygian_resin label{border:;}
 			<label><input type="checkbox" id="WeaponPolearmToggle"          class="checkbox"><span>長柄武器      </span></label>
 			<label><input type="checkbox" id="WeaponCatalystToggle"         class="checkbox"><span>法器          </span></label>
 			<label><input type="checkbox" id="WeaponBowToggle"              class="checkbox"><span>弓            </span></label><br>
+			<label><input type="checkbox" id="CountryMondstadtToggle"       class="checkbox"><span>モンド        </span></label>
+			<label><input type="checkbox" id="CountryLiyueToggle"           class="checkbox"><span>璃月          </span></label>
+			<label><input type="checkbox" id="CountryInazumaToggle"         class="checkbox"><span>稲妻          </span></label>
+			<label><input type="checkbox" id="CountrySumeruToggle"          class="checkbox"><span>スメール      </span></label>
+			<label><input type="checkbox" id="CountryFontaineToggle"        class="checkbox"><span>フォンテーヌ  </span></label>
+			<label><input type="checkbox" id="CountryNatlanToggle"          class="checkbox"><span>ナタ          </span></label>
+			<label><input type="checkbox" id="CountryNodkraiToggle"         class="checkbox"><span>ナド・クライ  </span></label>
+			<label><input type="checkbox" id="CountrySnezhnayaToggle"       class="checkbox"><span>スネージナヤ  </span></label>
+			<label><input type="checkbox" id="CountryOutsideToggle"         class="checkbox"><span>テイワット外  </span></label><br>
 		<tr>
 			<th colspan="3" style="padding:0.5rem;">
 				<input type="text" id="DraftLocalLegend_usernameInput" placeholder="プレイヤー名を入力してください" style="width:7rem;">
@@ -1372,28 +1381,26 @@ div#Tools div.stygian stygian_resin label{border:;}
 			<td data-characterelement="anemo" data-characterpick="C">
 			<td data-characterelement="anemo">
 			<template id="DraftLocalLegend_charactertemplate_anemo">
-				<label data-status="0" data-character="099" data-rarity="4" data-weapon="catalyst"><span>イファ                                     </span></label>
-				<label data-status="0" data-character="022" data-rarity="5" data-weapon="bow"     ><span>ウェンティ                                 </span></label>
-				<label data-status="0" data-character="035" data-rarity="5" data-weapon="sword"   ><span>楓原万葉                                   </span></label>
-				<label data-status="0" data-character="080" data-rarity="5" data-weapon="catalyst"><span>閑雲                                       </span></label>
-				<label data-status="0" data-character="037" data-rarity="4" data-weapon="claymore"><span>早柚                                       </span></label>
-				<label data-status="0" data-character="052" data-rarity="4" data-weapon="catalyst"><span>鹿野院平蔵                                 </span></label>
-				<label data-status="0" data-character="030" data-rarity="5" data-weapon="polearm" ><span>&#39752;                                   </span></label>
-				<label data-status="0" data-character="017" data-rarity="5" data-weapon="sword"   ><span>ジン<span>【マルチ付着】爆発</span>        </span></label>
-				<label data-status="0" data-character="016" data-rarity="4" data-weapon="catalyst"><span>スクロース                                 </span></label>
-				<label data-status="0" data-character="092" data-rarity="5" data-weapon="bow"     ><span>チャスカ                                   </span></label>
-				<label data-status="0" data-character="061" data-rarity="4" data-weapon="bow"     ><span>ファルザン                                 </span></label>
-				<label data-status="0" data-character="062" data-rarity="5" data-weapon="catalyst"><span>放浪者                                     </span></label>
-				<script>new Date()>=new Date('2025-12-03T10:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
-				<label data-status="0" data-character="110" data-rarity="4" data-weapon="bow"     ><span>ヤフォダ                                   </span></label>
-				`)</script>
-				<label data-status="0" data-character="096" data-rarity="5" data-weapon="catalyst"><span>夢見月瑞希                                 </span></label>
-				<label data-status="0" data-character="095" data-rarity="4" data-weapon="catalyst"><span>藍硯                                       </span></label>
-				<label data-status="0" data-character="070" data-rarity="4" data-weapon="sword"   ><span>リネット                                   </span></label>
-				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"   ><span>空                                         </span></label>
-				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
-				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"   ><span>ドール(男)                                 </span></label>
-				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"   ><span>ドール(女)                                 </span></label>
+				<label data-status="0" data-character="099" data-rarity="4" data-weapon="catalyst" data-country="natlan"   ><span>イファ                                     </span></label>
+				<label data-status="0" data-character="022" data-rarity="5" data-weapon="bow"      data-country="mondstadt"><span>ウェンティ                                 </span></label>
+				<label data-status="0" data-character="035" data-rarity="5" data-weapon="sword"    data-country="inazuma"  ><span>楓原万葉                                   </span></label>
+				<label data-status="0" data-character="080" data-rarity="5" data-weapon="catalyst" data-country="liyue"    ><span>閑雲                                       </span></label>
+				<label data-status="0" data-character="037" data-rarity="4" data-weapon="claymore" data-country="inazuma"  ><span>早柚                                       </span></label>
+				<label data-status="0" data-character="052" data-rarity="4" data-weapon="catalyst" data-country="inazuma"  ><span>鹿野院平蔵                                 </span></label>
+				<label data-status="0" data-character="030" data-rarity="5" data-weapon="polearm"  data-country="liyue"    ><span>&#39752;                                   </span></label>
+				<label data-status="0" data-character="017" data-rarity="5" data-weapon="sword"    data-country="mondstadt"><span>ジン<span>【マルチ付着】爆発</span>        </span></label>
+				<label data-status="0" data-character="016" data-rarity="4" data-weapon="catalyst" data-country="mondstadt"><span>スクロース                                 </span></label>
+				<label data-status="0" data-character="092" data-rarity="5" data-weapon="bow"      data-country="natlan"   ><span>チャスカ                                   </span></label>
+				<label data-status="0" data-character="061" data-rarity="4" data-weapon="bow"      data-country="sumeru"   ><span>ファルザン                                 </span></label>
+				<label data-status="0" data-character="062" data-rarity="5" data-weapon="catalyst" data-country="sumeru"   ><span>放浪者                                     </span></label>
+				<label data-status="0" data-character="110" data-rarity="4" data-weapon="bow"      data-country="nodkrai"  ><span>ヤフォダ                                   </span></label>
+				<label data-status="0" data-character="096" data-rarity="5" data-weapon="catalyst" data-country="inazuma"  ><span>夢見月瑞希                                 </span></label>
+				<label data-status="0" data-character="095" data-rarity="4" data-weapon="catalyst" data-country="liyue"    ><span>藍硯                                       </span></label>
+				<label data-status="0" data-character="070" data-rarity="4" data-weapon="sword"    data-country="fontaine" ><span>リネット                                   </span></label>
+				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>空                                         </span></label>
+				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>蛍                                         </span></label>
+				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>ドール(男)                                 </span></label>
+				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>ドール(女)                                 </span></label>
 			</template>
 		<tr style="background:var(--geo-light);">
 			<td data-characterelement="geo" data-characterpick="A">
@@ -1401,21 +1408,21 @@ div#Tools div.stygian stygian_resin label{border:;}
 			<td data-characterelement="geo" data-characterpick="C">
 			<td data-characterelement="geo">
 			<template id="DraftLocalLegend_charactertemplate_geo">
-				<label data-status="0" data-character="045" data-rarity="5" data-weapon="claymore"><span>荒瀧一斗                                   </span></label>
-				<label data-status="0" data-character="028" data-rarity="5" data-weapon="sword"   ><span>アルベド                                   </span></label>
-				<label data-status="0" data-character="046" data-rarity="4" data-weapon="polearm" ><span>雲菫                                       </span></label>
-				<label data-status="0" data-character="087" data-rarity="4" data-weapon="polearm" ><span>カチーナ                                   </span></label>
-				<label data-status="0" data-character="011" data-rarity="4" data-weapon="catalyst"><span>凝光                                       </span></label>
-				<label data-status="0" data-character="044" data-rarity="4" data-weapon="bow"     ><span>ゴロー                                     </span></label>
-				<label data-status="0" data-character="027" data-rarity="5" data-weapon="polearm" ><span>鍾離                                       </span></label>
-				<label data-status="0" data-character="090" data-rarity="5" data-weapon="sword"   ><span>シロネン                                   </span></label>
-				<label data-status="0" data-character="081" data-rarity="5" data-weapon="sword"   ><span>千織                                       </span></label>
-				<label data-status="0" data-character="077" data-rarity="5" data-weapon="claymore"><span>ナヴィア                                   </span></label>
-				<label data-status="0" data-character="014" data-rarity="4" data-weapon="claymore"><span>ノエル                                     </span></label>
-				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"   ><span>空                                         </span></label>
-				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
-				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"   ><span>ドール(男)                                 </span></label>
-				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"   ><span>ドール(女)                                 </span></label>
+				<label data-status="0" data-character="045" data-rarity="5" data-weapon="claymore" data-country="inazuma"  ><span>荒瀧一斗                                   </span></label>
+				<label data-status="0" data-character="028" data-rarity="5" data-weapon="sword"    data-country="mondstadt"><span>アルベド                                   </span></label>
+				<label data-status="0" data-character="046" data-rarity="4" data-weapon="polearm"  data-country="liyue"    ><span>雲菫                                       </span></label>
+				<label data-status="0" data-character="087" data-rarity="4" data-weapon="polearm"  data-country="natlan"   ><span>カチーナ                                   </span></label>
+				<label data-status="0" data-character="011" data-rarity="4" data-weapon="catalyst" data-country="liyue"    ><span>凝光                                       </span></label>
+				<label data-status="0" data-character="044" data-rarity="4" data-weapon="bow"      data-country="inazuma"  ><span>ゴロー                                     </span></label>
+				<label data-status="0" data-character="027" data-rarity="5" data-weapon="polearm"  data-country="liyue"    ><span>鍾離                                       </span></label>
+				<label data-status="0" data-character="090" data-rarity="5" data-weapon="sword"    data-country="natlan"   ><span>シロネン                                   </span></label>
+				<label data-status="0" data-character="081" data-rarity="5" data-weapon="sword"    data-country="inazuma"  ><span>千織                                       </span></label>
+				<label data-status="0" data-character="077" data-rarity="5" data-weapon="claymore" data-country="fontaine" ><span>ナヴィア                                   </span></label>
+				<label data-status="0" data-character="014" data-rarity="4" data-weapon="claymore" data-country="mondstadt"><span>ノエル                                     </span></label>
+				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>空                                         </span></label>
+				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>蛍                                         </span></label>
+				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>ドール(男)                                 </span></label>
+				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>ドール(女)                                 </span></label>
 			</template>
 		<tr style="background:var(--electro-light);">
 			<td data-characterelement="electro" data-characterpick="A">
@@ -1423,28 +1430,28 @@ div#Tools div.stygian stygian_resin label{border:;}
 			<td data-characterelement="electro" data-characterpick="C">
 			<td data-characterelement="electro">
 			<template id="DraftLocalLegend_charactertemplate_electro">
-				<label data-status="0" data-character="097" data-rarity="4" data-weapon="polearm" ><span>イアンサ                                   </span></label>
-				<label data-status="0" data-character="103" data-rarity="5" data-weapon="polearm" ><span>イネファ                                   </span></label>
-				<label data-status="0" data-character="098" data-rarity="5" data-weapon="catalyst"><span>ヴァレサ                                   </span></label>
-				<label data-status="0" data-character="091" data-rarity="4" data-weapon="bow"     ><span>オロルン                                   </span></label>
-				<label data-status="0" data-character="051" data-rarity="4" data-weapon="sword"   ><span>九岐忍                                     </span></label>
-				<label data-status="0" data-character="040" data-rarity="4" data-weapon="bow"     ><span>九条裟羅                                   </span></label>
-				<label data-status="0" data-character="084" data-rarity="5" data-weapon="sword"   ><span>クロリンデ                                 </span></label>
-				<label data-status="0" data-character="021" data-rarity="5" data-weapon="sword"   ><span>刻晴                                       </span></label>
-				<label data-status="0" data-character="083" data-rarity="4" data-weapon="bow"     ><span>セトス                                     </span></label>
-				<label data-status="0" data-character="057" data-rarity="5" data-weapon="polearm" ><span>セノ                                       </span></label>
-				<label data-status="0" data-character="055" data-rarity="4" data-weapon="claymore"><span>ドリー<span>【マルチ付着】爆発</span>      </span></label>
-				<label data-status="0" data-character="012" data-rarity="4" data-weapon="bow"     ><span>フィッシュル                               </span></label>
-				<label data-status="0" data-character="106" data-rarity="4" data-weapon="polearm" ><span>フリンズ                                   </span></label>
-				<label data-status="0" data-character="009" data-rarity="4" data-weapon="claymore"><span>北斗<span>【自己付着】スキル</span>        </span></label>
-				<label data-status="0" data-character="048" data-rarity="5" data-weapon="catalyst"><span>八重神子                                   </span></label>
-				<label data-status="0" data-character="041" data-rarity="5" data-weapon="polearm" ><span>雷電将軍                                   </span></label>
-				<label data-status="0" data-character="005" data-rarity="4" data-weapon="catalyst"><span>リサ                                       </span></label>
-				<label data-status="0" data-character="007" data-rarity="4" data-weapon="claymore"><span>レザー<span>【自己付着】爆発</span>        </span></label>
-				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"   ><span>空                                         </span></label>
-				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
-				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"   ><span>ドール(男)                                 </span></label>
-				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"   ><span>ドール(女)                                 </span></label>
+				<label data-status="0" data-character="097" data-rarity="4" data-weapon="polearm"  data-country="natlan"   ><span>イアンサ                                   </span></label>
+				<label data-status="0" data-character="103" data-rarity="5" data-weapon="polearm"  data-country="nodkrai"  ><span>イネファ                                   </span></label>
+				<label data-status="0" data-character="098" data-rarity="5" data-weapon="catalyst" data-country="natlan"   ><span>ヴァレサ                                   </span></label>
+				<label data-status="0" data-character="091" data-rarity="4" data-weapon="bow"      data-country="natlan"   ><span>オロルン                                   </span></label>
+				<label data-status="0" data-character="051" data-rarity="4" data-weapon="sword"    data-country="inazuma"  ><span>九岐忍                                     </span></label>
+				<label data-status="0" data-character="040" data-rarity="4" data-weapon="bow"      data-country="inazuma"  ><span>九条裟羅                                   </span></label>
+				<label data-status="0" data-character="084" data-rarity="5" data-weapon="sword"    data-country="fontaine" ><span>クロリンデ                                 </span></label>
+				<label data-status="0" data-character="021" data-rarity="5" data-weapon="sword"    data-country="liyue"    ><span>刻晴                                       </span></label>
+				<label data-status="0" data-character="083" data-rarity="4" data-weapon="bow"      data-country="sumeru"   ><span>セトス                                     </span></label>
+				<label data-status="0" data-character="057" data-rarity="5" data-weapon="polearm"  data-country="sumeru"   ><span>セノ                                       </span></label>
+				<label data-status="0" data-character="055" data-rarity="4" data-weapon="claymore" data-country="sumeru"   ><span>ドリー<span>【マルチ付着】爆発</span>      </span></label>
+				<label data-status="0" data-character="012" data-rarity="4" data-weapon="bow"      data-country="mondstadt"><span>フィッシュル                               </span></label>
+				<label data-status="0" data-character="106" data-rarity="4" data-weapon="polearm"  data-country="nodkrai"  ><span>フリンズ                                   </span></label>
+				<label data-status="0" data-character="009" data-rarity="4" data-weapon="claymore" data-country="liyue"    ><span>北斗<span>【自己付着】スキル</span>        </span></label>
+				<label data-status="0" data-character="048" data-rarity="5" data-weapon="catalyst" data-country="inazuma"  ><span>八重神子                                   </span></label>
+				<label data-status="0" data-character="041" data-rarity="5" data-weapon="polearm"  data-country="inazuma"  ><span>雷電将軍                                   </span></label>
+				<label data-status="0" data-character="005" data-rarity="4" data-weapon="catalyst" data-country="mondstadt"><span>リサ                                       </span></label>
+				<label data-status="0" data-character="007" data-rarity="4" data-weapon="claymore" data-country="mondstadt"><span>レザー<span>【自己付着】爆発</span>        </span></label>
+				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>空                                         </span></label>
+				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>蛍                                         </span></label>
+				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>ドール(男)                                 </span></label>
+				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>ドール(女)                                 </span></label>
 			</template>
 		<tr style="background:var(--dendro-light);">
 			<td data-characterelement="dendro" data-characterpick="A">
@@ -1452,22 +1459,22 @@ div#Tools div.stygian stygian_resin label{border:;}
 			<td data-characterelement="dendro" data-characterpick="C">
 			<td data-characterelement="dendro">
 			<template id="DraftLocalLegend_charactertemplate_dendro">
-				<label data-status="0" data-character="064" data-rarity="5" data-weapon="sword"   ><span>アルハイゼン                               </span></label>
-				<label data-status="0" data-character="086" data-rarity="5" data-weapon="polearm" ><span>エミリエ                                   </span></label>
-				<label data-status="0" data-character="067" data-rarity="4" data-weapon="claymore"><span>カーヴェ                                   </span></label>
-				<label data-status="0" data-character="089" data-rarity="5" data-weapon="claymore"><span>キィニチ                                   </span></label>
-				<label data-status="0" data-character="069" data-rarity="4" data-weapon="sword"   ><span>綺良々<span>【自己付着】スキル</span>      </span></label>
-				<label data-status="0" data-character="053" data-rarity="4" data-weapon="bow"     ><span>コレイ                                     </span></label>
-				<label data-status="0" data-character="054" data-rarity="5" data-weapon="bow"     ><span>ティナリ                                   </span></label>
-				<label data-status="0" data-character="059" data-rarity="5" data-weapon="catalyst"><span>ナヒーダ                                   </span></label>
-				<label data-status="0" data-character="109" data-rarity="5" data-weapon="catalyst"><span>ネフェル                                   </span></label>
-				<label data-status="0" data-character="068" data-rarity="5" data-weapon="catalyst"><span>白朮                                       </span></label>
-				<label data-status="0" data-character="063" data-rarity="4" data-weapon="polearm" ><span>ヨォーヨ                                   </span></label>
-				<label data-status="0" data-character="105" data-rarity="5" data-weapon="catalyst"><span>ラウマ                                     </span></label>
-				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"   ><span>空                                         </span></label>
-				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
-				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"   ><span>ドール(男)                                 </span></label>
-				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"   ><span>ドール(女)                                 </span></label>
+				<label data-status="0" data-character="064" data-rarity="5" data-weapon="sword"    data-country="sumeru"   ><span>アルハイゼン                               </span></label>
+				<label data-status="0" data-character="086" data-rarity="5" data-weapon="polearm"  data-country="fontaine" ><span>エミリエ                                   </span></label>
+				<label data-status="0" data-character="067" data-rarity="4" data-weapon="claymore" data-country="sumeru"   ><span>カーヴェ                                   </span></label>
+				<label data-status="0" data-character="089" data-rarity="5" data-weapon="claymore" data-country="natlan"   ><span>キィニチ                                   </span></label>
+				<label data-status="0" data-character="069" data-rarity="4" data-weapon="sword"    data-country="inazuma"  ><span>綺良々<span>【自己付着】スキル</span>      </span></label>
+				<label data-status="0" data-character="053" data-rarity="4" data-weapon="bow"      data-country="sumeru"   ><span>コレイ                                     </span></label>
+				<label data-status="0" data-character="054" data-rarity="5" data-weapon="bow"      data-country="sumeru"   ><span>ティナリ                                   </span></label>
+				<label data-status="0" data-character="059" data-rarity="5" data-weapon="catalyst" data-country="sumeru"   ><span>ナヒーダ                                   </span></label>
+				<label data-status="0" data-character="109" data-rarity="5" data-weapon="catalyst" data-country="nodkrai"  ><span>ネフェル                                   </span></label>
+				<label data-status="0" data-character="068" data-rarity="5" data-weapon="catalyst" data-country="liyue"    ><span>白朮                                       </span></label>
+				<label data-status="0" data-character="063" data-rarity="4" data-weapon="polearm"  data-country="liyue"    ><span>ヨォーヨ                                   </span></label>
+				<label data-status="0" data-character="105" data-rarity="5" data-weapon="catalyst" data-country="nodkrai"  ><span>ラウマ                                     </span></label>
+				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>空                                         </span></label>
+				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>蛍                                         </span></label>
+				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>ドール(男)                                 </span></label>
+				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>ドール(女)                                 </span></label>
 			</template>
 		<tr style="background:var(--hydro-light);">
 			<td data-characterelement="hydro" data-characterpick="A">
@@ -1475,25 +1482,25 @@ div#Tools div.stygian stygian_resin label{border:;}
 			<td data-characterelement="hydro" data-characterpick="C">
 			<td data-characterelement="hydro">
 			<template id="DraftLocalLegend_charactertemplate_hydro">
-				<label data-status="0" data-character="104" data-rarity="4" data-weapon="claymore"><span>アイノ                                     </span></label>
-				<label data-status="0" data-character="050" data-rarity="5" data-weapon="bow"     ><span>夜蘭                                       </span></label>
-				<label data-status="0" data-character="049" data-rarity="5" data-weapon="sword"   ><span>神里綾人                                   </span></label>
-				<label data-status="0" data-character="056" data-rarity="4" data-weapon="polearm" ><span>キャンディス                               </span></label>
-				<label data-status="0" data-character="042" data-rarity="5" data-weapon="catalyst"><span>珊瑚宮心海<span>【自己付着】スキル</span>  </span></label>
-				<label data-status="0" data-character="085" data-rarity="5" data-weapon="bow"     ><span>シグウィン                                 </span></label>
-				<label data-status="0" data-character="101" data-rarity="4" data-weapon="sword"   ><span>ダリア                                     </span></label>
-				<label data-status="0" data-character="025" data-rarity="5" data-weapon="bow"     ><span>タルタリヤ                                 </span></label>
-				<label data-status="0" data-character="058" data-rarity="5" data-weapon="sword"   ><span>ニィロウ                                   </span></label>
-				<label data-status="0" data-character="073" data-rarity="5" data-weapon="catalyst"><span>ヌヴィレット                               </span></label>
-				<label data-status="0" data-character="006" data-rarity="4" data-weapon="catalyst"><span>バーバラ<span>【マルチ付着】スキル</span>  </span></label>
-				<label data-status="0" data-character="076" data-rarity="5" data-weapon="sword"   ><span>フリーナ                                   </span></label>
-				<label data-status="0" data-character="088" data-rarity="5" data-weapon="catalyst"><span>ムアラニ                                   </span></label>
-				<label data-status="0" data-character="020" data-rarity="5" data-weapon="catalyst"><span>モナ                                       </span></label>
-				<label data-status="0" data-character="010" data-rarity="4" data-weapon="sword"   ><span>行秋<span>【自己付着】スキル・爆発</span>  </span></label>
-				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"   ><span>空                                         </span></label>
-				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
-				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"   ><span>ドール(男)                                 </span></label>
-				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"   ><span>ドール(女)                                 </span></label>
+				<label data-status="0" data-character="104" data-rarity="4" data-weapon="claymore" data-country="nodkrai"  ><span>アイノ                                     </span></label>
+				<label data-status="0" data-character="050" data-rarity="5" data-weapon="bow"      data-country="liyue"    ><span>夜蘭                                       </span></label>
+				<label data-status="0" data-character="049" data-rarity="5" data-weapon="sword"    data-country="inazuma"  ><span>神里綾人                                   </span></label>
+				<label data-status="0" data-character="056" data-rarity="4" data-weapon="polearm"  data-country="sumeru"   ><span>キャンディス                               </span></label>
+				<label data-status="0" data-character="042" data-rarity="5" data-weapon="catalyst" data-country="inazuma"  ><span>珊瑚宮心海<span>【自己付着】スキル</span>  </span></label>
+				<label data-status="0" data-character="085" data-rarity="5" data-weapon="bow"      data-country="fontaine" ><span>シグウィン                                 </span></label>
+				<label data-status="0" data-character="101" data-rarity="4" data-weapon="sword"    data-country="mondstadt"><span>ダリア                                     </span></label>
+				<label data-status="0" data-character="025" data-rarity="5" data-weapon="bow"      data-country="snezhnaya"><span>タルタリヤ                                 </span></label>
+				<label data-status="0" data-character="058" data-rarity="5" data-weapon="sword"    data-country="sumeru"   ><span>ニィロウ                                   </span></label>
+				<label data-status="0" data-character="073" data-rarity="5" data-weapon="catalyst" data-country="fontaine" ><span>ヌヴィレット                               </span></label>
+				<label data-status="0" data-character="006" data-rarity="4" data-weapon="catalyst" data-country="mondstadt"><span>バーバラ<span>【マルチ付着】スキル</span>  </span></label>
+				<label data-status="0" data-character="076" data-rarity="5" data-weapon="sword"    data-country="fontaine" ><span>フリーナ                                   </span></label>
+				<label data-status="0" data-character="088" data-rarity="5" data-weapon="catalyst" data-country="natlan"   ><span>ムアラニ                                   </span></label>
+				<label data-status="0" data-character="020" data-rarity="5" data-weapon="catalyst" data-country="mondstadt"><span>モナ                                       </span></label>
+				<label data-status="0" data-character="010" data-rarity="4" data-weapon="sword"    data-country="liyue"    ><span>行秋<span>【自己付着】スキル・爆発</span>  </span></label>
+				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>空                                         </span></label>
+				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>蛍                                         </span></label>
+				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>ドール(男)                                 </span></label>
+				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>ドール(女)                                 </span></label>
 			</template>
 		<tr style="background:var(--pyro-light);">
 			<td data-characterelement="pyro" data-characterpick="A">
@@ -1501,29 +1508,29 @@ div#Tools div.stygian stygian_resin label{border:;}
 			<td data-characterelement="pyro" data-characterpick="C">
 			<td data-characterelement="pyro">
 			<template id="DraftLocalLegend_charactertemplate_pyro">
-				<label data-status="0" data-character="082" data-rarity="5" data-weapon="polearm" ><span>アルレッキーノ                             </span></label>
-				<label data-status="0" data-character="003" data-rarity="4" data-weapon="bow"     ><span>アンバー                                   </span></label>
-				<label data-status="0" data-character="033" data-rarity="4" data-weapon="catalyst"><span>煙緋                                       </span></label>
-				<label data-status="0" data-character="079" data-rarity="4" data-weapon="claymore"><span>嘉明                                       </span></label>
-				<label data-status="0" data-character="023" data-rarity="5" data-weapon="catalyst"><span>クレー                                     </span></label>
-				<label data-status="0" data-character="008" data-rarity="4" data-weapon="polearm" ><span>香菱                                       </span></label>
-				<label data-status="0" data-character="078" data-rarity="4" data-weapon="polearm" ><span>シュヴルーズ                               </span></label>
-				<label data-status="0" data-character="026" data-rarity="4" data-weapon="claymore"><span>辛炎<span>【自己付着】スキル・爆発</span>  </span></label>
-				<label data-status="0" data-character="065" data-rarity="5" data-weapon="claymore"><span>ディシア                                   </span></label>
-				<label data-status="0" data-character="018" data-rarity="5" data-weapon="claymore"><span>ディルック                                 </span></label>
+				<label data-status="0" data-character="082" data-rarity="5" data-weapon="polearm"  data-country="snezhnaya"><span>アルレッキーノ                             </span></label>
+				<label data-status="0" data-character="003" data-rarity="4" data-weapon="bow"      data-country="mondstadt"><span>アンバー                                   </span></label>
+				<label data-status="0" data-character="033" data-rarity="4" data-weapon="catalyst" data-country="liyue"    ><span>煙緋                                       </span></label>
+				<label data-status="0" data-character="079" data-rarity="4" data-weapon="claymore" data-country="liyue"    ><span>嘉明                                       </span></label>
+				<label data-status="0" data-character="023" data-rarity="5" data-weapon="catalyst" data-country="mondstadt"><span>クレー                                     </span></label>
+				<label data-status="0" data-character="008" data-rarity="4" data-weapon="polearm"  data-country="liyue"    ><span>香菱                                       </span></label>
+				<label data-status="0" data-character="078" data-rarity="4" data-weapon="polearm"  data-country="fontaine" ><span>シュヴルーズ                               </span></label>
+				<label data-status="0" data-character="026" data-rarity="4" data-weapon="claymore" data-country="liyue"    ><span>辛炎<span>【自己付着】スキル・爆発</span>  </span></label>
+				<label data-status="0" data-character="065" data-rarity="5" data-weapon="claymore" data-country="sumeru"   ><span>ディシア                                   </span></label>
+				<label data-status="0" data-character="018" data-rarity="5" data-weapon="claymore" data-country="mondstadt"><span>ディルック                                 </span></label>
 				<script>new Date()>=new Date('2025-12-03T10:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
-				<label data-status="0" data-character="111" data-rarity="5" data-weapon="sword"   ><span>ドゥリン                                   </span></label>
+				<label data-status="0" data-character="111" data-rarity="5" data-weapon="sword"    data-country="mondstadt"><span>ドゥリン                                   </span></label>
 				`)</script>
-				<label data-status="0" data-character="043" data-rarity="4" data-weapon="polearm" ><span>トーマ<span>【自己付着】スキル</span>      </span></label>
-				<label data-status="0" data-character="031" data-rarity="5" data-weapon="polearm" ><span>胡桃                                       </span></label>
-				<label data-status="0" data-character="013" data-rarity="4" data-weapon="sword"   ><span>ベネット<span>【マルチ付着】爆発</span>    </span></label>
-				<label data-status="0" data-character="094" data-rarity="5" data-weapon="claymore"><span>マーヴィカ                                 </span></label>
-				<label data-status="0" data-character="038" data-rarity="5" data-weapon="bow"     ><span>宵宮                                       </span></label>
-				<label data-status="0" data-character="071" data-rarity="5" data-weapon="bow"     ><span>リネ                                       </span></label>
-				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"   ><span>空                                         </span></label>
-				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"   ><span>蛍                                         </span></label>
-				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"   ><span>ドール(男)                                 </span></label>
-				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"   ><span>ドール(女)                                 </span></label>
+				<label data-status="0" data-character="043" data-rarity="4" data-weapon="polearm"  data-country="inazuma"  ><span>トーマ<span>【自己付着】スキル</span>      </span></label>
+				<label data-status="0" data-character="031" data-rarity="5" data-weapon="polearm"  data-country="liyue"    ><span>胡桃                                       </span></label>
+				<label data-status="0" data-character="013" data-rarity="4" data-weapon="sword"    data-country="mondstadt"><span>ベネット<span>【マルチ付着】爆発</span>    </span></label>
+				<label data-status="0" data-character="094" data-rarity="5" data-weapon="claymore" data-country="natlan"   ><span>マーヴィカ                                 </span></label>
+				<label data-status="0" data-character="038" data-rarity="5" data-weapon="bow"      data-country="inazuma"  ><span>宵宮                                       </span></label>
+				<label data-status="0" data-character="071" data-rarity="5" data-weapon="bow"      data-country="fontaine" ><span>リネ                                       </span></label>
+				<label data-status="0" data-character="001" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>空                                         </span></label>
+				<label data-status="0" data-character="002" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>蛍                                         </span></label>
+				<label data-status="0" data-character="107" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>ドール(男)                                 </span></label>
+				<label data-status="0" data-character="108" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>ドール(女)                                 </span></label>
 			</template>
 		<tr style="background:var(--cryo-light);">
 			<td data-characterelement="cryo" data-characterpick="A">
@@ -1531,24 +1538,24 @@ div#Tools div.stygian stygian_resin label{border:;}
 			<td data-characterelement="cryo" data-characterpick="C">
 			<td data-characterelement="cryo">
 			<template id="DraftLocalLegend_charactertemplate_cryo">
-				<label data-status="0" data-character="039" data-rarity="5" data-weapon="bow"     ><span>アーロイ                                   </span></label>
-				<label data-status="0" data-character="034" data-rarity="5" data-weapon="claymore"><span>エウルア                                   </span></label>
-				<label data-status="0" data-character="100" data-rarity="5" data-weapon="polearm" ><span>エスコフィエ                               </span></label>
-				<label data-status="0" data-character="004" data-rarity="4" data-weapon="sword"   ><span>ガイア                                     </span></label>
-				<label data-status="0" data-character="036" data-rarity="5" data-weapon="sword"   ><span>神里綾華                                   </span></label>
-				<label data-status="0" data-character="029" data-rarity="5" data-weapon="bow"     ><span>甘雨                                       </span></label>
-				<label data-status="0" data-character="093" data-rarity="5" data-weapon="catalyst"><span>シトラリ<span>【自己付着】スキル</span>    </span></label>
-				<label data-status="0" data-character="075" data-rarity="4" data-weapon="catalyst"><span>シャルロット                               </span></label>
-				<label data-status="0" data-character="047" data-rarity="5" data-weapon="polearm" ><span>申鶴                                       </span></label>
-				<label data-status="0" data-character="102" data-rarity="5" data-weapon="sword"   ><span>スカーク                                   </span></label>
-				<label data-status="0" data-character="015" data-rarity="4" data-weapon="claymore"><span>重雲                                       </span></label>
-				<label data-status="0" data-character="024" data-rarity="4" data-weapon="bow"     ><span>ディオナ<span>【マルチ付着】スキル</span>  </span></label>
-				<label data-status="0" data-character="019" data-rarity="5" data-weapon="sword"   ><span>七七                                       </span></label>
-				<label data-status="0" data-character="072" data-rarity="4" data-weapon="claymore"><span>フレミネ                                   </span></label>
-				<label data-status="0" data-character="066" data-rarity="4" data-weapon="polearm" ><span>ミカ                                       </span></label>
-				<label data-status="0" data-character="074" data-rarity="5" data-weapon="catalyst"><span>リオセスリ                                 </span></label>
-				<label data-status="0" data-character="060" data-rarity="4" data-weapon="sword"   ><span>レイラ<span>【マルチ付着】スキル</span>    </span></label>
-				<label data-status="0" data-character="032" data-rarity="4" data-weapon="polearm" ><span>ロサリア                                   </span></label>
+				<label data-status="0" data-character="039" data-rarity="5" data-weapon="bow"      data-country="outside"  ><span>アーロイ                                   </span></label>
+				<label data-status="0" data-character="034" data-rarity="5" data-weapon="claymore" data-country="mondstadt"><span>エウルア                                   </span></label>
+				<label data-status="0" data-character="100" data-rarity="5" data-weapon="polearm"  data-country="fontaine" ><span>エスコフィエ                               </span></label>
+				<label data-status="0" data-character="004" data-rarity="4" data-weapon="sword"    data-country="mondstadt"><span>ガイア                                     </span></label>
+				<label data-status="0" data-character="036" data-rarity="5" data-weapon="sword"    data-country="inazuma"  ><span>神里綾華                                   </span></label>
+				<label data-status="0" data-character="029" data-rarity="5" data-weapon="bow"      data-country="liyue"    ><span>甘雨                                       </span></label>
+				<label data-status="0" data-character="093" data-rarity="5" data-weapon="catalyst" data-country="natlan"   ><span>シトラリ<span>【自己付着】スキル</span>    </span></label>
+				<label data-status="0" data-character="075" data-rarity="4" data-weapon="catalyst" data-country="fontaine" ><span>シャルロット                               </span></label>
+				<label data-status="0" data-character="047" data-rarity="5" data-weapon="polearm"  data-country="liyue"    ><span>申鶴                                       </span></label>
+				<label data-status="0" data-character="102" data-rarity="5" data-weapon="sword"    data-country="outside"  ><span>スカーク                                   </span></label>
+				<label data-status="0" data-character="015" data-rarity="4" data-weapon="claymore" data-country="liyue"    ><span>重雲                                       </span></label>
+				<label data-status="0" data-character="024" data-rarity="4" data-weapon="bow"      data-country="mondstadt"><span>ディオナ<span>【マルチ付着】スキル</span>  </span></label>
+				<label data-status="0" data-character="019" data-rarity="5" data-weapon="sword"    data-country="liyue"    ><span>七七                                       </span></label>
+				<label data-status="0" data-character="072" data-rarity="4" data-weapon="claymore" data-country="fontaine" ><span>フレミネ                                   </span></label>
+				<label data-status="0" data-character="066" data-rarity="4" data-weapon="polearm"  data-country="mondstadt"><span>ミカ                                       </span></label>
+				<label data-status="0" data-character="074" data-rarity="5" data-weapon="catalyst" data-country="fontaine" ><span>リオセスリ                                 </span></label>
+				<label data-status="0" data-character="060" data-rarity="4" data-weapon="sword"    data-country="sumeru"   ><span>レイラ<span>【マルチ付着】スキル</span>    </span></label>
+				<label data-status="0" data-character="032" data-rarity="4" data-weapon="polearm"  data-country="mondstadt"><span>ロサリア                                   </span></label>
 			</template>
 		<tr style="text-align:center;">
 			<td colspan="6">
@@ -1721,6 +1728,55 @@ div#Tools div.stygian stygian_resin label{border:;}
 				<div style="display:flex;">
 					<input type="button" id="DraftLocalLegend_ElementReaction" value="抽選" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
 					<div id="DraftLocalLegend_ElementReactionResult" style="white-space:pre-wrap;margin:0.5rem 0.5rem 0.5rem 0;"></div>
+				</div>
+			</div>
+			<div>
+				<div style="margin:1rem;text-align:center;">国別抽選機</div>
+				<table border="1" style="margin:auto;">
+					<tr><td>選択肢1/1P<td>
+						<label><input type="checkbox" data-country="A" data-countrynumber="11" class="checkbox-anemolight"  ><span>モンド</span></label>
+						<label><input type="checkbox" data-country="A" data-countrynumber="12" class="checkbox-geolight"    ><span>璃月</span></label>
+						<label><input type="checkbox" data-country="A" data-countrynumber="13" class="checkbox-electrolight"><span>稲妻</span></label>
+						<label><input type="checkbox" data-country="A" data-countrynumber="14" class="checkbox-dendrolight" ><span>スメール</span></label>
+						<label><input type="checkbox" data-country="A" data-countrynumber="15" class="checkbox-hydrolight"  ><span>フォンテーヌ</span></label>
+						<label><input type="checkbox" data-country="A" data-countrynumber="16" class="checkbox-pyrolight"   ><span>ナタ</span></label>
+						<label><input type="checkbox" data-country="A" data-countrynumber="17" class="checkbox-hydrolight"  ><span>ナド・クライ</span></label>
+						<label><input type="checkbox" data-country="A" data-countrynumber="18" class="checkbox-cryolight"   ><span>スネージナヤ</span></label>
+						<label><input type="checkbox" data-country="A" data-countrynumber="19" class="checkbox"             ><span>外の世界</span></label>
+					<tr><td>選択肢2/2P<td>
+						<label><input type="checkbox" data-country="B" data-countrynumber="21" class="checkbox-anemolight"  ><span>モンド</span></label>
+						<label><input type="checkbox" data-country="B" data-countrynumber="22" class="checkbox-geolight"    ><span>璃月</span></label>
+						<label><input type="checkbox" data-country="B" data-countrynumber="23" class="checkbox-electrolight"><span>稲妻</span></label>
+						<label><input type="checkbox" data-country="B" data-countrynumber="24" class="checkbox-dendrolight" ><span>スメール</span></label>
+						<label><input type="checkbox" data-country="B" data-countrynumber="25" class="checkbox-hydrolight"  ><span>フォンテーヌ</span></label>
+						<label><input type="checkbox" data-country="B" data-countrynumber="26" class="checkbox-pyrolight"   ><span>ナタ</span></label>
+						<label><input type="checkbox" data-country="B" data-countrynumber="27" class="checkbox-hydrolight"  ><span>ナド・クライ</span></label>
+						<label><input type="checkbox" data-country="B" data-countrynumber="28" class="checkbox-cryolight"   ><span>スネージナヤ</span></label>
+						<label><input type="checkbox" data-country="B" data-countrynumber="29" class="checkbox"             ><span>外の世界</span></label>
+					<tr><td>選択肢3/3P<td>
+						<label><input type="checkbox" data-country="C" data-countrynumber="31" class="checkbox-anemolight"  ><span>モンド</span></label>
+						<label><input type="checkbox" data-country="C" data-countrynumber="32" class="checkbox-geolight"    ><span>璃月</span></label>
+						<label><input type="checkbox" data-country="C" data-countrynumber="33" class="checkbox-electrolight"><span>稲妻</span></label>
+						<label><input type="checkbox" data-country="C" data-countrynumber="34" class="checkbox-dendrolight" ><span>スメール</span></label>
+						<label><input type="checkbox" data-country="C" data-countrynumber="35" class="checkbox-hydrolight"  ><span>フォンテーヌ</span></label>
+						<label><input type="checkbox" data-country="C" data-countrynumber="36" class="checkbox-pyrolight"   ><span>ナタ</span></label>
+						<label><input type="checkbox" data-country="C" data-countrynumber="37" class="checkbox-hydrolight"  ><span>ナド・クライ</span></label>
+						<label><input type="checkbox" data-country="C" data-countrynumber="38" class="checkbox-cryolight"   ><span>スネージナヤ</span></label>
+						<label><input type="checkbox" data-country="C" data-countrynumber="39" class="checkbox"             ><span>外の世界</span></label>
+					<tr><td>選択肢4/4P<td>
+						<label><input type="checkbox" data-country="D" data-countrynumber="41" class="checkbox-anemolight"  ><span>モンド</span></label>
+						<label><input type="checkbox" data-country="D" data-countrynumber="42" class="checkbox-geolight"    ><span>璃月</span></label>
+						<label><input type="checkbox" data-country="D" data-countrynumber="43" class="checkbox-electrolight"><span>稲妻</span></label>
+						<label><input type="checkbox" data-country="D" data-countrynumber="44" class="checkbox-dendrolight" ><span>スメール</span></label>
+						<label><input type="checkbox" data-country="D" data-countrynumber="45" class="checkbox-hydrolight"  ><span>フォンテーヌ</span></label>
+						<label><input type="checkbox" data-country="D" data-countrynumber="46" class="checkbox-pyrolight"   ><span>ナタ</span></label>
+						<label><input type="checkbox" data-country="D" data-countrynumber="47" class="checkbox-hydrolight"  ><span>ナド・クライ</span></label>
+						<label><input type="checkbox" data-country="D" data-countrynumber="48" class="checkbox-cryolight"   ><span>スネージナヤ</span></label>
+						<label><input type="checkbox" data-country="D" data-countrynumber="49" class="checkbox"             ><span>外の世界</span></label>
+				</table>
+				<div style="display:flex;">
+					<input type="button" id="DraftLocalLegend_Country" value="抽選" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
+					<div id="DraftLocalLegend_CountryResult" style="white-space:pre-wrap;margin:0.5rem 0.5rem 0.5rem 0;"></div>
 				</div>
 			</div>
 		</div>
@@ -2541,6 +2597,32 @@ const cryoToggle = document.getElementById('ElementCryoToggle');
   if (el) el.addEventListener('change', updateVisibility);
 });
 
+// ▼▼▼国別絞り込み（存在チェック付き）▼▼▼
+const mondstadtToggle = document.getElementById('CountryMondstadtToggle');
+const liyueToggle = document.getElementById('CountryLiyueToggle');
+const inazumaToggle = document.getElementById('CountryInazumaToggle');
+const sumeruToggle = document.getElementById('CountrySumeruToggle');
+const fontaineToggle = document.getElementById('CountryFontaineToggle');
+const natlanToggle = document.getElementById('CountryNatlanToggle');
+const nodkraiToggle = document.getElementById('CountryNodkraiToggle');
+const snezhnayaToggle = document.getElementById('CountrySnezhnayaToggle');
+const outsideToggle = document.getElementById('CountryOutsideToggle');
+
+[
+  'CountryMondstadtToggle',
+  'CountryLiyueToggle',
+  'CountryInazumaToggle',
+  'CountrySumeruToggle',
+  'CountryFontaineToggle',
+  'CountryNatlanToggle',
+  'CountryNodkraiToggle',
+  'CountrySnezhnayaToggle',
+  'CountryOutsideToggle'
+].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('change', updateVisibility);
+});
+
 // ▼▼▼ドラフト地方伝説　マイリスト機能▼▼▼
 const usernameInput = document.getElementById('DraftLocalLegend_usernameInput');
 const loginButton = document.getElementById('DraftLocalLegend_loginButton');
@@ -2595,6 +2677,9 @@ function updateVisibility() {
   const allElementUnchecked =
     !(anemoToggle?.checked || geoToggle?.checked || electroToggle?.checked || dendroToggle?.checked || hydroToggle?.checked || pyroToggle?.checked || cryoToggle?.checked);
 
+  const allCountryUnchecked =
+    !(mondstadtToggle?.checked || liyueToggle?.checked || inazumaToggle?.checked || sumeruToggle?.checked || fontaineToggle?.checked || natlanToggle?.checked || nodkraiToggle?.checked || snezhnayaToggle?.checked || outsideToggle?.checked);
+
   const lists = [
     { value: characterlistA.value, pick: 'A' },
     { value: characterlistB.value, pick: 'B' },
@@ -2607,8 +2692,10 @@ function updateVisibility() {
     const innerSpans = label.querySelectorAll('span');
     if (!primarySpan) return;
 
+    const td = label.closest('td');
+
     // ----- 武器判定 -----
-    let weaponMatch = false; // 初期値false
+    let weaponMatch = false;
     const weapon = label.dataset.weapon;
     if (!allWeaponUnchecked) {
       if (weapon === 'sword' && swordToggle?.checked) weaponMatch = true;
@@ -2619,8 +2706,7 @@ function updateVisibility() {
     }
 
     // ----- 元素判定 -----
-    let elementMatch = false; // 初期値false
-    const td = label.closest('td');
+    let elementMatch = false;
     if (!allElementUnchecked && td) {
       const charElement = td.dataset.characterelement;
       if (charElement === 'anemo' && anemoToggle?.checked) elementMatch = true;
@@ -2630,6 +2716,21 @@ function updateVisibility() {
       if (charElement === 'hydro' && hydroToggle?.checked) elementMatch = true;
       if (charElement === 'pyro' && pyroToggle?.checked) elementMatch = true;
       if (charElement === 'cryo' && cryoToggle?.checked) elementMatch = true;
+    }
+
+    // ----- 国判定 -----
+    let countryMatch = false;
+    const country = label.dataset.country;
+    if (!allCountryUnchecked) {
+      if (country === 'mondstadt' && mondstadtToggle?.checked) countryMatch = true;
+      if (country === 'liyue' && liyueToggle?.checked) countryMatch = true;
+      if (country === 'inazuma' && inazumaToggle?.checked) countryMatch = true;
+      if (country === 'sumeru' && sumeruToggle?.checked) countryMatch = true;
+      if (country === 'fontaine' && fontaineToggle?.checked) countryMatch = true;
+      if (country === 'natlan' && natlanToggle?.checked) countryMatch = true;
+      if (country === 'nodkrai' && nodkraiToggle?.checked) countryMatch = true;
+      if (country === 'snezhnaya' && snezhnayaToggle?.checked) countryMatch = true;
+      if (country === 'outside' && outsideToggle?.checked) countryMatch = true;
     }
 
     // ----- マイリスト判定 -----
@@ -2648,31 +2749,29 @@ function updateVisibility() {
     label.style.display = pickVisible ? '' : 'none';
 
     // ---- 絞り込みなしならリセット ----
-    if (allWeaponUnchecked && allElementUnchecked) {
+    if (allWeaponUnchecked && allElementUnchecked && allCountryUnchecked) {
       primarySpan.style.border = '';
       primarySpan.style.fontSize = '';
       innerSpans.forEach(span => span.style.opacity = '');
       return;
     }
 
-    if ((!allWeaponUnchecked && weaponMatch) || (!allElementUnchecked && elementMatch)) {
-      // ---- 強調ラベル ----
+    if (
+      (!allWeaponUnchecked && weaponMatch) ||
+      (!allElementUnchecked && elementMatch) ||
+      (!allCountryUnchecked && countryMatch)
+    ) {
       primarySpan.style.border = '4px solid #f92';
       primarySpan.style.fontSize = '';
       innerSpans.forEach(span => {
         span.style.opacity = '1';
         span.style.color = '';
       });
-
     } else {
-
-      // ---- 非強調ラベル ----
       primarySpan.style.border = '';
       primarySpan.style.fontSize = '10px';
 
       const status = label.dataset.status;
-
-      // data-status に応じて opacity を決定（JSのみ）
       if (status === '0') {
         innerSpans.forEach(span => {
           span.style.opacity = '0.2';
@@ -3086,6 +3185,69 @@ onValue(ref(db, 'DraftLocalLegend/option/elemental_reactions/result'), snapshot 
   const val = snapshot.val();
   if (val !== null) {
     reactionResultDiv.innerHTML = val;
+  }
+});
+
+//■■■国別抽選機■■■
+// DOM 要素
+const drawCountryButton = document.getElementById('DraftLocalLegend_Country');
+const countryResultDiv   = document.getElementById('DraftLocalLegend_CountryResult');
+const countryCheckboxes  = document.querySelectorAll('input[type="checkbox"][data-country]');
+
+// チェックボックスの状態を Firebase に保存＆リアルタイム反映
+countryCheckboxes.forEach(cb => {
+  // data-countrynumber を取得
+  const number = cb.dataset.countrynumber;
+
+  // クリック時に Firebase 更新
+  cb.addEventListener('change', () => {
+    set(ref(db, `DraftLocalLegend/option/country/checkbox/${number}`), cb.checked);
+  });
+
+  // Firebase からのリアルタイム更新
+  onValue(ref(db, `DraftLocalLegend/option/country/checkbox/${number}`), snapshot => {
+    const val = snapshot.val();
+    cb.checked = !!val;
+  });
+});
+
+// 抽選ボタン
+drawCountryButton.addEventListener('click', () => {
+  const groups = ['A', 'B', 'C', 'D'];
+  const results = [];
+
+  groups.forEach(gr => {
+    const groupCheckboxes = Array.from(document.querySelectorAll(`input[type="checkbox"][data-country="${gr}"]`));
+    const checked = groupCheckboxes.filter(cb => cb.checked);
+
+    if (checked.length > 0) {
+      const random = checked[Math.floor(Math.random() * checked.length)];
+      const span = random.parentElement.querySelector('span');
+      results.push(span ? span.textContent : '○');
+    }
+  });
+
+  let htmlString;
+  if (results.length === 0) {
+    htmlString = `<p style="margin-top:1.5rem;">武器種を選択してください。</p>`;
+  } else {
+    const joined = results.join(' / ');
+    htmlString =
+      `<p style="margin-top:1.5rem;">${joined}</p>`;
+  }
+
+  // DOM に反映
+  countryResultDiv.innerHTML = htmlString;
+
+  // Firebase に保存
+  set(ref(db, 'DraftLocalLegend/option/country/result'), htmlString);
+});
+
+// 抽選結果のリアルタイム更新
+onValue(ref(db, 'DraftLocalLegend/option/country/result'), snapshot => {
+  const val = snapshot.val();
+  if (val !== null) {
+    countryResultDiv.innerHTML = val;
   }
 });
 
@@ -3775,6 +3937,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.34.0<span>2025/12/29</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】キャラクターリストに国別絞り込みの仕様を追加しました</p>
+		<p>【ドラフト地方伝説】国別抽選機を追加しました</p>
+	</div>
 
 	<div class="version">v1.33.0<span>2025/12/09</span></div>
 	<div class="details">
