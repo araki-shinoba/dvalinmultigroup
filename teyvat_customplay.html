@@ -9,6 +9,7 @@
   --pyro-light   :#ecc;--pyro-dark   :#844;
   --cryo-light   :#cee;--cryo-dark   :#488;
   --lunar-light  :#cce;--lunar-dark  :#448;
+  --none-light   :#ccc;--none-dark   :#444;
 }
 
 /*▼▼▼共通▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
@@ -42,6 +43,7 @@ input.checkbox-hydrolight:checked   ~ span{background:var(--hydro-light  );}
 input.checkbox-pyrolight:checked    ~ span{background:var(--pyro-light   );}
 input.checkbox-cryolight:checked    ~ span{background:var(--cryo-light   );}
 input.checkbox-lunarlight:checked   ~ span{background:var(--lunar-light  );}
+input.checkbox-nonelight:checked    ~ span{background:var(--none-light   );}
 
 .background-anemo   input ~ span{background:var(--anemo-light  );} .background-anemo   input:checked ~ span{background:var(--anemo-dark  );color:#fff;}
 .background-geo     input ~ span{background:var(--geo-light    );} .background-geo     input:checked ~ span{background:var(--geo-dark    );color:#fff;}
@@ -1648,29 +1650,29 @@ div#Tools div.stygian stygian_resin label{border:;}
 				</div>
 				<table border="1" style="margin:auto;">
 					<tr><td>選択肢1/1P<td>
-						<label><input type="checkbox" data-weapon="A" data-weaponnumber="11" class="checkbox"><span>片手剣</span></label>
-						<label><input type="checkbox" data-weapon="A" data-weaponnumber="12" class="checkbox"><span>両手剣</span></label>
-						<label><input type="checkbox" data-weapon="A" data-weaponnumber="13" class="checkbox"><span>長柄武器</span></label>
-						<label><input type="checkbox" data-weapon="A" data-weaponnumber="14" class="checkbox"><span>法器</span></label>
-						<label><input type="checkbox" data-weapon="A" data-weaponnumber="15" class="checkbox"><span>弓</span></label>
+						<label><input type="checkbox" data-weapon="A" data-weaponnumber="11" class="checkbox-nonelight"><span>片手剣</span></label>
+						<label><input type="checkbox" data-weapon="A" data-weaponnumber="12" class="checkbox-nonelight"><span>両手剣</span></label>
+						<label><input type="checkbox" data-weapon="A" data-weaponnumber="13" class="checkbox-nonelight"><span>長柄武器</span></label>
+						<label><input type="checkbox" data-weapon="A" data-weaponnumber="14" class="checkbox-nonelight"><span>法器</span></label>
+						<label><input type="checkbox" data-weapon="A" data-weaponnumber="15" class="checkbox-nonelight"><span>弓</span></label>
 					<tr><td>選択肢2/2P<td>
-						<label><input type="checkbox" data-weapon="B" data-weaponnumber="21" class="checkbox"><span>片手剣</span></label>
-						<label><input type="checkbox" data-weapon="B" data-weaponnumber="22" class="checkbox"><span>両手剣</span></label>
-						<label><input type="checkbox" data-weapon="B" data-weaponnumber="23" class="checkbox"><span>長柄武器</span></label>
-						<label><input type="checkbox" data-weapon="B" data-weaponnumber="24" class="checkbox"><span>法器</span></label>
-						<label><input type="checkbox" data-weapon="B" data-weaponnumber="25" class="checkbox"><span>弓</span></label>
+						<label><input type="checkbox" data-weapon="B" data-weaponnumber="21" class="checkbox-nonelight"><span>片手剣</span></label>
+						<label><input type="checkbox" data-weapon="B" data-weaponnumber="22" class="checkbox-nonelight"><span>両手剣</span></label>
+						<label><input type="checkbox" data-weapon="B" data-weaponnumber="23" class="checkbox-nonelight"><span>長柄武器</span></label>
+						<label><input type="checkbox" data-weapon="B" data-weaponnumber="24" class="checkbox-nonelight"><span>法器</span></label>
+						<label><input type="checkbox" data-weapon="B" data-weaponnumber="25" class="checkbox-nonelight"><span>弓</span></label>
 					<tr><td>選択肢3/3P<td>
-						<label><input type="checkbox" data-weapon="C" data-weaponnumber="31" class="checkbox"><span>片手剣</span></label>
-						<label><input type="checkbox" data-weapon="C" data-weaponnumber="32" class="checkbox"><span>両手剣</span></label>
-						<label><input type="checkbox" data-weapon="C" data-weaponnumber="33" class="checkbox"><span>長柄武器</span></label>
-						<label><input type="checkbox" data-weapon="C" data-weaponnumber="34" class="checkbox"><span>法器</span></label>
-						<label><input type="checkbox" data-weapon="C" data-weaponnumber="35" class="checkbox"><span>弓</span></label>
+						<label><input type="checkbox" data-weapon="C" data-weaponnumber="31" class="checkbox-nonelight"><span>片手剣</span></label>
+						<label><input type="checkbox" data-weapon="C" data-weaponnumber="32" class="checkbox-nonelight"><span>両手剣</span></label>
+						<label><input type="checkbox" data-weapon="C" data-weaponnumber="33" class="checkbox-nonelight"><span>長柄武器</span></label>
+						<label><input type="checkbox" data-weapon="C" data-weaponnumber="34" class="checkbox-nonelight"><span>法器</span></label>
+						<label><input type="checkbox" data-weapon="C" data-weaponnumber="35" class="checkbox-nonelight"><span>弓</span></label>
 					<tr><td>選択肢4/4P<td>
-						<label><input type="checkbox" data-weapon="D" data-weaponnumber="41" class="checkbox"><span>片手剣</span></label>
-						<label><input type="checkbox" data-weapon="D" data-weaponnumber="42" class="checkbox"><span>両手剣</span></label>
-						<label><input type="checkbox" data-weapon="D" data-weaponnumber="43" class="checkbox"><span>長柄武器</span></label>
-						<label><input type="checkbox" data-weapon="D" data-weaponnumber="44" class="checkbox"><span>法器</span></label>
-						<label><input type="checkbox" data-weapon="D" data-weaponnumber="45" class="checkbox"><span>弓</span></label>
+						<label><input type="checkbox" data-weapon="D" data-weaponnumber="41" class="checkbox-nonelight"><span>片手剣</span></label>
+						<label><input type="checkbox" data-weapon="D" data-weaponnumber="42" class="checkbox-nonelight"><span>両手剣</span></label>
+						<label><input type="checkbox" data-weapon="D" data-weaponnumber="43" class="checkbox-nonelight"><span>長柄武器</span></label>
+						<label><input type="checkbox" data-weapon="D" data-weaponnumber="44" class="checkbox-nonelight"><span>法器</span></label>
+						<label><input type="checkbox" data-weapon="D" data-weaponnumber="45" class="checkbox-nonelight"><span>弓</span></label>
 				</table>
 				<div style="display:flex;">
 					<input type="button" id="DraftLocalLegend_Weapon" value="抽選" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
@@ -1742,7 +1744,7 @@ div#Tools div.stygian stygian_resin label{border:;}
 						<label><input type="checkbox" data-country="A" data-countrynumber="16" class="checkbox-pyrolight"   ><span>ナタ</span></label>
 						<label><input type="checkbox" data-country="A" data-countrynumber="17" class="checkbox-hydrolight"  ><span>ナド・クライ</span></label>
 						<label><input type="checkbox" data-country="A" data-countrynumber="18" class="checkbox-cryolight"   ><span>スネージナヤ</span></label>
-						<label><input type="checkbox" data-country="A" data-countrynumber="19" class="checkbox"             ><span>外の世界</span></label>
+						<label><input type="checkbox" data-country="A" data-countrynumber="19" class="checkbox-nonelight"   ><span>外の世界</span></label>
 					<tr><td>選択肢2/2P<td>
 						<label><input type="checkbox" data-country="B" data-countrynumber="21" class="checkbox-anemolight"  ><span>モンド</span></label>
 						<label><input type="checkbox" data-country="B" data-countrynumber="22" class="checkbox-geolight"    ><span>璃月</span></label>
@@ -1752,7 +1754,7 @@ div#Tools div.stygian stygian_resin label{border:;}
 						<label><input type="checkbox" data-country="B" data-countrynumber="26" class="checkbox-pyrolight"   ><span>ナタ</span></label>
 						<label><input type="checkbox" data-country="B" data-countrynumber="27" class="checkbox-hydrolight"  ><span>ナド・クライ</span></label>
 						<label><input type="checkbox" data-country="B" data-countrynumber="28" class="checkbox-cryolight"   ><span>スネージナヤ</span></label>
-						<label><input type="checkbox" data-country="B" data-countrynumber="29" class="checkbox"             ><span>外の世界</span></label>
+						<label><input type="checkbox" data-country="B" data-countrynumber="29" class="checkbox-nonelight"   ><span>外の世界</span></label>
 					<tr><td>選択肢3/3P<td>
 						<label><input type="checkbox" data-country="C" data-countrynumber="31" class="checkbox-anemolight"  ><span>モンド</span></label>
 						<label><input type="checkbox" data-country="C" data-countrynumber="32" class="checkbox-geolight"    ><span>璃月</span></label>
@@ -1762,7 +1764,7 @@ div#Tools div.stygian stygian_resin label{border:;}
 						<label><input type="checkbox" data-country="C" data-countrynumber="36" class="checkbox-pyrolight"   ><span>ナタ</span></label>
 						<label><input type="checkbox" data-country="C" data-countrynumber="37" class="checkbox-hydrolight"  ><span>ナド・クライ</span></label>
 						<label><input type="checkbox" data-country="C" data-countrynumber="38" class="checkbox-cryolight"   ><span>スネージナヤ</span></label>
-						<label><input type="checkbox" data-country="C" data-countrynumber="39" class="checkbox"             ><span>外の世界</span></label>
+						<label><input type="checkbox" data-country="C" data-countrynumber="39" class="checkbox-nonelight"   ><span>外の世界</span></label>
 					<tr><td>選択肢4/4P<td>
 						<label><input type="checkbox" data-country="D" data-countrynumber="41" class="checkbox-anemolight"  ><span>モンド</span></label>
 						<label><input type="checkbox" data-country="D" data-countrynumber="42" class="checkbox-geolight"    ><span>璃月</span></label>
@@ -1772,7 +1774,7 @@ div#Tools div.stygian stygian_resin label{border:;}
 						<label><input type="checkbox" data-country="D" data-countrynumber="46" class="checkbox-pyrolight"   ><span>ナタ</span></label>
 						<label><input type="checkbox" data-country="D" data-countrynumber="47" class="checkbox-hydrolight"  ><span>ナド・クライ</span></label>
 						<label><input type="checkbox" data-country="D" data-countrynumber="48" class="checkbox-cryolight"   ><span>スネージナヤ</span></label>
-						<label><input type="checkbox" data-country="D" data-countrynumber="49" class="checkbox"             ><span>外の世界</span></label>
+						<label><input type="checkbox" data-country="D" data-countrynumber="49" class="checkbox-nonelight"   ><span>外の世界</span></label>
 				</table>
 				<div style="display:flex;">
 					<input type="button" id="DraftLocalLegend_Country" value="抽選" style="width:80px;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
@@ -3937,6 +3939,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.34.1<span>2025/12/29</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】武器種抽選機の配色を修正しました</p>
+		<p>【ドラフト地方伝説】国別抽選機の配色を修正しました</p>
+	</div>
 
 	<div class="version">v1.34.0<span>2025/12/29</span></div>
 	<div class="details">
