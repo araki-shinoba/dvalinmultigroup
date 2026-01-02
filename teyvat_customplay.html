@@ -249,10 +249,12 @@ div#DraftLocalLegend div.DraftLocalLegend_Savedatalist div.savefile > div:nth-ch
 /*        水  氷  */label input.frozen:checked              ~ span{background:linear-gradient(160deg,var(--hydro-light)   49%,var(--cryo-light)    51%);}
 /*          炎氷  */label input.melt:checked                ~ span{background:linear-gradient(160deg,var(--pyro-light)    49%,var(--cryo-light)    51%);}
 
+#DraftLocalLegend .DraftLocalLegend_CharacterRechargeCounter td{height:1.5rem;}
+#DraftLocalLegend .DraftLocalLegend_CharacterRechargeCounter td input{width:1.5rem;}
+#DraftLocalLegend .DraftLocalLegend_CharacterRechargeCounter td span{display:inline-block;width:3rem;}
 /*▼▼▼便利ツール▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
 div#Tools div.stygian div.resin_date input:nth-child(1){width:3rem;}
 div#Tools div.stygian input{padding:0.25rem;border:1px solid #888;text-align:center;border-radius:4px;width:2rem;}
-div#Tools div.stygian stygian_resin label{border:;}
 
 </style></head><body>
 
@@ -844,7 +846,6 @@ div#Tools div.stygian stygian_resin label{border:;}
 				<tr><td>鹿野院平蔵    <td>【固有天賦】チーム全員がダッシュに消費するスタミナ-20%
 				<tr><td>&#39752;      <td>【固有天賦】チーム全員が登りに消費するスタミナ-20%
 				<tr><td>ダリア        <td>【固有天賦】日中(6時から18時まで)、チーム内の自身のキャラクターの移動速度+10%
-				<tr><td>ディシア      <td>【固有天賦】日中(6時から18時まで)、チーム内の自身のキャラクターの移動速度+10%
 				<tr><td>フレミネ      <td>【固有天賦】チーム全員の水中スタミナ消費-35%
 				<tr><td>レザー        <td>【固有天賦】チーム全員がダッシュに消費するスタミナ-20%
 			</table>
@@ -854,6 +855,7 @@ div#Tools div.stygian stygian_resin label{border:;}
 				<tr><td>キャンディス  <td>【固有天賦】チーム全員が登りに消費するスタミナ-20%
 				<tr><td>ジン          <td>【2凸】元素オーブ・元素粒子獲得時に移動速度+15%、継続時間15秒
 				<tr><td>申鶴          <td>【1凸】スキル使用可能回数+1
+				<tr><td>ディシア      <td>【固有天賦】日中(6時から18時まで)、チーム内の自身のキャラクターの移動速度+10%
 				<tr><td>北斗          <td>【固有天賦】チーム全員が泳ぎに消費するスタミナ-20%
 				<tr><td>ロサリア      <td>【固有天賦】夜間(18時から6時まで)、チーム内の自身のキャラクターの移動速度+10%
 			</table>
@@ -1335,29 +1337,29 @@ div#Tools div.stygian stygian_resin label{border:;}
 		</colgroup>
 		<tr><th colspan="4" style="text-align:center;font-size:1.5rem;padding:0.5rem;background:#444;color:#fff;">キャラクターリスト(すべて五十音順)
 		<tr><td colspan="4" style="text-align:center;">
-			<label><input type="checkbox" id="DetailToggle"         checked class="checkbox"><span>詳細情報の表示</span></label>
-			<label><input type="checkbox" id="DollToggle"                   class="checkbox"><span>ドールの表示  </span></label><br>
-			<label><input type="checkbox" id="ElementAnemoToggle"           class="checkbox"><span>風            </span></label>
-			<label><input type="checkbox" id="ElementGeoToggle"             class="checkbox"><span>岩            </span></label>
-			<label><input type="checkbox" id="ElementElectroToggle"         class="checkbox"><span>雷            </span></label>
-			<label><input type="checkbox" id="ElementDendroToggle"          class="checkbox"><span>草            </span></label>
-			<label><input type="checkbox" id="ElementHydroToggle"           class="checkbox"><span>水            </span></label>
-			<label><input type="checkbox" id="ElementPyroToggle"            class="checkbox"><span>炎            </span></label>
-			<label><input type="checkbox" id="ElementCryoToggle"            class="checkbox"><span>氷            </span></label><br>
-			<label><input type="checkbox" id="WeaponSwordToggle"            class="checkbox"><span>片手剣        </span></label>
-			<label><input type="checkbox" id="WeaponClaymoreToggle"         class="checkbox"><span>両手剣        </span></label>
-			<label><input type="checkbox" id="WeaponPolearmToggle"          class="checkbox"><span>長柄武器      </span></label>
-			<label><input type="checkbox" id="WeaponCatalystToggle"         class="checkbox"><span>法器          </span></label>
-			<label><input type="checkbox" id="WeaponBowToggle"              class="checkbox"><span>弓            </span></label><br>
-			<label><input type="checkbox" id="CountryMondstadtToggle"       class="checkbox"><span>モンド        </span></label>
-			<label><input type="checkbox" id="CountryLiyueToggle"           class="checkbox"><span>璃月          </span></label>
-			<label><input type="checkbox" id="CountryInazumaToggle"         class="checkbox"><span>稲妻          </span></label>
-			<label><input type="checkbox" id="CountrySumeruToggle"          class="checkbox"><span>スメール      </span></label>
-			<label><input type="checkbox" id="CountryFontaineToggle"        class="checkbox"><span>フォンテーヌ  </span></label>
-			<label><input type="checkbox" id="CountryNatlanToggle"          class="checkbox"><span>ナタ          </span></label>
-			<label><input type="checkbox" id="CountryNodkraiToggle"         class="checkbox"><span>ナド・クライ  </span></label>
-			<label><input type="checkbox" id="CountrySnezhnayaToggle"       class="checkbox"><span>スネージナヤ  </span></label>
-			<label><input type="checkbox" id="CountryOutsideToggle"         class="checkbox"><span>テイワット外  </span></label><br>
+			<label><input type="checkbox" id="DetailToggle"         checked class="checkbox"><span>元素付着情報の表示</span></label>
+			<label><input type="checkbox" id="DollToggle"                   class="checkbox"><span>ドールの表示      </span></label><br>
+			<label><input type="checkbox" id="ElementAnemoToggle"           class="checkbox"><span>風                </span></label>
+			<label><input type="checkbox" id="ElementGeoToggle"             class="checkbox"><span>岩                </span></label>
+			<label><input type="checkbox" id="ElementElectroToggle"         class="checkbox"><span>雷                </span></label>
+			<label><input type="checkbox" id="ElementDendroToggle"          class="checkbox"><span>草                </span></label>
+			<label><input type="checkbox" id="ElementHydroToggle"           class="checkbox"><span>水                </span></label>
+			<label><input type="checkbox" id="ElementPyroToggle"            class="checkbox"><span>炎                </span></label>
+			<label><input type="checkbox" id="ElementCryoToggle"            class="checkbox"><span>氷                </span></label><br>
+			<label><input type="checkbox" id="WeaponSwordToggle"            class="checkbox"><span>片手剣            </span></label>
+			<label><input type="checkbox" id="WeaponClaymoreToggle"         class="checkbox"><span>両手剣            </span></label>
+			<label><input type="checkbox" id="WeaponPolearmToggle"          class="checkbox"><span>長柄武器          </span></label>
+			<label><input type="checkbox" id="WeaponCatalystToggle"         class="checkbox"><span>法器              </span></label>
+			<label><input type="checkbox" id="WeaponBowToggle"              class="checkbox"><span>弓                </span></label><br>
+			<label><input type="checkbox" id="CountryMondstadtToggle"       class="checkbox"><span>モンド            </span></label>
+			<label><input type="checkbox" id="CountryLiyueToggle"           class="checkbox"><span>璃月              </span></label>
+			<label><input type="checkbox" id="CountryInazumaToggle"         class="checkbox"><span>稲妻              </span></label>
+			<label><input type="checkbox" id="CountrySumeruToggle"          class="checkbox"><span>スメール          </span></label>
+			<label><input type="checkbox" id="CountryFontaineToggle"        class="checkbox"><span>フォンテーヌ      </span></label>
+			<label><input type="checkbox" id="CountryNatlanToggle"          class="checkbox"><span>ナタ              </span></label>
+			<label><input type="checkbox" id="CountryNodkraiToggle"         class="checkbox"><span>ナド・クライ      </span></label>
+			<label><input type="checkbox" id="CountrySnezhnayaToggle"       class="checkbox"><span>スネージナヤ      </span></label>
+			<label><input type="checkbox" id="CountryOutsideToggle"         class="checkbox"><span>外の世界          </span></label><br>
 		<tr>
 			<th colspan="3" style="padding:0.5rem;">
 				<input type="text" id="DraftLocalLegend_usernameInput" placeholder="プレイヤー名を入力してください" style="width:7rem;">
@@ -1412,10 +1414,16 @@ div#Tools div.stygian stygian_resin label{border:;}
 			<template id="DraftLocalLegend_charactertemplate_geo">
 				<label data-status="0" data-character="045" data-rarity="5" data-weapon="claymore" data-country="inazuma"  ><span>荒瀧一斗                                   </span></label>
 				<label data-status="0" data-character="028" data-rarity="5" data-weapon="sword"    data-country="mondstadt"><span>アルベド                                   </span></label>
+				<script>new Date()>=new Date('2026-02-03T19:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
+				<label data-status="0" data-character="113" data-rarity="4" data-weapon="polearm"  data-country="nodkrai"  ><span>イルーガ                                   </span></label>
+				`)</script>
 				<label data-status="0" data-character="046" data-rarity="4" data-weapon="polearm"  data-country="liyue"    ><span>雲菫                                       </span></label>
 				<label data-status="0" data-character="087" data-rarity="4" data-weapon="polearm"  data-country="natlan"   ><span>カチーナ                                   </span></label>
 				<label data-status="0" data-character="011" data-rarity="4" data-weapon="catalyst" data-country="liyue"    ><span>凝光                                       </span></label>
 				<label data-status="0" data-character="044" data-rarity="4" data-weapon="bow"      data-country="inazuma"  ><span>ゴロー                                     </span></label>
+				<script>new Date()>=new Date('2026-02-03T19:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
+				<label data-status="0" data-character="114" data-rarity="5" data-weapon="sword"    data-country="nodkrai"  ><span>茲白                                       </span></label>
+				`)</script>
 				<label data-status="0" data-character="027" data-rarity="5" data-weapon="polearm"  data-country="liyue"    ><span>鍾離                                       </span></label>
 				<label data-status="0" data-character="090" data-rarity="5" data-weapon="sword"    data-country="natlan"   ><span>シロネン                                   </span></label>
 				<label data-status="0" data-character="081" data-rarity="5" data-weapon="sword"    data-country="inazuma"  ><span>千織                                       </span></label>
@@ -1488,6 +1496,9 @@ div#Tools div.stygian stygian_resin label{border:;}
 				<label data-status="0" data-character="050" data-rarity="5" data-weapon="bow"      data-country="liyue"    ><span>夜蘭                                       </span></label>
 				<label data-status="0" data-character="049" data-rarity="5" data-weapon="sword"    data-country="inazuma"  ><span>神里綾人                                   </span></label>
 				<label data-status="0" data-character="056" data-rarity="4" data-weapon="polearm"  data-country="sumeru"   ><span>キャンディス                               </span></label>
+				<script>new Date()>=new Date('2026-01-14T10:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
+				<label data-status="0" data-character="112" data-rarity="5" data-weapon="catalyst" data-country="nodkrai"  ><span>コロンビーナ                               </span></label>
+				`)</script>
 				<label data-status="0" data-character="042" data-rarity="5" data-weapon="catalyst" data-country="inazuma"  ><span>珊瑚宮心海<span>【自己付着】スキル</span>  </span></label>
 				<label data-status="0" data-character="085" data-rarity="5" data-weapon="bow"      data-country="fontaine" ><span>シグウィン                                 </span></label>
 				<label data-status="0" data-character="101" data-rarity="4" data-weapon="sword"    data-country="mondstadt"><span>ダリア                                     </span></label>
@@ -1520,9 +1531,7 @@ div#Tools div.stygian stygian_resin label{border:;}
 				<label data-status="0" data-character="026" data-rarity="4" data-weapon="claymore" data-country="liyue"    ><span>辛炎<span>【自己付着】スキル・爆発</span>  </span></label>
 				<label data-status="0" data-character="065" data-rarity="5" data-weapon="claymore" data-country="sumeru"   ><span>ディシア                                   </span></label>
 				<label data-status="0" data-character="018" data-rarity="5" data-weapon="claymore" data-country="mondstadt"><span>ディルック                                 </span></label>
-				<script>new Date()>=new Date('2025-12-03T10:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
 				<label data-status="0" data-character="111" data-rarity="5" data-weapon="sword"    data-country="mondstadt"><span>ドゥリン                                   </span></label>
-				`)</script>
 				<label data-status="0" data-character="043" data-rarity="4" data-weapon="polearm"  data-country="inazuma"  ><span>トーマ<span>【自己付着】スキル</span>      </span></label>
 				<label data-status="0" data-character="031" data-rarity="5" data-weapon="polearm"  data-country="liyue"    ><span>胡桃                                       </span></label>
 				<label data-status="0" data-character="013" data-rarity="4" data-weapon="sword"    data-country="mondstadt"><span>ベネット<span>【マルチ付着】爆発</span>    </span></label>
@@ -1806,24 +1815,22 @@ div#Tools div.stygian stygian_resin label{border:;}
 			</div>
 			<div id="DraftLocalLegend_CharacterRechargeResultNormal"></div>
 
-			<table border="1" id="DraftLocalLegend_CharacterRechargeCount" style="border:1px #aaa solid;border-collapse:collapse;margin:2rem auto 0;text-align:center;">
-				<tr><th style="padding:0.5rem;background:#444;color:#fff;" colspan="8">復活コスト確認用ラジオボタン
-				<tr><td><td>1戦目<td>2戦目<td>3戦目<td>4戦目<td>5戦目<td>6戦目<td>
-				<tr><td style="padding:0.5rem;text-align:center;">ノーミス
-				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio1">
-				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio2">
-				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio3">
-				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio4">
-				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio5">
-				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio6">
-				    <td rowspan="2"><input type="button" id="DraftLocalLegend_CharacterRechargeCountReset" value="リセット">
-				<tr><td style="padding:0.5rem;text-align:center;">ミスあり
-				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio1">
-				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio2">
-				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio3">
-				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio4">
-				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio5">
-				    <td><input type="radio" name="DraftLocalLegend_CharacterRechargeRadio6">
+			<table border="1" class="DraftLocalLegend_CharacterRechargeCounter" style="border:1px #aaa solid;border-collapse:collapse;margin:2rem auto 0;text-align:center;">
+				<tr><th style="padding:0.5rem;background:#444;color:#fff;" colspan="2">復活コスト確認用カウンター
+				<tr><td> 1戦目<td><input type="button" value="-" id="DraftLocalLegend_CharacterRechargeCounterDown01"><span id="DraftLocalLegend_CharacterRechargeCounter01"></span><input type="button" value="+" id="DraftLocalLegend_CharacterRechargeCounterUp01">
+				<tr><td> 2戦目<td><input type="button" value="-" id="DraftLocalLegend_CharacterRechargeCounterDown02"><span id="DraftLocalLegend_CharacterRechargeCounter02"></span><input type="button" value="+" id="DraftLocalLegend_CharacterRechargeCounterUp02">
+				<tr><td> 3戦目<td><input type="button" value="-" id="DraftLocalLegend_CharacterRechargeCounterDown03"><span id="DraftLocalLegend_CharacterRechargeCounter03"></span><input type="button" value="+" id="DraftLocalLegend_CharacterRechargeCounterUp03">
+				<tr><td> 4戦目<td><input type="button" value="-" id="DraftLocalLegend_CharacterRechargeCounterDown04"><span id="DraftLocalLegend_CharacterRechargeCounter04"></span><input type="button" value="+" id="DraftLocalLegend_CharacterRechargeCounterUp04">
+				<tr><td> 5戦目<td><input type="button" value="-" id="DraftLocalLegend_CharacterRechargeCounterDown05"><span id="DraftLocalLegend_CharacterRechargeCounter05"></span><input type="button" value="+" id="DraftLocalLegend_CharacterRechargeCounterUp05">
+				<tr><td> 6戦目<td><input type="button" value="-" id="DraftLocalLegend_CharacterRechargeCounterDown06"><span id="DraftLocalLegend_CharacterRechargeCounter06"></span><input type="button" value="+" id="DraftLocalLegend_CharacterRechargeCounterUp06">
+				<tr><td> 7戦目<td><input type="button" value="-" id="DraftLocalLegend_CharacterRechargeCounterDown07"><span id="DraftLocalLegend_CharacterRechargeCounter07"></span><input type="button" value="+" id="DraftLocalLegend_CharacterRechargeCounterUp07">
+				<tr><td> 8戦目<td><input type="button" value="-" id="DraftLocalLegend_CharacterRechargeCounterDown08"><span id="DraftLocalLegend_CharacterRechargeCounter08"></span><input type="button" value="+" id="DraftLocalLegend_CharacterRechargeCounterUp08">
+				<tr><td> 9戦目<td><input type="button" value="-" id="DraftLocalLegend_CharacterRechargeCounterDown09"><span id="DraftLocalLegend_CharacterRechargeCounter09"></span><input type="button" value="+" id="DraftLocalLegend_CharacterRechargeCounterUp09">
+				<tr><td>10戦目<td><input type="button" value="-" id="DraftLocalLegend_CharacterRechargeCounterDown10"><span id="DraftLocalLegend_CharacterRechargeCounter10"></span><input type="button" value="+" id="DraftLocalLegend_CharacterRechargeCounterUp10">
+				<tr><td>11戦目<td><input type="button" value="-" id="DraftLocalLegend_CharacterRechargeCounterDown11"><span id="DraftLocalLegend_CharacterRechargeCounter11"></span><input type="button" value="+" id="DraftLocalLegend_CharacterRechargeCounterUp11">
+				<tr><td>12戦目<td><input type="button" value="-" id="DraftLocalLegend_CharacterRechargeCounterDown12"><span id="DraftLocalLegend_CharacterRechargeCounter12"></span><input type="button" value="+" id="DraftLocalLegend_CharacterRechargeCounterUp12">
+				<tr><td>合計値<td><span id="DraftLocalLegend_CharacterRechargeCounterResult"></span>
+				<tr><td colspan="2"><input type="button" id="DraftLocalLegend_CharacterRechargeCounterReset" style="width:auto;" value="リセット">
 			</table>
 		</div>
 	</details>
@@ -1907,19 +1914,23 @@ div#Tools div.stygian stygian_resin label{border:;}
 						<label><input type="checkbox" data-picknumber="092"><span>チャスカ      </span></label>
 						<label><input type="checkbox" data-picknumber="061"><span>ファルザン    </span></label>
 						<label><input type="checkbox" data-picknumber="062"><span>放浪者        </span></label>
-						<script>new Date()>=new Date('2025-12-03T10:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
 						<label><input type="checkbox" data-picknumber="110"><span>ヤフォダ      </span></label>
-						`)</script>
 						<label><input type="checkbox" data-picknumber="096"><span>夢見月瑞希    </span></label>
 						<label><input type="checkbox" data-picknumber="095"><span>藍硯          </span></label>
 						<label><input type="checkbox" data-picknumber="070"><span>リネット      </span></label>
 					<tr><td class="background-geo">
 						<label><input type="checkbox" data-picknumber="045"><span>荒瀧一斗      </span></label>
 						<label><input type="checkbox" data-picknumber="028"><span>アルベド      </span></label>
+						<script>new Date()>=new Date('2026-02-03T19:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
+						<label><input type="checkbox" data-picknumber="113"><span>イルーガ      </span></label>
+						`)</script>
 						<label><input type="checkbox" data-picknumber="046"><span>雲菫          </span></label>
 						<label><input type="checkbox" data-picknumber="087"><span>カチーナ      </span></label>
 						<label><input type="checkbox" data-picknumber="011"><span>凝光          </span></label>
 						<label><input type="checkbox" data-picknumber="044"><span>ゴロー        </span></label>
+						<script>new Date()>=new Date('2026-02-03T19:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
+						<label><input type="checkbox" data-picknumber="114"><span>茲白          </span></label>
+						`)</script>
 						<label><input type="checkbox" data-picknumber="027"><span>鍾離          </span></label>
 						<label><input type="checkbox" data-picknumber="090"><span>シロネン      </span></label>
 						<label><input type="checkbox" data-picknumber="081"><span>千織          </span></label>
@@ -1962,6 +1973,9 @@ div#Tools div.stygian stygian_resin label{border:;}
 						<label><input type="checkbox" data-picknumber="050"><span>夜蘭          </span></label>
 						<label><input type="checkbox" data-picknumber="049"><span>神里綾人      </span></label>
 						<label><input type="checkbox" data-picknumber="056"><span>キャンディス  </span></label>
+						<script>new Date()>=new Date('2026-01-14T10:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
+						<label><input type="checkbox" data-picknumber="112"><span>コロンビーナ  </span></label>
+						`)</script>
 						<label><input type="checkbox" data-picknumber="042"><span>珊瑚宮心海    </span></label>
 						<label><input type="checkbox" data-picknumber="085"><span>シグウィン    </span></label>
 						<label><input type="checkbox" data-picknumber="101"><span>ダリア        </span></label>
@@ -1984,9 +1998,7 @@ div#Tools div.stygian stygian_resin label{border:;}
 						<label><input type="checkbox" data-picknumber="026"><span>辛炎          </span></label>
 						<label><input type="checkbox" data-picknumber="065"><span>ディシア      </span></label>
 						<label><input type="checkbox" data-picknumber="018"><span>ディルック    </span></label>
-						<script>new Date()>=new Date('2025-12-03T10:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
 						<label><input type="checkbox" data-picknumber="111"><span>ドゥリン      </span></label>
-						`)</script>
 						<label><input type="checkbox" data-picknumber="043"><span>トーマ        </span></label>
 						<label><input type="checkbox" data-picknumber="031"><span>胡桃          </span></label>
 						<label><input type="checkbox" data-picknumber="013"><span>ベネット      </span></label>
@@ -3231,7 +3243,7 @@ drawCountryButton.addEventListener('click', () => {
 
   let htmlString;
   if (results.length === 0) {
-    htmlString = `<p style="margin-top:1.5rem;">武器種を選択してください。</p>`;
+    htmlString = `<p style="margin-top:1.5rem;">国を選択してください。</p>`;
   } else {
     const joined = results.join(' / ');
     htmlString =
@@ -3270,9 +3282,9 @@ document.getElementById("DraftLocalLegend_SaveDataCreate").addEventListener("cli
 
   // 乱数の重みリスト（0?weight0の間→0、weight0?weight0+weight1の間→1、…）
   const result = [];
-  for (let i = 0; i < count; i++) { // テキストエディタで開くとここから先がHTMLタグ色になってしまうので閉じタグで色を戻す >
+  for (let i = 0; i < count; i++) {
     const rand = Math.random() * totalWeight;
-    if (rand < weight0) { // テキストエディタで開くとここから先がHTMLタグ色になってしまうので閉じタグで色を戻す >
+    if (rand < weight0) {
       result.push("0");
     } else if (rand < weight0 + weight1) { // テキストエディタで開くとここから先がHTMLタグ色になってしまうので閉じタグで色を戻す >
       result.push("1");
@@ -3444,29 +3456,57 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 //▲▲▲ドラフト地方伝説　ノーマルモード復活抽選機▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 //▼▼▼ドラフト地方伝説　ノーマルモードミス記録機▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
-// 前回クリックしたラジオボタンを保持
-let lastClickedRadio = null;
+document.addEventListener("DOMContentLoaded", () => {
 
-// 対象は table 内の radio のみに限定
-const targetRadios = document.querySelectorAll('#DraftLocalLegend_CharacterRechargeCount input[type="radio"]');
+  // ▼カウンターの初期値を格納する配列
+  const counters = Array(12).fill(0);
 
-targetRadios.forEach(radio => {
-  radio.addEventListener('click', function() {
-    // もし前回と同じラジオボタンなら選択解除
-    if (lastClickedRadio === this) {
-      this.checked = false;
-      lastClickedRadio = null;
-    } else {
-      // 新しいボタンをクリックした場合は前回の更新
-      lastClickedRadio = this;
+  // ▼合計値を更新する関数
+  function updateTotal() {
+    const total = counters.reduce((sum, val) => sum + val, 0);
+    document.getElementById("DraftLocalLegend_CharacterRechargeCounterResult").textContent = total;
+  }
+
+  // ▼各カウンターの表示を更新する関数
+  function updateDisplay(index) {
+    const span = document.getElementById(`DraftLocalLegend_CharacterRechargeCounter${String(index+1).padStart(2,"0")}`);
+    span.textContent = counters[index];
+  }
+
+  // ▼ボタンクリック時の共通処理
+  for (let i = 0; i < 12; i++) {
+    const upBtn = document.getElementById(`DraftLocalLegend_CharacterRechargeCounterUp${String(i+1).padStart(2,"0")}`);
+    const downBtn = document.getElementById(`DraftLocalLegend_CharacterRechargeCounterDown${String(i+1).padStart(2,"0")}`);
+
+    // Upボタン
+    upBtn.addEventListener("click", () => {
+      counters[i]++;
+      updateDisplay(i);
+      updateTotal();
+    });
+
+    // Downボタン
+    downBtn.addEventListener("click", () => {
+      counters[i]--;
+      updateDisplay(i);
+      updateTotal();
+    });
+
+    // 初期値を表示
+    updateDisplay(i);
+  }
+
+  // ▼リセットボタン
+  document.getElementById("DraftLocalLegend_CharacterRechargeCounterReset").addEventListener("click", () => {
+    for (let i = 0; i < 12; i++) { // テキストエディタで開くとここから先がHTMLタグ色になってしまうので閉じタグで色を戻す >
+      counters[i] = 0;
+      updateDisplay(i);
     }
+    updateTotal();
   });
-});
 
-// リセットボタン
-document.getElementById('DraftLocalLegend_CharacterRechargeCountReset').addEventListener('click', () => {
-  targetRadios.forEach(radio => radio.checked = false);
-  lastClickedRadio = null;
+  // ▼初期合計表示
+  updateTotal();
 });
 //▲▲▲ドラフト地方伝説　ノーマルモードミス記録機▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 //▼▼▼ドラフト地方伝説　エンドレスモード復活抽選機▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
@@ -3739,7 +3779,6 @@ fields.forEach(({ id, path }) => {
 	};
 
 	// ===== 正確な表示更新 =====
-	// ===== 正確な表示更新 =====
 	function update() {
 		const now = new Date();
 		const target = makeDate();
@@ -3939,6 +3978,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.35.0<span>2026/01/02</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】キャラクターリスト、およびカスタムキャラクターリスト用コード生成機に「コロンビーナ」を追加しました。v6.3前半開始時に表示されます</p>
+		<p>【ドラフト地方伝説】キャラクターリスト、およびカスタムキャラクターリスト用コード生成機に「イルーガ」「茲白」を追加しました。v6.3後半開始時に表示されます</p>
+		<p>【ドラフト地方伝説】復活コスト確認用ラジオボタンをカウンターに変更しました</p>
+		<p>その他、軽微な変更・修正をしました</p>
+	</div>
 
 	<div class="version">v1.34.1<span>2025/12/29</span></div>
 	<div class="details">
