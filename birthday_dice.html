@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ダイスカレンダー</title>
+
+<style>
+  table {
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid #999;
+    width: 80px;
+    height: 16px;
+    text-align: center;
+    font-size: 12px;
+  }
+  th {
+    background: #eee;
+  }
+  .highlight {
+    background: #ff8;
+  }
+  .controls {
+    margin-top: 10px;
+  }
+</style>
+
+</head>
+<body>
+
+<div class="controls">
+  <input type="number" id="diceX" value="1" style="width:40px;">d12 <button id="rollX">ダイスを振る</button><br>
+  <input type="number" id="diceY" value="1" style="width:40px;">d31 <button id="rollY">ダイスを振る</button><br>
+  <button id="rollBoth">両方同時に振る</button><br>
+  <br>
+  <label><input type="checkbox" id="noDuplicate">ダイスの重複禁止</label><br><br><br>
+</div>
+
+<table id="calendar">
+  <tr>
+    <th></th>
+    <th>1月</th>
+    <th>2月</th>
+    <th>3月</th>
+    <th>4月</th>
+    <th>5月</th>
+    <th>6月</th>
+    <th>7月</th>
+    <th>8月</th>
+    <th>9月</th>
+    <th>10月</th>
+    <th>11月</th>
+    <th>12月</th>
+  </tr>
+
+  <tr><th> 1日</th><td data-x="1"  data-y="1" >              </td><td data-x="2"  data-y="1" >              </td><td data-x="3"  data-y="1" >ラウマ        </td><td data-x="4"  data-y="1" >              </td><td data-x="5"  data-y="1" >              </td><td data-x="6"  data-y="1" >荒瀧一斗      </td><td data-x="7"  data-y="1" >              </td><td data-x="8"  data-y="1" >              </td><td data-x="9"  data-y="1" >              </td><td data-x="10" data-y="1" >              </td><td data-x="11" data-y="1" >              </td><td data-x="12" data-y="1" >              </td></tr>
+  <tr><th> 2日</th><td data-x="1"  data-y="2" >              </td><td data-x="2"  data-y="2" >リネ/リネット </td><td data-x="3"  data-y="2" >              </td><td data-x="4"  data-y="2" >イネファ      </td><td data-x="5"  data-y="2" >              </td><td data-x="6"  data-y="2" >              </td><td data-x="7"  data-y="2" >              </td><td data-x="8"  data-y="2" >              </td><td data-x="9"  data-y="2" >              </td><td data-x="10" data-y="2" >              </td><td data-x="11" data-y="2" >香菱          </td><td data-x="12" data-y="2" >甘雨          </td></tr>
+  <tr><th> 3日</th><td data-x="1"  data-y="3" >放浪者        </td><td data-x="2"  data-y="3" >              </td><td data-x="3"  data-y="3" >七七          </td><td data-x="4"  data-y="3" >              </td><td data-x="5"  data-y="3" >キャンディス  </td><td data-x="6"  data-y="3" >              </td><td data-x="7"  data-y="3" >              </td><td data-x="8"  data-y="3" >ムアラニ      </td><td data-x="9"  data-y="3" >              </td><td data-x="10" data-y="3" >              </td><td data-x="11" data-y="3" >              </td><td data-x="12" data-y="3" >ニィロウ      </td></tr>
+  <tr><th> 4日</th><td data-x="1"  data-y="4" >              </td><td data-x="2"  data-y="4" >              </td><td data-x="3"  data-y="4" >              </td><td data-x="4"  data-y="4" >アーロイ      </td><td data-x="5"  data-y="4" >              </td><td data-x="6"  data-y="4" >              </td><td data-x="7"  data-y="4" >              </td><td data-x="8"  data-y="4" >              </td><td data-x="9"  data-y="4" >              </td><td data-x="10" data-y="4" >              </td><td data-x="11" data-y="4" >              </td><td data-x="12" data-y="4" >              </td></tr>
+  <tr><th> 5日</th><td data-x="1"  data-y="5" >ヤフォダ      </td><td data-x="2"  data-y="5" >              </td><td data-x="3"  data-y="5" >              </td><td data-x="4"  data-y="5" >              </td><td data-x="5"  data-y="5" >              </td><td data-x="6"  data-y="5" >              </td><td data-x="7"  data-y="5" >バーバラ      </td><td data-x="8"  data-y="5" >              </td><td data-x="9"  data-y="5" >              </td><td data-x="10" data-y="5" >              </td><td data-x="11" data-y="5" >スカーク      </td><td data-x="12" data-y="5" >              </td></tr>
+  <tr><th> 6日</th><td data-x="1"  data-y="6" >藍硯          </td><td data-x="2"  data-y="6" >              </td><td data-x="3"  data-y="6" >ヨォーヨ      </td><td data-x="4"  data-y="6" >              </td><td data-x="5"  data-y="6" >              </td><td data-x="6"  data-y="6" >              </td><td data-x="7"  data-y="6" >              </td><td data-x="8"  data-y="6" >              </td><td data-x="9"  data-y="6" >              </td><td data-x="10" data-y="6" >              </td><td data-x="11" data-y="6" >              </td><td data-x="12" data-y="6" >              </td></tr>
+  <tr><th> 7日</th><td data-x="1"  data-y="7" >              </td><td data-x="2"  data-y="7" >              </td><td data-x="3"  data-y="7" >              </td><td data-x="4"  data-y="7" >ディシア      </td><td data-x="5"  data-y="7" >              </td><td data-x="6"  data-y="7" >              </td><td data-x="7"  data-y="7" >              </td><td data-x="8"  data-y="7" >              </td><td data-x="9"  data-y="7" >重雲          </td><td data-x="10" data-y="7" >              </td><td data-x="11" data-y="7" >              </td><td data-x="12" data-y="7" >              </td></tr>
+  <tr><th> 8日</th><td data-x="1"  data-y="8" >              </td><td data-x="2"  data-y="8" >              </td><td data-x="3"  data-y="8" >              </td><td data-x="4"  data-y="8" >              </td><td data-x="5"  data-y="8" >コレイ        </td><td data-x="6"  data-y="8" >エスコフィエ  </td><td data-x="7"  data-y="8" >              </td><td data-x="8"  data-y="8" >イアンサ      </td><td data-x="9"  data-y="8" >              </td><td data-x="10" data-y="8" >              </td><td data-x="11" data-y="8" >              </td><td data-x="12" data-y="8" >              </td></tr>
+  <tr><th> 9日</th><td data-x="1"  data-y="9" >トーマ        </td><td data-x="2"  data-y="9" >              </td><td data-x="3"  data-y="9" >              </td><td data-x="4"  data-y="9" >              </td><td data-x="5"  data-y="9" >ネフェル      </td><td data-x="6"  data-y="9" >リサ          </td><td data-x="7"  data-y="9" >カーヴェ      </td><td data-x="8"  data-y="9" >              </td><td data-x="9"  data-y="9" >レザー        </td><td data-x="10" data-y="9" >行秋          </td><td data-x="11" data-y="9" >              </td><td data-x="12" data-y="9" >              </td></tr>
+  <tr><th>10日</th><td data-x="1"  data-y="10">シュヴルーズ  </td><td data-x="2"  data-y="10">              </td><td data-x="3"  data-y="10">申鶴          </td><td data-x="4"  data-y="10">シャルロット  </td><td data-x="5"  data-y="10">              </td><td data-x="6"  data-y="10">              </td><td data-x="7"  data-y="10">              </td><td data-x="8"  data-y="10">アンバー      </td><td data-x="9"  data-y="10">              </td><td data-x="10" data-y="10">              </td><td data-x="11" data-y="10">              </td><td data-x="12" data-y="10">チャスカ      </td></tr>
+  <tr><th>11日</th><td data-x="1"  data-y="11">              </td><td data-x="2"  data-y="11">アルハイゼン  </td><td data-x="3"  data-y="11">              </td><td data-x="4"  data-y="11">閑雲          </td><td data-x="5"  data-y="11">              </td><td data-x="6"  data-y="11">              </td><td data-x="7"  data-y="11">              </td><td data-x="8"  data-y="11">ミカ          </td><td data-x="9"  data-y="11">              </td><td data-x="10" data-y="11">              </td><td data-x="11" data-y="11">キィニチ      </td><td data-x="12" data-y="11">              </td></tr>
+  <tr><th>12日</th><td data-x="1"  data-y="12">              </td><td data-x="2"  data-y="12">              </td><td data-x="3"  data-y="12">              </td><td data-x="4"  data-y="12">              </td><td data-x="5"  data-y="12">              </td><td data-x="6"  data-y="12">              </td><td data-x="7"  data-y="12">              </td><td data-x="8"  data-y="12">              </td><td data-x="9"  data-y="12">              </td><td data-x="10" data-y="12">              </td><td data-x="11" data-y="12">              </td><td data-x="12" data-y="12">              </td></tr>
+  <tr><th>13日</th><td data-x="1"  data-y="13">              </td><td data-x="2"  data-y="13">              </td><td data-x="3"  data-y="13">シロネン      </td><td data-x="4"  data-y="13">              </td><td data-x="5"  data-y="13">              </td><td data-x="6"  data-y="13">              </td><td data-x="7"  data-y="13">              </td><td data-x="8"  data-y="13">              </td><td data-x="9"  data-y="13">アルベド      </td><td data-x="10" data-y="13">フリーナ      </td><td data-x="11" data-y="13">              </td><td data-x="12" data-y="13">              </td></tr>
+  <tr><th>14日</th><td data-x="1"  data-y="14">コロンビーナ  </td><td data-x="2"  data-y="14">北斗          </td><td data-x="3"  data-y="14">ジン/ドゥリン </td><td data-x="4"  data-y="14">              </td><td data-x="5"  data-y="14">              </td><td data-x="6"  data-y="14">              </td><td data-x="7"  data-y="14">九条裟羅      </td><td data-x="8"  data-y="14">              </td><td data-x="9"  data-y="14">              </td><td data-x="10" data-y="14">オロルン      </td><td data-x="11" data-y="14">              </td><td data-x="12" data-y="14">              </td></tr>
+  <tr><th>15日</th><td data-x="1"  data-y="15">              </td><td data-x="2"  data-y="15">              </td><td data-x="3"  data-y="15">              </td><td data-x="4"  data-y="15">              </td><td data-x="5"  data-y="15">              </td><td data-x="6"  data-y="15">              </td><td data-x="7"  data-y="15">胡桃          </td><td data-x="8"  data-y="15">              </td><td data-x="9"  data-y="15">              </td><td data-x="10" data-y="15">              </td><td data-x="11" data-y="15">ヴァレサ      </td><td data-x="12" data-y="15">              </td></tr>
+  <tr><th>16日</th><td data-x="1"  data-y="16">              </td><td data-x="2"  data-y="16">              </td><td data-x="3"  data-y="16">夢見月瑞希    </td><td data-x="4"  data-y="16">              </td><td data-x="5"  data-y="16">              </td><td data-x="6"  data-y="16">ウェンティ    </td><td data-x="7"  data-y="16">              </td><td data-x="8"  data-y="16">ナヴィア      </td><td data-x="9"  data-y="16">              </td><td data-x="10" data-y="16">辛炎          </td><td data-x="11" data-y="16">              </td><td data-x="12" data-y="16">              </td></tr>
+  <tr><th>17日</th><td data-x="1"  data-y="17">              </td><td data-x="2"  data-y="17">              </td><td data-x="3"  data-y="17">              </td><td data-x="4"  data-y="17">&#39752;      </td><td data-x="5"  data-y="17">              </td><td data-x="6"  data-y="17">              </td><td data-x="7"  data-y="17">              </td><td data-x="8"  data-y="17">千織          </td><td data-x="9"  data-y="17">              </td><td data-x="10" data-y="17">              </td><td data-x="11" data-y="17">              </td><td data-x="12" data-y="17">              </td></tr>
+  <tr><th>18日</th><td data-x="1"  data-y="18">ディオナ      </td><td data-x="2"  data-y="18">              </td><td data-x="3"  data-y="18">              </td><td data-x="4"  data-y="18">              </td><td data-x="5"  data-y="18">ゴロー        </td><td data-x="6"  data-y="18">              </td><td data-x="7"  data-y="18">              </td><td data-x="8"  data-y="18">              </td><td data-x="9"  data-y="18">              </td><td data-x="10" data-y="18">              </td><td data-x="11" data-y="18">              </td><td data-x="12" data-y="18">ヌヴィレット  </td></tr>
+  <tr><th>19日</th><td data-x="1"  data-y="19">              </td><td data-x="2"  data-y="19">              </td><td data-x="3"  data-y="19">              </td><td data-x="4"  data-y="19">              </td><td data-x="5"  data-y="19">              </td><td data-x="6"  data-y="19">              </td><td data-x="7"  data-y="19">              </td><td data-x="8"  data-y="19">              </td><td data-x="9"  data-y="19">              </td><td data-x="10" data-y="19">早柚          </td><td data-x="11" data-y="19">              </td><td data-x="12" data-y="19">レイラ        </td></tr>
+  <tr><th>20日</th><td data-x="1"  data-y="20">シトラリ      </td><td data-x="2"  data-y="20">              </td><td data-x="3"  data-y="20">              </td><td data-x="4"  data-y="20">夜蘭          </td><td data-x="5"  data-y="20">              </td><td data-x="6"  data-y="20">              </td><td data-x="7"  data-y="20">タルタリヤ    </td><td data-x="8"  data-y="20">ファルザン    </td><td data-x="9"  data-y="20">クロリンデ    </td><td data-x="10" data-y="20">              </td><td data-x="11" data-y="20">刻晴          </td><td data-x="12" data-y="20">              </td></tr>
+  <tr><th>21日</th><td data-x="1"  data-y="21">              </td><td data-x="2"  data-y="21">              </td><td data-x="3"  data-y="21">ノエル        </td><td data-x="4"  data-y="21">              </td><td data-x="5"  data-y="21">雲菫          </td><td data-x="6"  data-y="21">宵宮          </td><td data-x="7"  data-y="21">              </td><td data-x="8"  data-y="21">              </td><td data-x="9"  data-y="21">アイノ        </td><td data-x="10" data-y="21">              </td><td data-x="11" data-y="21">              </td><td data-x="12" data-y="21">ドリー        </td></tr>
+  <tr><th>22日</th><td data-x="1"  data-y="22">綺良々        </td><td data-x="2"  data-y="22">珊瑚宮心海    </td><td data-x="3"  data-y="22">              </td><td data-x="4"  data-y="22">カチーナ      </td><td data-x="5"  data-y="22">              </td><td data-x="6"  data-y="22">              </td><td data-x="7"  data-y="22">              </td><td data-x="8"  data-y="22">アルレッキーノ</td><td data-x="9"  data-y="22">エミリエ      </td><td data-x="10" data-y="22">              </td><td data-x="11" data-y="22">              </td><td data-x="12" data-y="22">嘉明          </td></tr>
+  <tr><th>23日</th><td data-x="1"  data-y="23">              </td><td data-x="2"  data-y="23">              </td><td data-x="3"  data-y="23">イファ        </td><td data-x="4"  data-y="23">              </td><td data-x="5"  data-y="23">              </td><td data-x="6"  data-y="23">セノ          </td><td data-x="7"  data-y="23">              </td><td data-x="8"  data-y="23">              </td><td data-x="9"  data-y="23">              </td><td data-x="10" data-y="23">              </td><td data-x="11" data-y="23">リオセスリ    </td><td data-x="12" data-y="23">              </td></tr>
+  <tr><th>24日</th><td data-x="1"  data-y="24">ロサリア      </td><td data-x="2"  data-y="24">              </td><td data-x="3"  data-y="24">              </td><td data-x="4"  data-y="24">              </td><td data-x="5"  data-y="24">              </td><td data-x="6"  data-y="24">              </td><td data-x="7"  data-y="24">鹿野院平蔵    </td><td data-x="8"  data-y="24">              </td><td data-x="9"  data-y="24">フレミネ      </td><td data-x="10" data-y="24">              </td><td data-x="11" data-y="24">              </td><td data-x="12" data-y="24">              </td></tr>
+  <tr><th>25日</th><td data-x="1"  data-y="25">              </td><td data-x="2"  data-y="25">              </td><td data-x="3"  data-y="25">              </td><td data-x="4"  data-y="25">白朮          </td><td data-x="5"  data-y="25">ダリア        </td><td data-x="6"  data-y="25">              </td><td data-x="7"  data-y="25">              </td><td data-x="8"  data-y="25">              </td><td data-x="9"  data-y="25">              </td><td data-x="10" data-y="25">エウルア      </td><td data-x="11" data-y="25">              </td><td data-x="12" data-y="25">              </td></tr>
+  <tr><th>26日</th><td data-x="1"  data-y="26">              </td><td data-x="2"  data-y="26">              </td><td data-x="3"  data-y="26">神里綾人      </td><td data-x="4"  data-y="26">              </td><td data-x="5"  data-y="26">              </td><td data-x="6"  data-y="26">雷電将軍      </td><td data-x="7"  data-y="26">              </td><td data-x="8"  data-y="26">凝光          </td><td data-x="9"  data-y="26">              </td><td data-x="10" data-y="26">              </td><td data-x="11" data-y="26">スクロース    </td><td data-x="12" data-y="26">              </td></tr>
+  <tr><th>27日</th><td data-x="1"  data-y="27">              </td><td data-x="2"  data-y="27">              </td><td data-x="3"  data-y="27">              </td><td data-x="4"  data-y="27">              </td><td data-x="5"  data-y="27">フィッシュル  </td><td data-x="6"  data-y="27">八重神子      </td><td data-x="7"  data-y="27">九岐忍/クレー </td><td data-x="8"  data-y="27">              </td><td data-x="9"  data-y="27">              </td><td data-x="10" data-y="27">ナヒーダ      </td><td data-x="11" data-y="27">              </td><td data-x="12" data-y="27">              </td></tr>
+  <tr><th>28日</th><td data-x="1"  data-y="28">              </td><td data-x="2"  data-y="28">              </td><td data-x="3"  data-y="28">              </td><td data-x="4"  data-y="28">              </td><td data-x="5"  data-y="28">              </td><td data-x="6"  data-y="28">              </td><td data-x="7"  data-y="28">煙緋          </td><td data-x="8"  data-y="28">マーヴィカ    </td><td data-x="9"  data-y="28">神里綾華      </td><td data-x="10" data-y="28">              </td><td data-x="11" data-y="28">              </td><td data-x="12" data-y="28">              </td></tr>
+  <tr><th>29日</th><td data-x="1"  data-y="29">              </td><td data-x="2"  data-y="29">ベネット      </td><td data-x="3"  data-y="29">              </td><td data-x="4"  data-y="29">              </td><td data-x="5"  data-y="29">              </td><td data-x="6"  data-y="29">              </td><td data-x="7"  data-y="29">              </td><td data-x="8"  data-y="29">              </td><td data-x="9"  data-y="29">              </td><td data-x="10" data-y="29">楓原万葉      </td><td data-x="11" data-y="29">              </td><td data-x="12" data-y="29">ティナリ      </td></tr>
+  <tr><th>30日</th><td data-x="1"  data-y="30">              </td><td data-x="2"  data-y="30">              </td><td data-x="3"  data-y="30">シグウィン    </td><td data-x="4"  data-y="30">ディルック    </td><td data-x="5"  data-y="30">              </td><td data-x="6"  data-y="30">              </td><td data-x="7"  data-y="30">              </td><td data-x="8"  data-y="30">              </td><td data-x="9"  data-y="30">              </td><td data-x="10" data-y="30">              </td><td data-x="11" data-y="30">ガイア        </td><td data-x="12" data-y="30">              </td></tr>
+  <tr><th>31日</th><td data-x="1"  data-y="31">              </td><td data-x="2"  data-y="31">              </td><td data-x="3"  data-y="31">              </td><td data-x="4"  data-y="31">              </td><td data-x="5"  data-y="31">セトス        </td><td data-x="6"  data-y="31">              </td><td data-x="7"  data-y="31">              </td><td data-x="8"  data-y="31">モナ          </td><td data-x="9"  data-y="31">              </td><td data-x="10" data-y="31">フリンズ      </td><td data-x="11" data-y="31">              </td><td data-x="12" data-y="31">鍾離          </td></tr>
+
+</table>
+
+<script>
+/* ===== 共通処理 ===== */
+function clearHighlight() {
+  document.querySelectorAll(".highlight").forEach(cell => {
+    cell.classList.remove("highlight");
+  });
+}
+
+function rollDice(countInputId, faces) {
+  const count = Number(document.getElementById(countInputId).value);
+  if (!Number.isInteger(count) || count <= 0) return [];
+
+  const noDuplicate = document.getElementById("noDuplicate").checked;
+  const results = [];
+
+  while (results.length < count) {
+    const value = Math.floor(Math.random() * faces) + 1;
+    if (noDuplicate && results.includes(value)) continue;
+    results.push(value);
+    if (!noDuplicate && results.length === count) break;
+  }
+
+  return [...new Set(results)];
+}
+
+/* ===== 強調処理 ===== */
+function highlightColumns(columns) {
+  columns.forEach(col => {
+    document.querySelectorAll(`td[data-x="${col}"]`).forEach(cell => {
+      cell.classList.add("highlight");
+    });
+  });
+}
+
+function highlightRows(rows) {
+  rows.forEach(row => {
+    document.querySelectorAll(`td[data-y="${row}"]`).forEach(cell => {
+      cell.classList.add("highlight");
+    });
+  });
+}
+
+/* ===== ボタン処理 ===== */
+document.getElementById("rollX").addEventListener("click", () => {
+  clearHighlight();
+  const cols = rollDice("diceX", 12);
+  highlightColumns(cols);
+});
+
+document.getElementById("rollY").addEventListener("click", () => {
+  clearHighlight();
+  const rows = rollDice("diceY", 31);
+  highlightRows(rows);
+});
+
+document.getElementById("rollBoth").addEventListener("click", () => {
+  clearHighlight();
+  const cols = rollDice("diceX", 12);
+  const rows = rollDice("diceY", 31);
+  highlightColumns(cols);
+  highlightRows(rows);
+});
+</script>
+
+</body>
+</html>
