@@ -3616,6 +3616,8 @@ reactionButton.addEventListener("click", () => {
     bloom: ['dendro', 'hydro'],
     burning: ['dendro', 'pyro'],
     vaporise: ['hydro', 'pyro']
+    frozen: ['hydro', 'cryo']
+    melt: ['pyro', 'cryo']
   };
 
   // 抽選結果から保存用配列を作成
@@ -3699,7 +3701,7 @@ drawCountryButton.addEventListener('click', () => {
   // --- ここから仕様対応の追加処理 ---
 
   const countryMap = {
-    "モンド": "monstadt",
+    "モンド": "mondstadt",
     "璃月": "liyue",
     "稲妻": "inazuma",
     "スメール": "sumeru",
@@ -4475,6 +4477,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.38.1<span>2026/02/04</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】国別抽選結果で絞り込むボタンが正常に動いていない問題を修正しました</p>
+		<p>【ドラフト地方伝説】元素反応抽選結果で絞り込むボタンが正常に動いていない問題を修正しました</p>
+	</div>
 
 	<div class="version">v1.38.0<span>2026/02/04</span></div>
 	<div class="details">
