@@ -1372,74 +1372,75 @@ div#Tools div.stygian input{padding:0.25rem;border:1px solid #888;text-align:cen
 		</colgroup>
 		<tr><th colspan="4" style="text-align:center;font-size:1.5rem;padding:0.5rem;background:#444;color:#fff;">キャラクターリスト(すべて五十音順)
 		<tr><td colspan="4" style="text-align:center;">
-			<label><input type="checkbox" id="DetailToggle"         checked class="checkbox"><span>元素付着情報の表示</span></label>
-			<label><input type="checkbox" id="DollToggle"                   class="checkbox"><span>ドールの表示      </span></label>
+			<label><input type="checkbox" id="DetailToggle"         checked class="checkbox"><span>元素付着情報の表示          </span></label>
+			<label><input type="checkbox" id="DollToggle"                   class="checkbox"><span>ドールの表示                </span></label>
+			<label><input type="checkbox" id="ExcludeDollToggle"    checked class="checkbox"><span>抽選結果からドールを除外する</span></label>
 		<tr><td colspan="4" style="text-align:center;">
-			<label><input type="checkbox" id="ElementAnemoToggle"           class="checkbox"><span>風                </span></label>
-			<label><input type="checkbox" id="ElementGeoToggle"             class="checkbox"><span>岩                </span></label>
-			<label><input type="checkbox" id="ElementElectroToggle"         class="checkbox"><span>雷                </span></label>
-			<label><input type="checkbox" id="ElementDendroToggle"          class="checkbox"><span>草                </span></label>
-			<label><input type="checkbox" id="ElementHydroToggle"           class="checkbox"><span>水                </span></label>
-			<label><input type="checkbox" id="ElementPyroToggle"            class="checkbox"><span>炎                </span></label>
-			<label><input type="checkbox" id="ElementCryoToggle"            class="checkbox"><span>氷                </span></label><br>
-			<label><input type="checkbox" id="WeaponSwordToggle"            class="checkbox"><span>片手剣            </span></label>
-			<label><input type="checkbox" id="WeaponClaymoreToggle"         class="checkbox"><span>両手剣            </span></label>
-			<label><input type="checkbox" id="WeaponPolearmToggle"          class="checkbox"><span>長柄武器          </span></label>
-			<label><input type="checkbox" id="WeaponCatalystToggle"         class="checkbox"><span>法器              </span></label>
-			<label><input type="checkbox" id="WeaponBowToggle"              class="checkbox"><span>弓                </span></label><br>
-			<label><input type="checkbox" id="CountryMondstadtToggle"       class="checkbox"><span>モンド            </span></label>
-			<label><input type="checkbox" id="CountryLiyueToggle"           class="checkbox"><span>璃月              </span></label>
-			<label><input type="checkbox" id="CountryInazumaToggle"         class="checkbox"><span>稲妻              </span></label>
-			<label><input type="checkbox" id="CountrySumeruToggle"          class="checkbox"><span>スメール          </span></label>
-			<label><input type="checkbox" id="CountryFontaineToggle"        class="checkbox"><span>フォンテーヌ      </span></label>
-			<label><input type="checkbox" id="CountryNatlanToggle"          class="checkbox"><span>ナタ              </span></label>
-			<label><input type="checkbox" id="CountryNodkraiToggle"         class="checkbox"><span>ナド・クライ      </span></label>
-			<label><input type="checkbox" id="CountrySnezhnayaToggle"       class="checkbox"><span>スネージナヤ      </span></label>
-			<label><input type="checkbox" id="CountryOutsideToggle"         class="checkbox"><span>外の世界          </span></label><br>
+			<label><input type="checkbox" id="ElementAnemoToggle"           class="checkbox"><span>風          </span></label>
+			<label><input type="checkbox" id="ElementGeoToggle"             class="checkbox"><span>岩          </span></label>
+			<label><input type="checkbox" id="ElementElectroToggle"         class="checkbox"><span>雷          </span></label>
+			<label><input type="checkbox" id="ElementDendroToggle"          class="checkbox"><span>草          </span></label>
+			<label><input type="checkbox" id="ElementHydroToggle"           class="checkbox"><span>水          </span></label>
+			<label><input type="checkbox" id="ElementPyroToggle"            class="checkbox"><span>炎          </span></label>
+			<label><input type="checkbox" id="ElementCryoToggle"            class="checkbox"><span>氷          </span></label><br>
+			<label><input type="checkbox" id="WeaponSwordToggle"            class="checkbox"><span>片手剣      </span></label>
+			<label><input type="checkbox" id="WeaponClaymoreToggle"         class="checkbox"><span>両手剣      </span></label>
+			<label><input type="checkbox" id="WeaponPolearmToggle"          class="checkbox"><span>長柄武器    </span></label>
+			<label><input type="checkbox" id="WeaponCatalystToggle"         class="checkbox"><span>法器        </span></label>
+			<label><input type="checkbox" id="WeaponBowToggle"              class="checkbox"><span>弓          </span></label><br>
+			<label><input type="checkbox" id="CountryMondstadtToggle"       class="checkbox"><span>モンド      </span></label>
+			<label><input type="checkbox" id="CountryLiyueToggle"           class="checkbox"><span>璃月        </span></label>
+			<label><input type="checkbox" id="CountryInazumaToggle"         class="checkbox"><span>稲妻        </span></label>
+			<label><input type="checkbox" id="CountrySumeruToggle"          class="checkbox"><span>スメール    </span></label>
+			<label><input type="checkbox" id="CountryFontaineToggle"        class="checkbox"><span>フォンテーヌ</span></label>
+			<label><input type="checkbox" id="CountryNatlanToggle"          class="checkbox"><span>ナタ        </span></label>
+			<label><input type="checkbox" id="CountryNodkraiToggle"         class="checkbox"><span>ナド・クライ</span></label>
+			<label><input type="checkbox" id="CountrySnezhnayaToggle"       class="checkbox"><span>スネージナヤ</span></label>
+			<label><input type="checkbox" id="CountryOutsideToggle"         class="checkbox"><span>外の世界    </span></label><br>
 		<tr><td colspan="4" style="text-align:center;">
-			<label><input type="checkbox" id="BirthM01Toggle"               class="checkbox"><span>1               </span></label>
-			<label><input type="checkbox" id="BirthM02Toggle"               class="checkbox"><span>2               </span></label>
-			<label><input type="checkbox" id="BirthM03Toggle"               class="checkbox"><span>3               </span></label>
-			<label><input type="checkbox" id="BirthM04Toggle"               class="checkbox"><span>4               </span></label>
-			<label><input type="checkbox" id="BirthM05Toggle"               class="checkbox"><span>5               </span></label>
-			<label><input type="checkbox" id="BirthM06Toggle"               class="checkbox"><span>6               </span></label>
-			<label><input type="checkbox" id="BirthM07Toggle"               class="checkbox"><span>7               </span></label>
-			<label><input type="checkbox" id="BirthM08Toggle"               class="checkbox"><span>8               </span></label>
-			<label><input type="checkbox" id="BirthM09Toggle"               class="checkbox"><span>9               </span></label>
-			<label><input type="checkbox" id="BirthM10Toggle"               class="checkbox"><span>10              </span></label>
-			<label><input type="checkbox" id="BirthM11Toggle"               class="checkbox"><span>11              </span></label>
-			<label><input type="checkbox" id="BirthM12Toggle"               class="checkbox"><span>12              </span></label><hr style="border:0;height:1px;background:linear-gradient(90deg,transparent,#ddd,#ddd,transparent);margin:0;">
-			<label><input type="checkbox" id="BirthD01Toggle"               class="checkbox"><span>1               </span></label>
-			<label><input type="checkbox" id="BirthD02Toggle"               class="checkbox"><span>2               </span></label>
-			<label><input type="checkbox" id="BirthD03Toggle"               class="checkbox"><span>3               </span></label>
-			<label><input type="checkbox" id="BirthD04Toggle"               class="checkbox"><span>4               </span></label>
-			<label><input type="checkbox" id="BirthD05Toggle"               class="checkbox"><span>5               </span></label>
-			<label><input type="checkbox" id="BirthD06Toggle"               class="checkbox"><span>6               </span></label>
-			<label><input type="checkbox" id="BirthD07Toggle"               class="checkbox"><span>7               </span></label>
-			<label><input type="checkbox" id="BirthD08Toggle"               class="checkbox"><span>8               </span></label>
-			<label><input type="checkbox" id="BirthD09Toggle"               class="checkbox"><span>9               </span></label>
-			<label><input type="checkbox" id="BirthD10Toggle"               class="checkbox"><span>10              </span></label>
-			<label><input type="checkbox" id="BirthD11Toggle"               class="checkbox"><span>11              </span></label>
-			<label><input type="checkbox" id="BirthD12Toggle"               class="checkbox"><span>12              </span></label>
-			<label><input type="checkbox" id="BirthD13Toggle"               class="checkbox"><span>13              </span></label>
-			<label><input type="checkbox" id="BirthD14Toggle"               class="checkbox"><span>14              </span></label>
-			<label><input type="checkbox" id="BirthD15Toggle"               class="checkbox"><span>15              </span></label><br>
-			<label><input type="checkbox" id="BirthD16Toggle"               class="checkbox"><span>16              </span></label>
-			<label><input type="checkbox" id="BirthD17Toggle"               class="checkbox"><span>17              </span></label>
-			<label><input type="checkbox" id="BirthD18Toggle"               class="checkbox"><span>18              </span></label>
-			<label><input type="checkbox" id="BirthD19Toggle"               class="checkbox"><span>19              </span></label>
-			<label><input type="checkbox" id="BirthD20Toggle"               class="checkbox"><span>20              </span></label>
-			<label><input type="checkbox" id="BirthD21Toggle"               class="checkbox"><span>21              </span></label>
-			<label><input type="checkbox" id="BirthD22Toggle"               class="checkbox"><span>22              </span></label>
-			<label><input type="checkbox" id="BirthD23Toggle"               class="checkbox"><span>23              </span></label>
-			<label><input type="checkbox" id="BirthD24Toggle"               class="checkbox"><span>24              </span></label>
-			<label><input type="checkbox" id="BirthD25Toggle"               class="checkbox"><span>25              </span></label>
-			<label><input type="checkbox" id="BirthD26Toggle"               class="checkbox"><span>26              </span></label>
-			<label><input type="checkbox" id="BirthD27Toggle"               class="checkbox"><span>27              </span></label>
-			<label><input type="checkbox" id="BirthD28Toggle"               class="checkbox"><span>28              </span></label>
-			<label><input type="checkbox" id="BirthD29Toggle"               class="checkbox"><span>29              </span></label>
-			<label><input type="checkbox" id="BirthD30Toggle"               class="checkbox"><span>30              </span></label>
-			<label><input type="checkbox" id="BirthD31Toggle"               class="checkbox"><span>31              </span></label>
+			<label><input type="checkbox" id="BirthM01Toggle"               class="checkbox"><span>1 </span></label>
+			<label><input type="checkbox" id="BirthM02Toggle"               class="checkbox"><span>2 </span></label>
+			<label><input type="checkbox" id="BirthM03Toggle"               class="checkbox"><span>3 </span></label>
+			<label><input type="checkbox" id="BirthM04Toggle"               class="checkbox"><span>4 </span></label>
+			<label><input type="checkbox" id="BirthM05Toggle"               class="checkbox"><span>5 </span></label>
+			<label><input type="checkbox" id="BirthM06Toggle"               class="checkbox"><span>6 </span></label>
+			<label><input type="checkbox" id="BirthM07Toggle"               class="checkbox"><span>7 </span></label>
+			<label><input type="checkbox" id="BirthM08Toggle"               class="checkbox"><span>8 </span></label>
+			<label><input type="checkbox" id="BirthM09Toggle"               class="checkbox"><span>9 </span></label>
+			<label><input type="checkbox" id="BirthM10Toggle"               class="checkbox"><span>10</span></label>
+			<label><input type="checkbox" id="BirthM11Toggle"               class="checkbox"><span>11</span></label>
+			<label><input type="checkbox" id="BirthM12Toggle"               class="checkbox"><span>12</span></label><hr style="border:0;height:1px;background:linear-gradient(90deg,transparent,#ddd,#ddd,transparent);margin:0;">
+			<label><input type="checkbox" id="BirthD01Toggle"               class="checkbox"><span>1 </span></label>
+			<label><input type="checkbox" id="BirthD02Toggle"               class="checkbox"><span>2 </span></label>
+			<label><input type="checkbox" id="BirthD03Toggle"               class="checkbox"><span>3 </span></label>
+			<label><input type="checkbox" id="BirthD04Toggle"               class="checkbox"><span>4 </span></label>
+			<label><input type="checkbox" id="BirthD05Toggle"               class="checkbox"><span>5 </span></label>
+			<label><input type="checkbox" id="BirthD06Toggle"               class="checkbox"><span>6 </span></label>
+			<label><input type="checkbox" id="BirthD07Toggle"               class="checkbox"><span>7 </span></label>
+			<label><input type="checkbox" id="BirthD08Toggle"               class="checkbox"><span>8 </span></label>
+			<label><input type="checkbox" id="BirthD09Toggle"               class="checkbox"><span>9 </span></label>
+			<label><input type="checkbox" id="BirthD10Toggle"               class="checkbox"><span>10</span></label>
+			<label><input type="checkbox" id="BirthD11Toggle"               class="checkbox"><span>11</span></label>
+			<label><input type="checkbox" id="BirthD12Toggle"               class="checkbox"><span>12</span></label>
+			<label><input type="checkbox" id="BirthD13Toggle"               class="checkbox"><span>13</span></label>
+			<label><input type="checkbox" id="BirthD14Toggle"               class="checkbox"><span>14</span></label>
+			<label><input type="checkbox" id="BirthD15Toggle"               class="checkbox"><span>15</span></label><br>
+			<label><input type="checkbox" id="BirthD16Toggle"               class="checkbox"><span>16</span></label>
+			<label><input type="checkbox" id="BirthD17Toggle"               class="checkbox"><span>17</span></label>
+			<label><input type="checkbox" id="BirthD18Toggle"               class="checkbox"><span>18</span></label>
+			<label><input type="checkbox" id="BirthD19Toggle"               class="checkbox"><span>19</span></label>
+			<label><input type="checkbox" id="BirthD20Toggle"               class="checkbox"><span>20</span></label>
+			<label><input type="checkbox" id="BirthD21Toggle"               class="checkbox"><span>21</span></label>
+			<label><input type="checkbox" id="BirthD22Toggle"               class="checkbox"><span>22</span></label>
+			<label><input type="checkbox" id="BirthD23Toggle"               class="checkbox"><span>23</span></label>
+			<label><input type="checkbox" id="BirthD24Toggle"               class="checkbox"><span>24</span></label>
+			<label><input type="checkbox" id="BirthD25Toggle"               class="checkbox"><span>25</span></label>
+			<label><input type="checkbox" id="BirthD26Toggle"               class="checkbox"><span>26</span></label>
+			<label><input type="checkbox" id="BirthD27Toggle"               class="checkbox"><span>27</span></label>
+			<label><input type="checkbox" id="BirthD28Toggle"               class="checkbox"><span>28</span></label>
+			<label><input type="checkbox" id="BirthD29Toggle"               class="checkbox"><span>29</span></label>
+			<label><input type="checkbox" id="BirthD30Toggle"               class="checkbox"><span>30</span></label>
+			<label><input type="checkbox" id="BirthD31Toggle"               class="checkbox"><span>31</span></label>
 		<tr><td colspan="4" style="text-align:center;">
 			<select id="DraftLocalLegend_filtertype" style="margin:4px 0;">
 				<option value=""></option>
@@ -3953,13 +3954,18 @@ function DraftLocalLegend_CharacterRechargeNormal() {
     rarity: label.dataset.rarity || "5"
   }));
 
+  const excludedoll = document.getElementById("ExcludeDollToggle")?.checked ?? false;
+
   const logs = [];
 
   // costが正か負かで処理を分岐
   if (cost > 0) {
     let remainingCost = cost;
     while (remainingCost > 0) {
-      const reducible = characterEntries.filter(entry => entry.status > 0);
+      const reducible = characterEntries.filter(entry =>
+        entry.status > 0 &&
+        !(excludedoll && (entry.charId === "107" || entry.charId === "108"))
+      );
       if (reducible.length === 0) break;
 
       const index = Math.floor(Math.random() * reducible.length);
@@ -3993,7 +3999,9 @@ function DraftLocalLegend_CharacterRechargeNormal() {
     // costが負のとき：statusを増加させる
     let remainingCost = Math.abs(cost);
     while (remainingCost > 0) {
-      const incrementable = characterEntries; // すべて対象
+      const incrementable = characterEntries.filter(entry =>
+        !(excludedoll && (entry.charId === "107" || entry.charId === "108"))
+      );
       if (incrementable.length === 0) break;
 
       const index = Math.floor(Math.random() * incrementable.length);
@@ -4121,11 +4129,16 @@ export function DraftLocalLegend_CharacterRechargeEndless() {
     rarity: label.dataset.rarity || "5"
   }));
 
+  const excludedoll = document.getElementById("ExcludeDollToggle")?.checked ?? false;
+
   let remainingCost = cost;
   const logs = [];
 
   while (remainingCost > 0) {
-    const reducible = characterEntries.filter(entry => entry.status > 0);
+    const reducible = characterEntries.filter(entry =>
+      entry.status > 0 &&
+      !(excludedoll && (entry.charId === "107" || entry.charId === "108"))
+    );
     if (reducible.length === 0) break;
 
     const index = Math.floor(Math.random() * reducible.length);
@@ -4552,6 +4565,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.40.0<span>2026/02/15</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】復活抽選機の抽選結果からドールを除外するボタンを追加しました</p>
+	</div>
 
 	<div class="version">v1.39.0<span>2026/02/14</span></div>
 	<div class="details">
