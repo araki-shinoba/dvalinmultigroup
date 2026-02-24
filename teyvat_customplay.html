@@ -1488,6 +1488,9 @@ div#Tools div.stygian input{padding:0.25rem;border:1px solid #888;text-align:cen
 				<label data-status="0" data-character="017" data-rarity="5" data-element="anemo"   data-weapon="sword"    data-country="mondstadt" data-birth-m="03" data-birth-d="14"><span>ジン<span>【マルチ付着】爆発</span>      </span></label>
 				<label data-status="0" data-character="016" data-rarity="4" data-element="anemo"   data-weapon="catalyst" data-country="mondstadt" data-birth-m="11" data-birth-d="26"><span>スクロース                               </span></label>
 				<label data-status="0" data-character="092" data-rarity="5" data-element="anemo"   data-weapon="bow"      data-country="natlan"    data-birth-m="12" data-birth-d="10"><span>チャスカ                                 </span></label>
+				<script>new Date()>=new Date('2026-02-25T11:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
+				<label data-status="0" data-character="115" data-rarity="5" data-element="anemo"   data-weapon="claymore" data-country="mondstadt" data-birth-m="02" data-birth-d="17"><span>ファルカ                                 </span></label>
+				`)</script>
 				<label data-status="0" data-character="061" data-rarity="4" data-element="anemo"   data-weapon="bow"      data-country="sumeru"    data-birth-m="08" data-birth-d="20"><span>ファルザン                               </span></label>
 				<label data-status="0" data-character="062" data-rarity="5" data-element="anemo"   data-weapon="catalyst" data-country="sumeru"    data-birth-m="01" data-birth-d="03"><span>放浪者                                   </span></label>
 				<label data-status="0" data-character="110" data-rarity="4" data-element="anemo"   data-weapon="bow"      data-country="nodkrai"   data-birth-m="01" data-birth-d="05"><span>ヤフォダ                                 </span></label>
@@ -1507,16 +1510,12 @@ div#Tools div.stygian input{padding:0.25rem;border:1px solid #888;text-align:cen
 			<template id="DraftLocalLegend_charactertemplate_geo">
 				<label data-status="0" data-character="045" data-rarity="5" data-element="geo"     data-weapon="claymore" data-country="inazuma"   data-birth-m="06" data-birth-d="01"><span>荒瀧一斗                                 </span></label>
 				<label data-status="0" data-character="028" data-rarity="5" data-element="geo"     data-weapon="sword"    data-country="mondstadt" data-birth-m="09" data-birth-d="13"><span>アルベド                                 </span></label>
-				<script>new Date()>=new Date('2026-02-03T19:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
 				<label data-status="0" data-character="113" data-rarity="4" data-element="geo"     data-weapon="polearm"  data-country="nodkrai"   data-birth-m="12" data-birth-d="23"><span>イルーガ                                 </span></label>
-				`)</script>
 				<label data-status="0" data-character="046" data-rarity="4" data-element="geo"     data-weapon="polearm"  data-country="liyue"     data-birth-m="05" data-birth-d="21"><span>雲菫                                     </span></label>
 				<label data-status="0" data-character="087" data-rarity="4" data-element="geo"     data-weapon="polearm"  data-country="natlan"    data-birth-m="04" data-birth-d="22"><span>カチーナ                                 </span></label>
 				<label data-status="0" data-character="011" data-rarity="4" data-element="geo"     data-weapon="catalyst" data-country="liyue"     data-birth-m="08" data-birth-d="26"><span>凝光                                     </span></label>
 				<label data-status="0" data-character="044" data-rarity="4" data-element="geo"     data-weapon="bow"      data-country="inazuma"   data-birth-m="05" data-birth-d="18"><span>ゴロー                                   </span></label>
-				<script>new Date()>=new Date('2026-02-03T19:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
 				<label data-status="0" data-character="114" data-rarity="5" data-element="geo"     data-weapon="sword"    data-country="nodkrai"   data-birth-m="05" data-birth-d="15"><span>茲白                                     </span></label>
-				`)</script>
 				<label data-status="0" data-character="027" data-rarity="5" data-element="geo"     data-weapon="polearm"  data-country="liyue"     data-birth-m="12" data-birth-d="31"><span>鍾離                                     </span></label>
 				<label data-status="0" data-character="090" data-rarity="5" data-element="geo"     data-weapon="sword"    data-country="natlan"    data-birth-m="03" data-birth-d="13"><span>シロネン                                 </span></label>
 				<label data-status="0" data-character="081" data-rarity="5" data-element="geo"     data-weapon="sword"    data-country="inazuma"   data-birth-m="08" data-birth-d="17"><span>千織                                     </span></label>
@@ -1998,11 +1997,11 @@ div#Tools div.stygian input{padding:0.25rem;border:1px solid #888;text-align:cen
 					<div style="text-align:right;display:inline-block;">
 						<div>
 							<span>ボチャチコ：</span>
-							<input type="number" id="DraftLocalLegend_Bochachko" value="5" style="width:40px;"> %
+							<input type="number" id="DraftLocalLegend_Bochachko" value="0" style="width:40px;"> %
 						</div>
 						<div>
 							<span>ボチャルド：</span>
-							<input type="number" id="DraftLocalLegend_Bochard" value="5" style="width:40px;"> %
+							<input type="number" id="DraftLocalLegend_Bochard" value="0" style="width:40px;"> %
 						</div>
 					</div>
 				</div>
@@ -2023,6 +2022,9 @@ div#Tools div.stygian input{padding:0.25rem;border:1px solid #888;text-align:cen
 						<label><input type="checkbox" data-picknumber="017"><span>ジン          </span></label>
 						<label><input type="checkbox" data-picknumber="016"><span>スクロース    </span></label>
 						<label><input type="checkbox" data-picknumber="092"><span>チャスカ      </span></label>
+						<script>new Date()>=new Date('2026-02-25T11:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
+						<label><input type="checkbox" data-picknumber="115"><span>ファルカ      </span></label>
+						`)</script>
 						<label><input type="checkbox" data-picknumber="061"><span>ファルザン    </span></label>
 						<label><input type="checkbox" data-picknumber="062"><span>放浪者        </span></label>
 						<label><input type="checkbox" data-picknumber="110"><span>ヤフォダ      </span></label>
@@ -2032,16 +2034,12 @@ div#Tools div.stygian input{padding:0.25rem;border:1px solid #888;text-align:cen
 					<tr><td class="background-geo">
 						<label><input type="checkbox" data-picknumber="045"><span>荒瀧一斗      </span></label>
 						<label><input type="checkbox" data-picknumber="028"><span>アルベド      </span></label>
-						<script>new Date()>=new Date('2026-02-03T19:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
 						<label><input type="checkbox" data-picknumber="113"><span>イルーガ      </span></label>
-						`)</script>
 						<label><input type="checkbox" data-picknumber="046"><span>雲菫          </span></label>
 						<label><input type="checkbox" data-picknumber="087"><span>カチーナ      </span></label>
 						<label><input type="checkbox" data-picknumber="011"><span>凝光          </span></label>
 						<label><input type="checkbox" data-picknumber="044"><span>ゴロー        </span></label>
-						<script>new Date()>=new Date('2026-02-03T19:00:00')&&document.currentScript.insertAdjacentHTML('afterend',`
 						<label><input type="checkbox" data-picknumber="114"><span>茲白          </span></label>
-						`)</script>
 						<label><input type="checkbox" data-picknumber="027"><span>鍾離          </span></label>
 						<label><input type="checkbox" data-picknumber="090"><span>シロネン      </span></label>
 						<label><input type="checkbox" data-picknumber="081"><span>千織          </span></label>
@@ -4565,6 +4563,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.41.0<span>2026/02/25</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】キャラクターリスト、およびカスタムキャラクターリスト用コード生成機に「ファルカ」を追加しました。v6.4前半開始時に表示されます</p>
+		<p>【ドラフト地方伝説】特殊ギミック・ボチャチコ/ボチャルドのデフォルト導入確率を0%に変更しました</p>
+	</div>
 
 	<div class="version">v1.40.1<span>2026/02/15</span></div>
 	<div class="details">
