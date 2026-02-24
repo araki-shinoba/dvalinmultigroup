@@ -1,0 +1,836 @@
+<html><head><meta charset="utf-8"><title>聖遺物調整</title><meta name="viewport" content="width=device-width,user-scalable=0"><meta name="robots" content="noindex,nofollow,noarchive"><style type="text/css">
+/*▼▼▼共通▼▼▼*/
+body{font-size:12px;color:#444;}
+table{font-size:12px;border:1px #888 solid;border-collapse:collapse;margin:0 auto;}
+
+/*▼▼▼更新履歴▼▼▼*/
+div.updatehistory > div.version{font-weight:bold;font-size:1.5rem;border-bottom:1px #888 solid;padding:0.25rem;margin:0.25rem;}
+div.updatehistory > div.version > a{font-size:1.5rem;}
+div.updatehistory > div.version > span{display:inline-block;margin:0 1rem 0 0.5rem;font-weight:normal;font-size:12px;}
+div.updatehistory > div.details{margin:0 0 2rem 2rem;}
+div.updatehistory > div.details > p{margin:0 0 0.5rem;}
+
+/*▼▼▼CSV入力欄▼▼▼*/
+.csv-editor {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 20px; /* px指定に変更 */
+  box-sizing: border-box;
+}
+
+.csv-editor .csv-view,
+.csv-editor .csv-input {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 4px 8px; /* 上下のパディングを少し減らして微調整 */
+  white-space: pre;
+  overflow: auto;
+}
+
+.csv-editor .csv-input {
+  background: transparent;
+  color: transparent;
+  caret-color: black;
+  z-index: 2;
+  resize: none;
+}
+
+.csv-editor .csv-view {
+  z-index: 1;
+  pointer-events: none;
+  word-break: break-word; /* 長い文字列でも崩れないように */
+  border:1px solid transparent;
+}
+
+.csv-editor .csv-view .csv-line {
+  height: 20px; /* textarea の line-height に合わせる */
+  line-height: 20px;
+}
+
+.colA1 {background:#fdf;}.colB1 {background:#fdf;}
+.colA2 {background:#fdf;}.colB2 {background:#fdf;}
+.colA3 {background:#fdf;}.colB3 {background:#fdd;}
+.colA4 {background:#fdd;}.colB4 {background:#fdd;}
+.colA5 {background:#fdd;}.colB5 {background:#fdd;}
+.colA6 {background:#ffd;}.colB6 {background:#ffd;}
+.colA7 {background:#ffd;}.colB7 {background:#ffd;}
+.colA8 {background:#dfd;}.colB8 {background:#dfd;}
+.colA9 {background:#dfd;}
+.colA10{background:#dff;}
+.colA11{background:#dff;}
+.colA12{background:#ddf;}
+.colA13{background:#ddf;}
+</style></head><body>
+
+<div style="max-width:1000px;margin:0 auto;">
+	<div style="background:#444;padding:0.5rem;color:#fff;text-align:center;">1.名前を入力する</div>
+	<div style="margin:0.5rem;text-align:center;">
+		ユーザー名：<input id="username" placeholder="username"><button id="showUser">表示</button>
+	</div>
+
+	<div style="background:#444;padding:0.5rem;color:#fff;text-align:center;margin-top:3rem;">2.聖遺物情報を登録する</div>
+	<div style="margin:0.5rem 0;text-align:center;font-size:12px;">
+		<span class="colA1">聖遺物名</span>,<span class="colA2">部位</span>,<span class="colA3">メインOP</span>,<span class="colA4">HP+</span>,<span class="colA5">HP%</span>,<span class="colA6">攻撃力+</span>,<span class="colA7">攻撃力%</span>,<span class="colA8">防御力+</span>,<span class="colA9">防御力%</span>,<span class="colA10">会心率%</span>,<span class="colA11">会心ダメージ%</span>,<span class="colA12">元素熟知+</span>,<span class="colA13">元素チャージ効率%</span><br><br>
+		<details><summary style="background:#ddd;padding:0.25rem;">入力のルールについて</summary>
+			<pre>ex:<span class="colA1">                  </span>,<span class="colA2">  </span>,<span class="colA3">       </span>,<span class="colA4">HP+</span>,<span class="colA5">HP% </span>,<span class="colA6">攻</span>,<span class="colA7">攻% </span>,<span class="colA8">防</span>,<span class="colA9">防% </span>,<span class="colA10"> 率 </span>,<span class="colA11">ダメ</span>,<span class="colA12">熟</span>,<span class="colA13">元ﾁｬ</span><br>ex:<span class="colA1">剣闘士のフィナーレ</span>,<span class="colA2">花</span>,<span class="colA3">HP+    </span>,<span class="colA4">   </span>,<span class="colA5">    </span>,<span class="colA6">  </span>,<span class="colA7">15.7</span>,<span class="colA8">  </span>,<span class="colA9">11.7</span>,<span class="colA10">10.9</span>,<span class="colA11"> 7.7</span>,<span class="colA12">  </span>,<span class="colA13">    </span><br>ex:<span class="colA1">教官              </span>,<span class="colA2">羽</span>,<span class="colA3">攻撃力+</span>,<span class="colA4">   </span>,<span class="colA5">    </span>,<span class="colA6">  </span>,<span class="colA7"> 4.2</span>,<span class="colA8">  </span>,<span class="colA9">    </span>,<span class="colA10"> 8.1</span>,<span class="colA11"> 5.0</span>,<span class="colA12">17</span>,<span class="colA13">    </span></pre>
+			<table border="1">
+				<tr><th>聖遺物名<td>「剣闘士」「火魔女」など省略して表記することもできますが、同一の聖遺物はすべて同じ表記にしてください<br>ここが無記入の欄は計算の際に無視されるため、見出しとして利用することができます
+				<tr><th>部位    <td>「花」「羽」「砂」「杯」「冠」の5文字のみ対応しています
+				<tr><th>メインOP<td>「炎ダメ」「治癒」など省略して表記することもできますが、同一のメインOPは全て同じ表記にしてください
+				<tr><th>サブOP  <td>入力されていない箇所は0として扱われます
+				<tr><th>        <td>見た目を整える場合は半角空白を使用してください<br>全角空白や全角数字はすべて自動で半角に置換されます<br>読点(、)はすべて自動でカンマ(,)に置換されます
+			</table>
+		</details>
+	</div>
+	<div class="csv-editor">
+		<div class="csv-view"></div>
+		<textarea id="artifact" class="csv-input"></textarea>
+	</div>
+
+	<div style="background:#444;padding:0.5rem;color:#fff;text-align:center;margin-top:3rem;">3.キャラ情報を登録する</div>
+	<div style="margin:0.5rem 0;text-align:center;font-size:12px;">
+		<span class="colB1">キャラクター名</span>,<span class="colB2">4or2x2セットの名前</span>,<span class="colB3">砂メインOP</span>,<span class="colB4">杯メインOP</span>,<span class="colB5">冠メインOP</span>,<span class="colB6">会心率上限値</span>,<span class="colB7">元素チャージ効率要求値</span>,<span class="colB8">スコア計算式</span><br><br>
+		<details><summary style="background:#ddd;padding:0.25rem;">入力のルールについて</summary>
+			<pre>ex:<span class="colB1">    </span>,<span class="colB2">セット名             </span>,<span class="colB3">砂メインOP       </span>,<span class="colB4">杯メインOP     </span>,<span class="colB5">冠メインOP</span>,<span class="colB6">率上限</span>,<span class="colB7">チャージ要求        </span>,<span class="colB8">スコア計算式</span><br>ex:<span class="colB1">香菱</span>,<span class="colB2">絶縁の旗印           </span>,<span class="colB3">元素チャージ効率%</span>,<span class="colB4">炎元素ダメージ%</span>,<span class="colB5">会心率%   </span>,<span class="colB6">100-5 </span>,<span class="colB7">250-100-51.8-45.9-20</span>,<span class="colB8">攻撃+会心   </span><br>ex:<span class="colB1">鍾離</span>,<span class="colB2">千岩牢固/花海甘露の光</span>,<span class="colB3">HP%              </span>,<span class="colB4">HP%            </span>,<span class="colB5">HP%       </span>,<span class="colB6">100-5 </span>,<span class="colB7">140-100             </span>,<span class="colB8">HP+会心     </span><br>参考：香菱の元素チャージは250(要求チャージ)-100(自前のチャージ)-51.8(チャージ時計)-45.9(漁獲)-20(絶縁2セット)を入力しています</pre>
+			<table border="1">
+				<tr><th>キャラクター名        <td>ここが無記入の欄は計算の際に無視されるため、見出しとして利用することができます
+				<tr><th>セット名              <td>聖遺物情報に登録した名前を書いてください(例：聖遺物情報に「火魔女」と書いた場合、こちらでも「火魔女」と書く必要がある)<br>半角スラッシュを使うと、2セットx2の計算ができます
+				<tr><th>メインOP              <td>聖遺物情報に登録した名前を書いてください(例：聖遺物情報に「炎ダメ」と書いた場合、こちらでも「炎ダメ」と書く必要がある)
+				<tr><th>会心率上限値          <td>ここに入力された数値を上回らないようにサブOPが制限されます<br>四則演算に対応しています
+				<tr><th>元素チャージ効率要求値<td>ここに入力された数値を上回るようにサブOPが制限されます<br>四則演算に対応しています
+				<tr><th>スコア計算式          <td>スコア計算式に入力できる文字列は「HP」「攻撃」「攻撃力」「防御」「防御力」「会心」「率ダメ」「元素熟知」「熟知」「元素チャージ効率」「チャージ効率」「チャージ」「元チャ」の13種類です。これ以外の表記には対応していません
+				<tr><th>                      <td>上に書いたキャラクターから優先して聖遺物が選ばれます。アタッカー等、優先したいキャラクターを上に書くようにしてください
+				<tr><th>                      <td>見た目を整える場合は半角空白を使用してください<br>全角空白や全角数字はすべて自動で半角に置換されます<br>読点(、)はすべて自動でカンマ(,)に置換されます
+			</table>
+		</details>
+	</div>
+	<div class="csv-editor">
+		<div class="csv-view"></div>
+		<textarea id="character" class="csv-input"></textarea>
+	</div>
+
+	<div style="margin:3rem 0 0.5rem;text-align:center;">
+		<button id="run">計算</button><br>
+		<progress id="progress" value="0" max="1" style="width:300px;margin-top:1rem;"></progress><br>
+		<span id="progressText"></span>
+	</div>
+
+	<div style="background:#444;padding:0.5rem;color:#fff;text-align:center;margin-top:3rem;">4.計算結果</div>
+	<pre id="result" style="border:1px #aaa solid;min-height:3rem;"></pre>
+</div>
+
+<script type="module">
+//▼▼▼Firebaseの初期設定(編集不可)▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getDatabase, ref, set, onValue, update, get, remove, off } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC9568YUDsHERrjArZrrgiseI_j5z3YPJ0",
+  authDomain: "artifactequip.firebaseapp.com",
+  databaseURL: "https://artifactequip-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "artifactequip",
+  storageBucket: "artifactequip.firebasestorage.app",
+  messagingSenderId: "677641283387",
+  appId: "1:677641283387:web:1239e51d20b5ca1704b91e",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+//▲▲▲Firebase初期設定(編集不可)▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
+//▼▼▼CSVの着色▼▼▼
+function escapeHtml(str){
+  return str
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;");
+}
+
+function normalizeCsvText(str){
+  return str
+    // 全角数字 → 半角数字
+    .replace(/[０-９]/g, s =>
+      String.fromCharCode(s.charCodeAt(0) - 0xFEE0)
+    )
+    // 全角空白 → 半角空白
+    .replace(/\u3000/g, " ")
+    // 全角カンマ「、」 → 半角カンマ「,」
+    .replace(/、/g, ",");
+}
+/* ==============================
+   CSVビュー共通描画
+============================== */
+function renderCsvEditors() {
+  document.querySelectorAll(".csv-editor").forEach(editor => {
+    const input = editor.querySelector(".csv-input");
+    const view  = editor.querySelector(".csv-view");
+
+    // 入力を正規化
+    const normalized = normalizeCsvText(input.value);
+    if (input.value !== normalized) input.value = normalized;
+
+    // 改行ごとに <div> でラップして高さを揃える
+    const lines = input.value.split(/\r?\n/);
+    const prefix = input.id === "artifact" ? "colA" :
+                   input.id === "character" ? "colB" : "col";
+
+    // 既存の行要素を取得
+    const existingLines = Array.from(view.querySelectorAll(".csv-line"));
+
+    // 各行を div でラップして描画
+    lines.forEach((line, i) => {
+      const cols = line.split(",");
+      const html = cols.map((c, i) => `<span class="cell ${prefix}${(i % 13)+1}">${escapeHtml(c)}</span>`).join(",");
+      if (existingLines[i]) {
+        // 変更がある場合のみ更新
+        if (existingLines[i].innerHTML !== html) existingLines[i].innerHTML = html;
+      } else {
+        // 新しい行を追加
+        const div = document.createElement("div");
+        div.className = "csv-line";
+        div.innerHTML = html;
+        view.appendChild(div);
+      }
+    });
+
+    // 古い行が残っている場合は削除
+    for (let i = lines.length; i < existingLines.length; i++) {
+      view.removeChild(existingLines[i]);
+    }
+
+    // 高さを textarea に合わせる
+    const lineHeight = parseFloat(getComputedStyle(input).lineHeight);
+    view.querySelectorAll(".csv-line").forEach(div => div.style.height = lineHeight + "px");
+
+    // スクロール同期
+    view.scrollTop = input.scrollTop;
+    view.scrollLeft = input.scrollLeft;
+  });
+}
+
+/* ==============================
+   各csv-editorの入力処理
+============================== */
+document.querySelectorAll(".csv-editor").forEach(editor => {
+
+  const input = editor.querySelector(".csv-input");
+  const view  = editor.querySelector(".csv-view");
+
+  input.addEventListener("input", () => {
+
+    // カーソル位置保持
+    const start = input.selectionStart;
+    const end   = input.selectionEnd;
+
+    const normalized = normalizeCsvText(input.value);
+
+    if (input.value !== normalized) {
+      input.value = normalized;
+      input.setSelectionRange(start, end);
+    }
+
+    renderCsvEditors();
+  });
+
+  input.addEventListener("scroll", () => {
+    view.scrollTop  = input.scrollTop;
+    view.scrollLeft = input.scrollLeft;
+  });
+});
+
+// 初期描画
+renderCsvEditors();
+
+
+//▼▼▼聖遺物リストCSVからの計算▼▼▼
+function parseCSV(text) {
+
+  const lines = text
+    .split(/\r?\n/)
+    .map(l => l.trim())
+    .filter(l => l !== "");
+
+  return lines.map((line, i) => {
+
+    const c = line.split(",").map(v => v.trim());
+
+    if (c.length < 13) return null;
+
+    const cr = Number(c[9]);
+    const cd = Number(c[10]);
+
+    return {
+      id   : i,
+      set  : c[0],
+      slot : c[1],
+      main : c[2],
+
+      hp  : Number(c[4]),
+      atk : Number(c[6]),
+      def : Number(c[8]),
+      cr,
+      cd,
+      em  : Number(c[11]),
+      er  : Number(c[12]),
+
+      cri : cr * 2 + cd,
+
+      // 追加（高速化用）
+      _score : 0,
+      _setId : -1
+    };
+
+  }).filter(x => x !== null);
+}
+
+function parseSetRule(text) {
+  const rules = [];
+  if (!text.trim()) return rules;
+
+  const parts = text.split(",");
+
+  for (const p of parts) {
+    const [name, cnt] = p.split(":");
+    rules.push({
+      name: name.trim(),
+      count: Number(cnt)
+    });
+  }
+
+  return rules;
+}
+
+function buildScoreFn(block) {
+
+  const useHP  = block.querySelector(".useHP").checked;
+  const useATK = block.querySelector(".useATK").checked;
+  const useCRI = block.querySelector(".useCRI").checked;
+  const useDEF = block.querySelector(".useDEF").checked;
+  const useEM  = block.querySelector(".useEM").checked;
+  const useER  = block.querySelector(".useER").checked;
+
+  return function(a) {
+
+    let s = 0;
+
+    if (useHP)  s += a.hp;
+    if (useATK) s += a.atk;
+    if (useCRI) s += a.cri;
+    if (useDEF) s += a.def;
+    if (useEM)  s += a.em / 4;
+    if (useER)  s += a.er;
+
+    return s;
+  };
+}
+
+// -----------------------------------------
+// セットケースを作る
+// cond.setRules: [{id,count}] 例: 4セットまたは2+2
+// slots: ["花","羽","砂","杯","冠"]
+// -----------------------------------------
+function buildSetCases(cond) {
+  const slots = ["花","羽","砂","杯","冠"];
+  const rules = cond.setRules;
+
+  const cases = [];
+
+  if (rules.length === 1) {
+    // 4セットパターン
+    const S = rules[0].id;
+    // 5スロットから4個選ぶ場合 + 5個全部
+    const choose4 = [
+      [0,1,2,3],[0,1,2,4],[0,1,3,4],[0,2,3,4],[1,2,3,4]
+    ];
+    for (const sel of choose4) {
+      const slotMap = {};
+      slots.forEach((s,i)=>slotMap[s]= sel.includes(i)? S : -1);
+      cases.push(slotMap);
+    }
+    // 5個全部
+    const slotMapAll = {};
+    slots.forEach(s=>slotMapAll[s]=S);
+    cases.push(slotMapAll);
+  } else if (rules.length === 2) {
+    // 2+2パターン
+    const A = rules[0].id;
+    const B = rules[1].id;
+    // 5スロットからA2,B2配置パターンを生成
+    // 5スロット: 5C2=10でAの位置, 残りからB2選択
+    const slotIndices = [0,1,2,3,4];
+    for (let i1=0;i1<4;i1++){
+      for (let i2=i1+1;i2<5;i2++){
+        const aSlots = [i1,i2];
+        const remaining = slotIndices.filter(x=>!aSlots.includes(x));
+        for (let j1=0;j1<remaining.length-1;j1++){
+          for (let j2=j1+1;j2<remaining.length;j2++){
+            const bSlots = [remaining[j1],remaining[j2]];
+            const slotMap = {};
+            slots.forEach((s,i)=>{
+              if(aSlots.includes(i)) slotMap[s]=A;
+              else if(bSlots.includes(i)) slotMap[s]=B;
+              else slotMap[s]=-1;
+            });
+            cases.push(slotMap);
+          }
+        }
+      }
+    }
+  }
+
+  return cases;
+}
+
+// -----------------------------------------
+// 内側探索用の findBestBuildCase
+// - setCnt や setRules チェック不要
+// - slotMap に従い、候補配列をフィルタして探索
+// -----------------------------------------
+  // 小数第二位で丸める関数
+  function round1(x) {
+    return Math.round(x * 10) / 10;
+  }
+
+async function findBestBuildCase(data, cond, onProgress, setIdCount) {
+
+  const cases = buildSetCases(cond);
+  let bestOverall = null;
+  let foundAnyOverall = false;
+
+  for(const slotMap of cases){
+
+    const flowers = data.filter(a => a.slot === "花" && (slotMap["花"]===-1 || a._setId===slotMap["花"]));
+    const plumes  = data.filter(a => a.slot === "羽" && (slotMap["羽"]===-1 || a._setId===slotMap["羽"]));
+    const sands   = data.filter(a => a.slot === "砂" && (slotMap["砂"]===-1 || a._setId===slotMap["砂"]) && a.main===cond.sandMain);
+    const goblets = data.filter(a => a.slot === "杯" && (slotMap["杯"]===-1 || a._setId===slotMap["杯"]) && a.main===cond.gobletMain);
+    const circs   = data.filter(a => a.slot === "冠" && (slotMap["冠"]===-1 || a._setId===slotMap["冠"]) && a.main===cond.circletMain);
+
+    const minER = round1(Math.max(0, cond.erRequired - cond.erFromOther));
+    const maxCR = round1(cond.crMax);
+
+    // スコア事前計算
+    for(const a of data) a._score = cond.scoreFn(a);
+
+    // スコア降順ソートで枝刈り効率化
+    flowers.sort((a,b)=>b._score-a._score);
+    plumes.sort((a,b)=>b._score-a._score);
+    sands.sort((a,b)=>b._score-a._score);
+    goblets.sort((a,b)=>b._score-a._score);
+    circs.sort((a,b)=>b._score-a._score);
+
+    // 最大値計算
+    const maxBySlot = { "花":0,"羽":0,"砂":0,"杯":0,"冠":0 };
+    for(const a of data){
+      const s = a._score;
+      if(s>maxBySlot[a.slot]) maxBySlot[a.slot]=s;
+    }
+
+    let maxCircER = 0;
+    for(const c of circs){ if(c.er>maxCircER) maxCircER=c.er; }
+
+    const totalFP = flowers.length*plumes.length;
+    let doneFP = 0;
+    let tick = 0;
+
+    const cnt = new Int8Array(setIdCount);
+
+    for(const f of flowers){
+      const sf = f._score;
+      for(const p of plumes){
+        doneFP++;
+        if(onProgress) onProgress(doneFP/totalFP);
+
+        if((++tick & 1023)===0) await new Promise(r=>setTimeout(r,0));
+
+        const sp = p._score;
+        const upperFP = sf + sp + maxBySlot["砂"] + maxBySlot["杯"] + maxBySlot["冠"];
+        if(bestOverall && upperFP<=bestOverall.total) continue;
+
+        for(const s of sands){
+          const sps = sf+sp+s._score;
+          const upperFPS = sps + maxBySlot["杯"] + maxBySlot["冠"];
+          if(bestOverall && upperFPS<=bestOverall.total) continue;
+
+          const er3 = f.er + p.er + s.er;
+          const cr3 = f.cr + p.cr + s.cr;
+          if(cr3>maxCR) continue;
+
+          for(const g of goblets){
+            const sg = g._score;
+            const upper4 = sps+sg+maxBySlot["冠"];
+            if(bestOverall && upper4<=bestOverall.total) continue;
+
+            const er4 = er3+g.er;
+            if(er4+maxCircER<minER) continue;
+
+            const cr4 = cr3+g.cr;
+            if(cr4>maxCR) continue;
+
+            for(const c of circs){
+              const erSum = er4 + c.er;
+              if(erSum<minER) continue;
+
+              const crSum = cr4 + c.cr;
+              if(crSum>maxCR) continue;
+
+              const total = sps + sg + c._score;
+              foundAnyOverall = true;
+
+              if(!bestOverall || total>bestOverall.total){
+                bestOverall = { total, list:[f,p,s,g,c], erSum, crSum };
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return { best:bestOverall, foundAny:foundAnyOverall, minER:cond.erRequired, maxCR:cond.crMax };
+}
+
+// -----------------------------
+// キャラCSVを読む
+// -----------------------------
+function parseCharacterCSV(text){
+
+  const lines = text
+    .split(/\r?\n/)
+    .map(l => l.trim())
+    .filter(l => l !== "");
+
+  return lines.map((line, i) => {
+
+    const c = line.split(",").map(v => v.trim());
+
+    if (c.length < 8) return null;
+
+    const [
+      name,
+      setText,
+      sandMain,
+      gobletMain,
+      circletMain,
+      crExpr,
+      erExpr,
+      scoreExpr
+    ] = c;
+
+    // name が空欄の場合は計算せずスキップ
+    if (!name) return null
+;
+    return {
+      name,
+      setRules   : parseSetFromShort(setText),
+      sandMain,
+      gobletMain,
+      circletMain,
+      crMax      : evalSimpleExpr(crExpr),
+      erRequired : evalSimpleExpr(erExpr),
+      scoreFn    : buildScoreFnFromText(scoreExpr)
+    };
+
+  }).filter(x => x !== null);
+}
+
+// -----------------------------
+// 4セット or 2+2 記法
+// -----------------------------
+function parseSetFromShort(text){
+
+  if(!text) return [];
+
+  if(text.includes("/")){
+    const [a,b] = text.split("/").map(s => s.trim());
+    return [
+      { name:a, count:2 },
+      { name:b, count:2 }
+    ];
+  }
+
+  return [
+    { name:text.trim(), count:4 }
+  ];
+}
+
+// -----------------------------
+// 四則演算だけ許可
+// -----------------------------
+function evalSimpleExpr(expr){
+
+  if(!expr) return 0;
+
+  const s = expr.replace(/\s+/g,"");
+
+  if(!/^[0-9+\-*/().]+$/.test(s)){
+    return Number(expr) || 0;
+  }
+
+  try{
+    return Function("return (" + s + ")")();
+  }catch(e){
+    return Number(expr) || 0;
+  }
+}
+
+// -----------------------------
+// スコア式
+// -----------------------------
+function buildScoreFnFromText(text){
+
+  if(!text) return () => 0;
+
+  const map = {
+    "HP"       : "a.hp",
+
+    "攻撃"     : "a.atk",
+    "攻撃力"   : "a.atk",
+
+    "防御"     : "a.def",
+    "防御力"   : "a.def",
+
+    "会心"     : "(a.cr*2+a.cd)",
+    "率ダメ"   : "(a.cr*2+a.cd)",
+
+    "元素熟知" : "(a.em/4)",
+    "熟知"     : "(a.em/4)",
+
+    "元素チャージ効率" : "a.er",
+    "チャージ効率"     : "a.er",
+    "チャージ"         : "a.er",
+    "元チャ"           : "a.er"
+  };
+
+  let expr = text;
+
+  for(const k in map){
+    expr = expr.split(k).join(map[k]);
+  }
+
+  if(!/^[a-zA-Z0-9_.*+() ]+$/.test(expr)){
+    return () => 0;
+  }
+
+  try{
+    return new Function("a", "return " + expr + ";");
+  }catch(e){
+    return () => 0;
+  }
+}
+
+// -----------------------------
+// 実行
+// -----------------------------
+function buildSubOpText(a){
+
+  const list = [];
+
+  if (!isNaN(a.atk) && a.atk !== 0) list.push(`攻撃力${a.atk.toFixed(1)}%`);
+  if (!isNaN(a.hp)  && a.hp  !== 0) list.push(`HP${a.hp.toFixed(1)}%`);
+  if (!isNaN(a.def) && a.def !== 0) list.push(`防御力${a.def.toFixed(1)}%`);
+  if (!isNaN(a.cr)  && a.cr  !== 0) list.push(`会心率${a.cr.toFixed(1)}%`);
+  if (!isNaN(a.cd)  && a.cd  !== 0) list.push(`会心ダメージ${a.cd.toFixed(1)}%`);
+  if (!isNaN(a.em)  && a.em  !== 0) list.push(`元素熟知${a.em.toFixed(0)}`);
+  if (!isNaN(a.er)  && a.er  !== 0) list.push(`元素チャージ効率${a.er.toFixed(1)}%`);
+
+  return list.join(",");
+}
+
+document.getElementById("run").addEventListener("click", async () => {
+
+  const bar  = document.getElementById("progress");
+  const text = document.getElementById("progressText");
+
+  let data = parseCSV(
+    document.getElementById("artifact").value
+  );
+
+  const characters = parseCharacterCSV(
+    document.getElementById("character").value
+  );
+
+  // -----------------------------
+  // セット名 → ID 変換（全体で一度だけ）
+  // -----------------------------
+  const setIdMap = new Map();
+  let setIdCount = 0;
+
+  for (const a of data) {
+    if (!setIdMap.has(a.set)) {
+      setIdMap.set(a.set, setIdCount++);
+    }
+    a._setId = setIdMap.get(a.set);
+  }
+
+  let result = "";
+
+  bar.value = 0;
+  text.textContent = "0.0%";
+
+  const totalChars = characters.length;
+
+  for (let i = 0; i < characters.length; i++) {
+
+    const ch = characters[i];
+
+    const cond = {
+      setRules    : ch.setRules.map(r => ({
+        id    : setIdMap.get(r.name),
+        count: r.count
+      })),
+      sandMain    : ch.sandMain,
+      gobletMain  : ch.gobletMain,
+      circletMain : ch.circletMain,
+      erRequired  : ch.erRequired,
+      erFromOther : 0,
+      crMax       : ch.crMax,
+      scoreFn     : ch.scoreFn
+    };
+
+    const base = i / totalChars;
+    const span = 1 / totalChars;
+
+    const { best, foundAny, minER, maxCR } =
+      await findBestBuildCase(
+        data,
+        cond,
+        p => {
+          const g = round1(base + round1(p * span));
+          bar.value = g;
+          text.textContent = (g * 100).toFixed(1) + "%";
+        },
+        setIdCount
+      );
+
+    if (!foundAny) {
+
+      result += `▼${ch.name}\n`;
+      result += `条件を満たす組み合わせが見つかりません\n`;
+      result += `（必要ERサブ合計: ${round1(minER)}, 会心率上限: ${round1(maxCR)}）\n\n`;
+      continue;
+    }
+
+    result += `▼${ch.name}\n`;
+    result +=
+      `スコア:${round1(best.total).toFixed(1)} / ` +
+      `会心率:${round1(best.crSum).toFixed(1)}(上限${round1(maxCR).toFixed(1)}) / ` +
+      `元素チャージ効率:${round1(best.erSum).toFixed(1)}(要求${round1(minER).toFixed(1)})\n`;
+
+    for (const a of best.list) {
+      result +=
+        `${a.slot} / ${a.set} / ${a.main} / ${buildSubOpText(a)}\n`;
+    }
+
+    result += "\n";
+
+    const used = new Set(best.list.map(x => x.id));
+    data = data.filter(x => !used.has(x.id));
+  }
+
+  bar.value = 1;
+  text.textContent = "完了";
+
+  document.getElementById("result").textContent = result;
+});
+
+/* ------------------------------
+   ★CSV → Firebase リアルタイム保存
+------------------------------ */
+
+const artifactArea  = document.getElementById("artifact");
+const characterArea = document.getElementById("character");
+
+const userInput = document.getElementById("username");
+const showBtn   = document.getElementById("showUser");
+
+let artifactRef  = null;
+let characterRef = null;
+
+let isRemoteUpdatingArtifact  = false;
+let isRemoteUpdatingCharacter = false;
+
+/* 表示ボタン */
+showBtn.addEventListener("click", () => {
+
+  const username = userInput.value.trim();
+  if (!username) {
+    alert("usernameを入力してください");
+    return;
+  }
+
+  artifactRef  = ref(db, `${username}/artifact`);
+  characterRef = ref(db, `${username}/character`);
+
+  artifactArea.disabled  = true;
+  characterArea.disabled = true;
+
+  // artifact
+  onValue(artifactRef, snap => {
+
+    const val = snap.val() ?? "";
+
+    if (artifactArea.value !== val) {
+      isRemoteUpdatingArtifact = true;
+      artifactArea.value = val;
+      isRemoteUpdatingArtifact = false;
+      artifactArea.dispatchEvent(new Event("input"));
+    }
+
+    artifactArea.disabled = false;
+  });
+
+  // character
+  onValue(characterRef, snap => {
+
+    const val = snap.val() ?? "";
+
+    if (characterArea.value !== val) {
+      isRemoteUpdatingCharacter = true;
+      characterArea.value = val;
+      isRemoteUpdatingCharacter = false;
+      characterArea.dispatchEvent(new Event("input"));
+    }
+
+    characterArea.disabled = false;
+  });
+});
+
+
+/* artifact → Firebase */
+artifactArea.addEventListener("input", () => {
+
+  if (artifactRef && !isRemoteUpdatingArtifact) {
+    set(artifactRef, artifactArea.value);
+  }
+
+  renderCsvEditors();
+});
+
+
+/* character → Firebase */
+characterArea.addEventListener("input", () => {
+
+  if (characterRef && !isRemoteUpdatingCharacter) {
+    set(characterRef, characterArea.value);
+  }
+
+  renderCsvEditors();
+});
+</script>
+
+<div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
+	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.0.0<span>2026/02/25</span></div>
+	<div class="details">
+		<p>公開しました</p>
+	</div>
+</div>
+</body></html>
