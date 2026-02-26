@@ -1,7 +1,12 @@
+
 <html><head><meta charset="utf-8"><title>聖遺物調整</title><meta name="viewport" content="width=device-width,user-scalable=0"><meta name="robots" content="noindex,nofollow,noarchive"><style type="text/css">
 /*▼▼▼共通▼▼▼*/
 body{font-size:12px;color:#444;}
 table{font-size:12px;border:1px #888 solid;border-collapse:collapse;margin:0 auto;}
+
+label span{border:1px solid #aaa;border-radius:1rem;padding:4px 8px;display:inline-block;}
+input[type=checkbox]{display:none;}
+input[type=checkbox]:checked ~ span{background:#aaa;color:#fff;}
 
 /*▼▼▼更新履歴▼▼▼*/
 div.updatehistory > div.version{font-weight:bold;font-size:1.5rem;border-bottom:1px #888 solid;padding:0.25rem;margin:0.25rem;}
@@ -17,7 +22,7 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
   height: 300px;
   font-family: monospace;
   font-size: 14px;
-  line-height: 20px; /* px指定に変更 */
+  line-height: 20px;
   box-sizing: border-box;
 }
 
@@ -29,7 +34,7 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  padding: 4px 8px; /* 上下のパディングを少し減らして微調整 */
+  padding: 4px 8px;
   white-space: pre;
   overflow: auto;
 }
@@ -67,6 +72,7 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 .colA11{background:#dff;}
 .colA12{background:#ddf;}
 .colA13{background:#ddf;}
+.csv-view .comment{background:#ddd;}
 </style></head><body>
 
 <div style="max-width:1000px;margin:0 auto;">
@@ -82,11 +88,11 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 		<details><summary style="background:#ddd;padding:0.25rem;">入力のルールについて</summary>
 			<pre>ex:<span class="colA1">                  </span>,<span class="colA2">  </span>,<span class="colA3">       </span>,<span class="colA4">HP+</span>,<span class="colA5">HP% </span>,<span class="colA6">攻</span>,<span class="colA7">攻% </span>,<span class="colA8">防</span>,<span class="colA9">防% </span>,<span class="colA10"> 率 </span>,<span class="colA11">ダメ</span>,<span class="colA12">熟</span>,<span class="colA13">元ﾁｬ</span><br>ex:<span class="colA1">剣闘士のフィナーレ</span>,<span class="colA2">花</span>,<span class="colA3">HP+    </span>,<span class="colA4">   </span>,<span class="colA5">    </span>,<span class="colA6">  </span>,<span class="colA7">15.7</span>,<span class="colA8">  </span>,<span class="colA9">11.7</span>,<span class="colA10">10.9</span>,<span class="colA11"> 7.7</span>,<span class="colA12">  </span>,<span class="colA13">    </span><br>ex:<span class="colA1">教官              </span>,<span class="colA2">羽</span>,<span class="colA3">攻撃力+</span>,<span class="colA4">   </span>,<span class="colA5">    </span>,<span class="colA6">  </span>,<span class="colA7"> 4.2</span>,<span class="colA8">  </span>,<span class="colA9">    </span>,<span class="colA10"> 8.1</span>,<span class="colA11"> 5.0</span>,<span class="colA12">17</span>,<span class="colA13">    </span></pre>
 			<table border="1">
-				<tr><th>聖遺物名<td>「剣闘士」「火魔女」など省略して表記することもできますが、同一の聖遺物はすべて同じ表記にしてください<br>ここが無記入の欄は計算の際に無視されるため、見出しとして利用することができます
+				<tr><th>聖遺物名<td>「剣闘士」「火魔女」など省略して表記することもできますが、同一の聖遺物はすべて同じ表記にしてください<br>ここが無記入の行は計算の際に無視されます
 				<tr><th>部位    <td>「花」「羽」「砂」「杯」「冠」の5文字のみ対応しています
 				<tr><th>メインOP<td>「炎ダメ」「治癒」など省略して表記することもできますが、同一のメインOPは全て同じ表記にしてください
 				<tr><th>サブOP  <td>入力されていない箇所は0として扱われます
-				<tr><th>        <td>見た目を整える場合は半角空白を使用してください<br>全角空白や全角数字はすべて自動で半角に置換されます<br>読点(、)はすべて自動でカンマ(,)に置換されます
+				<tr><th>        <td>見た目を整える場合は半角空白を使用してください<br>全角空白や全角数字はすべて自動で半角に置換されます<br>読点(、)はすべて自動でカンマ(,)に置換されます<br>「//」を入力すると、その行のそれ以降の文字はすべてコメントアウトとして扱われます
 			</table>
 		</details>
 	</div>
@@ -97,24 +103,28 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 
 	<div style="background:#444;padding:0.5rem;color:#fff;text-align:center;margin-top:3rem;">3.キャラ情報を登録する</div>
 	<div style="margin:0.5rem 0;text-align:center;font-size:12px;">
-		<span class="colB1">キャラクター名</span>,<span class="colB2">4or2x2セットの名前</span>,<span class="colB3">砂メインOP</span>,<span class="colB4">杯メインOP</span>,<span class="colB5">冠メインOP</span>,<span class="colB6">会心率上限値</span>,<span class="colB7">元素チャージ効率要求値</span>,<span class="colB8">スコア計算式</span><br><br>
+		<span class="colB1">キャラクター名</span>,<span class="colB2">4or2x2セットの名前</span>,<span class="colB3">砂メインOP</span>,<span class="colB4">杯メインOP</span>,<span class="colB5">冠メインOP</span>,<span class="colB6">会心率上限値</span>,<span class="colB7">元素チャージ効率下限値</span>,<span class="colB8">スコア計算式</span><br><br>
 		<details><summary style="background:#ddd;padding:0.25rem;">入力のルールについて</summary>
-			<pre>ex:<span class="colB1">    </span>,<span class="colB2">セット名             </span>,<span class="colB3">砂メインOP       </span>,<span class="colB4">杯メインOP     </span>,<span class="colB5">冠メインOP</span>,<span class="colB6">率上限</span>,<span class="colB7">チャージ要求        </span>,<span class="colB8">スコア計算式</span><br>ex:<span class="colB1">香菱</span>,<span class="colB2">絶縁の旗印           </span>,<span class="colB3">元素チャージ効率%</span>,<span class="colB4">炎元素ダメージ%</span>,<span class="colB5">会心率%   </span>,<span class="colB6">100-5 </span>,<span class="colB7">250-100-51.8-45.9-20</span>,<span class="colB8">攻撃+会心   </span><br>ex:<span class="colB1">鍾離</span>,<span class="colB2">千岩牢固/花海甘露の光</span>,<span class="colB3">HP%              </span>,<span class="colB4">HP%            </span>,<span class="colB5">HP%       </span>,<span class="colB6">100-5 </span>,<span class="colB7">140-100             </span>,<span class="colB8">HP+会心     </span><br>参考：香菱の元素チャージは250(要求チャージ)-100(自前のチャージ)-51.8(チャージ時計)-45.9(漁獲)-20(絶縁2セット)を入力しています</pre>
+			<pre>ex:<span class="colB1">    </span>,<span class="colB2">セット名             </span>,<span class="colB3">砂メインOP       </span>,<span class="colB4">杯メインOP     </span>,<span class="colB5">冠メインOP</span>,<span class="colB6">率上限</span>,<span class="colB7">チャージ下限        </span>,<span class="colB8">スコア計算式</span><br>ex:<span class="colB1">香菱</span>,<span class="colB2">絶縁の旗印           </span>,<span class="colB3">元素チャージ効率%</span>,<span class="colB4">炎元素ダメージ%</span>,<span class="colB5">会心率%   </span>,<span class="colB6">100-5 </span>,<span class="colB7">250-100-51.8-45.9-20</span>,<span class="colB8">攻撃+会心   </span><br>ex:<span class="colB1">鍾離</span>,<span class="colB2">千岩牢固/花海甘露の光</span>,<span class="colB3">HP%              </span>,<span class="colB4">HP%            </span>,<span class="colB5">HP%       </span>,<span class="colB6">100-5 </span>,<span class="colB7">140-100             </span>,<span class="colB8">HP+会心     </span><br>参考：香菱の元素チャージは250(要求チャージ)-100(自前のチャージ)-51.8(チャージ時計)-45.9(漁獲)-20(絶縁2セット)を入力しています</pre>
 			<table border="1">
-				<tr><th>キャラクター名        <td>ここが無記入の欄は計算の際に無視されるため、見出しとして利用することができます
+				<tr><th>キャラクター名        <td>ここが無記入の行は計算の際に無視されます
 				<tr><th>セット名              <td>聖遺物情報に登録した名前を書いてください(例：聖遺物情報に「火魔女」と書いた場合、こちらでも「火魔女」と書く必要がある)<br>半角スラッシュを使うと、2セットx2の計算ができます
 				<tr><th>メインOP              <td>聖遺物情報に登録した名前を書いてください(例：聖遺物情報に「炎ダメ」と書いた場合、こちらでも「炎ダメ」と書く必要がある)
 				<tr><th>会心率上限値          <td>ここに入力された数値を上回らないようにサブOPが制限されます<br>四則演算に対応しています
-				<tr><th>元素チャージ効率要求値<td>ここに入力された数値を上回るようにサブOPが制限されます<br>四則演算に対応しています
+				<tr><th>元素チャージ効率下限値<td>ここに入力された数値を上回るようにサブOPが制限されます<br>四則演算に対応しています
 				<tr><th>スコア計算式          <td>スコア計算式に入力できる文字列は「HP」「攻撃」「攻撃力」「防御」「防御力」「会心」「率ダメ」「元素熟知」「熟知」「元素チャージ効率」「チャージ効率」「チャージ」「元チャ」の13種類です。これ以外の表記には対応していません
 				<tr><th>                      <td>上に書いたキャラクターから優先して聖遺物が選ばれます。アタッカー等、優先したいキャラクターを上に書くようにしてください
-				<tr><th>                      <td>見た目を整える場合は半角空白を使用してください<br>全角空白や全角数字はすべて自動で半角に置換されます<br>読点(、)はすべて自動でカンマ(,)に置換されます
+				<tr><th>                      <td>見た目を整える場合は半角空白を使用してください<br>全角空白や全角数字はすべて自動で半角に置換されます<br>読点(、)はすべて自動でカンマ(,)に置換されます<br>「//」を入力すると、その行のそれ以降の文字はすべてコメントアウトとして扱われます
 			</table>
 		</details>
 	</div>
 	<div class="csv-editor">
 		<div class="csv-view"></div>
 		<textarea id="character" class="csv-input"></textarea>
+	</div>
+	<div style="margin:0.5rem;text-align:center;">
+		<label><input type="checkbox" id="chkReduceCrExpr"><span>計算の際に会心率上限値から初期値5を引く</span></label>
+		<label><input type="checkbox" id="chkReduceErExpr"><span>計算の際に元素チャージ効率下限値から初期値100を引く</span></label>
 	</div>
 
 	<div style="margin:3rem 0 0.5rem;text-align:center;">
@@ -168,6 +178,42 @@ function normalizeCsvText(str){
 /* ==============================
    CSVビュー共通描画
 ============================== */
+function renderCsvLineWithLineComment(line, prefix){
+
+  let html = "";
+
+  const commentPos = line.indexOf("//");
+
+  let normalPart;
+  let commentPart;
+
+  if(commentPos === -1){
+    normalPart  = line;
+    commentPart = "";
+  }else{
+    normalPart  = line.slice(0, commentPos);
+    commentPart = line.slice(commentPos);
+  }
+
+  let col = 0;
+
+  const cols = normalPart.split(",");
+
+  for(let i=0;i<cols.length;i++){
+    html += `<span class="cell ${prefix}${(col % 13)+1}">${escapeHtml(cols[i])}</span>`;
+    if(i < cols.length - 1){
+      html += ",";
+      col++;
+    }
+  }
+
+  if(commentPart){
+    html += `<span class="comment">${escapeHtml(commentPart)}</span>`;
+  }
+
+  return html;
+}
+
 function renderCsvEditors() {
   document.querySelectorAll(".csv-editor").forEach(editor => {
     const input = editor.querySelector(".csv-input");
@@ -188,7 +234,7 @@ function renderCsvEditors() {
     // 各行を div でラップして描画
     lines.forEach((line, i) => {
       const cols = line.split(",");
-      const html = cols.map((c, i) => `<span class="cell ${prefix}${(i % 13)+1}">${escapeHtml(c)}</span>`).join(",");
+      const html = renderCsvLineWithLineComment(line, prefix);
       if (existingLines[i]) {
         // 変更がある場合のみ更新
         if (existingLines[i].innerHTML !== html) existingLines[i].innerHTML = html;
@@ -264,8 +310,8 @@ function parseCSV(text) {
 
     if (c.length < 13) return null;
 
-    const cr = Number(c[9]);
-    const cd = Number(c[10]);
+    const crRate = Number(c[9]);
+    const cdRate = Number(c[10]);
 
     return {
       id   : i,
@@ -273,15 +319,18 @@ function parseCSV(text) {
       slot : c[1],
       main : c[2],
 
-      hp  : Number(c[4]),
-      atk : Number(c[6]),
-      def : Number(c[8]),
-      cr,
-      cd,
-      em  : Number(c[11]),
-      er  : Number(c[12]),
+      hpFlat  : Number(c[3]),
+      hpRate  : Number(c[4]),
+      atkFlat : Number(c[5]),
+      atkRate : Number(c[6]),
+      defFlat : Number(c[7]),
+      defRate : Number(c[8]),
+      crRate,
+      cdRate,
+      emFlat  : Number(c[11]),
+      erRate  : Number(c[12]),
 
-      cri : cr * 2 + cd,
+      cri : crRate * 2 + cdRate,
 
       // 追加（高速化用）
       _score : 0,
@@ -434,8 +483,7 @@ async function findBestBuildCase(data, cond, onProgress, setIdCount) {
     }
 
     let maxCircER = 0;
-    for(const c of circs){ if(c.er>maxCircER) maxCircER=c.er; }
-
+    for(const c of circs){ if(c.erRate>maxCircER) maxCircER=c.erRate;}
     const totalFP = flowers.length*plumes.length;
     let doneFP = 0;
     let tick = 0;
@@ -459,8 +507,8 @@ async function findBestBuildCase(data, cond, onProgress, setIdCount) {
           const upperFPS = sps + maxBySlot["杯"] + maxBySlot["冠"];
           if(bestOverall && upperFPS<=bestOverall.total) continue;
 
-          const er3 = f.er + p.er + s.er;
-          const cr3 = f.cr + p.cr + s.cr;
+          const er3 = f.erRate + p.erRate + s.erRate;
+          const cr3 = f.crRate + p.crRate + s.crRate;
           if(cr3>maxCR) continue;
 
           for(const g of goblets){
@@ -468,17 +516,17 @@ async function findBestBuildCase(data, cond, onProgress, setIdCount) {
             const upper4 = sps+sg+maxBySlot["冠"];
             if(bestOverall && upper4<=bestOverall.total) continue;
 
-            const er4 = er3+g.er;
+            const er4 = er3+g.erRate;
             if(er4+maxCircER<minER) continue;
 
-            const cr4 = cr3+g.cr;
+            const cr4 = cr3+g.crRate;
             if(cr4>maxCR) continue;
 
             for(const c of circs){
-              const erSum = er4 + c.er;
+              const erSum = er4 + c.erRate;
               if(erSum<minER) continue;
 
-              const crSum = cr4 + c.cr;
+              const crSum = cr4 + c.crRate;
               if(crSum>maxCR) continue;
 
               const total = sps + sg + c._score;
@@ -525,16 +573,24 @@ function parseCharacterCSV(text){
     ] = c;
 
     // name が空欄の場合は計算せずスキップ
-    if (!name) return null
-;
+    if (!name) return null;
+
+    // チェック状態を取得
+    const reduceCR = document.getElementById("chkReduceCrExpr")?.checked;
+    const reduceER = document.getElementById("chkReduceErExpr")?.checked;
+
+    // 式を補正（仕様通り、式として差し引く）
+    const crExpr2 = reduceCR ? `(${crExpr})-5`   : crExpr;
+    const erExpr2 = reduceER ? `(${erExpr})-100` : erExpr;
+
     return {
       name,
       setRules   : parseSetFromShort(setText),
       sandMain,
       gobletMain,
       circletMain,
-      crMax      : evalSimpleExpr(crExpr),
-      erRequired : evalSimpleExpr(erExpr),
+      crMax      : evalSimpleExpr(crExpr2),
+      erRequired : evalSimpleExpr(erExpr2),
       scoreFn    : buildScoreFnFromText(scoreExpr)
     };
 
@@ -589,24 +645,24 @@ function buildScoreFnFromText(text){
   if(!text) return () => 0;
 
   const map = {
-    "HP"       : "a.hp",
+    "HP"       : "a.hpRate",
 
-    "攻撃"     : "a.atk",
-    "攻撃力"   : "a.atk",
+    "攻撃"     : "a.atkRate",
+    "攻撃力"   : "a.atkRate",
 
-    "防御"     : "a.def",
-    "防御力"   : "a.def",
+    "防御"     : "a.defRate",
+    "防御力"   : "a.defRate",
 
-    "会心"     : "(a.cr*2+a.cd)",
-    "率ダメ"   : "(a.cr*2+a.cd)",
+    "会心"     : "(a.crRate*2+a.cdRate)",
+    "率ダメ"   : "(a.crRate*2+a.cdRate)",
 
-    "元素熟知" : "(a.em/4)",
-    "熟知"     : "(a.em/4)",
+    "元素熟知" : "(a.emFlat/4)",
+    "熟知"     : "(a.emFlat/4)",
 
-    "元素チャージ効率" : "a.er",
-    "チャージ効率"     : "a.er",
-    "チャージ"         : "a.er",
-    "元チャ"           : "a.er"
+    "元素チャージ効率" : "a.erRate",
+    "チャージ効率"     : "a.erRate",
+    "チャージ"         : "a.erRate",
+    "元チャ"           : "a.erRate"
   };
 
   let expr = text;
@@ -615,7 +671,7 @@ function buildScoreFnFromText(text){
     expr = expr.split(k).join(map[k]);
   }
 
-  if(!/^[a-zA-Z0-9_.*+() ]+$/.test(expr)){
+if(!/^[a-zA-Z0-9_.*+()\/\- ]+$/.test(expr)){
     return () => 0;
   }
 
@@ -633,15 +689,44 @@ function buildSubOpText(a){
 
   const list = [];
 
-  if (!isNaN(a.atk) && a.atk !== 0) list.push(`攻撃力${a.atk.toFixed(1)}%`);
-  if (!isNaN(a.hp)  && a.hp  !== 0) list.push(`HP${a.hp.toFixed(1)}%`);
-  if (!isNaN(a.def) && a.def !== 0) list.push(`防御力${a.def.toFixed(1)}%`);
-  if (!isNaN(a.cr)  && a.cr  !== 0) list.push(`会心率${a.cr.toFixed(1)}%`);
-  if (!isNaN(a.cd)  && a.cd  !== 0) list.push(`会心ダメージ${a.cd.toFixed(1)}%`);
-  if (!isNaN(a.em)  && a.em  !== 0) list.push(`元素熟知${a.em.toFixed(0)}`);
-  if (!isNaN(a.er)  && a.er  !== 0) list.push(`元素チャージ効率${a.er.toFixed(1)}%`);
+  if (!isNaN(a.atkFlat) && a.atkFlat !== 0) list.push(`攻撃力+${a.atkFlat.toFixed(0)}`);
+  if (!isNaN(a.atkRate) && a.atkRate !== 0) list.push(`攻撃力${a.atkRate.toFixed(1)}%`);
+  if (!isNaN(a.hpFlat) && a.hpFlat !== 0) list.push(`HP+${a.hpFlat.toFixed(0)}`);
+  if (!isNaN(a.hpRate) && a.hpRate !== 0) list.push(`HP${a.hpRate.toFixed(1)}%`);
+  if (!isNaN(a.defFlat) && a.defFlat !== 0) list.push(`防御力+${a.defFlat.toFixed(0)}`);
+  if (!isNaN(a.defRate) && a.defRate !== 0) list.push(`防御力${a.defRate.toFixed(1)}%`);
+  if (!isNaN(a.crRate) && a.crRate !== 0) list.push(`会心率${a.crRate.toFixed(1)}%`);
+  if (!isNaN(a.cdRate) && a.cdRate !== 0) list.push(`会心ダメージ${a.cdRate.toFixed(1)}%`);
+  if (!isNaN(a.emFlat) && a.emFlat !== 0) list.push(`元素熟知${a.emFlat.toFixed(0)}`);
+  if (!isNaN(a.erRate) && a.erRate !== 0) list.push(`元素チャージ効率${a.erRate.toFixed(1)}%`);
 
   return list.join(",");
+}
+
+function sumSubStats(list){
+
+  const s = {
+    hpFlat:0, hpRate:0,
+    atkFlat:0, atkRate:0,
+    defFlat:0, defRate:0,
+    crRate:0, cdRate:0,
+    emFlat:0, erRate:0
+  };
+
+  for(const a of list){
+    s.hpFlat  += a.hpFlat;
+    s.hpRate  += a.hpRate;
+    s.atkFlat += a.atkFlat;
+    s.atkRate += a.atkRate;
+    s.defFlat += a.defFlat;
+    s.defRate += a.defRate;
+    s.crRate  += a.crRate;
+    s.cdRate  += a.cdRate;
+    s.emFlat  += a.emFlat;
+    s.erRate  += a.erRate;
+  }
+
+  return s;
 }
 
 document.getElementById("run").addEventListener("click", async () => {
@@ -651,10 +736,12 @@ document.getElementById("run").addEventListener("click", async () => {
 
   let data = parseCSV(
     document.getElementById("artifact").value
+    .replace(/\/\/.*$/gm, "")
   );
 
   const characters = parseCharacterCSV(
     document.getElementById("character").value
+    .replace(/\/\/.*$/gm, "")
   );
 
   // -----------------------------
@@ -712,24 +799,61 @@ document.getElementById("run").addEventListener("click", async () => {
 
     if (!foundAny) {
 
-      result += `▼${ch.name}\n`;
-      result += `条件を満たす組み合わせが見つかりません\n`;
-      result += `（必要ERサブ合計: ${round1(minER)}, 会心率上限: ${round1(maxCR)}）\n\n`;
+      result += `<table border="1" style="margin:2rem auto;">
+      <tr>
+        <th>
+          ${ch.name}
+        </th>
+      </tr>
+      <tr>
+        <td>条件を満たす組み合わせが見つかりません<br>( 会心率上限:${round1(maxCR).toFixed(1)} / 元素チャージ効率下限:${round1(minER).toFixed(1)} )</td>
+      </tr>
+      </table>`;
       continue;
     }
 
-    result += `▼${ch.name}\n`;
-    result +=
-      `スコア:${round1(best.total).toFixed(1)} / ` +
-      `会心率:${round1(best.crSum).toFixed(1)}(上限${round1(maxCR).toFixed(1)}) / ` +
-      `元素チャージ効率:${round1(best.erSum).toFixed(1)}(要求${round1(minER).toFixed(1)})\n`;
+    const sum = sumSubStats(best.list);
 
-    for (const a of best.list) {
+    result += `<table border="1" style="margin:2rem auto;">
+    <tr>
+      <th colspan="10">
+        ${ch.name}　スコア:${round1(best.total).toFixed(1)}
+      </th>
+    </tr>
+    <tr>
+      <td>HP+</td><td>HP%</td>
+      <td>ATK+</td><td>ATK%</td>
+      <td>DEF+</td><td>DEF%</td>
+      <td>会心率</td>
+      <td>会心<br>ダメージ</td>
+      <td>元素熟知</td>
+      <td>元素チャージ効率</td>
+    </tr>
+    <tr>
+      <td>${round1(sum.hpFlat).toFixed(0)}</td>
+      <td>${round1(sum.hpRate).toFixed(1)}</td>
+      <td>${round1(sum.atkFlat).toFixed(0)}</td>
+      <td>${round1(sum.atkRate).toFixed(1)}</td>
+      <td>${round1(sum.defFlat).toFixed(0)}</td>
+      <td>${round1(sum.defRate).toFixed(1)}</td>
+      <td>${round1(best.crSum).toFixed(1)}<br>(上限:${round1(maxCR).toFixed(1)})</td>
+      <td>${round1(sum.cdRate).toFixed(1)}</td>
+      <td>${round1(sum.emFlat).toFixed(0)}</td>
+      <td>${round1(best.erSum).toFixed(1)}<br>(下限:${round1(minER).toFixed(1)})</td>
+    </tr>
+    <tr>
+      <td colspan="10">
+    `;
+
+    for(const a of best.list){
       result +=
-        `${a.slot} / ${a.set} / ${a.main} / ${buildSubOpText(a)}\n`;
+        `${a.slot} / ${a.set} / ${a.main} / ${buildSubOpText(a)}<br>`;
     }
 
-    result += "\n";
+    result += `
+      </td>
+    </tr>
+    </table>`;
 
     const used = new Set(best.list.map(x => x.id));
     data = data.filter(x => !used.has(x.id));
@@ -738,12 +862,14 @@ document.getElementById("run").addEventListener("click", async () => {
   bar.value = 1;
   text.textContent = "完了";
 
-  document.getElementById("result").textContent = result;
+  document.getElementById("result").innerHTML = result;
 });
 
 /* ------------------------------
    ★CSV → Firebase リアルタイム保存
 ------------------------------ */
+const chkReduceCrExpr = document.getElementById("chkReduceCrExpr");
+const chkReduceErExpr = document.getElementById("chkReduceErExpr");
 
 const artifactArea  = document.getElementById("artifact");
 const characterArea = document.getElementById("character");
@@ -752,119 +878,132 @@ const userInput = document.getElementById("username");
 const showBtn   = document.getElementById("showUser");
 const currentUserNameSpan = document.getElementById("currentUserName");
 
-let artifactRef  = null;
-let characterRef = null;
 
-let isRemoteUpdatingArtifact  = false;
-let isRemoteUpdatingCharacter = false;
+/* -----------------------------
+   checkbox 共通バインド
+----------------------------- */
+function bindCheckbox(path, checkbox){
 
-/* 表示ボタン */
+  const r = ref(db, path);
+
+  // Firebase → UI（常に Firebase を正とする）
+  onValue(r, snap => {
+
+    const v = !!snap.val();
+
+    if (checkbox.checked !== v){
+      checkbox.checked = v;
+    }
+  });
+
+  // UI → Firebase
+  checkbox.addEventListener("change", () => {
+    set(r, checkbox.checked);
+  });
+}
+
+
+/* -----------------------------
+   textarea 共通バインド
+----------------------------- */
+function bindTextarea(path, textarea){
+
+  const r = ref(db, path);
+
+  let isRemote = false;
+
+  // Firebase → textarea
+  const unsub = onValue(r, snap => {
+
+    const v = snap.val() ?? "";
+
+    if (textarea.value !== v){
+
+      isRemote = true;
+      textarea.value = v;
+      isRemote = false;
+
+      textarea.dispatchEvent(new Event("input"));
+    }
+
+    textarea.disabled = false;
+  });
+
+  // textarea → Firebase
+  const onInput = () => {
+
+    if (isRemote) return;
+
+    set(r, textarea.value);
+    renderCsvEditors();
+  };
+
+  textarea.addEventListener("input", onInput);
+
+  return () => {
+    unsub();
+    textarea.removeEventListener("input", onInput);
+  };
+}
+
+
+/* -----------------------------
+   接続処理
+----------------------------- */
+let unsubArtifact  = null;
+let unsubCharacter = null;
+
 showBtn.addEventListener("click", () => {
 
   const username = userInput.value.trim();
-  if (!username) {
+  if(!username){
     alert("usernameを入力してください");
     return;
   }
 
-  currentUserNameSpan.textContent = `接続中のユーザー名：${username}`;
-
-  artifactRef  = ref(db, `${username}/artifact`);
-  characterRef = ref(db, `${username}/character`);
+  currentUserNameSpan.textContent =
+    `接続中のユーザー名：${username}`;
 
   artifactArea.disabled  = true;
   characterArea.disabled = true;
 
-  // artifact
-  onValue(artifactRef, snap => {
+  if(unsubArtifact)  unsubArtifact();
+  if(unsubCharacter) unsubCharacter();
 
-    const val = snap.val() ?? "";
+  unsubArtifact = bindTextarea(
+    `${username}/artifact`,
+    artifactArea
+  );
 
-    if (artifactArea.value !== val) {
-      isRemoteUpdatingArtifact = true;
-      artifactArea.value = val;
-      isRemoteUpdatingArtifact = false;
-      artifactArea.dispatchEvent(new Event("input"));
-    }
+  unsubCharacter = bindTextarea(
+    `${username}/character`,
+    characterArea
+  );
 
-    artifactArea.disabled = false;
-  });
+  bindCheckbox(
+    `${username}/_checkbox/critrate`,
+    chkReduceCrExpr
+  );
 
-  // character
-  onValue(characterRef, snap => {
-
-    const val = snap.val() ?? "";
-
-    if (characterArea.value !== val) {
-      isRemoteUpdatingCharacter = true;
-      characterArea.value = val;
-      isRemoteUpdatingCharacter = false;
-      characterArea.dispatchEvent(new Event("input"));
-    }
-
-    characterArea.disabled = false;
-  });
-});
-
-
-/* artifact → Firebase */
-artifactArea.addEventListener("input", () => {
-
-  if (artifactRef && !isRemoteUpdatingArtifact) {
-    set(artifactRef, artifactArea.value);
-  }
-
-  renderCsvEditors();
-});
-
-
-/* character → Firebase */
-characterArea.addEventListener("input", () => {
-
-  if (characterRef && !isRemoteUpdatingCharacter) {
-    set(characterRef, characterArea.value);
-  }
-
-  renderCsvEditors();
-});
-
-
-/* Firebase → artifact textarea 反映 */
-onValue(artifactRef, (snapshot) => {
-
-  const remoteValue = snapshot.val() ?? "";
-
-  // 矛盾している場合のみ反映
-  if (artifactArea.value !== remoteValue) {
-
-    isRemoteUpdatingArtifact = true;
-    artifactArea.value = remoteValue;
-    isRemoteUpdatingArtifact = false;
-
-    renderCsvEditors();
-  }
-});
-
-
-/* Firebase → character textarea 反映 */
-onValue(characterRef, (snapshot) => {
-
-  const remoteValue = snapshot.val() ?? "";
-
-  // 矛盾している場合のみ反映
-  if (characterArea.value !== remoteValue) {
-
-    isRemoteUpdatingCharacter = true;
-    characterArea.value = remoteValue;
-    isRemoteUpdatingCharacter = false;
-
-    renderCsvEditors();
-  }
+  bindCheckbox(
+    `${username}/_checkbox/energyrecharge`,
+    chkReduceErExpr
+  );
 });
 </script>
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.1.0<span>2026/02/26</span></div>
+	<div class="details">
+		<p>会心率と元素チャージ効率の初期値を考慮するボタンを追加しました。このボタンの押下状況はユーザーごとに保存されます</p>
+		<p>聖遺物情報とキャラ情報の入力欄にコメントアウトの機能を追加しました。「//」を用いることで、その行の終わりまでコメントとして記述ができます</p>
+		<p>計算結果のUIを調整し、すべてのサブOP量が表示されるようにしました</p>
+		<p>計算結果の一部数値がごく稀に0になってしまう問題を修正しました</p>
+		<p>計算結果のサブOP欄にHP+/攻撃力+/防御力+が表示されない問題を修正しました</p>
+		<p>その他軽微な変更・修正をしました</p>
+	</div>
 
 	<div class="version">v1.0.1<span>2026/02/25</span></div>
 	<div class="details">
