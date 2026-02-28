@@ -685,7 +685,7 @@ function parseCharacterCSV(text){
       scoreExpr  : scoreExpr
     };
 
-  }).filter(x => x !== null);
+  });
 }
 
 // -----------------------------
@@ -860,9 +860,11 @@ document.getElementById("run").addEventListener("click", async () => {
   bar.value = 0;
   text.textContent = "0.0%";
 
-  const totalChars = characters.length;
+  // 実際に計算するキャラ数だけ数える
+  const totalChars = characters.filter(x => x !== null).length;
 
-  let charIndex = 0;
+  let rowIndex  = 0; // csv行用インデックス
+  let calcIndex = 0; // 計算用インデックス
 
   for (const row of characterRows) {
 
@@ -877,15 +879,16 @@ document.getElementById("run").addEventListener("click", async () => {
       continue;
     }
 
-    const ch = characters[charIndex];
+    const ch = characters[rowIndex];
+    rowIndex++;
 
+    // name空欄などで無効な行
     if (!ch) {
-      // CSVとして無効な行なのでスキップ
       continue;
     }
 
-    const i  = charIndex;
-    charIndex++;
+    const i = calcIndex;
+    calcIndex++;
 
     const cond = {
       setRules    : ch.setRules.map(r => ({
@@ -1134,6 +1137,11 @@ showBtn.addEventListener("click", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.2.1<span>2026/02/28</span></div>
+	<div class="details">
+		<p>キャラ情報のキャラ名を空欄にしたぶんだけ計算結果の見出し位置がずれてしまう問題を修正しました</p>
+	</div>
 
 	<div class="version">v1.2.0<span>2026/02/28</span></div>
 	<div class="details">
