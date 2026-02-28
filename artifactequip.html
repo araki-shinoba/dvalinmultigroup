@@ -1,4 +1,3 @@
-
 <html><head><meta charset="utf-8"><title>聖遺物調整</title><meta name="viewport" content="width=device-width,user-scalable=0"><meta name="robots" content="noindex,nofollow,noarchive"><style type="text/css">
 /*▼▼▼共通▼▼▼*/
 body{font-size:12px;color:#444;}
@@ -73,6 +72,7 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 .colA12{background:#ddf;}
 .colA13{background:#ddf;}
 .csv-view .comment{background:#ddd;}
+.csv-view .header{background:#eef;}
 </style></head><body>
 
 <div style="max-width:1000px;margin:0 auto;">
@@ -92,7 +92,8 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 				<tr><th>部位    <td>「花」「羽」「砂」「杯」「冠」の5文字のみ対応しています
 				<tr><th>メインOP<td>「炎ダメ」「治癒」など省略して表記することもできますが、同一のメインOPは全て同じ表記にしてください
 				<tr><th>サブOP  <td>入力されていない箇所は0として扱われます
-				<tr><th>        <td>見た目を整える場合は半角空白を使用してください<br>全角空白や全角数字はすべて自動で半角に置換されます<br>読点(、)はすべて自動でカンマ(,)に置換されます<br>「//」を入力すると、その行のそれ以降の文字はすべてコメントアウトとして扱われます
+				<tr><th>        <td>見た目を整える場合は半角空白を使用してください<br>全角空白や全角数字はすべて自動で半角に置換されます<br>読点(、)はすべて自動でカンマ(,)に置換されます
+				<tr><th>        <td>「//」を入力すると、その行のそれ以降の文字はすべてコメントアウトとして扱われます
 			</table>
 		</details>
 	</div>
@@ -114,7 +115,8 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 				<tr><th>元素チャージ効率下限値<td>ここに入力された数値を上回るようにサブOPが制限されます<br>四則演算に対応しています
 				<tr><th>スコア計算式          <td>スコア計算式に入力できる文字列は「HP」「攻撃」「攻撃力」「防御」「防御力」「会心」「率ダメ」「元素熟知」「熟知」「元素チャージ効率」「チャージ効率」「チャージ」「元チャ」の13種類です。これ以外の表記には対応していません
 				<tr><th>                      <td>上に書いたキャラクターから優先して聖遺物が選ばれます。アタッカー等、優先したいキャラクターを上に書くようにしてください
-				<tr><th>                      <td>見た目を整える場合は半角空白を使用してください<br>全角空白や全角数字はすべて自動で半角に置換されます<br>読点(、)はすべて自動でカンマ(,)に置換されます<br>「//」を入力すると、その行のそれ以降の文字はすべてコメントアウトとして扱われます
+				<tr><th>                      <td>見た目を整える場合は半角空白を使用してください<br>全角空白や全角数字はすべて自動で半角に置換されます<br>読点(、)はすべて自動でカンマ(,)に置換されます
+				<tr><th>                      <td>行頭に「#」を入力すると、その行は見出しとして扱われます<br>「//」を入力すると、その行のそれ以降の文字はすべてコメントアウトとして扱われます
 			</table>
 		</details>
 	</div>
@@ -179,6 +181,11 @@ function normalizeCsvText(str){
    CSVビュー共通描画
 ============================== */
 function renderCsvLineWithLineComment(line, prefix){
+
+  // 見出し行
+  if (line.startsWith("#")) {
+    return `<span class="header">${escapeHtml(line)}</span>`;
+  }
 
   let html = "";
 
@@ -443,16 +450,24 @@ function buildSetCases(cond) {
 // - setCnt や setRules チェック不要
 // - slotMap に従い、候補配列をフィルタして探索
 // -----------------------------------------
-  // 小数第二位で丸める関数
-  function round1(x) {
-    return Math.round(x * 10) / 10;
-  }
+
+// 小数第二位で丸める関数
+function round1(x) {
+  return Math.round(x * 10) / 10;
+}
 
 async function findBestBuildCase(data, cond, onProgress, setIdCount) {
 
   const cases = buildSetCases(cond);
+
   let bestOverall = null;
   let foundAnyOverall = false;
+
+  let hasSetOK  = false;
+  let hasEROK   = false;
+  let hasCROK   = false;
+  let bestMinCR = Infinity; // 暫定：最小会心率
+  let bestMaxER = 0;       // 暫定：最大元素チャージ
 
   for(const slotMap of cases){
 
@@ -465,17 +480,20 @@ async function findBestBuildCase(data, cond, onProgress, setIdCount) {
     const minER = round1(Math.max(0, cond.erRequired - cond.erFromOther));
     const maxCR = round1(cond.crMax);
 
+    // セットだけ成立する組み合わせが存在するか
+    if(flowers.length && plumes.length && sands.length && goblets.length && circs.length){
+      hasSetOK = true;
+    }
+
     // スコア事前計算
     for(const a of data) a._score = cond.scoreFn(a);
 
-    // スコア降順ソートで枝刈り効率化
     flowers.sort((a,b)=>b._score-a._score);
     plumes.sort((a,b)=>b._score-a._score);
     sands.sort((a,b)=>b._score-a._score);
     goblets.sort((a,b)=>b._score-a._score);
     circs.sort((a,b)=>b._score-a._score);
 
-    // 最大値計算
     const maxBySlot = { "花":0,"羽":0,"砂":0,"杯":0,"冠":0 };
     for(const a of data){
       const s = a._score;
@@ -483,16 +501,19 @@ async function findBestBuildCase(data, cond, onProgress, setIdCount) {
     }
 
     let maxCircER = 0;
-    for(const c of circs){ if(c.erRate>maxCircER) maxCircER=c.erRate;}
+    for(const c of circs){
+      if(c.erRate>maxCircER) maxCircER=c.erRate;
+    }
+
     const totalFP = flowers.length*plumes.length;
     let doneFP = 0;
     let tick = 0;
 
-    const cnt = new Int8Array(setIdCount);
-
     for(const f of flowers){
       const sf = f._score;
+
       for(const p of plumes){
+
         doneFP++;
         if(onProgress) onProgress(doneFP/totalFP);
 
@@ -503,6 +524,7 @@ async function findBestBuildCase(data, cond, onProgress, setIdCount) {
         if(bestOverall && upperFP<=bestOverall.total) continue;
 
         for(const s of sands){
+
           const sps = sf+sp+s._score;
           const upperFPS = sps + maxBySlot["杯"] + maxBySlot["冠"];
           if(bestOverall && upperFPS<=bestOverall.total) continue;
@@ -512,27 +534,54 @@ async function findBestBuildCase(data, cond, onProgress, setIdCount) {
           if(cr3>maxCR) continue;
 
           for(const g of goblets){
+
             const sg = g._score;
             const upper4 = sps+sg+maxBySlot["冠"];
             if(bestOverall && upper4<=bestOverall.total) continue;
 
             const er4 = er3+g.erRate;
-            if(er4+maxCircER<minER) continue;
-
             const cr4 = cr3+g.crRate;
-            if(cr4>maxCR) continue;
+
+            // -------------------------------
+            //  会心率条件は ER と独立して判定
+            // -------------------------------
+            if(!hasCROK){
+              for(const c2 of circs){
+                if(cr4 + c2.crRate <= maxCR){
+                  hasCROK = true;
+                  break;
+                }
+              }
+            }
+
+            // ★ ここで暫定値を記録（枝刈りより前）
+            //   セット構成＋メイン一致のみ満たす全組み合わせ
+            for(const c2 of circs){
+              const crTmp = cr4 + c2.crRate;
+              const erTmp = er4 + c2.erRate;
+
+              if(crTmp < bestMinCR) bestMinCR = crTmp;
+              if(erTmp > bestMaxER) bestMaxER = erTmp;
+            }
+
+            // 以降は従来どおり探索用の枝刈り
+            if(er4 + maxCircER < minER) continue;
+            if(cr4 > maxCR) continue;
 
             for(const c of circs){
-              const erSum = er4 + c.erRate;
-              if(erSum<minER) continue;
 
+              const erSum = er4 + c.erRate;
               const crSum = cr4 + c.crRate;
-              if(crSum>maxCR) continue;
+
+              //  ER 条件も独立して検出
+              if(erSum >= minER) hasEROK = true;
+              if(erSum < minER) continue;
+              if(crSum > maxCR) continue;
 
               const total = sps + sg + c._score;
               foundAnyOverall = true;
 
-              if(!bestOverall || total>bestOverall.total){
+              if(!bestOverall || total > bestOverall.total){
                 bestOverall = { total, list:[f,p,s,g,c], erSum, crSum };
               }
             }
@@ -542,12 +591,53 @@ async function findBestBuildCase(data, cond, onProgress, setIdCount) {
     }
   }
 
-  return { best:bestOverall, foundAny:foundAnyOverall, minER:cond.erRequired, maxCR:cond.crMax };
+  return {
+    best     : bestOverall,
+    foundAny: foundAnyOverall,
+    minER   : round1(Math.max(0, cond.erRequired - cond.erFromOther)),
+    maxCR   : round1(cond.crMax),
+    hasSetOK,
+    hasEROK,
+    hasCROK,
+    bestMinCR : round1(bestMinCR),
+    bestMaxER : round1(bestMaxER)
+  };
 }
 
 // -----------------------------
 // キャラCSVを読む
 // -----------------------------
+function parseCharacterCSVWithHeader(text){
+
+  const rows = [];
+  const lines = text.split(/\r?\n/);
+
+  for (const raw of lines) {
+
+    // まずコメントだけ除去（空白は消さない）
+    const noComment = raw.replace(/\/\/.*$/, "");
+
+    // 空行判定は trim でOK
+    if (!noComment.trim()) continue;
+
+    // 見出し行（# は必ず行頭のみ）
+    if (noComment.startsWith("#")) {
+      rows.push({
+        type: "header",
+        text: noComment.slice(1).trim()
+      });
+      continue;
+    }
+
+    rows.push({
+      type: "csv",
+      text: noComment.trim()
+    });
+  }
+
+  return rows;
+}
+
 function parseCharacterCSV(text){
 
   const lines = text
@@ -591,7 +681,8 @@ function parseCharacterCSV(text){
       circletMain,
       crMax      : evalSimpleExpr(crExpr2),
       erRequired : evalSimpleExpr(erExpr2),
-      scoreFn    : buildScoreFnFromText(scoreExpr)
+      scoreFn    : buildScoreFnFromText(scoreExpr),
+      scoreExpr  : scoreExpr
     };
 
   }).filter(x => x !== null);
@@ -689,10 +780,10 @@ function buildSubOpText(a){
 
   const list = [];
 
-  if (!isNaN(a.atkFlat) && a.atkFlat !== 0) list.push(`攻撃力+${a.atkFlat.toFixed(0)}`);
-  if (!isNaN(a.atkRate) && a.atkRate !== 0) list.push(`攻撃力${a.atkRate.toFixed(1)}%`);
   if (!isNaN(a.hpFlat) && a.hpFlat !== 0) list.push(`HP+${a.hpFlat.toFixed(0)}`);
   if (!isNaN(a.hpRate) && a.hpRate !== 0) list.push(`HP${a.hpRate.toFixed(1)}%`);
+  if (!isNaN(a.atkFlat) && a.atkFlat !== 0) list.push(`攻撃力+${a.atkFlat.toFixed(0)}`);
+  if (!isNaN(a.atkRate) && a.atkRate !== 0) list.push(`攻撃力${a.atkRate.toFixed(1)}%`);
   if (!isNaN(a.defFlat) && a.defFlat !== 0) list.push(`防御力+${a.defFlat.toFixed(0)}`);
   if (!isNaN(a.defRate) && a.defRate !== 0) list.push(`防御力${a.defRate.toFixed(1)}%`);
   if (!isNaN(a.crRate) && a.crRate !== 0) list.push(`会心率${a.crRate.toFixed(1)}%`);
@@ -739,9 +830,16 @@ document.getElementById("run").addEventListener("click", async () => {
     .replace(/\/\/.*$/gm, "")
   );
 
-  const characters = parseCharacterCSV(
+  const characterRows = parseCharacterCSVWithHeader(
     document.getElementById("character").value
-    .replace(/\/\/.*$/gm, "")
+  );
+
+  // 実際に計算するキャラ行だけ
+  const characters = parseCharacterCSV(
+    characterRows
+      .filter(r => r.type === "csv")
+      .map(r => r.text)
+      .join("\n")
   );
 
   // -----------------------------
@@ -764,9 +862,30 @@ document.getElementById("run").addEventListener("click", async () => {
 
   const totalChars = characters.length;
 
-  for (let i = 0; i < characters.length; i++) {
+  let charIndex = 0;
 
-    const ch = characters[i];
+  for (const row of characterRows) {
+
+    // 見出し
+    if (row.type === "header") {
+
+      result +=
+        `<div style="background:#aaa;color:#fff;padding:0.5rem;margin:2rem 0;">` +
+        `${row.text}` +
+        `</div>`;
+
+      continue;
+    }
+
+    const ch = characters[charIndex];
+
+    if (!ch) {
+      // CSVとして無効な行なのでスキップ
+      continue;
+    }
+
+    const i  = charIndex;
+    charIndex++;
 
     const cond = {
       setRules    : ch.setRules.map(r => ({
@@ -785,8 +904,11 @@ document.getElementById("run").addEventListener("click", async () => {
     const base = i / totalChars;
     const span = 1 / totalChars;
 
-    const { best, foundAny, minER, maxCR } =
-      await findBestBuildCase(
+    const {
+      best, foundAny, minER, maxCR,
+      hasSetOK, hasEROK, hasCROK,
+      bestMinCR, bestMaxER
+    } = await findBestBuildCase(
         data,
         cond,
         p => {
@@ -799,16 +921,34 @@ document.getElementById("run").addEventListener("click", async () => {
 
     if (!foundAny) {
 
+      const reasons = [];
+
+      const setText = ch.setRules
+        .map(r => r.name + (r.count === 4 ? "4" : "2"))
+        .join("+");
+
+      // まずセット可否を最優先で判定
+      if (!hasSetOK) {
+        reasons.push(`・セット効果を組める組み合わせがない`);
+      } else {
+        if (!hasCROK) {reasons.push(`・会心率過剰 (暫定最低値:${round1(bestMinCR).toFixed(1)} / 上限:${round1(maxCR).toFixed(1)})`);}
+        if (!hasEROK) {reasons.push(`・元素チャージ効率不足 (暫定最高値:${round1(bestMaxER).toFixed(1)} / 下限:${round1(minER).toFixed(1)})`);}
+      }
+
       result += `<table border="1" style="margin:2rem auto;">
-      <tr>
-        <th>
-          ${ch.name}
-        </th>
-      </tr>
-      <tr>
-        <td>条件を満たす組み合わせが見つかりません<br>( 会心率上限:${round1(maxCR).toFixed(1)} / 元素チャージ効率下限:${round1(minER).toFixed(1)} )</td>
-      </tr>
-      </table>`;
+        <tr>
+          <th>
+            ${ch.name}<br>(${ch.scoreExpr})
+          </th>
+        </tr>
+        <tr>
+          <td>
+            条件を満たす組み合わせが見つかりません (${setText})<br>
+            ${reasons.join("<br>")}
+          </td>
+        </tr>
+        </table>`;
+
       continue;
     }
 
@@ -817,19 +957,19 @@ document.getElementById("run").addEventListener("click", async () => {
     result += `<table border="1" style="margin:2rem auto;">
     <tr>
       <th colspan="10">
-        ${ch.name}　スコア:${round1(best.total).toFixed(1)}
+        ${ch.name}<br>スコア:${round1(best.total).toFixed(1)} (${ch.scoreExpr})
       </th>
     </tr>
-    <tr>
+    <tr style="text-align:center;">
       <td>HP+</td><td>HP%</td>
       <td>ATK+</td><td>ATK%</td>
       <td>DEF+</td><td>DEF%</td>
       <td>会心率</td>
       <td>会心<br>ダメージ</td>
       <td>元素熟知</td>
-      <td>元素チャージ効率</td>
+      <td>元素チャージ<br>効率</td>
     </tr>
-    <tr>
+    <tr style="text-align:center;">
       <td>${round1(sum.hpFlat).toFixed(0)}</td>
       <td>${round1(sum.hpRate).toFixed(1)}</td>
       <td>${round1(sum.atkFlat).toFixed(0)}</td>
@@ -994,6 +1134,15 @@ showBtn.addEventListener("click", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.2.0<span>2026/02/28</span></div>
+	<div class="details">
+		<p>キャラ情報の入力欄に見出しの機能を追加しました。行頭に「#」を用いることで、その行は見出しとして扱われます</p>
+		<p>計算結果にスコア計算式の表示を追加しました</p>
+		<p>計算結果において条件を満たす組み合わせが見つからない時、その原因を表示するようにしました</p>
+		<p>計算結果のサブOPの並び順を修正しました</p>
+		<p>計算結果のレイアウトを調整しました</p>
+	</div>
 
 	<div class="version">v1.1.0<span>2026/02/26</span></div>
 	<div class="details">
