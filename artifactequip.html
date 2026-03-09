@@ -106,7 +106,7 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 	<div style="margin:0.5rem 0;text-align:center;font-size:12px;">
 		<span class="colB1">キャラクター名</span>,<span class="colB2">4or2x2セットの名前</span>,<span class="colB3">砂メインOP</span>,<span class="colB4">杯メインOP</span>,<span class="colB5">冠メインOP</span>,<span class="colB6">会心率上限値</span>,<span class="colB7">元素チャージ効率下限値</span>,<span class="colB8">スコア計算式</span><br><br>
 		<details><summary style="background:#ddd;padding:0.25rem;">入力のルールについて</summary>
-			<pre>ex:<span class="colB1">    </span>,<span class="colB2">セット名             </span>,<span class="colB3">砂メインOP       </span>,<span class="colB4">杯メインOP     </span>,<span class="colB5">冠メインOP</span>,<span class="colB6">率上限</span>,<span class="colB7">チャージ下限        </span>,<span class="colB8">スコア計算式</span><br>ex:<span class="colB1">香菱</span>,<span class="colB2">絶縁の旗印           </span>,<span class="colB3">元素チャージ効率%</span>,<span class="colB4">炎元素ダメージ%</span>,<span class="colB5">会心率%   </span>,<span class="colB6">100-5 </span>,<span class="colB7">250-100-51.8-45.9-20</span>,<span class="colB8">攻撃+会心   </span><br>ex:<span class="colB1">鍾離</span>,<span class="colB2">千岩牢固/花海甘露の光</span>,<span class="colB3">HP%              </span>,<span class="colB4">HP%            </span>,<span class="colB5">HP%       </span>,<span class="colB6">100-5 </span>,<span class="colB7">140-100             </span>,<span class="colB8">HP+会心     </span><br>参考：香菱の元素チャージは250(要求チャージ)-100(自前のチャージ)-51.8(チャージ時計)-45.9(漁獲)-20(絶縁2セット)を入力しています</pre>
+			<pre>ex:<span class="colB1">    </span>,<span class="colB2">セット名         </span>,<span class="colB3">砂       </span>,<span class="colB4">杯     </span>,<span class="colB5">冠   </span>,<span class="colB6">率上限    </span>,<span class="colB7">チャージ下限        </span>,<span class="colB8">スコア計算式</span><br>ex:<span class="colB1">香菱</span>,<span class="colB2">絶縁             </span>,<span class="colB3">チャージ%</span>,<span class="colB4">炎ダメ%</span>,<span class="colB5">率%  </span>,<span class="colB6">100-5-31.1</span>,<span class="colB7">250-100-51.8-45.9-20</span>,<span class="colB8">攻撃+会心   </span><br>ex:<span class="colB1">鍾離</span>,<span class="colB2">千岩/花海甘露    </span>,<span class="colB3">HP%      </span>,<span class="colB4">HP%    </span>,<span class="colB5">HP%  </span>,<span class="colB6">100-5     </span>,<span class="colB7">140-100             </span>,<span class="colB8">HP+会心     </span><br>ex:<span class="colB1">申鶴</span>,<span class="colB2">[[攻撃]]/[[攻撃]]</span>,<span class="colB3">攻撃%    </span>,<span class="colB4">攻撃%  </span>,<span class="colB5">攻撃%</span>,<span class="colB6">100-5     </span>,<span class="colB7">180-100-55.1        </span>,<span class="colB8">攻撃+会心   </span><br>参考：香菱の元素チャージは250(要求チャージ)-100(自前のチャージ)-51.8(チャージ時計)-45.9(漁獲)-20(絶縁2セット)を入力しています</pre>
 			<table border="1">
 				<tr><th>キャラクター名        <td>ここが無記入の行は計算の際に無視されます
 				<tr><th>セット名              <td>聖遺物情報に登録した名前を書いてください(例：聖遺物情報に「火魔女」と書いた場合、こちらでも「火魔女」と書く必要がある)<br>半角スラッシュを使うと、2セットx2の計算ができます<br>例：剣闘士のフィナーレ/絶縁の旗印<br>例：[[攻撃力+18%]]/[[元素チャージ効率+20%]]
@@ -131,7 +131,7 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 				<tr><td>[[風元素ダメージ+15%]]<br>[[風元素ダメージ]]<br>[[風ダメ]]<td>翠緑の影 / 翠緑<br>砂上の楼閣の史話 / 砂上
 				<tr><td>[[岩元素ダメージ+15%]]<br>[[岩元素ダメージ]]<br>[[岩ダメ]]<td>悠久の磐岩 / 悠久 / 磐岩
 				<tr><td>[[雷元素ダメージ+15%]]<br>[[雷元素ダメージ]]<br>[[雷ダメ]]<td>雷のような怒り / 怒り
-				<tr><td>[[草元素ダメージ+15%]]<br>[[草元素ダメージ]]<br>[[草ダメ]]<td>深林の記憶 / 深林
+				<tr><td>[[草元素ダメージ+15%]]<br>[[草元素ダメージ]]<br>[[草ダメ]]<td>深林の記憶 / 深林 / 森林
 				<tr><td>[[水元素ダメージ+15%]]<br>[[水元素ダメージ]]<br>[[水ダメ]]<td>沈淪の心 / 沈淪<br>水仙の夢 / 水仙
 				<tr><td>[[炎元素ダメージ+15%]]<br>[[炎元素ダメージ]]<br>[[炎ダメ]]<td>燃え盛る炎の魔女 / 炎魔女 / 火魔女
 				<tr><td>[[氷元素ダメージ+15%]]<br>[[氷元素ダメージ]]<br>[[氷ダメ]]<td>氷風を彷徨う勇士 / 氷風<br>深廊の終曲 / 深廊 / 終曲
@@ -374,7 +374,7 @@ const SET_EFFECT_TABLE = [
     sets:["雷のような怒り","怒り"]
   },{
     keys:["草元素ダメージ+15%","草元素ダメージ","草ダメ"],
-    sets:["深林の記憶","深林"]
+    sets:["深林の記憶","深林","森林"]
   },{
     keys:["水元素ダメージ+15%","水元素ダメージ","水ダメ"],
     sets:["沈淪の心","沈淪","水仙の夢","水仙"]
@@ -414,7 +414,13 @@ function parseCSV(text){
 
   return lines.map((line,i)=>{
 
-    const c=line.split(",").map(v=>v.trim());
+    const raw=line.split(",");
+
+    // 1列目が空欄または空白のみなら除外
+    if(!raw[0] || raw[0].trim()==="") return null;
+
+    const c=raw.map(v=>v.trim());
+
     if(c.length<13) return null;
 
     const crRate=Number(c[9]);
@@ -508,7 +514,7 @@ function expandEffectSet(effectName, existingSets){
   for(const s of existingSets){
     for(const k of entry.sets){
       const name = decodeHtmlEntities(k);
-      if(s.includes(k)){
+      if(s === name){
         result.push(s);
         break;
       }
@@ -736,18 +742,6 @@ async function findBestBuildCase(data,cond,onProgress){
   }
 
   //--------------------------------
-  // 最大スコア
-  //--------------------------------
-
-  const maxBySlot={花:0,羽:0,砂:0,杯:0,冠:0};
-
-  for(const s in slotIndex){
-    if(slotIndex[s].length){
-      maxBySlot[s]=slotIndex[s][0]._score;
-    }
-  }
-
-  //--------------------------------
   // ケース探索
   //--------------------------------
 
@@ -776,6 +770,12 @@ async function findBestBuildCase(data,cond,onProgress){
       && a.main===cond.circletMain
     );
 
+    const maxFlower = flowers.length ? flowers[0]._score : 0;
+    const maxPlume  = plumes.length  ? plumes[0]._score  : 0;
+    const maxSand   = sands.length   ? sands[0]._score   : 0;
+    const maxGoblet = goblets.length ? goblets[0]._score : 0;
+    const maxCirc   = circs.length   ? circs[0]._score   : 0;
+
     if(flowers.length&&plumes.length&&sands.length&&goblets.length&&circs.length){
       hasSetOK=true;
     }
@@ -797,13 +797,13 @@ async function findBestBuildCase(data,cond,onProgress){
       const sf=f._score;
       const sp=p._score;
 
-      const upperFP=sf+sp+maxBySlot["砂"]+maxBySlot["杯"]+maxBySlot["冠"];
+      const upperFP=sf+sp+maxSand+maxGoblet+maxCirc;
       if(best&&upperFP<=best.total) break;
 
       for(const s of sands){
 
         const sps=sf+sp+s._score;
-        const upperFPS=sps+maxBySlot["杯"]+maxBySlot["冠"];
+        const upperFPS=sps+maxGoblet+maxCirc;
         if(best&&upperFPS<=best.total) break;
 
         const er3=f.erRate+p.erRate+s.erRate;
@@ -814,7 +814,7 @@ async function findBestBuildCase(data,cond,onProgress){
         for(const g of goblets){
 
           const sg=g._score;
-          const upper4=sps+sg+maxBySlot["冠"];
+          const upper4=sps+sg+maxCirc;
           if(best&&upper4<=best.total) break;
 
           const er4=er3+g.erRate;
@@ -1389,6 +1389,14 @@ showBtn.addEventListener("click", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.3.1<span>2026/03/09</span></div>
+	<div class="details">
+		<p>聖遺物情報において聖遺物名が無記入の行は計算の際に無視する機能が正常に動作していない問題を修正しました</p>
+		<p>2セット×2計算をした際に一部の聖遺物が計算対象から除外されてしまう問題を修正しました</p>
+		<p>2セット×2計算の対応表に「深林の記憶:森林」を追加しました</p>
+		<p>その他軽微な変更・修正をしました</p>
+	</div>
 
 	<div class="version">v1.3.0<span>2026/03/08</span></div>
 	<div class="details">
