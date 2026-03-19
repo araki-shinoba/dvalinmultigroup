@@ -109,8 +109,8 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 			<pre>ex:<span class="colB1">    </span>,<span class="colB2">セット名         </span>,<span class="colB3">砂       </span>,<span class="colB4">杯     </span>,<span class="colB5">冠   </span>,<span class="colB6">率上限    </span>,<span class="colB7">チャージ下限        </span>,<span class="colB8">スコア計算式</span><br>ex:<span class="colB1">香菱</span>,<span class="colB2">絶縁             </span>,<span class="colB3">チャージ%</span>,<span class="colB4">炎ダメ%</span>,<span class="colB5">率%  </span>,<span class="colB6">100-5-31.1</span>,<span class="colB7">250-100-51.8-45.9-20</span>,<span class="colB8">攻撃+会心   </span><br>ex:<span class="colB1">鍾離</span>,<span class="colB2">千岩/花海甘露    </span>,<span class="colB3">HP%      </span>,<span class="colB4">HP%    </span>,<span class="colB5">HP%  </span>,<span class="colB6">100-5     </span>,<span class="colB7">140-100             </span>,<span class="colB8">HP+会心     </span><br>ex:<span class="colB1">申鶴</span>,<span class="colB2">[[攻撃]]/[[攻撃]]</span>,<span class="colB3">攻撃%    </span>,<span class="colB4">攻撃%  </span>,<span class="colB5">攻撃%</span>,<span class="colB6">100-5     </span>,<span class="colB7">180-100-55.1        </span>,<span class="colB8">攻撃+会心   </span><br>参考：香菱の元素チャージは250(要求チャージ)-100(自前のチャージ)-51.8(チャージ時計)-45.9(漁獲)-20(絶縁2セット)を入力しています</pre>
 			<table border="1">
 				<tr><th>キャラクター名        <td>ここが無記入の行は計算の際に無視されます
-				<tr><th>セット名              <td>聖遺物情報に登録した名前を書いてください(例：聖遺物情報に「火魔女」と書いた場合、こちらでも「火魔女」と書く必要がある)<br>半角スラッシュを使うと、2セットx2の計算ができます<br>例：剣闘士のフィナーレ/絶縁の旗印<br>例：[[攻撃力+18%]]/[[元素チャージ効率+20%]]
-				<tr><th>メインOP              <td>聖遺物情報に登録した名前を書いてください(例：聖遺物情報に「炎ダメ」と書いた場合、こちらでも「炎ダメ」と書く必要がある)
+				<tr><th>セット名              <td>聖遺物情報に登録した名前を書いてください(例：聖遺物情報に「火魔女」と書いた場合、こちらでも「火魔女」と書く必要がある)<br>半角スラッシュを使うと、2セットx2の計算ができます<br>例：剣闘士のフィナーレ/絶縁の旗印<br>例：[[攻撃力+18%]]/[[元素チャージ効率+20%]]<br>ここが空欄の場合、セット効果を考慮せずにすべての聖遺物の中から最適な聖遺物を選択します<br>※空欄のキャラクターが多くなると計算が重くなります
+				<tr><th>メインOP              <td>聖遺物情報に登録した名前を書いてください(例：聖遺物情報に「炎ダメ」と書いた場合、こちらでも「炎ダメ」と書く必要がある)<br>ここが空欄の場合、メインOPを考慮せずにすべての聖遺物の中から最適な聖遺物を選択します<br>※空欄のキャラクターが多くなると計算が重くなります
 				<tr><th>会心率上限値          <td>ここに入力された数値を上回らないようにサブOPが制限されます<br>四則演算に対応しています
 				<tr><th>元素チャージ効率下限値<td>ここに入力された数値を上回るようにサブOPが制限されます<br>四則演算に対応しています
 				<tr><th>スコア計算式          <td>スコア計算式に入力できる文字列は「HP」「攻撃」「攻撃力」「防御」「防御力」「会心」「率ダメ」「元素熟知」「熟知」「元素チャージ効率」「チャージ効率」「チャージ」「元チャ」の13種類です。これ以外の表記には対応していません
@@ -122,7 +122,7 @@ div.updatehistory > div.details > p{margin:0 0 0.5rem;}
 				<tr><th colspan="2">2セット効果の表記対応表
 				<tr><th>CSV内の表記<th>対応する聖遺物表記
 				<tr><td>[[HP+20%]]<br>[[HP]]<td>千岩牢固 / 千岩<br>花海甘露の光 / 花海甘露
-				<tr><td>[[攻撃力+18%]]<br>[[攻撃力]]<br>[[攻撃]]<td>剣闘士のフィナーレ / 剣闘士<br>追憶のしめ縄 / しめ縄<br>辰砂往生録 / 辰砂<br>来&#27462;の余響 / 来&#27462;<br>残響の森で囁かれる夜話 / 残響<br>諧律奇想の断章 / 断章<br>遂げられなかった想い / 遂げ想 / 遂げられ / 想い<br>風立ちの日 / 風立ち<br>旅人の心 / 旅人<br>勇士の心 / 勇士
+				<tr><td>[[攻撃力+18%]]<br>[[攻撃力]]<br>[[攻撃]]<td>剣闘士のフィナーレ / 剣闘士<br>追憶のしめ縄 / しめ縄<br>辰砂往生録 / 辰砂<br>来&#27462;の余響 / 来&#27462; / 余響<br>残響の森で囁かれる夜話 / 残響<br>諧律奇想の断章 / 断章<br>遂げられなかった想い / 遂げ想 / 遂げられ / 想い<br>風立ちの日 / 風立ち<br>旅人の心 / 旅人<br>勇士の心 / 勇士
 				<tr><td>[[防御力+30%]]<br>[[防御力]]<br>[[防御]]<td>華館夢醒形骸記 / 華館<br>守護の心 / 守護
 				<tr><td>[[元素熟知+80]]<br>[[元素熟知]]<br>[[熟知]]<td>大地を流浪する楽団 / 楽団<br>金メッキの夢 / 金メッキ<br>楽園の絶花 / 楽園<br>天穹の顕現せし夜 / 天穹<br>暁の星と月の歌 / 暁<br>教官
 				<tr><td>[[元素チャージ効率+20%]]<br>[[元素チャージ効率]]<br>[[元チャ]]<br>[[チャージ]]<td>絶縁の旗印 / 絶縁<br>月を紡ぐ夜の歌 / 夜の歌 / 夜歌<br>亡命者<br>学者
@@ -347,7 +347,7 @@ const SET_EFFECT_TABLE = [
     sets:["千岩牢固","千岩","花海甘露の光","花海甘露"]
   },{
     keys:["攻撃力+18%","攻撃力","攻撃"],
-    sets:["剣闘士のフィナーレ","剣闘士","追憶のしめ縄","しめ縄","辰砂往生録","辰砂","来&#27462;の余響","来&#27462;","残響の森で囁かれる夜話","残響","諧律奇想の断章","断章","遂げられなかった想い","遂げ想","遂げられ","想い","風立ちの日","風立ち","旅人の心","旅人","勇士の心","勇士"]
+    sets:["剣闘士のフィナーレ","剣闘士","追憶のしめ縄","しめ縄","辰砂往生録","辰砂","来&#27462;の余響","来&#27462;","余響","残響の森で囁かれる夜話","残響","諧律奇想の断章","断章","遂げられなかった想い","遂げ想","遂げられ","想い","風立ちの日","風立ち","旅人の心","旅人","勇士の心","勇士"]
   },{
     keys:["防御力+30%","防御力","防御"],
     sets:["華館夢醒形骸記","華館","守護の心","守護"]
@@ -416,8 +416,8 @@ function parseCSV(text){
 
     const raw=line.split(",");
 
-    // 1列目が空欄または空白のみなら除外
-    if(!raw[0] || raw[0].trim()==="") return null;
+    // setは空欄でも許可（なんでもよい枠）
+    const setName = (raw[0] || "").trim();
 
     const c=raw.map(v=>v.trim());
 
@@ -429,7 +429,7 @@ function parseCSV(text){
     return{
 
       id:i,
-      set:c[0],
+      set:setName,
       slot:c[1],
       main:c[2],
 
@@ -619,6 +619,13 @@ function buildSetCases(cond){
 
   const cases=[];
 
+  if(!rules || rules.length===0){
+    const map={};
+    slots.forEach(s=>map[s]=-1);
+    cases.push(map);
+    return cases;
+  }
+
   if(rules.length===1){
 
     const S=rules[0].id;
@@ -692,6 +699,10 @@ function buildSetCases(cond){
 // 探索
 //--------------------------------
 
+function matchMain(aMain, condMain){
+  return !aMain || !condMain || aMain === condMain;
+}
+
 async function findBestBuildCase(data,cond,onProgress){
 
   const cases=buildSetCases(cond);
@@ -747,27 +758,27 @@ async function findBestBuildCase(data,cond,onProgress){
 
   for(const slotMap of cases){
 
-    const flowers=slotMap["花"]===-1
-      ?slotIndex["花"]
-      :slotIndex["花"].filter(a=>a._setId===slotMap["花"]);
+    const flowers = slotMap["花"]===-1
+      ? slotIndex["花"]
+      : slotIndex["花"].filter(a => a._setId===slotMap["花"] || !a.set);
 
-    const plumes=slotMap["羽"]===-1
-      ?slotIndex["羽"]
-      :slotIndex["羽"].filter(a=>a._setId===slotMap["羽"]);
+    const plumes = slotMap["羽"]===-1
+      ? slotIndex["羽"]
+      : slotIndex["羽"].filter(a => a._setId===slotMap["羽"] || !a.set);
 
-    const sands=slotIndex["砂"].filter(a=>
-      (slotMap["砂"]===-1||a._setId===slotMap["砂"])
-      && a.main===cond.sandMain
+    const sands = slotIndex["砂"].filter(a =>
+      (slotMap["砂"]===-1 || a._setId===slotMap["砂"] || !a.set)
+      && matchMain(a.main, cond.sandMain)
     );
 
-    const goblets=slotIndex["杯"].filter(a=>
-      (slotMap["杯"]===-1||a._setId===slotMap["杯"])
-      && a.main===cond.gobletMain
+    const goblets = slotIndex["杯"].filter(a =>
+      (slotMap["杯"]===-1 || a._setId===slotMap["杯"] || !a.set)
+      && matchMain(a.main, cond.gobletMain)
     );
 
-    const circs=slotIndex["冠"].filter(a=>
-      (slotMap["冠"]===-1||a._setId===slotMap["冠"])
-      && a.main===cond.circletMain
+    const circs = slotIndex["冠"].filter(a =>
+      (slotMap["冠"]===-1 || a._setId===slotMap["冠"] || !a.set)
+      && matchMain(a.main, cond.circletMain)
     );
 
     const maxFlower = flowers.length ? flowers[0]._score : 0;
@@ -993,11 +1004,18 @@ function parseCharacterCSV(text){
     const crExpr2=reduceCR?`(${crExpr})-5`:crExpr;
     const erExpr2=reduceER?`(${erExpr})-100`:erExpr;
 
+    const parsedSetRules = parseSetFromShort(setText);
+
+    // セット効果が空欄なら「完全自由（5枠自由）」にする
+    const finalSetRules = (!setText || !setText.trim())
+      ? []
+      : parsedSetRules;
+
     return{
 
       name,
 
-      setRules:parseSetFromShort(setText),
+      setRules: finalSetRules,
 
       sandMain,
       gobletMain,
@@ -1108,10 +1126,13 @@ document.getElementById("run").addEventListener("click", async () => {
     }else{
 
       setRuleList.push(
-        ch.setRules.map(r => ({
-          id:setIdMap.get(r.raw?.value || r.name),
-          count:r.count
-        }))
+        ch.setRules.map(r => {
+          const name = r.raw?.value || r.name || "";
+          return {
+            id: name ? setIdMap.get(name) : -1, // 空欄なら自由枠
+            count: r.count
+          };
+        })
       );
 
     }
@@ -1389,6 +1410,13 @@ showBtn.addEventListener("click", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.4.0<span>2026/03/19</span></div>
+	<div class="details">
+		<p>2セット×2計算の対応表に「来&#27462;の余響:余響」を追加しました</p>
+		<p>キャラ情報において、聖遺物名が空欄の場合、すべての聖遺物の中から最適な聖遺物を選ぶように修正しました</p>
+		<p>キャラ情報において、メインOP名が空欄の場合、すべての聖遺物の中から最適な聖遺物を選ぶように修正しました</p>
+	</div>
 
 	<div class="version">v1.3.1<span>2026/03/09</span></div>
 	<div class="details">
