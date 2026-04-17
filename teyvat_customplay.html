@@ -263,7 +263,9 @@ body:has(#moonsign:checked) label[class="moonsign"] > span{box-shadow:0 0 4px #0
 #AllRandomBossBattle div#AllRandomBossBattle_result > div:nth-child(1) > div > div:nth-child(2){font-size:1rem;font-weight:bold;margin-top:0.25rem;}
 #AllRandomBossBattle div#AllRandomBossBattle_result > div:nth-child(2){border:1px solid #aaa;padding:1rem;margin-top:0.5rem;font-size:1rem;font-weight:bold;justify-content:center;}
 #AllRandomBossBattle div.AllRandomBossBattle_timercontainer{background:#eee;border:1px solid #aaa;padding:1rem;margin-top:1rem;text-align:center;}
-#AllRandomBossBattle div.AllRandomBossBattle_timercontainer div#AllRandomBossBattle_timer{border:1px solid #aaa;padding:2rem;margin:1rem;font-size:1.5rem;}
+#AllRandomBossBattle div.AllRandomBossBattle_timercontainer div.AllRandomBossBattle_timercontainer_frame{border:1px solid #aaa;padding:2rem;margin:1rem;}
+#AllRandomBossBattle div.AllRandomBossBattle_timercontainer div.AllRandomBossBattle_timercontainer_frame div:nth-child(2){margin:0.5rem;}
+#AllRandomBossBattle div.AllRandomBossBattle_timercontainer div.AllRandomBossBattle_timercontainer_frame div:nth-child(2) span:nth-child(2){font-size:1.5rem;}
 #AllRandomBossBattle div#AllRandomBossBattle_record{background:#eee;border:1px solid #aaa;padding:1rem;text-align:center;}
 /*▼▼▼便利ツール▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
 div#Tools div.stygian div.resin_date_start input:nth-child(1){width:3rem;}
@@ -1109,10 +1111,10 @@ div#Tools div.stygian input{padding:0.25rem;border:1px solid #888;text-align:cen
 	<div style="text-align:center;font-size:1.5rem;padding:0.5rem;margin:3rem 0 0;background:#444;color:#fff;">プレイヤー情報</div>
 	<table border="1">
 		<tr><th>1P<th>2P<th>3P<th>4P
-		<tr><th><input type="textarea" id="AllRandomBossBattle_usernameInput1" placeholder="プレイヤー名"><input type="text" id="AllRandomBossBattle_characterlist1" placeholder="xoxoxo">
-		    <th><input type="textarea" id="AllRandomBossBattle_usernameInput2" placeholder="プレイヤー名"><input type="text" id="AllRandomBossBattle_characterlist2" placeholder="xoxoxo">
-		    <th><input type="textarea" id="AllRandomBossBattle_usernameInput3" placeholder="プレイヤー名"><input type="text" id="AllRandomBossBattle_characterlist3" placeholder="xoxoxo">
-		    <th><input type="textarea" id="AllRandomBossBattle_usernameInput4" placeholder="プレイヤー名"><input type="text" id="AllRandomBossBattle_characterlist4" placeholder="xoxoxo">
+		<tr><th><input type="textarea" id="AllRandomBossBattle_usernameInput1" placeholder="プレイヤー名" style="width:7rem;"><br><input type="text" id="AllRandomBossBattle_characterlist1" placeholder="xoxoxo" style="width:7rem;">
+		    <th><input type="textarea" id="AllRandomBossBattle_usernameInput2" placeholder="プレイヤー名" style="width:7rem;"><br><input type="text" id="AllRandomBossBattle_characterlist2" placeholder="xoxoxo" style="width:7rem;">
+		    <th><input type="textarea" id="AllRandomBossBattle_usernameInput3" placeholder="プレイヤー名" style="width:7rem;"><br><input type="text" id="AllRandomBossBattle_characterlist3" placeholder="xoxoxo" style="width:7rem;">
+		    <th><input type="textarea" id="AllRandomBossBattle_usernameInput4" placeholder="プレイヤー名" style="width:7rem;"><br><input type="text" id="AllRandomBossBattle_characterlist4" placeholder="xoxoxo" style="width:7rem;">
 		<tr class="bg-mondstadt">
 		    <td><div class="customcharacterlist_anemo" data-arbb-player="1"></div>
 		    <td><div class="customcharacterlist_anemo" data-arbb-player="2"></div>
@@ -1160,11 +1162,16 @@ div#Tools div.stygian input{padding:0.25rem;border:1px solid #888;text-align:cen
 	</div>
 	<div id="AllRandomBossBattle_result"></div>
 	<div class="AllRandomBossBattle_timercontainer">
-		<div id="AllRandomBossBattle_timer"></div>
+		<div class="AllRandomBossBattle_timercontainer_frame">
+			<div><span id="AllRandomBossBattle_timer_battlecount"></span></div>
+			<div><span>残り時間：</span><span id="AllRandomBossBattle_timer_remaining"></span></div>
+			<div><span>経過時間：</span><span id="AllRandomBossBattle_timer_elapsed"></span></div>
+		</div>
 		<div>
-		<input type="button" value="スタート" id="AllRandomBossBattle_timerstart" style="width:80px;margin:1rem;padding:1rem;font-weight:bold;">
-		<input type="button" value="ストップ" id="AllRandomBossBattle_timerstop" style="width:80px;margin:1rem;padding:1rem;font-weight:bold;">
-		<input type="button" value="リセット" id="AllRandomBossBattle_timerreset" style="width:80px;margin:1rem;padding:1rem;font-weight:bold;">
+		<input type="button" value="スタート" id="AllRandomBossBattle_timerstart" style="width:80px;margin:1rem;padding:1rem 0;font-weight:bold;text-align:center;">
+		<input type="button" value="ストップ" id="AllRandomBossBattle_timerstop" style="width:80px;margin:1rem;padding:1rem 0;font-weight:bold;text-align:center;"><br>
+		<input type="button" value="5分追加" id="AllRandomBossBattle_timernext" style="width:80px;margin:1rem;padding:1rem 0;font-weight:bold;text-align:center;">
+		<input type="button" value="リセット" id="AllRandomBossBattle_timerreset" style="width:80px;margin:1rem;padding:1rem 0;font-weight:bold;text-align:center;">
 		</div>
 	</div>
 
@@ -4490,16 +4497,21 @@ const timerRef = ref(db, "AllRandomBossBattle/timer");
 const DURATION = 5 * 60 * 1000; // 5分
 
 // ===== HTML =====
-const timerDisplay = document.getElementById("AllRandomBossBattle_timer");
+const remainingDisplay = document.getElementById("AllRandomBossBattle_timer_remaining");
+const elapsedDisplay = document.getElementById("AllRandomBossBattle_timer_elapsed");
+const battlecountDisplay = document.getElementById("AllRandomBossBattle_timer_battlecount");
 const btnStart = document.getElementById("AllRandomBossBattle_timerstart");
 const btnStop = document.getElementById("AllRandomBossBattle_timerstop");
+const btnNext = document.getElementById("AllRandomBossBattle_timernext");
 const btnReset = document.getElementById("AllRandomBossBattle_timerreset");
+const timerFrame = document.querySelector(".AllRandomBossBattle_timercontainer_frame");
 
 // ===== 内部状態 =====
 let timerData = {
   state: "paused",
   starttime: 0,
-  remaining: DURATION
+  remaining: DURATION,
+  totalduration: DURATION
 };
 
 // ===== 表示フォーマット =====
@@ -4521,77 +4533,144 @@ function formatTime(ms) {
 onValue(timerRef, (snap) => {
   if (!snap.exists()) return;
   timerData = snap.val();
+
+  if (timerData.totalduration == null) {
+    timerData.totalduration = DURATION;
+  }
+
+  if (timerData.battlecount == null) {
+    timerData.battlecount = 1;
+  }
 });
 
 // ===== ローカル描画 =====
 setInterval(() => {
-
   let remaining;
+  let elapsed;
 
   if (timerData.state === "running") {
-    const elapsed = Date.now() - timerData.starttime;
-    remaining = timerData.remaining - elapsed;
+    const nowElapsed = Date.now() - timerData.starttime;
+    remaining = timerData.remaining - nowElapsed;
+    elapsed = (timerData.totalduration - timerData.remaining) + nowElapsed;
   } else {
     remaining = timerData.remaining;
+    elapsed = timerData.totalduration - timerData.remaining;
   }
 
-  if (remaining <= 0) {
+  // ===== 残り時間表示制御 =====
+  if (remaining < 0) {
+    if (timerFrame) {timerFrame.classList.add("bg-natlan");}
     remaining = 0;
-    timerDisplay.classList.add("bg-natlan");
+  } else {
+    if (timerFrame) {timerFrame.classList.remove("bg-natlan");}
   }
 
-  timerDisplay.textContent = formatTime(remaining);
+  let displayRemaining = remaining < 0 ? 0 : remaining;
+
+  // ===== 表示更新 =====
+  remainingDisplay.textContent = formatTime(remaining);
+  elapsedDisplay.textContent = formatTime(elapsed);
+  battlecountDisplay.textContent = (timerData.battlecount ?? 1) + "戦目";
 }, 50);
 
-// ===== スタート =====
+
+// ===== start =====
 btnStart.onclick = () => {
   runTransaction(timerRef, (data) => {
     if (data == null) {
       return {
         state: "running",
         starttime: Date.now(),
-        remaining: DURATION
+        remaining: DURATION,
+        totalduration: DURATION,
+        battlecount: 1
       };
     }
+
+    let totalduration = data.totalduration ?? DURATION;
 
     if (data.state === "running") return;
 
     return {
       state: "running",
       starttime: Date.now(),
-      remaining: data.remaining
+      remaining: data.remaining,
+      totalduration: totalduration
     };
   });
 };
 
-// ===== ストップ =====
+// ===== stop =====
 btnStop.onclick = () => {
   runTransaction(timerRef, (data) => {
     if (!data) return;
+
+    let totalduration = data.totalduration ?? DURATION;
+
     if (data.state !== "running") return;
 
     const elapsed = Date.now() - data.starttime;
     let remaining = data.remaining - elapsed;
-    if (remaining < 0) remaining = 0;
 
     return {
       state: "paused",
       starttime: 0,
-      remaining: remaining
+      remaining: remaining,
+      totalduration: totalduration
     };
   });
 };
 
-// ===== リセット =====
-btnReset.onclick = () => {
-  runTransaction(timerRef, () => {
+// ===== next =====
+btnNext.onclick = () => {
+  runTransaction(timerRef, (data) => {
+    if (!data) return;
+
+    let totalduration = data.totalduration ?? DURATION;
+    let battlecount = (data.battlecount ?? 1) + 1;
+
+    let remaining = data.remaining;
+
+    // running中
+    if (data.state === "running") {
+      const now = Date.now();
+      const elapsed = now - data.starttime;
+      remaining = data.remaining - elapsed;
+
+      return {
+        state: "running",
+        starttime: now,
+        remaining: remaining + DURATION,
+        totalduration: totalduration + DURATION,
+        battlecount: battlecount
+      };
+    }
+
+    // paused時
     return {
       state: "paused",
       starttime: 0,
-      remaining: DURATION
+      remaining: remaining + DURATION,
+      totalduration: totalduration + DURATION,
+      battlecount: battlecount
     };
   });
-  timerDisplay.classList.remove("bg-natlan");
+};
+
+// ===== reset =====
+btnReset.onclick = () => {
+  runTransaction(timerRef, () => {
+
+    return {
+      state: "paused",
+      starttime: 0,
+      remaining: DURATION,
+      totalduration: DURATION,
+      battlecount: 1
+    };
+  });
+
+  timerFrame.classList.remove("bg-natlan");
 };
 //▲▲▲完全ランダムボスバトル　タイマー▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 //▼▼▼便利ツール　幽境の激戦用樹脂消費計算機▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
@@ -4854,6 +4933,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.45.0<span>2026/04/17</span></div>
+	<div class="details">
+		<p>【完全ランダムボスバトル】タイマーを残り時間と経過時間に分けて表示し、5分以降もカウントするようにしました</p>
+		<p>【完全ランダムボスバトル】n戦目の表記と5分追加ボタンを追加し、残り時間を次の戦闘に引き継げるようにしました</p>
+	</div>
 
 	<div class="version">v1.44.0<span>2026/04/12</span></div>
 	<div class="details">
