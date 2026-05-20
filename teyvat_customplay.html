@@ -1079,14 +1079,14 @@ div#Tools div.stygian input{padding:0.25rem;border:1px solid #888;text-align:cen
 			<div style="width:90%;max-width:90%;">
 				<div style="margin:1rem;text-align:center;">カスタムキャラクターリスト用コード生成機</div>
 				<table border="1" style="margin:0 1rem;">
-					<tr><td class="bg-mondstadt"><div class="customcharacterlist_anemo"></div>
-					<tr><td class="bg-liyue"><div class="customcharacterlist_geo"></div>
-					<tr><td class="bg-inazuma"><div class="customcharacterlist_electro"></div>
-					<tr><td class="bg-sumeru"><div class="customcharacterlist_dendro"></div>
-					<tr><td class="bg-fontaine"><div class="customcharacterlist_hydro"></div>
-					<tr><td class="bg-natlan"><div class="customcharacterlist_pyro"></div>
-					<tr><td class="bg-snezhnaya"><div class="customcharacterlist_cryo"></div>
-					<tr><td class="bg-none"><div class="customcharacterlist_none"></div>
+					<tr><td class="bg-mondstadt"><div class="customcharacterlist_anemo customcharacterlist"></div>
+					<tr><td class="bg-liyue"><div class="customcharacterlist_geo customcharacterlist"></div>
+					<tr><td class="bg-inazuma"><div class="customcharacterlist_electro customcharacterlist"></div>
+					<tr><td class="bg-sumeru"><div class="customcharacterlist_dendro customcharacterlist"></div>
+					<tr><td class="bg-fontaine"><div class="customcharacterlist_hydro customcharacterlist"></div>
+					<tr><td class="bg-natlan"><div class="customcharacterlist_pyro customcharacterlist"></div>
+					<tr><td class="bg-snezhnaya"><div class="customcharacterlist_cryo customcharacterlist"></div>
+					<tr><td class="bg-none"><div class="customcharacterlist_none customcharacterlist"></div>
 				</table>
 				<div style="padding:1rem 0;">
 					<input type="button" id="DraftLocalLegend_InBtCharacterpick" value="インポート" style="width:8rem;padding:1rem;margin:0.75rem 1rem 1rem;font-weight:bold;">
@@ -1269,6 +1269,7 @@ const csvCharacter = `
 "anemo"  ,"チャスカ"      ,"092","5","bow"     ,"natlan"   ,"12","10",          ,                          
 "anemo"  ,"ファルカ"      ,"115","5","claymore","mondstadt","02","17","hexerei" ,                          
 "anemo"  ,"ファルザン"    ,"061","4","bow"     ,"sumeru"   ,"08","20",          ,                          
+"anemo"  ,"プルーネ"      ,"117","4","catalyst","mondstadt","11","20","hexerei" ,                          
 "anemo"  ,"放浪者"        ,"062","5","catalyst","sumeru"   ,"01","03",          ,                          
 "anemo"  ,"ヤフォダ"      ,"110","4","bow"     ,"nodkrai"  ,"01","05","moonsign",                          
 "anemo"  ,"夢見月瑞希"    ,"096","5","catalyst","inazuma"  ,"03","16",          ,                          
@@ -1366,6 +1367,7 @@ const csvCharacter = `
 "pyro"   ,"ディルック"    ,"018","5","claymore","mondstadt","04","30",          ,                          
 "pyro"   ,"ドゥリン"      ,"111","5","sword"   ,"mondstadt","03","14","hexerei" ,                          
 "pyro"   ,"トーマ"        ,"043","4","polearm" ,"inazuma"  ,"01","09",          ,"【自己付着】スキル"      
+"pyro"   ,"ニコ"          ,"118","5","catalyst",           ,"09","29","hexerei" ,                          
 "pyro"   ,"胡桃"          ,"031","5","polearm" ,"liyue"    ,"07","15",          ,                          
 "pyro"   ,"ベネット"      ,"013","4","sword"   ,"mondstadt","02","29",          ,"【マルチ付着】爆発"      
 "pyro"   ,"マーヴィカ"    ,"094","5","claymore","natlan"   ,"08","28",          ,                          
@@ -1412,6 +1414,7 @@ const csvOther = `
 "mondstadt","mondstadt"               ,"モンド"            ,"秘境"          ,"【征討領域】風龍廃墟に入る"                  ,         ,          ,          ,JoinGame,         ,                   
 "mondstadt","mondstadt"               ,"モンド"            ,"秘境"          ,"【祈聖秘境】仲夏の庭園"                      ,         ,          ,          ,JoinGame,"checked",                   
 "mondstadt","mondstadt"               ,"モンド"            ,"秘境"          ,"【祈聖秘境】銘記の谷"                        ,         ,          ,          ,JoinGame,"checked",                   
+"mondstadt","mondstadt"               ,"モンド"            ,"秘境"          ,"【祈聖秘境】山風の荊冠"                      ,         ,          ,          ,JoinGame,"checked",                   
 "mondstadt","mondstadt"               ,"モンド"            ,"秘境"          ,"【煉武秘境】セシリアの苗床"                  ,         ,          ,          ,JoinGame,"checked",                   
 "mondstadt","mondstadt"               ,"モンド"            ,"秘境"          ,"【熟知秘境】忘却の峡谷"                      ,         ,          ,          ,JoinGame,"checked",                   
 "mondstadt","mondstadt"               ,"モンド"            ,"秘境"          ,"【通常秘境】北風の狼の神殿"                  ,         ,          ,          ,JoinGame,"checked",                   
@@ -1543,6 +1546,7 @@ const csvOther = `
 "sumeru"   ,"dharmaforest"            ,"諸法の森"          ,"七天神像"      ,"アシャヴァンレルム"                          ,NoMapRace,"checked" ,"checked" ,JoinGame,"checked",                   
 "sumeru"   ,"dharmaforest"            ,"諸法の森"          ,"七天神像"      ,"失われた苗畑"                                ,NoMapRace,"checked" ,"checked" ,JoinGame,"checked",                   
 "sumeru"   ,"dharmaforest"            ,"諸法の森"          ,"BOSS"          ,"[週]七葉寂照秘密主"                          ,NoMapRace,"checked" ,"checked" ,        ,         ,                   
+"sumeru"   ,"dharmaforest"            ,"諸法の森"          ,"BOSS"          ,"[週]ドットーレ"                              ,NoMapRace,"checked" ,"checked" ,        ,         ,                   
 "sumeru"   ,"dharmaforest"            ,"諸法の森"          ,"BOSS"          ,"マッシュラプトル"                            ,NoMapRace,"checked" ,"checked" ,        ,         ,AllRandomBossBattle
 "sumeru"   ,"dharmaforest"            ,"諸法の森"          ,"BOSS"          ,"迅電樹"                                      ,NoMapRace,"checked" ,"checked" ,        ,         ,AllRandomBossBattle
 "sumeru"   ,"dharmaforest"            ,"諸法の森"          ,"BOSS"          ,"兆載永劫ドレイク"                            ,NoMapRace,"checked" ,"checked" ,        ,         ,AllRandomBossBattle
@@ -3905,29 +3909,70 @@ const importInput  = document.getElementById('DraftLocalLegend_InTeCharacterpick
 const createButton = document.getElementById('DraftLocalLegend_ExBtCharacterpick');
 const exportInput  = document.getElementById('DraftLocalLegend_ExTeCharacterpick');
 
+// data-characterごとに重複排除したcheckbox一覧を取得
+function getCustomCharacterCheckboxes() {
+
+  const allCheckboxes = Array.from(
+    document.querySelectorAll('.customcharacterlist input[type="checkbox"][data-character]')
+  );
+
+  const map = new Map();
+
+  allCheckboxes.forEach(cb => {
+    const id = Number(cb.dataset.character);
+
+    // 同じdata-characterは最初の1件だけ保持
+    if (!map.has(id)) {
+      map.set(id, cb);
+    }
+  });
+
+  return [...map.entries()]
+    .sort((a, b) => a[0] - b[0])
+    .map(([_, cb]) => cb);
+}
+
 //▼▼▼インポート▼▼▼
 importButton.addEventListener('click', () => {
+
   const inputString = importInput.value.trim();
   if (!inputString) return;
 
-  const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"][data-character]'));
-  checkboxes.sort((a, b) => Number(a.dataset.character) - Number(b.dataset.character));
-  checkboxes.forEach((cb, index) => {cb.checked = (inputString[index] === 'o');});
+  const checkboxes = getCustomCharacterCheckboxes();
+
+  checkboxes.forEach((cb, index) => {
+    cb.checked = (inputString[index] === 'o');
+  });
+
+  // 同一data-characterを持つ他checkboxにも同期
+  checkboxes.forEach(cb => {
+
+    const id = cb.dataset.character;
+
+    document
+      .querySelectorAll(`.customcharacterlist input[data-character="${id}"]`)
+      .forEach(target => {
+        target.checked = cb.checked;
+      });
+  });
 });
 
 //▼▼▼エクスポート▼▼▼
 createButton.addEventListener('click', () => {
-  const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"][data-character]'));
 
-  checkboxes.sort((a, b) => Number(a.dataset.character) - Number(b.dataset.character));
+  const checkboxes = getCustomCharacterCheckboxes();
 
-  const result =
-    checkboxes
-      .map(cb => cb.checked ? 'o' : 'x')
-      .join('');
+  const result = checkboxes
+    .map(cb => cb.checked ? 'o' : 'x')
+    .join('');
 
   exportInput.value = result;
 });
+
+console.log(
+  getCustomCharacterCheckboxes().length
+);
+
 //▲▲▲ドラフト地方伝説　オプション関連▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 //▼▼▼ドラフト地方伝説　ノーマルモード復活抽選機▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
 function DraftLocalLegend_CharacterRechargeNormal() {
@@ -4933,6 +4978,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div style="margin:3rem auto;padding:2rem;width:800px;max-width:80%;max-height:400px;overflow-y:scroll;border:1px solid #888;" class="updatehistory">
 	<div style="text-align:center;font-size:1.5rem;font-weight:bold;margin:1rem;">更新履歴</div>
+
+	<div class="version">v1.46.0<span>2026/05/20</span></div>
+	<div class="details">
+		<p>【ドラフト地方伝説】カスタムキャラクターリスト用コード生成機のインポート機能が正常に動作しない問題を修正しました</p>
+		<p>キャラクターデータベースに「ニコ」「プルーネ」を追加しました</p>
+		<p>カスタムプレイデータベースに「【祈聖秘境】山風の荊冠」「ドットーレ」を追加しました</p>
+	</div>
 
 	<div class="version">v1.45.0<span>2026/04/17</span></div>
 	<div class="details">
